@@ -1,0 +1,76 @@
+{
+ "repo": "https://github.com/lmartini27/sports-anaylsis-portfolio",
+ "projects": [
+  {
+   "id": "fantasy",
+   "title": "Fantasy Football Predictor",
+   "sport": "NFL",
+   "question": "Can a player's recent form and next opponent predict his fantasy points next week?",
+   "finding": "Yes, modestly. The model beats the naive recent-average baseline in every test season, mainly by pulling hot and cold streaks back toward normal. The next-opponent matchup feature added almost nothing.",
+   "folder": "fantasy-football-predictor w opp data/fantasy-football-predictor",
+   "chart": "fantasy",
+   "data": {
+    "rows": [
+     {"label": "Naive baseline (3-game average)", "mae": 5.34, "r2": 0.182},
+     {"label": "Linear regression", "mae": 5.06, "r2": 0.309},
+     {"label": "Random forest", "mae": 5.10, "r2": 0.298}
+    ],
+    "note": "Walk-forward test: trained on earlier seasons, tested on 2022 and 2023. Matchup feature changed R² by +0.001."
+   }
+  },
+  {
+   "id": "kicker",
+   "title": "Why Kickers Are Unpredictable",
+   "sport": "NFL",
+   "question": "Is a kicker's weekly fantasy score predictable, and if not, why?",
+   "finding": "Good offenses trade field goals for touchdowns. Betting lines predict extra-point volume well, but field goal volume, which drives almost all kicker variance, has no link to anything known before kickoff.",
+   "folder": "fantasy-football-predictor-kicker",
+   "chart": "kicker",
+   "data": {
+    "fg_variance": 19.96,
+    "pat_variance": 2.10,
+    "fg_pat_corr": -0.200,
+    "vegas_pat_corr": 0.369,
+    "vegas_fg_corr": 0.013,
+    "pat_r2": 0.12,
+    "total_r2": -0.004,
+    "note": "2021–2024 regular seasons, 1,971 kicker-weeks. Walk-forward R² by season."
+   }
+  },
+  {
+   "id": "ucl",
+   "title": "Champions League Clash of Styles",
+   "sport": "Soccer",
+   "question": "When Europe's top leagues meet, do some playing styles beat others?",
+   "finding": "It's a ladder, not rock-paper-scissors. The higher a team sits on the possession and control scale, the better it does, about 0.82 goals per step (R² 0.158, p < 0.0001). Style is tangled up with squad quality, so this is a signal, not proof of cause.",
+   "folder": "champions-league-style-clash",
+   "chart": "ucl",
+   "data": {
+    "gaps": [
+     {"gap": -2, "n": 8, "home": 12.5, "draw": 12.5, "away": 75.0},
+     {"gap": -1, "n": 30, "home": 43.3, "draw": 16.7, "away": 40.0},
+     {"gap": 0, "n": 54, "home": 53.7, "draw": 14.8, "away": 31.5},
+     {"gap": 1, "n": 29, "home": 69.0, "draw": 17.2, "away": 13.8},
+     {"gap": 2, "n": 6, "home": 83.3, "draw": 0.0, "away": 16.7}
+    ],
+    "note": "127 Big-5 vs Big-5 matches, 2022–23 and 2024–25. Style gap = home style rank minus away style rank."
+   }
+  },
+  {
+   "id": "ncaa",
+   "title": "March Madness and the Transfer Portal",
+   "sport": "College basketball",
+   "question": "Does roster continuity predict tournament upsets in the transfer-portal era?",
+   "finding": "Not beyond seeding: adding continuity moved upset prediction from 0.705 to 0.708 AUC. But year-to-year team quality has become clearly more volatile since the portal opened.",
+   "folder": "march-madness-upsets",
+   "chart": "ncaa",
+   "data": {
+    "auc_seed": 0.705,
+    "auc_continuity": 0.708,
+    "early_sd": 7.54,
+    "portal_sd": 9.64,
+    "note": "620 NCAA tournament games. Volatility = standard deviation of year-over-year change in adjusted net rating."
+   }
+  }
+ ]
+}

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--BODY-START-->
+<title>Martini Sports Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Weekly NFL fantasy projections graded in public, plus sports analytics research by Luca Martini.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a game-day sheet. Sticky top bar, compact scoreboard strip, then one working view at a time
+   (projections, scorecard, research, about). Section breaks are drawn as yard-line hash marks. */
+:root {
+  --paper: #f2f5f1;        /* chalked turf-grey page */
+  --sheet: #ffffff;        /* raised surfaces: tables, cards */
+  --ink: #12231b;          /* deep field-green ink */
+  --ink-2: #4d5e55;        /* secondary text */
+  --line: #d5ddd7;         /* rules and borders */
+  --turf: #1d7a4a;         /* accent: turf green */
+  --turf-soft: #dcefe3;
+  --pylon: #e8661c;        /* used only for the LIVE state */
+  --good: #1d7a4a; --good-bg: #dcefe3;
+  --ok: #3f7d2e; --ok-bg: #e7f2dc;
+  --warn: #9a6200; --warn-bg: #fbefd6;
+  --bad: #b2362b; --bad-bg: #f8e0dc;
+  --bar-model: #1d7a4a; --bar-base: #a9b6ae;
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0d1611; --sheet: #142019; --ink: #e4ece6; --ink-2: #9fb0a6; --line: #26362d;
+  --turf: #4cc38a; --turf-soft: #18352a; --pylon: #ff8a3d;
+  --good: #5fd39b; --good-bg: #173a2a; --ok: #9bcf6e; --ok-bg: #233419;
+  --warn: #f0b552; --warn-bg: #3a2d12; --bad: #f2877c; --bad-bg: #3f1d1a;
+  --bar-model: #4cc38a; --bar-base: #4f6158; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0d1611; --sheet: #142019; --ink: #e4ece6; --ink-2: #9fb0a6; --line: #26362d;
+  --turf: #4cc38a; --turf-soft: #18352a; --pylon: #ff8a3d;
+  --good: #5fd39b; --good-bg: #173a2a; --ok: #9bcf6e; --ok-bg: #233419;
+  --warn: #f0b552; --warn-bg: #3a2d12; --bad: #f2877c; --bad-bg: #3f1d1a;
+  --bar-model: #4cc38a; --bar-base: #4f6158; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+a { color: var(--turf); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--turf); outline-offset: 2px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+.brand { font: 800 22px/1 var(--display); letter-spacing: .02em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.brand span { color: var(--turf); }
+nav { display: flex; gap: 4px; flex-wrap: wrap; }
+nav a { font: 500 14px/1 var(--body); color: var(--ink-2); text-decoration: none; padding: 8px 10px; border-radius: 6px; }
+nav a:hover { color: var(--ink); background: var(--turf-soft); }
+nav a[aria-current="page"] { color: var(--ink); background: var(--turf-soft); }
+
+/* yard-line divider: a real football field's hash marks */
+.yard { height: 14px; background:
+  repeating-linear-gradient(90deg, var(--line) 0 2px, transparent 2px 24px) bottom/100% 6px no-repeat,
+  linear-gradient(var(--line), var(--line)) bottom/100% 1px no-repeat; }
+
+.hero { padding-block: 32px 20px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: end; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.live { color: var(--pylon); display: inline-flex; gap: 6px; align-items: center; font-weight: 500; }
+.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pylon); }
+h1 { font: 800 clamp(36px, 5.6vw, 56px)/.92 var(--display); text-transform: uppercase; letter-spacing: .005em; margin: 12px 0 14px; text-wrap: balance; }
+.lede { color: var(--ink-2); max-width: 54ch; margin: 0; font-size: 16px; }
+
+.board { background: var(--ink); color: var(--paper); border-radius: 10px; padding: 18px 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.board .k { font: 500 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.board .v { font: 800 34px/1 var(--display); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.board .s { font-size: 12px; opacity: .75; margin-top: 4px; }
+.board .full { grid-column: 1 / -1; font-size: 12px; opacity: .8; border-top: 1px solid color-mix(in srgb, var(--paper) 25%, transparent); padding-top: 10px; }
+
+main { padding-block: 24px 56px; }
+.view[hidden] { display: none !important; }
+h2 { font: 800 30px/1 var(--display); text-transform: uppercase; margin: 0 0 6px; letter-spacing: .01em; }
+h3 { font: 600 17px/1.3 var(--body); margin: 0; }
+.sub { color: var(--ink-2); margin: 0 0 18px; max-width: 70ch; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+
+.controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font: 500 13px/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+input[type="search"] { font: 14px var(--body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); color: var(--ink); min-width: 0; width: 220px; max-width: 100%; }
+
+.table-box { overflow-x: auto; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font: 500 11px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); background: var(--sheet); position: sticky; top: 0; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-family: var(--mono); }
+.rank { color: var(--ink-2); font-family: var(--mono); width: 40px; }
+.player { font-weight: 600; }
+.pos { font: 500 11px/1 var(--mono); color: var(--ink-2); margin-left: 6px; }
+.opp { font-family: var(--mono); color: var(--ink-2); }
+.pill { display: inline-block; font: 500 12px/1 var(--body); padding: 4px 8px; border-radius: 999px; }
+.m-Great { color: var(--good); background: var(--good-bg); }
+.m-Good { color: var(--ok); background: var(--ok-bg); }
+.m-Tough { color: var(--warn); background: var(--warn-bg); }
+.m-Very { color: var(--bad); background: var(--bad-bg); }
+.projcell { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+.projbar { width: 90px; height: 6px; background: var(--turf-soft); border-radius: 3px; overflow: hidden; }
+.projbar i { display: block; height: 100%; background: var(--turf); }
+.proj { font: 500 15px var(--mono); min-width: 44px; text-align: right; }
+.up { color: var(--good); } .down { color: var(--bad); }
+.more { margin-top: 12px; }
+.btn { font: 500 14px var(--body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.btn:hover { border-color: var(--turf); }
+.foot-note { color: var(--ink-2); font-size: 13px; margin-top: 12px; max-width: 80ch; }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tag { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--turf); }
+.q { color: var(--ink-2); margin: 0; font-style: italic; }
+.finding { margin: 0; }
+.card .links { margin-top: auto; font-size: 14px; }
+.stat-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.stat { border-top: 2px solid var(--ink); padding-top: 8px; }
+.stat .v { font: 800 30px/1 var(--display); font-variant-numeric: tabular-nums; }
+.stat .k { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+svg text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
+svg .lbl-strong { fill: var(--ink); font-weight: 500; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.prose { max-width: 68ch; }
+.prose h3 { margin-top: 24px; }
+.prose p, .prose li { color: var(--ink); }
+.prose ul { padding-left: 20px; }
+.empty { background: var(--sheet); border: 1px dashed var(--line); border-radius: 10px; padding: 18px; color: var(--ink-2); }
+footer { border-top: 1px solid var(--line); color: var(--ink-2); font-size: 13px; }
+footer .wrap { padding-block: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 20px; padding-block: 20px 12px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .projbar { display: none; }
+  .hide-sm { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { .projbar i { transition: width .3s ease; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#projections">Martini <span>Sports Lab</span></a>
+    <nav aria-label="Sections">
+      <a href="#projections" data-view="projections">Projections</a>
+      <a href="#scorecard" data-view="scorecard">Scorecard</a>
+      <a href="#research" data-view="research">Research</a>
+      <a href="#about" data-view="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap hero" id="hero">
+  <div>
+    <div class="eyebrow"><span class="live" id="live-label">Live</span><span id="week-label">NFL 2026</span></div>
+    <h1>NFL projections, graded in public</h1>
+    <p class="lede">Every week before kickoff this site posts fantasy point projections for every QB, RB, WR, and TE. After the games, it grades them against a simple benchmark, the player's recent average, and keeps the record here, good weeks and bad.</p>
+  </div>
+  <div class="board" id="board" aria-label="Season record">
+    <div><div class="k">Weeks beating benchmark</div><div class="v" id="b-wins">–</div><div class="s" id="b-wins-s">&nbsp;</div></div>
+    <div><div class="k">Avg miss, model</div><div class="v" id="b-mae">–</div><div class="s">fantasy points</div></div>
+    <div><div class="k">Avg miss, benchmark</div><div class="v" id="b-base">–</div><div class="s">fantasy points</div></div>
+    <div class="full" id="b-note">Loading the season record…</div>
+  </div>
+</section>
+<div class="wrap" id="hero-rule"><div class="yard" aria-hidden="true"></div></div>
+
+<main class="wrap">
+
+  <section class="view" id="view-projections" aria-labelledby="h-proj">
+    <div class="section-head">
+      <div>
+        <h2 id="h-proj">Week <span id="p-week">–</span> projections</h2>
+        <p class="sub" id="p-sub">PPR scoring. Loading…</p>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="chips" role="group" aria-label="Position">
+        <button class="chip" data-pos="ALL" aria-pressed="true">All</button>
+        <button class="chip" data-pos="QB" aria-pressed="false">QB</button>
+        <button class="chip" data-pos="RB" aria-pressed="false">RB</button>
+        <button class="chip" data-pos="WR" aria-pressed="false">WR</button>
+        <button class="chip" data-pos="TE" aria-pressed="false">TE</button>
+      </div>
+      <input type="search" id="q" placeholder="Search player or team" aria-label="Search player or team">
+    </div>
+    <div class="table-box">
+      <table>
+        <thead><tr>
+          <th class="rank">#</th><th>Player</th><th>Matchup</th><th class="hide-sm">Defense</th>
+          <th class="num">Projection</th><th class="num hide-sm">Last 3 avg</th><th class="num">vs avg</th>
+        </tr></thead>
+        <tbody id="p-body"></tbody>
+      </table>
+    </div>
+    <div class="more"><button class="btn" id="p-more" type="button">Show all players</button></div>
+    <p class="foot-note">"Defense" rates how many fantasy points the opponent has allowed to that position over its last three games, compared with every defense playing this week. The model doesn't know about injuries or depth-chart changes announced after the projections post, so check the news before setting a lineup.</p>
+  </section>
+
+  <section class="view" id="view-scorecard" aria-labelledby="h-score" hidden>
+    <h2 id="h-score">Scorecard</h2>
+    <p class="sub">Each week's projections are graded against what actually happened, alongside the benchmark: the player's own average over his last three games. A lower average miss is better. Only players who played are graded.</p>
+    <div id="s-chart"></div>
+    <div class="table-box" style="margin-top:16px">
+      <table>
+        <thead><tr><th>Week</th><th>Type</th><th class="num">Graded</th><th class="num">Model miss</th><th class="num">Benchmark miss</th><th class="num hide-sm">Model R²</th><th class="num hide-sm">Benchmark R²</th><th class="num">Result</th></tr></thead>
+        <tbody id="s-body"></tbody>
+      </table>
+    </div>
+    <p class="foot-note"><strong>Live</strong> weeks were posted before that week's first kickoff; the commit history on GitHub shows exactly when. <strong>Backtest</strong> weeks were run afterward, but using only data available before that week, to show how the model would have done before the site launched.</p>
+  </section>
+
+  <section class="view" id="view-research" aria-labelledby="h-research" hidden>
+    <h2 id="h-research">Research</h2>
+    <p class="sub">Four longer investigations. Each started with a question, and several ended with a "no" that turned out to be the interesting part. Full code and reports are on GitHub.</p>
+    <div class="grid2" id="r-grid"></div>
+  </section>
+
+  <section class="view prose" id="view-about" aria-labelledby="h-about" hidden>
+    <h2 id="h-about">About</h2>
+    <p>I'm Luca Martini, a high school student in Dallas who likes asking whether the things people say about sports actually hold up in the data. This site collects that work: a live weekly projection model and four research projects across the NFL, college basketball, and European soccer.</p>
+
+    <h3>How the projections work</h3>
+    <ul>
+      <li>For each player, the model looks at his last three games this season: fantasy points, targets, carries, receptions, and yards.</li>
+      <li>It adds how many points his next opponent has allowed to his position over its last three games.</li>
+      <li>A linear regression trained on every regular-season game since 2021 turns those numbers into a projection. Its main skill is regression to the mean: it trusts a three-game hot streak less than the raw average does.</li>
+      <li>Every Wednesday the site grades last week and posts the new projections automatically.</li>
+    </ul>
+
+    <h3>What it can't do</h3>
+    <ul>
+      <li>It doesn't read injury reports, so a player ruled out on Friday still has a projection.</li>
+      <li>Rookies and players returning from injury need a game or two before they're projected.</li>
+      <li>Single games are noisy. Even a good model misses by four to five points on a typical player.</li>
+    </ul>
+
+    <h3>How it's built</h3>
+    <p>Python with pandas and scikit-learn, data from the open-source <a href="https://github.com/nflverse" target="_blank" rel="noopener">nflverse</a> project, and a scheduled GitHub Actions job that reruns everything weekly. I designed the questions, ran and checked the analysis, and wrote the conclusions; I used an AI coding assistant to help write and debug the code.</p>
+
+    <h3>Contact</h3>
+    <p>Code and reports: <a id="repo-link" href="https://github.com/lmartini27/sports-anaylsis-portfolio" target="_blank" rel="noopener">github.com/lmartini27</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Martini Sports Lab · data from nflverse</span>
+    <span id="f-updated"></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const VIEWS = ["projections", "scorecard", "research", "about"];
+  const $ = (s) => document.querySelector(s);
+  const fmt = (x, d = 1) => (x == null || isNaN(x)) ? "–" : Number(x).toFixed(d);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const when = (iso) => new Date(iso).toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+
+  // ---------- routing (bare #tokens) ----------
+  function show(view) {
+    if (!VIEWS.includes(view)) view = "projections";
+    VIEWS.forEach((v) => { $("#view-" + v).hidden = v !== view; });
+    const withHero = view === "projections" || view === "scorecard";
+    $("#hero").hidden = !withHero; $("#hero-rule").hidden = !withHero;
+    document.querySelectorAll("nav a").forEach((a) => {
+      if (a.dataset.view === view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+    const v = a.getAttribute("href").slice(1);
+    if (VIEWS.includes(v)) { e.preventDefault(); show(v); history.replaceState(null, "", "#" + v); window.scrollTo({ top: 0 }); }
+  }));
+  window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+  show(location.hash.slice(1));
+
+  const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
+
+  // ---------- projections ----------
+  let players = [], pos = "ALL", showAll = false;
+  function renderProjections() {
+    const q = $("#q").value.trim().toLowerCase();
+    let rows = players.filter((p) => (pos === "ALL" || p.position === pos) &&
+      (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q || p.team.toLowerCase().includes(q)));
+    const total = rows.length;
+    const limit = q ? 200 : (pos === "ALL" ? 50 : 30);
+    if (!showAll) rows = rows.slice(0, limit);
+    const max = Math.max(1, ...players.map((p) => p.projection));
+    $("#p-body").innerHTML = rows.map((p, i) => {
+      const d = p.projection - p.recent_avg;
+      const cls = p.matchup === "Very tough" ? "Very" : p.matchup;
+      return `<tr>
+        <td class="rank">${i + 1}</td>
+        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span></td>
+        <td class="opp">${esc(p.team)} vs ${esc(p.opponent)}</td>
+        <td class="hide-sm"><span class="pill m-${cls}">${esc(p.matchup)}</span></td>
+        <td class="num"><div class="projcell"><span class="projbar"><i style="width:${(p.projection / max * 100).toFixed(1)}%"></i></span><span class="proj">${fmt(p.projection)}</span></div></td>
+        <td class="num hide-sm">${fmt(p.recent_avg)}</td>
+        <td class="num ${d >= 0 ? "up" : "down"}">${d >= 0 ? "+" : "−"}${fmt(Math.abs(d))}</td>
+      </tr>`;
+    }).join("") || `<tr><td colspan="7" style="color:var(--ink-2)">No players match "${esc(q)}".</td></tr>`;
+    $("#p-more").hidden = showAll || total <= limit;
+    $("#p-more").textContent = `Show all ${total} players`;
+  }
+  document.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+    pos = b.dataset.pos; showAll = false;
+    document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b));
+    renderProjections();
+  }));
+  $("#q").addEventListener("input", renderProjections);
+  $("#p-more").addEventListener("click", () => { showAll = true; renderProjections(); });
+
+  getJSON("data/projections/latest.json").then((d) => {
+    players = d.players;
+    $("#p-week").textContent = d.week;
+    const kicked = new Date() >= new Date(d.first_kickoff);
+    $("#week-label").textContent = `NFL ${d.season} · Week ${d.week}`;
+    $("#live-label").textContent = kicked ? "Week in progress" : "Live";
+    $("#p-sub").textContent = `PPR scoring. Posted ${when(d.generated_at)}, before the first kickoff (${when(d.first_kickoff)}). ${d.players.length} players projected.`;
+    renderProjections();
+  }).catch(() => { $("#p-sub").textContent = "Projections couldn't load. Try refreshing the page."; });
+
+  // ---------- scorecard ----------
+  function barChart(weeks) {
+    const W = 640, H = 220, padL = 36, padR = 8, padT = 12, padB = 34;
+    const maxV = Math.ceil(Math.max(...weeks.flatMap((w) => [w.model_mae, w.baseline_mae])) + 0.5);
+    const y = (v) => padT + (H - padT - padB) * (1 - v / maxV);
+    const slot = (W - padL - padR) / weeks.length, bw = Math.min(26, slot / 3);
+    let g = "";
+    for (let t = 0; t <= maxV; t += 1) {
+      g += `<line x1="${padL}" x2="${W - padR}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/>`;
+      g += `<text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+    }
+    weeks.forEach((w, i) => {
+      const cx = padL + slot * i + slot / 2;
+      g += `<rect x="${cx - bw - 2}" y="${y(w.model_mae)}" width="${bw}" height="${y(0) - y(w.model_mae)}" fill="var(--bar-model)" rx="2"><title>Model ${w.model_mae}</title></rect>`;
+      g += `<rect x="${cx + 2}" y="${y(w.baseline_mae)}" width="${bw}" height="${y(0) - y(w.baseline_mae)}" fill="var(--bar-base)" rx="2"><title>Benchmark ${w.baseline_mae}</title></rect>`;
+      g += `<text x="${cx}" y="${H - padB + 16}" text-anchor="middle" class="lbl-strong">Wk ${w.week}</text>`;
+      g += `<text x="${cx}" y="${H - padB + 29}" text-anchor="middle">${w.type}</text>`;
+    });
+    return `<div class="legend"><span><i style="background:var(--bar-model)"></i>Model average miss</span><span><i style="background:var(--bar-base)"></i>Benchmark average miss (last-3 average)</span></div>
+      <div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block" role="img" aria-label="Average miss per week, model versus benchmark">${g}</svg></div>`;
+  }
+
+  getJSON("data/scorecard.json").then((s) => {
+    const weeks = s.weeks || [];
+    const live = s.live_summary, bt = s.backtest_summary;
+    const use = live || bt;
+    if (use) {
+      $("#b-wins").textContent = `${use.model_wins} of ${use.weeks}`;
+      $("#b-wins-s").textContent = live ? "live weeks" : "backtest weeks";
+      $("#b-mae").textContent = fmt(use.model_mae, 2);
+      $("#b-base").textContent = fmt(use.baseline_mae, 2);
+    }
+    $("#b-note").textContent = live
+      ? `Live record since launch. Backtest before launch: ${bt ? `${bt.model_wins} of ${bt.weeks} weeks` : "none"}.`
+      : "Live grading starts with the first full week after launch. Numbers shown are a backtest of earlier 2026 weeks.";
+    $("#s-chart").innerHTML = weeks.length ? barChart(weeks)
+      : `<div class="empty">No graded weeks yet. The first grades appear the Wednesday after the first projected week.</div>`;
+    $("#s-body").innerHTML = weeks.map((w) => {
+      const win = w.model_mae < w.baseline_mae;
+      return `<tr><td>Week ${w.week}</td><td>${w.type === "live" ? '<span class="pill m-Great">Live</span>' : '<span class="pill" style="color:var(--ink-2);background:var(--paper)">Backtest</span>'}</td>
+        <td class="num">${w.n_graded}</td><td class="num">${fmt(w.model_mae, 2)}</td><td class="num">${fmt(w.baseline_mae, 2)}</td>
+        <td class="num hide-sm">${fmt(w.model_r2, 3)}</td><td class="num hide-sm">${fmt(w.baseline_r2, 3)}</td>
+        <td class="num ${win ? "up" : "down"}">${win ? "Model" : "Benchmark"}</td></tr>`;
+    }).join("");
+    if (s.updated_at) $("#f-updated").textContent = "Updated " + when(s.updated_at);
+  }).catch(() => { $("#b-note").textContent = "The season record couldn't load. Try refreshing the page."; });
+
+  // ---------- research ----------
+  function svgWrap(w, h, inner, label) {
+    return `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block" role="img" aria-label="${esc(label)}">${inner}</svg>`;
+  }
+  const charts = {
+    fantasy(d) {
+      const W = 420, rowH = 30, padL = 170, H = d.rows.length * rowH + 22, max = 6;
+      const x = (v) => padL + (W - padL - 40) * v / max;
+      let g = "";
+      d.rows.forEach((r, i) => {
+        const yy = 8 + i * rowH;
+        g += `<text x="0" y="${yy + 14}" class="lbl-strong">${esc(r.label.replace(" (3-game average)", ""))}</text>`;
+        g += `<rect x="${padL}" y="${yy + 3}" width="${x(r.mae) - padL}" height="16" rx="2" fill="${i === 0 ? "var(--bar-base)" : "var(--bar-model)"}"/>`;
+        g += `<text x="${x(r.mae) + 6}" y="${yy + 15}">${r.mae.toFixed(2)}</text>`;
+      });
+      g += `<text x="${padL}" y="${H - 2}">avg miss in points, lower is better</text>`;
+      return svgWrap(W, H, g, "Average miss by model") + `<p class="foot-note" style="margin:0">${esc(d.note)}</p>`;
+    },
+    kicker(d) {
+      return `<div class="stat-row">
+        <div class="stat"><div class="v">${d.fg_variance.toFixed(1)}</div><div class="k">Weekly variance from field goals</div></div>
+        <div class="stat"><div class="v">${d.pat_variance.toFixed(1)}</div><div class="k">Weekly variance from extra points</div></div>
+        <div class="stat"><div class="v">${d.fg_pat_corr.toFixed(2)}</div><div class="k">Field goal vs extra point points (correlation)</div></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="v">+${d.vegas_pat_corr.toFixed(2)}</div><div class="k">Betting-line total vs extra points</div></div>
+        <div class="stat"><div class="v">+${d.vegas_fg_corr.toFixed(2)}</div><div class="k">Betting-line total vs field goals</div></div>
+        <div class="stat"><div class="v">${d.pat_r2.toFixed(2)}</div><div class="k">R² predicting extra points (total points: about 0)</div></div>
+      </div><p class="foot-note" style="margin:0">${esc(d.note)}</p>`;
+    },
+    ucl(d) {
+      const W = 420, H = 190, padL = 30, padB = 36, padT = 10;
+      const slot = (W - padL) / d.gaps.length, bw = slot * 0.62;
+      const y = (v) => padT + (H - padT - padB) * (1 - v / 100);
+      let g = "";
+      [0, 50, 100].forEach((t) => { g += `<text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t}%</text><line x1="${padL}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/>`; });
+      d.gaps.forEach((r, i) => {
+        const x0 = padL + slot * i + (slot - bw) / 2;
+        let acc = 0;
+        [["home", "var(--good)"], ["draw", "var(--bar-base)"], ["away", "var(--bad)"]].forEach(([k, c]) => {
+          g += `<rect x="${x0}" y="${y(acc + r[k])}" width="${bw}" height="${y(acc) - y(acc + r[k])}" fill="${c}"><title>${k} ${r[k]}%</title></rect>`;
+          acc += r[k];
+        });
+        g += `<text x="${x0 + bw / 2}" y="${H - padB + 15}" text-anchor="middle" class="lbl-strong">${r.gap > 0 ? "+" : ""}${r.gap}</text>`;
+        g += `<text x="${x0 + bw / 2}" y="${H - padB + 28}" text-anchor="middle">n=${r.n}</text>`;
+      });
+      return `<div class="legend"><span><i style="background:var(--good)"></i>Home win</span><span><i style="background:var(--bar-base)"></i>Draw</span><span><i style="background:var(--bad)"></i>Away win</span></div>`
+        + svgWrap(W, H, g, "Results by style gap") + `<p class="foot-note" style="margin:0">${esc(d.note)}</p>`;
+    },
+    ncaa(d) {
+      const pct = Math.round((d.portal_sd / d.early_sd - 1) * 100);
+      return `<div class="stat-row">
+        <div class="stat"><div class="v">${d.auc_seed.toFixed(3)}</div><div class="k">Upset AUC, seeds only</div></div>
+        <div class="stat"><div class="v">${d.auc_continuity.toFixed(3)}</div><div class="k">Seeds plus roster continuity</div></div>
+        <div class="stat"><div class="v">+${pct}%</div><div class="k">Year-to-year volatility, portal era (${d.early_sd} → ${d.portal_sd})</div></div>
+      </div><p class="foot-note" style="margin:0">${esc(d.note)}</p>`;
+    },
+  };
+  getJSON("data/research.json").then((r) => {
+    $("#repo-link").href = r.repo;
+    $("#r-grid").innerHTML = r.projects.map((p) => `<article class="card">
+      <span class="tag">${esc(p.sport)}</span>
+      <h3>${esc(p.title)}</h3>
+      <p class="q">${esc(p.question)}</p>
+      <p class="finding">${esc(p.finding)}</p>
+      ${charts[p.chart] ? charts[p.chart](p.data) : ""}
+      <div class="links"><a href="${r.repo}/tree/main/${p.folder.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">Code and full report →</a></div>
+    </article>`).join("");
+  }).catch(() => { $("#r-grid").innerHTML = `<div class="empty">Research summaries couldn't load. Try refreshing the page.</div>`; });
+})();
+</script>
+<!--BODY-END-->
+</body>
+</html>

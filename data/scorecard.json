@@ -1,0 +1,46 @@
+{
+ "season": 2026,
+ "weeks": [
+  {
+   "n_graded": 325,
+   "n_projected": 424,
+   "model_mae": 4.436,
+   "baseline_mae": 4.666,
+   "model_r2": 0.424,
+   "baseline_r2": 0.3,
+   "model_closer_pct": 51.1,
+   "week": 4,
+   "type": "backtest"
+  },
+  {
+   "n_graded": 309,
+   "n_projected": 391,
+   "model_mae": 4.899,
+   "baseline_mae": 5.176,
+   "model_r2": 0.403,
+   "baseline_r2": 0.258,
+   "model_closer_pct": 51.5,
+   "week": 5,
+   "type": "backtest"
+  },
+  {
+   "n_graded": 285,
+   "n_projected": 368,
+   "model_mae": 4.396,
+   "baseline_mae": 4.536,
+   "model_r2": 0.427,
+   "baseline_r2": 0.307,
+   "model_closer_pct": 49.5,
+   "week": 6,
+   "type": "backtest"
+  }
+ ],
+ "backtest_summary": {
+  "weeks": 3,
+  "model_wins": 3,
+  "model_mae": 4.577,
+  "baseline_mae": 4.793,
+  "model_closer_pct": 50.7
+ },
+ "updated_at": "2026-10-21T23:08:52+00:00"
+}
