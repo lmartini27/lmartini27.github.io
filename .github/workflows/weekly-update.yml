@@ -1,11 +1,13 @@
 name: Weekly update
 
-# Every Wednesday morning: grade last week's projections and post the next week's.
-# nflverse usually publishes the previous week's stats by Tuesday.
+# Wednesday: grade last week, post next week's projections, check injuries.
+# Friday and Sunday: refresh the injury report only (projections stay locked).
 on:
   schedule:
-    - cron: "0 13 * * 3"   # Wednesdays 13:00 UTC (8 AM Central during daylight time)
-  workflow_dispatch:       # lets you run it by hand from the Actions tab
+    - cron: "0 13 * * 3"    # Wed 13:00 UTC (8 AM Central): full update
+    - cron: "0 21 * * 5"    # Fri 21:00 UTC (4 PM Central): injuries only
+    - cron: "30 15 * * 0"   # Sun 15:30 UTC (10:30 AM Central): injuries only
+  workflow_dispatch:        # run by hand from the Actions tab (full update)
 
 permissions:
   contents: write
@@ -23,8 +25,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Grade last week and project the next
+      - name: Full update (grade, project, injuries)
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 13 * * 3'
         run: python pipeline/update.py --season 2026
+
+      - name: Injury report only
+        if: github.event_name == 'schedule' && github.event.schedule != '0 13 * * 3'
+        run: python pipeline/update.py --season 2026 --injuries-only
 
       - name: Commit updated data
         run: |
@@ -34,6 +41,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Weekly update: $(date -u +'%Y-%m-%d')"
+            git commit -m "Update: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
           fi

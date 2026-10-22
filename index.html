@@ -102,6 +102,12 @@ td.num, th.num { text-align: right; font-family: var(--mono); }
 .rank { color: var(--ink-2); font-family: var(--mono); width: 40px; }
 .player { font-weight: 600; }
 .pos { font: 500 11px/1 var(--mono); color: var(--ink-2); margin-left: 6px; }
+.inj { font: 600 10px/1 var(--mono); padding: 3px 5px; border-radius: 4px; margin-left: 6px; vertical-align: 1px; }
+.inj-Questionable { color: var(--warn); background: var(--warn-bg); }
+.inj-Doubtful, .inj-Out, .inj-IR { color: var(--bad); background: var(--bad-bg); }
+tr.out td { opacity: .55; }
+.toggle { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.toggle input { accent-color: var(--turf); width: 16px; height: 16px; }
 .opp { font-family: var(--mono); color: var(--ink-2); }
 .pill { display: inline-block; font: 500 12px/1 var(--body); padding: 4px 8px; border-radius: 999px; }
 .m-Great { color: var(--good); background: var(--good-bg); }
@@ -196,6 +202,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
         <button class="chip" data-pos="TE" aria-pressed="false">TE</button>
       </div>
       <input type="search" id="q" placeholder="Search player or team" aria-label="Search player or team">
+      <label class="toggle" for="show-out"><input type="checkbox" id="show-out"> <span id="show-out-label">Show players ruled out</span></label>
     </div>
     <div class="table-box">
       <table>
@@ -207,7 +214,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
       </table>
     </div>
     <div class="more"><button class="btn" id="p-more" type="button">Show all players</button></div>
-    <p class="foot-note">"Defense" rates how many fantasy points the opponent has allowed to that position over its last three games, compared with every defense playing this week. The model doesn't know about injuries or depth-chart changes announced after the projections post, so check the news before setting a lineup.</p>
+    <p class="foot-note">"Defense" rates how many fantasy points the opponent has allowed to that position over its last three games, compared with every defense playing this week. Players on injured reserve or the practice squad aren't projected. The official injury report is checked again Friday and Sunday morning: <span class="inj inj-Questionable">Q</span> questionable, <span class="inj inj-Doubtful">D</span> doubtful, and players ruled out are hidden. Game-day inactives come out 90 minutes before kickoff, so check the news before locking a lineup. <span id="inj-updated"></span></p>
   </section>
 
   <section class="view" id="view-scorecard" aria-labelledby="h-score" hidden>
@@ -238,12 +245,12 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
       <li>For each player, the model looks at his last three games this season: fantasy points, targets, carries, receptions, and yards.</li>
       <li>It adds how many points his next opponent has allowed to his position over its last three games.</li>
       <li>A linear regression trained on every regular-season game since 2021 turns those numbers into a projection. Its main skill is regression to the mean: it trusts a three-game hot streak less than the raw average does.</li>
-      <li>Every Wednesday the site grades last week and posts the new projections automatically.</li>
+      <li>Every Wednesday the site grades last week and posts the new projections automatically. Projections are locked once posted; only the injury flags update later in the week.</li>
     </ul>
 
     <h3>What it can't do</h3>
     <ul>
-      <li>It doesn't read injury reports, so a player ruled out on Friday still has a projection.</li>
+      <li>It skips players on injured reserve and flags the official injury report, but a projection doesn't change if a teammate is ruled out late in the week.</li>
       <li>Rookies and players returning from injury need a game or two before they're projected.</li>
       <li>Single games are noisy. Even a good model misses by four to five points on a typical player.</li>
     </ul>
@@ -292,10 +299,17 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
   const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
 
   // ---------- projections ----------
-  let players = [], pos = "ALL", showAll = false;
+  let players = [], pos = "ALL", showAll = false, injuries = {}, projWeek = null, injWeek = null;
+  const OUT = new Set(["Out", "IR"]);
+  const SHORT = { Questionable: "Q", Doubtful: "D", Out: "OUT", IR: "IR" };
+  const injuryOf = (p) => (injWeek === projWeek ? injuries[p.player_id] : null);
   function renderProjections() {
     const q = $("#q").value.trim().toLowerCase();
+    const showOut = $("#show-out").checked;
+    const nOut = players.filter((p) => { const j = injuryOf(p); return j && OUT.has(j.status); }).length;
+    $("#show-out-label").textContent = `Show players ruled out (${nOut})`;
     let rows = players.filter((p) => (pos === "ALL" || p.position === pos) &&
+      (showOut || !(injuryOf(p) && OUT.has(injuryOf(p).status))) &&
       (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q || p.team.toLowerCase().includes(q)));
     const total = rows.length;
     const limit = q ? 200 : (pos === "ALL" ? 50 : 30);
@@ -304,9 +318,11 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     $("#p-body").innerHTML = rows.map((p, i) => {
       const d = p.projection - p.recent_avg;
       const cls = p.matchup === "Very tough" ? "Very" : p.matchup;
-      return `<tr>
+      const j = injuryOf(p);
+      const badge = j ? `<span class="inj inj-${j.status}" title="${esc(j.status)}${j.injury ? " (" + esc(j.injury) + ")" : ""}">${SHORT[j.status] || ""}</span>` : "";
+      return `<tr class="${j && OUT.has(j.status) ? "out" : ""}">
         <td class="rank">${i + 1}</td>
-        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span></td>
+        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span>${badge}</td>
         <td class="opp">${esc(p.team)} vs ${esc(p.opponent)}</td>
         <td class="hide-sm"><span class="pill m-${cls}">${esc(p.matchup)}</span></td>
         <td class="num"><div class="projcell"><span class="projbar"><i style="width:${(p.projection / max * 100).toFixed(1)}%"></i></span><span class="proj">${fmt(p.projection)}</span></div></td>
@@ -323,10 +339,17 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     renderProjections();
   }));
   $("#q").addEventListener("input", renderProjections);
+  $("#show-out").addEventListener("change", renderProjections);
   $("#p-more").addEventListener("click", () => { showAll = true; renderProjections(); });
 
+  getJSON("data/injuries.json").then((inj) => {
+    injuries = inj.players || {}; injWeek = inj.week;
+    $("#inj-updated").textContent = `Injury report last checked ${when(inj.updated_at)}.`;
+    if (players.length) renderProjections();
+  }).catch(() => {});
+
   getJSON("data/projections/latest.json").then((d) => {
-    players = d.players;
+    players = d.players; projWeek = d.week;
     $("#p-week").textContent = d.week;
     const kicked = new Date() >= new Date(d.first_kickoff);
     $("#week-label").textContent = `NFL ${d.season} · Week ${d.week}`;

@@ -14,8 +14,16 @@ Projections saved before the week's first kickoff are marked "live".
 Git commit times provide an independent record of when each file was
 published.
 
+Players who aren't on their team's active roster that week (injured
+reserve, practice squad, released) are left out. A separate file,
+data/injuries.json, carries the official injury report (Out, Doubtful,
+Questionable) and is refreshed later in the week with --injuries-only,
+so the site can flag or hide injured players without changing the
+locked projections.
+
 Run locally:   python pipeline/update.py
 Options:       --season 2026   --cache DIR (reuse downloaded CSVs)
+               --injuries-only (refresh data/injuries.json and nothing else)
 """
 
 import argparse
@@ -36,6 +44,9 @@ PROJ_DIR = os.path.join(DATA_DIR, "projections")
 
 STATS_URL = "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{year}.csv"
 SCHEDULE_URL = "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
+ROSTER_URL = "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_{year}.csv"
+INJURY_URL = "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_{year}.csv"
+REPORT_STATUSES = ["Out", "Doubtful", "Questionable"]
 
 FIRST_SEASON = 2021
 POSITIONS = ["QB", "RB", "WR", "TE"]
@@ -84,6 +95,27 @@ def load_schedule(season, cache_dir):
     times = pd.to_datetime(g["gameday"] + " " + g["gametime"].fillna("13:00"))
     g["kickoff_utc"] = times.dt.tz_localize(EASTERN).dt.tz_convert("UTC")
     return g
+
+
+def load_rosters(season, cache_dir):
+    r = read_csv(ROSTER_URL.format(year=season), cache_dir, f"roster_weekly_{season}.csv")
+    return r[["week", "gsis_id", "team", "status"]].dropna(subset=["gsis_id"])
+
+
+def roster_for_week(rosters, week):
+    """Roster snapshot for `week`, or the latest one published before it."""
+    avail = rosters.loc[rosters["week"] <= week, "week"]
+    if avail.empty:
+        return None
+    return rosters[rosters["week"] == avail.max()].drop_duplicates("gsis_id", keep="last")
+
+
+def load_injuries(season, cache_dir):
+    try:
+        return read_csv(INJURY_URL.format(year=season), cache_dir, f"injuries_{season}.csv")
+    except Exception as e:  # injury file can lag early in a season
+        print(f"  (injury report unavailable: {e})")
+        return None
 
 
 # ---------------------------------------------------------------- features
@@ -155,7 +187,7 @@ def matchup_label(value, pos_values):
     return "Very tough"
 
 
-def project_week(feat, defense, schedule, season, week):
+def project_week(feat, defense, schedule, season, week, rosters=None):
     """Train on data available before `week`, project every eligible player."""
     train = training_rows(feat, defense, season, week)
     model = LinearRegression().fit(train[FEATURES], train["target"])
@@ -167,6 +199,13 @@ def project_week(feat, defense, schedule, season, week):
         opp_of[gm["away_team"]] = gm["home_team"]
 
     cand = latest_rows_before(feat, season, week).copy()
+    roster = roster_for_week(rosters, week) if rosters is not None else None
+    if roster is not None:
+        # keep only players on an active roster; use their CURRENT team (handles trades)
+        cand = cand.merge(roster[["gsis_id", "team", "status"]].rename(
+            columns={"gsis_id": "player_id", "team": "roster_team"}), on="player_id", how="inner")
+        cand = cand[cand["status"] == "ACT"]
+        cand["team"] = cand["roster_team"]
     cand = cand[cand["team"].isin(opp_of)]
     cand["proj_opponent"] = cand["team"].map(opp_of)
     cand["proj_week"] = week
@@ -216,6 +255,28 @@ def players_payload(cand):
     } for r in out.itertuples()]
 
 
+# ---------------------------------------------------------------- injuries
+
+def write_injuries(season, week, injuries, rosters, now):
+    """Official injury report for `week`, plus anyone moved to injured reserve."""
+    out = {}
+    if injuries is not None:
+        inj = injuries[(injuries["season"] == season) & (injuries["week"] == week)
+                       & (injuries["report_status"].isin(REPORT_STATUSES))]
+        for r in inj.itertuples():
+            out[r.gsis_id] = {"status": r.report_status,
+                              "injury": r.report_primary_injury if isinstance(r.report_primary_injury, str) else ""}
+    roster = roster_for_week(rosters, week) if rosters is not None else None
+    if roster is not None:
+        for pid in roster.loc[roster["status"] == "RES", "gsis_id"]:
+            out.setdefault(pid, {"status": "IR", "injury": ""})
+    write_json(os.path.join(DATA_DIR, "injuries.json"),
+               {"season": season, "week": int(week), "updated_at": now.isoformat(timespec="seconds"),
+                "players": out})
+    counts = pd.Series([v["status"] for v in out.values()]).value_counts().to_dict() if out else {}
+    print(f"  injury report for week {week}: {counts}")
+
+
 # ---------------------------------------------------------------- main
 
 def write_json(path, obj):
@@ -235,20 +296,28 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=datetime.now().year)
     ap.add_argument("--cache", default=None)
+    ap.add_argument("--injuries-only", action="store_true")
     args = ap.parse_args()
     season = args.season
     now = datetime.now(timezone.utc)
 
     stats = load_stats(season, args.cache)
     schedule = load_schedule(season, args.cache)
-    feat = add_rolling_and_next_game(stats)
-    defense = DefenseTable(stats)
+    rosters = load_rosters(season, args.cache)
+    injuries = load_injuries(season, args.cache)
 
     completed = sorted(stats.loc[stats["season"] == season, "week"].unique())
     last_done = int(completed[-1]) if completed else 0
     upcoming = last_done + 1
     kickoff = schedule.groupby("week")["kickoff_utc"].min()
-    print(f"Season {season}: weeks completed = {last_done}, projecting week {upcoming}")
+    print(f"Season {season}: weeks completed = {last_done}, upcoming week {upcoming}")
+
+    write_injuries(season, upcoming, injuries, rosters, now)
+    if args.injuries_only:
+        return
+
+    feat = add_rolling_and_next_game(stats)
+    defense = DefenseTable(stats)
 
     scorecard = read_json(os.path.join(DATA_DIR, "scorecard.json"), {"season": season, "weeks": []})
     graded = {(w["week"]) for w in scorecard["weeks"]}
@@ -272,7 +341,7 @@ def main():
     for w in completed:
         if w in graded or w < BACKTEST_FIRST_WEEK:
             continue
-        cand, _, _ = project_week(feat, defense, schedule, season, w)
+        cand, _, _ = project_week(feat, defense, schedule, season, w, rosters)
         res = grade(players_payload(cand), stats[(stats["season"] == season) & (stats["week"] == w)])
         if res:
             res.update({"week": int(w), "type": "backtest"})
@@ -302,7 +371,7 @@ def main():
     if os.path.exists(out_path) and now >= first_kick:
         print(f"Week {upcoming} has already kicked off; keeping the saved projections.")
         return
-    cand, model, n_train = project_week(feat, defense, schedule, season, upcoming)
+    cand, model, n_train = project_week(feat, defense, schedule, season, upcoming, rosters)
     payload = {
         "season": season, "week": upcoming,
         "generated_at": now.isoformat(timespec="seconds"),
