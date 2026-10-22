@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 7,
- "generated_at": "2026-10-21T23:08:52+00:00",
+ "generated_at": "2026-10-22T00:33:29+00:00",
  "first_kickoff": "2026-10-23T00:15:00+00:00",
  "type": "live",
  "n_training_rows": 26016,
@@ -3516,8 +3516,8 @@
    "matchup": "Great"
   },
   {
-   "player_id": "00-0036775",
-   "name": "Brandon Smith",
+   "player_id": "00-0041397",
+   "name": "Kaden Wetjen",
    "position": "WR",
    "team": "PIT",
    "opponent": "NO",
@@ -3527,8 +3527,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0041397",
-   "name": "Kaden Wetjen",
+   "player_id": "00-0036775",
+   "name": "Brandon Smith",
    "position": "WR",
    "team": "PIT",
    "opponent": "NO",
@@ -3571,17 +3571,6 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0036646",
-   "name": "Simi Fehoko",
-   "position": "WR",
-   "team": "ARI",
-   "opponent": "DEN",
-   "projection": 1.74,
-   "recent_avg": 0.0,
-   "opp_allowed": 30.23,
-   "matchup": "Tough"
-  },
-  {
    "player_id": "00-0036331",
    "name": "Devin Duvernay",
    "position": "WR",
@@ -3593,8 +3582,19 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0037524",
-   "name": "Tay Martin",
+   "player_id": "00-0036646",
+   "name": "Simi Fehoko",
+   "position": "WR",
+   "team": "ARI",
+   "opponent": "DEN",
+   "projection": 1.74,
+   "recent_avg": 0.0,
+   "opp_allowed": 30.23,
+   "matchup": "Tough"
+  },
+  {
+   "player_id": "00-0035544",
+   "name": "Tom Kennedy",
    "position": "WR",
    "team": "DET",
    "opponent": "GB",
@@ -3604,8 +3604,8 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0035544",
-   "name": "Tom Kennedy",
+   "player_id": "00-0037524",
+   "name": "Tay Martin",
    "position": "WR",
    "team": "DET",
    "opponent": "GB",
@@ -3637,8 +3637,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0041314",
-   "name": "Tanner Arkin",
+   "player_id": "00-0038564",
+   "name": "Cameron Latu",
    "position": "TE",
    "team": "NE",
    "opponent": "CHI",
@@ -3648,8 +3648,8 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0038564",
-   "name": "Cameron Latu",
+   "player_id": "00-0041314",
+   "name": "Tanner Arkin",
    "position": "TE",
    "team": "NE",
    "opponent": "CHI",
