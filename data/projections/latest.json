@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 7,
- "generated_at": "2026-10-22T00:33:29+00:00",
+ "generated_at": "2026-10-22T00:46:09+00:00",
  "first_kickoff": "2026-10-23T00:15:00+00:00",
  "type": "live",
  "n_training_rows": 26016,
@@ -689,17 +689,6 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0036389",
-   "name": "Jalen Hurts",
-   "position": "QB",
-   "team": "PHI",
-   "opponent": "DAL",
-   "projection": 13.38,
-   "recent_avg": 13.05,
-   "opp_allowed": 19.06,
-   "matchup": "Great"
-  },
-  {
    "player_id": "00-0036900",
    "name": "Ja'Marr Chase",
    "position": "WR",
@@ -1028,17 +1017,6 @@
    "recent_avg": 4.05,
    "opp_allowed": 15.48,
    "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0031381",
-   "name": "Davante Adams",
-   "position": "WR",
-   "team": "LA",
-   "opponent": "LV",
-   "projection": 10.72,
-   "recent_avg": 12.07,
-   "opp_allowed": 42.4,
-   "matchup": "Great"
   },
   {
    "player_id": "00-0040126",
@@ -1459,17 +1437,6 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0037816",
-   "name": "Romeo Doubs",
-   "position": "WR",
-   "team": "NE",
-   "opponent": "CHI",
-   "projection": 8.57,
-   "recent_avg": 12.53,
-   "opp_allowed": 38.13,
-   "matchup": "Great"
-  },
-  {
    "player_id": "00-0039811",
    "name": "MarShawn Lloyd",
    "position": "RB",
@@ -1490,17 +1457,6 @@
    "recent_avg": 6.93,
    "opp_allowed": 38.83,
    "matchup": "Great"
-  },
-  {
-   "player_id": "00-0039739",
-   "name": "Roman Wilson",
-   "position": "WR",
-   "team": "PIT",
-   "opponent": "NO",
-   "projection": 8.34,
-   "recent_avg": 10.47,
-   "opp_allowed": 34.9,
-   "matchup": "Good"
   },
   {
    "player_id": "00-0037263",
@@ -1720,17 +1676,6 @@
    "projection": 7.46,
    "recent_avg": 10.1,
    "opp_allowed": 24.13,
-   "matchup": "Good"
-  },
-  {
-   "player_id": "00-0039405",
-   "name": "Jawhar Jordan",
-   "position": "RB",
-   "team": "HOU",
-   "opponent": "NYG",
-   "projection": 7.44,
-   "recent_avg": 12.0,
-   "opp_allowed": 21.6,
    "matchup": "Good"
   },
   {
@@ -2108,6 +2053,17 @@
    "matchup": "Tough"
   },
   {
+   "player_id": "00-0038728",
+   "name": "Jared Wayne",
+   "position": "WR",
+   "team": "MIA",
+   "opponent": "NYJ",
+   "projection": 5.95,
+   "recent_avg": 2.77,
+   "opp_allowed": 32.83,
+   "matchup": "Good"
+  },
+  {
    "player_id": "00-0035891",
    "name": "Cody White",
    "position": "WR",
@@ -2174,17 +2130,6 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0038728",
-   "name": "Jared Wayne",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "NYG",
-   "projection": 5.84,
-   "recent_avg": 2.77,
-   "opp_allowed": 26.9,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0040878",
    "name": "Mike Washington Jr.",
    "position": "RB",
@@ -2204,17 +2149,6 @@
    "projection": 5.81,
    "recent_avg": 4.85,
    "opp_allowed": 9.07,
-   "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0040466",
-   "name": "Raheim Sanders",
-   "position": "RB",
-   "team": "CLE",
-   "opponent": "TEN",
-   "projection": 5.81,
-   "recent_avg": 5.0,
-   "opp_allowed": 19.27,
    "matchup": "Tough"
   },
   {
@@ -2260,17 +2194,6 @@
    "recent_avg": 2.87,
    "opp_allowed": 30.23,
    "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0038090",
-   "name": "Skyy Moore",
-   "position": "WR",
-   "team": "GB",
-   "opponent": "DET",
-   "projection": 5.54,
-   "recent_avg": 2.63,
-   "opp_allowed": 39.33,
-   "matchup": "Great"
   },
   {
    "player_id": "00-0040131",
@@ -2359,17 +2282,6 @@
    "recent_avg": 3.07,
    "opp_allowed": 19.47,
    "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0039746",
-   "name": "Will Shipley",
-   "position": "RB",
-   "team": "PHI",
-   "opponent": "DAL",
-   "projection": 5.13,
-   "recent_avg": 4.23,
-   "opp_allowed": 21.37,
-   "matchup": "Good"
   },
   {
    "player_id": "00-0041032",
@@ -2548,17 +2460,6 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0030061",
-   "name": "Zach Ertz",
-   "position": "TE",
-   "team": "PHI",
-   "opponent": "DAL",
-   "projection": 4.4,
-   "recent_avg": 1.73,
-   "opp_allowed": 8.33,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0039792",
    "name": "Devontez Walker",
    "position": "WR",
@@ -2592,17 +2493,6 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0036893",
-   "name": "Najee Harris",
-   "position": "RB",
-   "team": "NYG",
-   "opponent": "HOU",
-   "projection": 4.36,
-   "recent_avg": 1.87,
-   "opp_allowed": 26.43,
-   "matchup": "Great"
-  },
-  {
    "player_id": "00-0040646",
    "name": "Jalen Royals",
    "position": "WR",
@@ -2611,17 +2501,6 @@
    "projection": 4.31,
    "recent_avg": 2.17,
    "opp_allowed": 22.93,
-   "matchup": "Very tough"
-  },
-  {
-   "player_id": "00-0034613",
-   "name": "Tanner Hudson",
-   "position": "TE",
-   "team": "CIN",
-   "opponent": "BAL",
-   "projection": 4.3,
-   "recent_avg": 4.97,
-   "opp_allowed": 8.63,
    "matchup": "Very tough"
   },
   {
@@ -2667,17 +2546,6 @@
    "recent_avg": 1.4,
    "opp_allowed": 42.8,
    "matchup": "Great"
-  },
-  {
-   "player_id": "00-0040298",
-   "name": "Andrew Armstrong",
-   "position": "WR",
-   "team": "KC",
-   "opponent": "SEA",
-   "projection": 4.04,
-   "recent_avg": 2.3,
-   "opp_allowed": 22.93,
-   "matchup": "Very tough"
   },
   {
    "player_id": "00-0040187",
@@ -3142,17 +3010,6 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0037487",
-   "name": "Deven Thompkins",
-   "position": "WR",
-   "team": "LV",
-   "opponent": "LA",
-   "projection": 2.94,
-   "recent_avg": 1.8,
-   "opp_allowed": 23.13,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0037745",
    "name": "Velus Jones Jr.",
    "position": "RB",
@@ -3183,17 +3040,6 @@
    "projection": 2.8,
    "recent_avg": 1.7,
    "opp_allowed": 6.13,
-   "matchup": "Very tough"
-  },
-  {
-   "player_id": "00-0039710",
-   "name": "Jeshaun Jones",
-   "position": "WR",
-   "team": "MIN",
-   "opponent": "IND",
-   "projection": 2.78,
-   "recent_avg": 2.1,
-   "opp_allowed": 26.67,
    "matchup": "Very tough"
   },
   {
@@ -3238,17 +3084,6 @@
    "projection": 2.6,
    "recent_avg": 0.0,
    "opp_allowed": 14.63,
-   "matchup": "Good"
-  },
-  {
-   "player_id": "00-0039325",
-   "name": "Carson Steele",
-   "position": "RB",
-   "team": "PHI",
-   "opponent": "DAL",
-   "projection": 2.48,
-   "recent_avg": 0.7,
-   "opp_allowed": 21.37,
    "matchup": "Good"
   },
   {
@@ -3406,17 +3241,6 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0036182",
-   "name": "Nick Westbrook-Ikhine",
-   "position": "WR",
-   "team": "IND",
-   "opponent": "MIN",
-   "projection": 2.0,
-   "recent_avg": 0.0,
-   "opp_allowed": 19.33,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0037132",
    "name": "Britain Covey",
    "position": "WR",
@@ -3461,17 +3285,6 @@
    "matchup": "Great"
   },
   {
-   "player_id": "00-0040352",
-   "name": "Coleman Owen",
-   "position": "WR",
-   "team": "GB",
-   "opponent": "DET",
-   "projection": 1.91,
-   "recent_avg": 0.0,
-   "opp_allowed": 39.33,
-   "matchup": "Great"
-  },
-  {
    "player_id": "00-0039920",
    "name": "Malachi Corley",
    "position": "WR",
@@ -3494,17 +3307,6 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0040431",
-   "name": "Dalen Cambre",
-   "position": "WR",
-   "team": "NYG",
-   "opponent": "HOU",
-   "projection": 1.85,
-   "recent_avg": 0.0,
-   "opp_allowed": 36.3,
-   "matchup": "Good"
-  },
-  {
    "player_id": "00-0038409",
    "name": "Lew Nichols III",
    "position": "RB",
@@ -3518,17 +3320,6 @@
   {
    "player_id": "00-0041397",
    "name": "Kaden Wetjen",
-   "position": "WR",
-   "team": "PIT",
-   "opponent": "NO",
-   "projection": 1.83,
-   "recent_avg": 0.0,
-   "opp_allowed": 34.9,
-   "matchup": "Good"
-  },
-  {
-   "player_id": "00-0036775",
-   "name": "Brandon Smith",
    "position": "WR",
    "team": "PIT",
    "opponent": "NO",
@@ -3560,17 +3351,6 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0040205",
-   "name": "Kalel Mullings",
-   "position": "RB",
-   "team": "TEN",
-   "opponent": "CLE",
-   "projection": 1.75,
-   "recent_avg": 0.3,
-   "opp_allowed": 15.23,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0036331",
    "name": "Devin Duvernay",
    "position": "WR",
@@ -3590,17 +3370,6 @@
    "projection": 1.74,
    "recent_avg": 0.0,
    "opp_allowed": 30.23,
-   "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0035544",
-   "name": "Tom Kennedy",
-   "position": "WR",
-   "team": "DET",
-   "opponent": "GB",
-   "projection": 1.73,
-   "recent_avg": 0.0,
-   "opp_allowed": 29.9,
    "matchup": "Tough"
   },
   {
@@ -3637,8 +3406,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0038564",
-   "name": "Cameron Latu",
+   "player_id": "00-0041314",
+   "name": "Tanner Arkin",
    "position": "TE",
    "team": "NE",
    "opponent": "CHI",
@@ -3648,8 +3417,8 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0041314",
-   "name": "Tanner Arkin",
+   "player_id": "00-0038564",
+   "name": "Cameron Latu",
    "position": "TE",
    "team": "NE",
    "opponent": "CHI",
@@ -3714,17 +3483,6 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0037156",
-   "name": "Irvin Charles",
-   "position": "WR",
-   "team": "SEA",
-   "opponent": "KC",
-   "projection": 1.58,
-   "recent_avg": 0.0,
-   "opp_allowed": 21.53,
-   "matchup": "Very tough"
-  },
-  {
    "player_id": "00-0038498",
    "name": "E.J. Jenkins",
    "position": "TE",
@@ -3736,8 +3494,8 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0031484",
-   "name": "Chris Manhertz",
+   "player_id": "00-0040225",
+   "name": "Thomas Fidone II",
    "position": "TE",
    "team": "NYG",
    "opponent": "HOU",
@@ -3747,8 +3505,8 @@
    "matchup": "Very tough"
   },
   {
-   "player_id": "00-0040225",
-   "name": "Thomas Fidone II",
+   "player_id": "00-0031484",
+   "name": "Chris Manhertz",
    "position": "TE",
    "team": "NYG",
    "opponent": "HOU",
@@ -3810,17 +3568,6 @@
    "projection": 1.43,
    "recent_avg": 0.0,
    "opp_allowed": 21.6,
-   "matchup": "Good"
-  },
-  {
-   "player_id": "00-0038440",
-   "name": "Zavier Scott",
-   "position": "RB",
-   "team": "CHI",
-   "opponent": "NE",
-   "projection": 1.41,
-   "recent_avg": 0.0,
-   "opp_allowed": 20.47,
    "matchup": "Good"
   },
   {
