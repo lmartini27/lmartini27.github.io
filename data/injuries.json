@@ -1,7 +1,7 @@
 {
  "season": 2026,
- "week": 7,
- "updated_at": "2026-10-22T00:46:09+00:00",
+ "week": 8,
+ "updated_at": "2026-10-23T23:44:57+00:00",
  "players": {
   "00-0029685": {
    "status": "IR",
@@ -103,6 +103,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0034810": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0034825": {
    "status": "IR",
    "injury": ""
@@ -128,10 +132,6 @@
    "injury": ""
   },
   "00-0035277": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0035359": {
    "status": "IR",
    "injury": ""
   },
@@ -168,6 +168,10 @@
    "injury": ""
   },
   "00-0035829": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0035942": {
    "status": "IR",
    "injury": ""
   },
@@ -263,6 +267,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036979": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036982": {
    "status": "IR",
    "injury": ""
@@ -280,10 +288,6 @@
    "injury": ""
   },
   "00-0037031": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0037057": {
    "status": "IR",
    "injury": ""
   },
@@ -555,6 +559,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039138": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039141": {
    "status": "IR",
    "injury": ""
@@ -564,10 +572,6 @@
    "injury": ""
   },
   "00-0039146": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0039165": {
    "status": "IR",
    "injury": ""
   },
@@ -596,6 +600,10 @@
    "injury": ""
   },
   "00-0039313": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039325": {
    "status": "IR",
    "injury": ""
   },
@@ -748,6 +756,10 @@
    "injury": ""
   },
   "00-0040073": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040116": {
    "status": "IR",
    "injury": ""
   },
@@ -912,6 +924,10 @@
    "injury": ""
   },
   "00-0040737": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040739": {
    "status": "IR",
    "injury": ""
   },
