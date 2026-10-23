@@ -1,4 +1,4 @@
-# Martini Sports Lab
+# Luca's Sports Lab
 
 Live site: **https://lmartini27.github.io**
 
