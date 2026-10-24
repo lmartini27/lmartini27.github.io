@@ -1,8 +1,68 @@
 {
  "season": 2026,
- "week": 8,
- "updated_at": "2026-10-23T23:44:57+00:00",
+ "week": 7,
+ "updated_at": "2026-10-24T02:27:39+00:00",
  "players": {
+  "00-0035386": {
+   "status": "Doubtful",
+   "injury": "Hamstring"
+  },
+  "00-0037109": {
+   "status": "Out",
+   "injury": "Concussion"
+  },
+  "00-0039071": {
+   "status": "Questionable",
+   "injury": "Hip"
+  },
+  "00-0040236": {
+   "status": "Out",
+   "injury": "Thumb"
+  },
+  "00-0031330": {
+   "status": "Questionable",
+   "injury": "Foot"
+  },
+  "00-0033132": {
+   "status": "Questionable",
+   "injury": "Chest"
+  },
+  "00-0034778": {
+   "status": "Out",
+   "injury": "Neck"
+  },
+  "00-0036813": {
+   "status": "Questionable",
+   "injury": "Chest"
+  },
+  "00-0036979": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0037413": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0040716": {
+   "status": "Questionable",
+   "injury": "Shoulder"
+  },
+  "00-0041088": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0041316": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0036504": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0036862": {
+   "status": "Out",
+   "injury": "Calf"
+  },
   "00-0029685": {
    "status": "IR",
    "injury": ""
@@ -264,10 +324,6 @@
    "injury": ""
   },
   "00-0036973": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0036979": {
    "status": "IR",
    "injury": ""
   },
