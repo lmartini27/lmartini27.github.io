@@ -5,6 +5,7 @@ name: Weekly update
 on:
   schedule:
     - cron: "0 13 * * 3"    # Wed 13:00 UTC (8 AM Central): full update
+    - cron: "0 13 * * 4"    # Thu 13:00 UTC: full update again, in case Wednesday's stats were late
     - cron: "0 21 * * 5"    # Fri 21:00 UTC (4 PM Central): injuries only
     - cron: "30 15 * * 0"   # Sun 15:30 UTC (10:30 AM Central): injuries only
   workflow_dispatch:        # run by hand from the Actions tab (full update)
@@ -26,11 +27,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Full update (grade, project, injuries)
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 13 * * 3'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 13 * * 3' || github.event.schedule == '0 13 * * 4'
         run: python pipeline/update.py --season 2026
 
       - name: Injury report only
-        if: github.event_name == 'schedule' && github.event.schedule != '0 13 * * 3'
+        if: github.event_name == 'schedule' && github.event.schedule != '0 13 * * 3' && github.event.schedule != '0 13 * * 4'
         run: python pipeline/update.py --season 2026 --injuries-only
 
       - name: Commit updated data

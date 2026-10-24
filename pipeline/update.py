@@ -306,11 +306,17 @@ def main():
     rosters = load_rosters(season, args.cache)
     injuries = load_injuries(season, args.cache)
 
-    completed = sorted(stats.loc[stats["season"] == season, "week"].unique())
-    last_done = int(completed[-1]) if completed else 0
-    upcoming = last_done + 1
+    # A week counts as complete only when every game has a final score AND its stats are
+    # published. (A Thursday game's stats appear mid-week; that must not end the week early.)
+    all_scored = schedule.groupby("week")["home_score"].apply(lambda x: x.notna().all())
+    teams_sched = schedule.groupby("week").size() * 2
+    teams_stats = stats[stats["season"] == season].groupby("week")["team"].nunique()
+    completed = [int(w) for w in all_scored.index
+                 if all_scored[w] and teams_stats.get(w, 0) >= teams_sched[w] - 2]
+    remaining = [int(w) for w in all_scored.index if int(w) not in completed]
+    upcoming = min(remaining) if remaining else int(all_scored.index.max()) + 1
     kickoff = schedule.groupby("week")["kickoff_utc"].min()
-    print(f"Season {season}: weeks completed = {last_done}, upcoming week {upcoming}")
+    print(f"Season {season}: weeks completed = {completed[-1] if completed else 0}, current week {upcoming}")
 
     write_injuries(season, upcoming, injuries, rosters, now)
     if args.injuries_only:
