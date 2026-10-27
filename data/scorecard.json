@@ -10,7 +10,100 @@
    "baseline_r2": 0.3,
    "model_closer_pct": 51.1,
    "week": 4,
-   "type": "backtest"
+   "type": "backtest",
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 32,
+      "model_mae": 4.45,
+      "baseline_mae": 6.0
+     },
+     "RB": {
+      "n": 85,
+      "model_mae": 4.67,
+      "baseline_mae": 4.63
+     },
+     "TE": {
+      "n": 73,
+      "model_mae": 3.68,
+      "baseline_mae": 3.76
+     },
+     "WR": {
+      "n": 135,
+      "model_mae": 4.69,
+      "baseline_mae": 4.86
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Sam Darnold",
+      "position": "QB",
+      "team": "SEA",
+      "projection": 13.2,
+      "actual": 13.3
+     },
+     {
+      "name": "Christian McCaffrey",
+      "position": "RB",
+      "team": "SF",
+      "projection": 15.5,
+      "actual": 16.0
+     },
+     {
+      "name": "James Cook",
+      "position": "RB",
+      "team": "BUF",
+      "projection": 15.8,
+      "actual": 16.3
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Tetairoa McMillan",
+      "position": "WR",
+      "team": "CAR",
+      "projection": 11.7,
+      "actual": 45.2
+     },
+     {
+      "name": "CeeDee Lamb",
+      "position": "WR",
+      "team": "DAL",
+      "projection": 15.3,
+      "actual": 41.3
+     },
+     {
+      "name": "Tyquan Thornton",
+      "position": "WR",
+      "team": "KC",
+      "projection": 5.3,
+      "actual": 28.1
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "Malik Willis",
+      "position": "QB",
+      "team": "MIA",
+      "projection": 15.7,
+      "actual": 2.5
+     },
+     {
+      "name": "Parker Washington",
+      "position": "WR",
+      "team": "JAX",
+      "projection": 12.8,
+      "actual": 2.0
+     },
+     {
+      "name": "Dalton Schultz",
+      "position": "TE",
+      "team": "HOU",
+      "projection": 12.6,
+      "actual": 2.9
+     }
+    ]
+   }
   },
   {
    "n_graded": 309,
@@ -21,7 +114,100 @@
    "baseline_r2": 0.258,
    "model_closer_pct": 51.5,
    "week": 5,
-   "type": "backtest"
+   "type": "backtest",
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 30,
+      "model_mae": 8.02,
+      "baseline_mae": 9.14
+     },
+     "RB": {
+      "n": 78,
+      "model_mae": 4.81,
+      "baseline_mae": 4.99
+     },
+     "TE": {
+      "n": 75,
+      "model_mae": 4.06,
+      "baseline_mae": 4.22
+     },
+     "WR": {
+      "n": 126,
+      "model_mae": 4.71,
+      "baseline_mae": 4.92
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Kyren Williams",
+      "position": "RB",
+      "team": "LA",
+      "projection": 19.8,
+      "actual": 19.6
+     },
+     {
+      "name": "Michael Penix Jr.",
+      "position": "QB",
+      "team": "ATL",
+      "projection": 14.6,
+      "actual": 14.4
+     },
+     {
+      "name": "Zay Flowers",
+      "position": "WR",
+      "team": "BAL",
+      "projection": 14.8,
+      "actual": 14.6
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Drake Maye",
+      "position": "QB",
+      "team": "NE",
+      "projection": 16.0,
+      "actual": 39.5
+     },
+     {
+      "name": "Puka Nacua",
+      "position": "WR",
+      "team": "LA",
+      "projection": 16.8,
+      "actual": 37.7
+     },
+     {
+      "name": "Jaylen Warren",
+      "position": "RB",
+      "team": "PIT",
+      "projection": 15.9,
+      "actual": 36.8
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "CeeDee Lamb",
+      "position": "WR",
+      "team": "DAL",
+      "projection": 21.3,
+      "actual": 2.9
+     },
+     {
+      "name": "Tyler Shough",
+      "position": "QB",
+      "team": "NO",
+      "projection": 17.5,
+      "actual": -0.2
+     },
+     {
+      "name": "Case Keenum",
+      "position": "QB",
+      "team": "CHI",
+      "projection": 17.3,
+      "actual": 0.7
+     }
+    ]
+   }
   },
   {
    "n_graded": 285,
@@ -32,7 +218,204 @@
    "baseline_r2": 0.307,
    "model_closer_pct": 49.5,
    "week": 6,
-   "type": "backtest"
+   "type": "backtest",
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 27,
+      "model_mae": 5.1,
+      "baseline_mae": 5.63
+     },
+     "RB": {
+      "n": 71,
+      "model_mae": 4.44,
+      "baseline_mae": 4.68
+     },
+     "TE": {
+      "n": 67,
+      "model_mae": 4.48,
+      "baseline_mae": 4.5
+     },
+     "WR": {
+      "n": 120,
+      "model_mae": 4.17,
+      "baseline_mae": 4.22
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Daniel Jones",
+      "position": "QB",
+      "team": "IND",
+      "projection": 13.8,
+      "actual": 13.8
+     },
+     {
+      "name": "Tyler Huntley",
+      "position": "QB",
+      "team": "BAL",
+      "projection": 13.4,
+      "actual": 13.4
+     },
+     {
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "team": "LV",
+      "projection": 15.7,
+      "actual": 15.8
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Germie Bernard",
+      "position": "WR",
+      "team": "PIT",
+      "projection": 7.3,
+      "actual": 25.7
+     },
+     {
+      "name": "Tre Tucker",
+      "position": "WR",
+      "team": "LV",
+      "projection": 9.4,
+      "actual": 26.7
+     },
+     {
+      "name": "Kyle Pitts",
+      "position": "TE",
+      "team": "ATL",
+      "projection": 6.7,
+      "actual": 23.0
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "Bijan Robinson",
+      "position": "RB",
+      "team": "ATL",
+      "projection": 19.9,
+      "actual": 7.3
+     },
+     {
+      "name": "Kyren Williams",
+      "position": "RB",
+      "team": "LA",
+      "projection": 21.9,
+      "actual": 9.7
+     },
+     {
+      "name": "Derrick Henry",
+      "position": "RB",
+      "team": "BAL",
+      "projection": 16.1,
+      "actual": 5.0
+     }
+    ]
+   }
+  },
+  {
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 29,
+      "model_mae": 5.5,
+      "baseline_mae": 5.87
+     },
+     "RB": {
+      "n": 65,
+      "model_mae": 4.34,
+      "baseline_mae": 4.25
+     },
+     "TE": {
+      "n": 62,
+      "model_mae": 4.05,
+      "baseline_mae": 4.41
+     },
+     "WR": {
+      "n": 112,
+      "model_mae": 4.53,
+      "baseline_mae": 4.39
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Puka Nacua",
+      "position": "WR",
+      "team": "LA",
+      "projection": 21.7,
+      "actual": 21.8
+     },
+     {
+      "name": "Jared Goff",
+      "position": "QB",
+      "team": "DET",
+      "projection": 17.9,
+      "actual": 18.0
+     },
+     {
+      "name": "Jordan Love",
+      "position": "QB",
+      "team": "GB",
+      "projection": 17.2,
+      "actual": 17.0
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Tony Pollard",
+      "position": "RB",
+      "team": "TEN",
+      "projection": 11.2,
+      "actual": 36.5
+     },
+     {
+      "name": "Mason Taylor",
+      "position": "TE",
+      "team": "NYJ",
+      "projection": 6.5,
+      "actual": 25.2
+     },
+     {
+      "name": "Jameson Williams",
+      "position": "WR",
+      "team": "DET",
+      "projection": 10.2,
+      "actual": 26.1
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "Jalon Daniels",
+      "position": "QB",
+      "team": "TB",
+      "projection": 15.3,
+      "actual": -0.3
+     },
+     {
+      "name": "Aaron Jones",
+      "position": "RB",
+      "team": "MIN",
+      "projection": 18.4,
+      "actual": 3.6
+     },
+     {
+      "name": "Isaiah Likely",
+      "position": "TE",
+      "team": "NYG",
+      "projection": 17.8,
+      "actual": 3.2
+     }
+    ]
+   },
+   "n_graded": 268,
+   "n_projected": 328,
+   "model_mae": 4.479,
+   "baseline_mae": 4.523,
+   "model_r2": 0.454,
+   "baseline_r2": 0.373,
+   "model_closer_pct": 46.6,
+   "week": 7,
+   "type": "live"
   }
  ],
  "backtest_summary": {
@@ -42,5 +425,12 @@
   "baseline_mae": 4.793,
   "model_closer_pct": 50.7
  },
- "updated_at": "2026-10-25T00:04:05+00:00"
+ "updated_at": "2026-10-27T23:00:42+00:00",
+ "live_summary": {
+  "weeks": 1,
+  "model_wins": 1,
+  "model_mae": 4.479,
+  "baseline_mae": 4.523,
+  "model_closer_pct": 46.6
+ }
 }
