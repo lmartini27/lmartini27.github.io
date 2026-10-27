@@ -146,7 +146,22 @@ svg .lbl-strong { fill: var(--ink); font-weight: 500; }
 footer { border-top: 1px solid var(--line); color: var(--ink-2); font-size: 13px; }
 footer .wrap { padding-block: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
+.report { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px; }
+.report-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.report-head h3 { font: 800 24px/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.report select { font: 14px var(--body); padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+.verdict { margin: 0; font-size: 16px; max-width: 70ch; }
+.take { margin: 0; padding: 12px 14px; border-left: 3px solid var(--turf); background: var(--turf-soft); border-radius: 0 8px 8px 0; max-width: 75ch; }
+.take b { display: block; font: 500 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--turf); margin-bottom: 2px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.plist h4 { font: 500 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
+.plist ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.plist li { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; }
+.plist .nums { font-family: var(--mono); color: var(--ink-2); white-space: nowrap; }
+.report .table-box table th, .report .table-box table td { padding: 7px 12px; }
 @media (max-width: 760px) {
+  .grid3 { grid-template-columns: 1fr; }
+  .stat-row.rc { grid-template-columns: 1fr 1fr; }
   .hero { grid-template-columns: 1fr; gap: 20px; padding-block: 20px 12px; }
   .grid2 { grid-template-columns: 1fr; }
   .projbar { display: none; }
@@ -220,6 +235,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
   <section class="view" id="view-scorecard" aria-labelledby="h-score" hidden>
     <h2 id="h-score">Scorecard</h2>
     <p class="sub">Each week's projections are graded against what actually happened, alongside the benchmark: the player's own average over his last three games. A lower average miss is better. Only players who played are graded.</p>
+    <div id="s-report"></div>
     <div id="s-chart"></div>
     <div class="table-box" style="margin-top:16px">
       <table>
@@ -358,6 +374,51 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     renderProjections();
   }).catch(() => { $("#p-sub").textContent = "Projections couldn't load. Try refreshing the page."; });
 
+
+  // ---------- weekly report card ----------
+  const POS_ORDER = ["QB", "RB", "WR", "TE"];
+  function reportCard(w, note, weeksWithReport) {
+    const r = w.report, win = w.model_mae < w.baseline_mae, closer = w.model_closer_pct;
+    const verdict = win
+      ? (closer >= 50
+          ? `The model beat the benchmark: a smaller average miss (${fmt(w.model_mae, 2)} vs ${fmt(w.baseline_mae, 2)} points) and closer on ${fmt(closer, 0)}% of players.`
+          : `The model won on average miss (${fmt(w.model_mae, 2)} vs ${fmt(w.baseline_mae, 2)} points) but was closer on only ${fmt(closer, 0)}% of players. It avoided big misses better, while the benchmark got more close calls right.`)
+      : `The benchmark won this week: its average miss was ${fmt(w.baseline_mae, 2)} points to the model's ${fmt(w.model_mae, 2)}, and the model was closer on ${fmt(closer, 0)}% of players.`;
+    const li = (p) => `<li><span><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span></span><span class="nums">${fmt(p.projection)} → ${fmt(p.actual)}</span></li>`;
+    const list = (title, arr) => `<div class="plist"><h4>${title}</h4><ol>${(arr || []).map(li).join("")}</ol></div>`;
+    const posRows = POS_ORDER.filter((p) => r.by_position[p]).map((p) => {
+      const b = r.by_position[p], pw = b.model_mae < b.baseline_mae;
+      return `<tr><td>${p}</td><td class="num hide-sm">${b.n}</td><td class="num">${fmt(b.model_mae, 2)}</td><td class="num">${fmt(b.baseline_mae, 2)}</td><td class="num ${pw ? "up" : "down"}">${pw ? "Model" : "Benchmark"}</td></tr>`;
+    }).join("");
+    const picker = weeksWithReport.length > 1
+      ? `<select id="rc-week" aria-label="Choose a week">${weeksWithReport.slice().reverse().map((x) => `<option value="${x.week}"${x.week === w.week ? " selected" : ""}>Week ${x.week}${x.type === "live" ? "" : " (backtest)"}</option>`).join("")}</select>` : "";
+    return `<div class="report">
+      <div class="report-head"><h3>Week ${w.week} report card ${w.type === "live" ? '<span class="pill m-Great" style="vertical-align:4px">Live</span>' : '<span class="pill" style="color:var(--ink-2);background:var(--paper);vertical-align:4px">Backtest</span>'}</h3>${picker}</div>
+      <p class="verdict"><strong>${win ? "Model wins." : "Benchmark wins."}</strong> ${verdict}</p>
+      ${note ? `<p class="take"><b>Luca's take</b>${esc(note)}</p>` : ""}
+      <div class="stat-row rc">
+        <div class="stat"><div class="v">${fmt(w.model_mae, 2)}</div><div class="k">Model average miss (points)</div></div>
+        <div class="stat"><div class="v">${fmt(w.baseline_mae, 2)}</div><div class="k">Benchmark average miss</div></div>
+        <div class="stat"><div class="v">${fmt(closer, 0)}%</div><div class="k">Players where the model was closer</div></div>
+      </div>
+      <div class="grid3">
+        ${list("Best calls", r.best_calls)}
+        ${list("Biggest surprises", r.outscored)}
+        ${list("Biggest letdowns", r.letdowns)}
+      </div>
+      <div class="table-box"><table><thead><tr><th>Position</th><th class="num hide-sm">Graded</th><th class="num">Model miss</th><th class="num">Benchmark miss</th><th class="num">Better</th></tr></thead><tbody>${posRows}</tbody></table></div>
+      <p class="foot-note" style="margin:0">Each player shows projected → actual PPR points. Best calls and letdowns include only players projected for 12+ points; surprises include everyone.</p>
+    </div>`;
+  }
+  function renderReport(weeks, notes, week) {
+    const withR = weeks.filter((x) => x.report);
+    if (!withR.length) { $("#s-report").innerHTML = ""; return; }
+    const w = withR.find((x) => x.week === week) || withR[withR.length - 1];
+    $("#s-report").innerHTML = reportCard(w, notes[String(w.week)], withR);
+    const sel = $("#rc-week");
+    if (sel) sel.addEventListener("change", () => renderReport(weeks, notes, Number(sel.value)));
+  }
+
   // ---------- scorecard ----------
   function barChart(weeks) {
     const W = 640, H = 220, padL = 36, padR = 8, padT = 12, padB = 34;
@@ -402,6 +463,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
         <td class="num hide-sm">${fmt(w.model_r2, 3)}</td><td class="num hide-sm">${fmt(w.baseline_r2, 3)}</td>
         <td class="num ${win ? "up" : "down"}">${win ? "Model" : "Benchmark"}</td></tr>`;
     }).join("");
+    getJSON("data/notes.json").catch(() => ({})).then((n) => renderReport(weeks, (n && n.weeks) || {}));
     if (s.updated_at) $("#f-updated").textContent = "Updated " + when(s.updated_at);
   }).catch(() => { $("#b-note").textContent = "The season record couldn't load. Try refreshing the page."; });
 

@@ -232,6 +232,7 @@ def grade(proj_players, actual_week):
     if len(m) < 20:
         return None
     return {
+        "report": week_report(m),
         "n_graded": int(len(m)),
         "n_projected": int(len(p)),
         "model_mae": round(mean_absolute_error(m["actual"], m["projection"]), 3),
@@ -240,6 +241,28 @@ def grade(proj_players, actual_week):
         "baseline_r2": round(r2_score(m["actual"], m["recent_avg"]), 3),
         "model_closer_pct": round(float(((m["projection"] - m["actual"]).abs()
                                          < (m["recent_avg"] - m["actual"]).abs()).mean() * 100), 1),
+    }
+
+
+def week_report(m):
+    """Details for the weekly report card: accuracy by position, best calls, biggest misses."""
+    m = m.assign(err=m["actual"] - m["projection"])
+
+    def entry(r):
+        return {"name": r["name"], "position": r["position"], "team": r["team"],
+                "projection": round(float(r["projection"]), 1), "actual": round(float(r["actual"]), 1)}
+
+    by_pos = {}
+    for pos, g in m.groupby("position"):
+        by_pos[pos] = {"n": int(len(g)),
+                       "model_mae": round(float(g["err"].abs().mean()), 2),
+                       "baseline_mae": round(float((g["actual"] - g["recent_avg"]).abs().mean()), 2)}
+    starters = m[m["projection"] >= 12]          # fantasy-relevant players only
+    return {
+        "by_position": by_pos,
+        "best_calls": [entry(r) for _, r in starters.assign(a=starters["err"].abs()).nsmallest(3, "a").iterrows()],
+        "outscored": [entry(r) for _, r in m.nlargest(3, "err").iterrows()],
+        "letdowns": [entry(r) for _, r in starters.nsmallest(3, "err").iterrows()],
     }
 
 
@@ -354,6 +377,24 @@ def main():
             scorecard["weeks"].append(res)
             print(f"  backtest week {w}: model MAE {res['model_mae']} vs baseline {res['baseline_mae']}")
 
+    # 3) add report-card details to weeks graded before reports existed (grades stay as they were)
+    for row in scorecard["weeks"]:
+        if "report" in row:
+            continue
+        w = row["week"]
+        actual = stats[(stats["season"] == season) & (stats["week"] == w)]
+        saved = read_json(os.path.join(PROJ_DIR, f"{season}_week{w:02d}.json"))
+        if saved:
+            proj = saved["players"]
+        elif row["type"] == "backtest":
+            proj = players_payload(project_week(feat, defense, schedule, season, w, rosters)[0])
+        else:
+            continue
+        res = grade(proj, actual)
+        if res:
+            row["report"] = res["report"]
+            print(f"  added report card for week {w}")
+
     scorecard["weeks"].sort(key=lambda r: r["week"])
     for kind in ["live", "backtest"]:
         rows = [r for r in scorecard["weeks"] if r["type"] == kind]
@@ -368,7 +409,7 @@ def main():
     scorecard["updated_at"] = now.isoformat(timespec="seconds")
     write_json(os.path.join(DATA_DIR, "scorecard.json"), scorecard)
 
-    # 3) project the upcoming week (never overwrite a week once its games have started)
+    # 4) project the upcoming week (never overwrite a week once its games have started)
     if upcoming not in kickoff.index:
         print("No upcoming regular-season week; season complete.")
         return
