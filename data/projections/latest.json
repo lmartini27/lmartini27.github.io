@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 8,
- "generated_at": "2026-10-27T23:00:42+00:00",
+ "generated_at": "2026-10-28T18:34:18+00:00",
  "first_kickoff": "2026-10-30T00:15:00+00:00",
  "type": "live",
  "n_training_rows": 26289,
@@ -1503,17 +1503,6 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0038640",
-   "name": "Jalen Brooks",
-   "position": "WR",
-   "team": "ARI",
-   "opponent": "DAL",
-   "projection": 7.92,
-   "recent_avg": 4.37,
-   "opp_allowed": 34.17,
-   "matchup": "Good"
-  },
-  {
    "player_id": "00-0037741",
    "name": "Jahan Dotson",
    "position": "WR",
@@ -1556,17 +1545,6 @@
    "recent_avg": 6.07,
    "opp_allowed": 21.63,
    "matchup": "Great"
-  },
-  {
-   "player_id": "00-0036567",
-   "name": "Elijah Mitchell",
-   "position": "RB",
-   "team": "PHI",
-   "opponent": "WAS",
-   "projection": 7.8,
-   "recent_avg": 6.4,
-   "opp_allowed": 25.83,
-   "matchup": "Good"
   },
   {
    "player_id": "00-0032951",
@@ -2160,17 +2138,6 @@
    "projection": 5.38,
    "recent_avg": 2.7,
    "opp_allowed": 28.5,
-   "matchup": "Tough"
-  },
-  {
-   "player_id": "00-0039814",
-   "name": "Erick All",
-   "position": "TE",
-   "team": "CIN",
-   "opponent": "TEN",
-   "projection": 5.37,
-   "recent_avg": 4.53,
-   "opp_allowed": 11.57,
    "matchup": "Tough"
   },
   {
@@ -3373,8 +3340,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0036331",
-   "name": "Devin Duvernay",
+   "player_id": "00-0036646",
+   "name": "Simi Fehoko",
    "position": "WR",
    "team": "ARI",
    "opponent": "DAL",
@@ -3384,8 +3351,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0036646",
-   "name": "Simi Fehoko",
+   "player_id": "00-0036331",
+   "name": "Devin Duvernay",
    "position": "WR",
    "team": "ARI",
    "opponent": "DAL",
@@ -3403,6 +3370,17 @@
    "projection": 1.78,
    "recent_avg": 0.0,
    "opp_allowed": 32.97,
+   "matchup": "Good"
+  },
+  {
+   "player_id": "00-0040352",
+   "name": "Coleman Owen",
+   "position": "WR",
+   "team": "GB",
+   "opponent": "CAR",
+   "projection": 1.77,
+   "recent_avg": 0.0,
+   "opp_allowed": 32.57,
    "matchup": "Good"
   },
   {
@@ -3428,19 +3406,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0040352",
-   "name": "Coleman Owen",
-   "position": "WR",
-   "team": "GB",
-   "opponent": "CAR",
-   "projection": 1.77,
-   "recent_avg": 0.0,
-   "opp_allowed": 32.57,
-   "matchup": "Good"
-  },
-  {
-   "player_id": "00-0035359",
-   "name": "David Sills",
+   "player_id": "00-0039589",
+   "name": "Kameron Johnson",
    "position": "WR",
    "team": "TB",
    "opponent": "ATL",
@@ -3450,8 +3417,8 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0039589",
-   "name": "Kameron Johnson",
+   "player_id": "00-0035359",
+   "name": "David Sills",
    "position": "WR",
    "team": "TB",
    "opponent": "ATL",
@@ -3591,6 +3558,17 @@
    "recent_avg": 0.0,
    "opp_allowed": 20.83,
    "matchup": "Good"
+  },
+  {
+   "player_id": "00-0038440",
+   "name": "Zavier Scott",
+   "position": "RB",
+   "team": "CHI",
+   "opponent": "SEA",
+   "projection": 1.41,
+   "recent_avg": 0.0,
+   "opp_allowed": 20.37,
+   "matchup": "Tough"
   },
   {
    "player_id": "00-0038896",
