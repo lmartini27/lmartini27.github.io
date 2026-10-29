@@ -1,8 +1,56 @@
 {
  "season": 2026,
  "week": 8,
- "updated_at": "2026-10-28T18:34:18+00:00",
+ "updated_at": "2026-10-29T18:55:20+00:00",
  "players": {
+  "00-0036417": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0036903": {
+   "status": "Questionable",
+   "injury": "Hand"
+  },
+  "00-0036934": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0038101": {
+   "status": "Out",
+   "injury": "Triceps"
+  },
+  "00-0040541": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0034431": {
+   "status": "Out",
+   "injury": "Shin"
+  },
+  "00-0037075": {
+   "status": "Questionable",
+   "injury": "Ankle"
+  },
+  "00-0037076": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0038463": {
+   "status": "Questionable",
+   "injury": "Quadricep"
+  },
+  "00-0039819": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0040667": {
+   "status": "Questionable",
+   "injury": "Shoulder"
+  },
+  "00-0040689": {
+   "status": "Questionable",
+   "injury": "Ankle"
+  },
   "00-0029685": {
    "status": "IR",
    "injury": ""
@@ -140,6 +188,10 @@
    "injury": ""
   },
   "00-0035544": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0035659": {
    "status": "IR",
    "injury": ""
   },
@@ -300,6 +352,10 @@
    "injury": ""
   },
   "00-0037251": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037258": {
    "status": "IR",
    "injury": ""
   },

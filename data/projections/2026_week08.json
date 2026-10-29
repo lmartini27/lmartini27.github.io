@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 8,
- "generated_at": "2026-10-28T18:34:18+00:00",
+ "generated_at": "2026-10-29T18:55:20+00:00",
  "first_kickoff": "2026-10-30T00:15:00+00:00",
  "type": "live",
  "n_training_rows": 26289,
@@ -898,17 +898,6 @@
    "matchup": "Great"
   },
   {
-   "player_id": "00-0037258",
-   "name": "Dameon Pierce",
-   "position": "RB",
-   "team": "PHI",
-   "opponent": "WAS",
-   "projection": 11.17,
-   "recent_avg": 10.0,
-   "opp_allowed": 25.83,
-   "matchup": "Good"
-  },
-  {
    "player_id": "00-0039065",
    "name": "Sam LaPorta",
    "position": "TE",
@@ -1259,17 +1248,6 @@
    "recent_avg": 6.67,
    "opp_allowed": 25.13,
    "matchup": "Very tough"
-  },
-  {
-   "player_id": "00-0035659",
-   "name": "Terry McLaurin",
-   "position": "WR",
-   "team": "WAS",
-   "opponent": "PHI",
-   "projection": 9.18,
-   "recent_avg": 11.87,
-   "opp_allowed": 44.3,
-   "matchup": "Great"
   },
   {
    "player_id": "00-0039919",
@@ -3373,8 +3351,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0040352",
-   "name": "Coleman Owen",
+   "player_id": "00-0040948",
+   "name": "J. Michael Sturdivant",
    "position": "WR",
    "team": "GB",
    "opponent": "CAR",
@@ -3384,8 +3362,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0040948",
-   "name": "J. Michael Sturdivant",
+   "player_id": "00-0040352",
+   "name": "Coleman Owen",
    "position": "WR",
    "team": "GB",
    "opponent": "CAR",
@@ -3406,8 +3384,8 @@
    "matchup": "Good"
   },
   {
-   "player_id": "00-0039589",
-   "name": "Kameron Johnson",
+   "player_id": "00-0035359",
+   "name": "David Sills",
    "position": "WR",
    "team": "TB",
    "opponent": "ATL",
@@ -3417,8 +3395,8 @@
    "matchup": "Tough"
   },
   {
-   "player_id": "00-0035359",
-   "name": "David Sills",
+   "player_id": "00-0039589",
+   "name": "Kameron Johnson",
    "position": "WR",
    "team": "TB",
    "opponent": "ATL",
