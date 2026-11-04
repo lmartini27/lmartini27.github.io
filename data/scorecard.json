@@ -416,6 +416,110 @@
    "model_closer_pct": 46.6,
    "week": 7,
    "type": "live"
+  },
+  {
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 28,
+      "model_mae": 7.7,
+      "baseline_mae": 8.04
+     },
+     "RB": {
+      "n": 68,
+      "model_mae": 5.17,
+      "baseline_mae": 5.03
+     },
+     "TE": {
+      "n": 57,
+      "model_mae": 4.21,
+      "baseline_mae": 4.35
+     },
+     "WR": {
+      "n": 113,
+      "model_mae": 4.52,
+      "baseline_mae": 4.24
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Malik Willis",
+      "position": "QB",
+      "team": "MIA",
+      "projection": 14.9,
+      "actual": 14.6
+     },
+     {
+      "name": "Colston Loveland",
+      "position": "TE",
+      "team": "CHI",
+      "projection": 12.0,
+      "actual": 11.5
+     },
+     {
+      "name": "Derrick Henry",
+      "position": "RB",
+      "team": "BAL",
+      "projection": 12.8,
+      "actual": 14.0
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Tyler Allgeier",
+      "position": "RB",
+      "team": "ARI",
+      "projection": 8.4,
+      "actual": 36.1
+     },
+     {
+      "name": "Tee Higgins",
+      "position": "WR",
+      "team": "CIN",
+      "projection": 15.2,
+      "actual": 37.5
+     },
+     {
+      "name": "Joe Burrow",
+      "position": "QB",
+      "team": "CIN",
+      "projection": 18.8,
+      "actual": 39.5
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "Tyler Huntley",
+      "position": "QB",
+      "team": "BAL",
+      "projection": 16.3,
+      "actual": -2.0
+     },
+     {
+      "name": "Michael Penix Jr.",
+      "position": "QB",
+      "team": "ATL",
+      "projection": 15.4,
+      "actual": -1.9
+     },
+     {
+      "name": "Zay Flowers",
+      "position": "WR",
+      "team": "BAL",
+      "projection": 16.3,
+      "actual": 0.0
+     }
+    ]
+   },
+   "n_graded": 266,
+   "n_projected": 325,
+   "model_mae": 4.953,
+   "baseline_mae": 4.865,
+   "model_r2": 0.379,
+   "baseline_r2": 0.317,
+   "model_closer_pct": 44.0,
+   "week": 8,
+   "type": "live"
   }
  ],
  "backtest_summary": {
@@ -425,12 +529,12 @@
   "baseline_mae": 4.793,
   "model_closer_pct": 50.7
  },
- "updated_at": "2026-10-29T18:55:20+00:00",
+ "updated_at": "2026-11-04T20:09:00+00:00",
  "live_summary": {
-  "weeks": 1,
+  "weeks": 2,
   "model_wins": 1,
-  "model_mae": 4.479,
-  "baseline_mae": 4.523,
-  "model_closer_pct": 46.6
+  "model_mae": 4.716,
+  "baseline_mae": 4.694,
+  "model_closer_pct": 45.3
  }
 }
