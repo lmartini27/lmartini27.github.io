@@ -1,8 +1,36 @@
 {
  "season": 2026,
  "week": 9,
- "updated_at": "2026-11-04T20:09:00+00:00",
+ "updated_at": "2026-11-05T20:34:58+00:00",
  "players": {
+  "00-0034796": {
+   "status": "Out",
+   "injury": "Thumb"
+  },
+  "00-0035993": {
+   "status": "Out",
+   "injury": "Toe"
+  },
+  "00-0036302": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0039232": {
+   "status": "Questionable",
+   "injury": "Stinger"
+  },
+  "00-0040888": {
+   "status": "Questionable",
+   "injury": "Neck"
+  },
+  "00-0037235": {
+   "status": "Questionable",
+   "injury": "Rib"
+  },
+  "00-0040719": {
+   "status": "Questionable",
+   "injury": "Ankle"
+  },
   "00-0029685": {
    "status": "IR",
    "injury": ""
@@ -15,7 +43,23 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0032265": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0032380": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0032667": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0032775": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0033038": {
    "status": "IR",
    "injury": ""
   },
@@ -32,6 +76,10 @@
    "injury": ""
   },
   "00-0033284": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0033307": {
    "status": "IR",
    "injury": ""
   },
@@ -63,11 +111,19 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0033902": {
+  "00-0033945": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0033955": {
    "status": "IR",
    "injury": ""
   },
   "00-0034234": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034333": {
    "status": "IR",
    "injury": ""
   },
@@ -79,11 +135,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0034419": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0034446": {
    "status": "IR",
    "injury": ""
   },
   "00-0034613": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034673": {
    "status": "IR",
    "injury": ""
   },
@@ -99,15 +163,15 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0034810": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0034825": {
    "status": "IR",
    "injury": ""
   },
   "00-0034828": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034987": {
    "status": "IR",
    "injury": ""
   },
@@ -131,15 +195,15 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0035253": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0035277": {
    "status": "IR",
    "injury": ""
   },
   "00-0035544": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0035645": {
    "status": "IR",
    "injury": ""
   },
@@ -163,6 +227,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0035713": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0035829": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0035942": {
    "status": "IR",
    "injury": ""
@@ -179,7 +251,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0036252": {
+  "00-0036260": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036262": {
    "status": "IR",
    "injury": ""
   },
@@ -207,15 +283,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0036396": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0036480": {
    "status": "IR",
    "injury": ""
   },
-  "00-0036511": {
+  "00-0036619": {
    "status": "IR",
    "injury": ""
   },
@@ -223,7 +295,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0036885": {
+  "00-0036638": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036871": {
    "status": "IR",
    "injury": ""
   },
@@ -255,7 +331,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036973": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036979": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036982": {
    "status": "IR",
    "injury": ""
   },
@@ -295,6 +379,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037112": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037141": {
    "status": "IR",
    "injury": ""
@@ -320,6 +408,10 @@
    "injury": ""
   },
   "00-0037266": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037276": {
    "status": "IR",
    "injury": ""
   },
@@ -371,6 +463,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037602": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037633": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037664": {
    "status": "IR",
    "injury": ""
@@ -403,7 +503,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037831": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037832": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037837": {
    "status": "IR",
    "injury": ""
   },
@@ -427,7 +535,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038114": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038136": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038401": {
    "status": "IR",
    "injury": ""
   },
@@ -440,6 +556,10 @@
    "injury": ""
   },
   "00-0038555": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038566": {
    "status": "IR",
    "injury": ""
   },
@@ -471,11 +591,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0038703": {
+  "00-0038720": {
    "status": "IR",
    "injury": ""
   },
-  "00-0038720": {
+  "00-0038724": {
    "status": "IR",
    "injury": ""
   },
@@ -487,7 +607,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038781": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038791": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038865": {
    "status": "IR",
    "injury": ""
   },
@@ -499,15 +627,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038995": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039009": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039040": {
    "status": "IR",
    "injury": ""
   },
   "00-0039051": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0039072": {
    "status": "IR",
    "injury": ""
   },
@@ -563,11 +695,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039363": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039370": {
    "status": "IR",
    "injury": ""
   },
-  "00-0039389": {
+  "00-0039384": {
    "status": "IR",
    "injury": ""
   },
@@ -575,7 +711,7 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0039436": {
+  "00-0039427": {
    "status": "IR",
    "injury": ""
   },
@@ -591,7 +727,15 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0039626": {
+  "00-0039603": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039620": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039623": {
    "status": "IR",
    "injury": ""
   },
@@ -608,10 +752,6 @@
    "injury": ""
   },
   "00-0039737": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0039739": {
    "status": "IR",
    "injury": ""
   },
@@ -667,15 +807,15 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0039883": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0039886": {
    "status": "IR",
    "injury": ""
   },
   "00-0039906": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039916": {
    "status": "IR",
    "injury": ""
   },
@@ -703,6 +843,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040074": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040078": {
    "status": "IR",
    "injury": ""
@@ -715,11 +859,31 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040125": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040130": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040134": {
    "status": "IR",
    "injury": ""
   },
+  "00-0040135": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040138": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040145": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040149": {
    "status": "IR",
    "injury": ""
   },
@@ -739,10 +903,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0040190": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0040192": {
    "status": "IR",
    "injury": ""
@@ -755,11 +915,7 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0040226": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040232": {
+  "00-0040211": {
    "status": "IR",
    "injury": ""
   },
@@ -768,6 +924,14 @@
    "injury": ""
   },
   "00-0040242": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040243": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040244": {
    "status": "IR",
    "injury": ""
   },
@@ -780,6 +944,10 @@
    "injury": ""
   },
   "00-0040395": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040413": {
    "status": "IR",
    "injury": ""
   },
@@ -799,15 +967,7 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0040503": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0040577": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040578": {
    "status": "IR",
    "injury": ""
   },
@@ -827,11 +987,19 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0040678": {
+  "00-0040687": {
    "status": "IR",
    "injury": ""
   },
-  "00-0040687": {
+  "00-0040691": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040711": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040721": {
    "status": "IR",
    "injury": ""
   },
@@ -871,18 +1039,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0040881": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040888": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040901": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0040929": {
    "status": "IR",
    "injury": ""
@@ -904,6 +1060,18 @@
    "injury": ""
   },
   "00-0041003": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041027": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041029": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041035": {
    "status": "IR",
    "injury": ""
   },
@@ -943,6 +1111,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041142": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041170": {
    "status": "IR",
    "injury": ""
@@ -955,6 +1127,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041303": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041321": {
    "status": "IR",
    "injury": ""
@@ -963,11 +1139,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0041387": {
+  "00-0041360": {
    "status": "IR",
    "injury": ""
   },
-  "00-0041396": {
+  "00-0041387": {
    "status": "IR",
    "injury": ""
   },
@@ -979,7 +1155,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041415": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041429": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041442": {
    "status": "IR",
    "injury": ""
   },
@@ -1000,6 +1184,10 @@
    "injury": ""
   },
   "00-0041526": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041546": {
    "status": "IR",
    "injury": ""
   },
