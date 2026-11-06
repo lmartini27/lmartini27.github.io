@@ -103,6 +103,143 @@
       "actual": 2.9
      }
     ]
+   },
+   "leaderboard": {
+    "model": {
+     "n": 325,
+     "abs_sum": 1441.83,
+     "mae": 4.436,
+     "r2": 0.424,
+     "big": 26,
+     "pairs": 1883,
+     "correct": 1180.0,
+     "pos": {
+      "QB": [
+       32,
+       142.47
+      ],
+      "RB": [
+       85,
+       397.04
+      ],
+      "TE": [
+       73,
+       268.9
+      ],
+      "WR": [
+       135,
+       633.42
+      ]
+     }
+    },
+    "last3": {
+     "n": 325,
+     "abs_sum": 1516.33,
+     "mae": 4.666,
+     "r2": 0.3,
+     "big": 44,
+     "pairs": 1883,
+     "correct": 1109.5,
+     "pos": {
+      "QB": [
+       32,
+       192.16
+      ],
+      "RB": [
+       85,
+       393.48
+      ],
+      "TE": [
+       73,
+       274.8
+      ],
+      "WR": [
+       135,
+       655.89
+      ]
+     }
+    },
+    "season": {
+     "n": 325,
+     "abs_sum": 1516.25,
+     "mae": 4.665,
+     "r2": 0.3,
+     "big": 44,
+     "pairs": 1883,
+     "correct": 1110.0,
+     "pos": {
+      "QB": [
+       32,
+       192.18
+      ],
+      "RB": [
+       85,
+       393.45
+      ],
+      "TE": [
+       73,
+       274.78
+      ],
+      "WR": [
+       135,
+       655.83
+      ]
+     }
+    },
+    "last_game": {
+     "n": 325,
+     "abs_sum": 1795.02,
+     "mae": 5.523,
+     "r2": 0.034,
+     "big": 61,
+     "pairs": 1883,
+     "correct": 1063.0,
+     "pos": {
+      "QB": [
+       32,
+       223.3
+      ],
+      "RB": [
+       85,
+       432.4
+      ],
+      "TE": [
+       73,
+       343.0
+      ],
+      "WR": [
+       135,
+       796.32
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 325,
+     "abs_sum": 1958.65,
+     "mae": 6.027,
+     "r2": 0.069,
+     "big": 41,
+     "pairs": 1883,
+     "correct": 941.5,
+     "pos": {
+      "QB": [
+       32,
+       150.2
+      ],
+      "RB": [
+       85,
+       615.03
+      ],
+      "TE": [
+       73,
+       373.28
+      ],
+      "WR": [
+       135,
+       820.15
+      ]
+     }
+    }
    }
   },
   {
@@ -207,6 +344,143 @@
       "actual": 0.7
      }
     ]
+   },
+   "leaderboard": {
+    "model": {
+     "n": 309,
+     "abs_sum": 1513.82,
+     "mae": 4.899,
+     "r2": 0.403,
+     "big": 34,
+     "pairs": 1852,
+     "correct": 1107.0,
+     "pos": {
+      "QB": [
+       30,
+       240.47
+      ],
+      "RB": [
+       78,
+       375.08
+      ],
+      "TE": [
+       75,
+       304.22
+      ],
+      "WR": [
+       126,
+       594.05
+      ]
+     }
+    },
+    "last3": {
+     "n": 309,
+     "abs_sum": 1599.5,
+     "mae": 5.176,
+     "r2": 0.258,
+     "big": 44,
+     "pairs": 1852,
+     "correct": 1018.0,
+     "pos": {
+      "QB": [
+       30,
+       274.18
+      ],
+      "RB": [
+       78,
+       388.88
+      ],
+      "TE": [
+       75,
+       316.41
+      ],
+      "WR": [
+       126,
+       620.03
+      ]
+     }
+    },
+    "season": {
+     "n": 309,
+     "abs_sum": 1551.96,
+     "mae": 5.023,
+     "r2": 0.317,
+     "big": 44,
+     "pairs": 1852,
+     "correct": 1082.0,
+     "pos": {
+      "QB": [
+       30,
+       265.5
+      ],
+      "RB": [
+       78,
+       390.55
+      ],
+      "TE": [
+       75,
+       295.96
+      ],
+      "WR": [
+       126,
+       599.96
+      ]
+     }
+    },
+    "last_game": {
+     "n": 309,
+     "abs_sum": 1827.84,
+     "mae": 5.915,
+     "r2": -0.045,
+     "big": 65,
+     "pairs": 1852,
+     "correct": 871.5,
+     "pos": {
+      "QB": [
+       30,
+       237.92
+      ],
+      "RB": [
+       78,
+       492.3
+      ],
+      "TE": [
+       75,
+       313.3
+      ],
+      "WR": [
+       126,
+       784.32
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 309,
+     "abs_sum": 1858.4,
+     "mae": 6.014,
+     "r2": 0.114,
+     "big": 46,
+     "pairs": 1852,
+     "correct": 926.0,
+     "pos": {
+      "QB": [
+       30,
+       235.71
+      ],
+      "RB": [
+       78,
+       506.38
+      ],
+      "TE": [
+       75,
+       371.35
+      ],
+      "WR": [
+       126,
+       744.96
+      ]
+     }
+    }
    }
   },
   {
@@ -311,6 +585,143 @@
       "actual": 5.0
      }
     ]
+   },
+   "leaderboard": {
+    "model": {
+     "n": 285,
+     "abs_sum": 1252.59,
+     "mae": 4.395,
+     "r2": 0.427,
+     "big": 22,
+     "pairs": 1691,
+     "correct": 1020.0,
+     "pos": {
+      "QB": [
+       27,
+       137.67
+      ],
+      "RB": [
+       71,
+       314.96
+      ],
+      "TE": [
+       67,
+       300.04
+      ],
+      "WR": [
+       120,
+       499.92
+      ]
+     }
+    },
+    "last3": {
+     "n": 285,
+     "abs_sum": 1292.63,
+     "mae": 4.536,
+     "r2": 0.307,
+     "big": 36,
+     "pairs": 1691,
+     "correct": 1002.5,
+     "pos": {
+      "QB": [
+       27,
+       151.9
+      ],
+      "RB": [
+       71,
+       332.27
+      ],
+      "TE": [
+       67,
+       301.65
+      ],
+      "WR": [
+       120,
+       506.81
+      ]
+     }
+    },
+    "season": {
+     "n": 285,
+     "abs_sum": 1264.99,
+     "mae": 4.439,
+     "r2": 0.331,
+     "big": 31,
+     "pairs": 1691,
+     "correct": 1000.0,
+     "pos": {
+      "QB": [
+       27,
+       148.91
+      ],
+      "RB": [
+       71,
+       304.74
+      ],
+      "TE": [
+       67,
+       297.79
+      ],
+      "WR": [
+       120,
+       513.54
+      ]
+     }
+    },
+    "last_game": {
+     "n": 285,
+     "abs_sum": 1506.3,
+     "mae": 5.285,
+     "r2": -0.086,
+     "big": 50,
+     "pairs": 1691,
+     "correct": 952.5,
+     "pos": {
+      "QB": [
+       27,
+       203.72
+      ],
+      "RB": [
+       71,
+       384.4
+      ],
+      "TE": [
+       67,
+       294.4
+      ],
+      "WR": [
+       120,
+       623.78
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 285,
+     "abs_sum": 1605.79,
+     "mae": 5.634,
+     "r2": 0.113,
+     "big": 30,
+     "pairs": 1691,
+     "correct": 845.5,
+     "pos": {
+      "QB": [
+       27,
+       149.86
+      ],
+      "RB": [
+       71,
+       421.2
+      ],
+      "TE": [
+       67,
+       348.75
+      ],
+      "WR": [
+       120,
+       685.97
+      ]
+     }
+    }
    }
   },
   {
@@ -415,7 +826,144 @@
    "baseline_r2": 0.373,
    "model_closer_pct": 46.6,
    "week": 7,
-   "type": "live"
+   "type": "live",
+   "leaderboard": {
+    "model": {
+     "n": 268,
+     "abs_sum": 1200.37,
+     "mae": 4.479,
+     "r2": 0.454,
+     "big": 26,
+     "pairs": 1752,
+     "correct": 1076.0,
+     "pos": {
+      "QB": [
+       29,
+       159.51
+      ],
+      "RB": [
+       65,
+       281.91
+      ],
+      "TE": [
+       62,
+       251.36
+      ],
+      "WR": [
+       112,
+       507.59
+      ]
+     }
+    },
+    "last3": {
+     "n": 268,
+     "abs_sum": 1212.06,
+     "mae": 4.523,
+     "r2": 0.373,
+     "big": 28,
+     "pairs": 1752,
+     "correct": 1049.0,
+     "pos": {
+      "QB": [
+       29,
+       170.17
+      ],
+      "RB": [
+       65,
+       276.19
+      ],
+      "TE": [
+       62,
+       273.65
+      ],
+      "WR": [
+       112,
+       492.05
+      ]
+     }
+    },
+    "season": {
+     "n": 268,
+     "abs_sum": 1201.12,
+     "mae": 4.482,
+     "r2": 0.39,
+     "big": 25,
+     "pairs": 1752,
+     "correct": 1053.0,
+     "pos": {
+      "QB": [
+       29,
+       168.94
+      ],
+      "RB": [
+       65,
+       298.94
+      ],
+      "TE": [
+       62,
+       279.92
+      ],
+      "WR": [
+       112,
+       453.32
+      ]
+     }
+    },
+    "last_game": {
+     "n": 268,
+     "abs_sum": 1450.58,
+     "mae": 5.413,
+     "r2": 0.093,
+     "big": 48,
+     "pairs": 1752,
+     "correct": 957.5,
+     "pos": {
+      "QB": [
+       29,
+       190.58
+      ],
+      "RB": [
+       65,
+       387.7
+      ],
+      "TE": [
+       62,
+       317.1
+      ],
+      "WR": [
+       112,
+       555.2
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 268,
+     "abs_sum": 1579.86,
+     "mae": 5.895,
+     "r2": 0.094,
+     "big": 37,
+     "pairs": 1752,
+     "correct": 876.0,
+     "pos": {
+      "QB": [
+       29,
+       184.7
+      ],
+      "RB": [
+       65,
+       439.52
+      ],
+      "TE": [
+       62,
+       294.01
+      ],
+      "WR": [
+       112,
+       661.63
+      ]
+     }
+    }
+   }
   },
   {
    "report": {
@@ -519,7 +1067,144 @@
    "baseline_r2": 0.317,
    "model_closer_pct": 44.0,
    "week": 8,
-   "type": "live"
+   "type": "live",
+   "leaderboard": {
+    "model": {
+     "n": 266,
+     "abs_sum": 1317.48,
+     "mae": 4.953,
+     "r2": 0.379,
+     "big": 31,
+     "pairs": 1787,
+     "correct": 1072.0,
+     "pos": {
+      "QB": [
+       28,
+       215.66
+      ],
+      "RB": [
+       68,
+       351.26
+      ],
+      "TE": [
+       57,
+       239.7
+      ],
+      "WR": [
+       113,
+       510.86
+      ]
+     }
+    },
+    "last3": {
+     "n": 266,
+     "abs_sum": 1294.13,
+     "mae": 4.865,
+     "r2": 0.317,
+     "big": 37,
+     "pairs": 1787,
+     "correct": 1027.5,
+     "pos": {
+      "QB": [
+       28,
+       225.21
+      ],
+      "RB": [
+       68,
+       341.82
+      ],
+      "TE": [
+       57,
+       247.94
+      ],
+      "WR": [
+       113,
+       479.16
+      ]
+     }
+    },
+    "season": {
+     "n": 266,
+     "abs_sum": 1258.36,
+     "mae": 4.731,
+     "r2": 0.381,
+     "big": 31,
+     "pairs": 1787,
+     "correct": 1118.0,
+     "pos": {
+      "QB": [
+       28,
+       208.8
+      ],
+      "RB": [
+       68,
+       364.71
+      ],
+      "TE": [
+       57,
+       210.82
+      ],
+      "WR": [
+       113,
+       474.03
+      ]
+     }
+    },
+    "last_game": {
+     "n": 266,
+     "abs_sum": 1503.02,
+     "mae": 5.65,
+     "r2": 0.138,
+     "big": 47,
+     "pairs": 1787,
+     "correct": 1056.5,
+     "pos": {
+      "QB": [
+       28,
+       238.52
+      ],
+      "RB": [
+       68,
+       385.9
+      ],
+      "TE": [
+       57,
+       272.8
+      ],
+      "WR": [
+       113,
+       605.8
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 266,
+     "abs_sum": 1684.11,
+     "mae": 6.331,
+     "r2": 0.071,
+     "big": 41,
+     "pairs": 1787,
+     "correct": 893.5,
+     "pos": {
+      "QB": [
+       28,
+       225.36
+      ],
+      "RB": [
+       68,
+       485.71
+      ],
+      "TE": [
+       57,
+       284.81
+      ],
+      "WR": [
+       113,
+       688.24
+      ]
+     }
+    }
+   }
   }
  ],
  "backtest_summary": {
@@ -529,12 +1214,188 @@
   "baseline_mae": 4.793,
   "model_closer_pct": 50.7
  },
- "updated_at": "2026-11-05T20:34:58+00:00",
+ "updated_at": "2026-11-06T00:17:43+00:00",
  "live_summary": {
   "weeks": 2,
   "model_wins": 1,
   "model_mae": 4.716,
   "baseline_mae": 4.694,
   "model_closer_pct": 45.3
+ },
+ "leaderboard": {
+  "live": {
+   "weeks": 2,
+   "players_graded": 534,
+   "methods": [
+    {
+     "key": "season",
+     "label": "Season average",
+     "about": "The player's average over every game he has played this season.",
+     "mae": 4.606,
+     "r2": 0.386,
+     "pick_pct": 61.3,
+     "big_pct": 10.5,
+     "weeks_best": 1,
+     "by_position": {
+      "QB": 6.63,
+      "RB": 4.99,
+      "TE": 4.12,
+      "WR": 4.12
+     }
+    },
+    {
+     "key": "last3",
+     "label": "Last 3 games average",
+     "about": "The player's average over his last three games. The site's main benchmark.",
+     "mae": 4.693,
+     "r2": 0.345,
+     "pick_pct": 58.7,
+     "big_pct": 12.2,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 6.94,
+      "RB": 4.65,
+      "TE": 4.38,
+      "WR": 4.32
+     }
+    },
+    {
+     "key": "model",
+     "label": "My model",
+     "about": "Linear regression on recent form, usage and the next opponent.",
+     "mae": 4.715,
+     "r2": 0.416,
+     "pick_pct": 60.7,
+     "big_pct": 10.7,
+     "weeks_best": 1,
+     "by_position": {
+      "QB": 6.58,
+      "RB": 4.76,
+      "TE": 4.13,
+      "WR": 4.53
+     }
+    },
+    {
+     "key": "last_game",
+     "label": "Last game",
+     "about": "Whatever the player scored in his most recent game.",
+     "mae": 5.531,
+     "r2": 0.116,
+     "pick_pct": 56.9,
+     "big_pct": 17.8,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 7.53,
+      "RB": 5.82,
+      "TE": 4.96,
+      "WR": 5.16
+     }
+    },
+    {
+     "key": "pos_avg",
+     "label": "Position average",
+     "about": "Every player at a position gets the same number: the typical season average at that position.",
+     "mae": 6.112,
+     "r2": 0.082,
+     "pick_pct": 50.0,
+     "big_pct": 14.6,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 7.19,
+      "RB": 6.96,
+      "TE": 4.86,
+      "WR": 6.0
+     }
+    }
+   ]
+  },
+  "all": {
+   "weeks": 5,
+   "players_graded": 1453,
+   "methods": [
+    {
+     "key": "model",
+     "label": "My model",
+     "about": "Linear regression on recent form, usage and the next opponent.",
+     "mae": 4.629,
+     "r2": 0.417,
+     "pick_pct": 60.8,
+     "big_pct": 9.6,
+     "weeks_best": 4,
+     "by_position": {
+      "QB": 6.14,
+      "RB": 4.69,
+      "TE": 4.08,
+      "WR": 4.53
+     }
+    },
+    {
+     "key": "season",
+     "label": "Season average",
+     "about": "The player's average over every game he has played this season.",
+     "mae": 4.675,
+     "r2": 0.344,
+     "pick_pct": 59.8,
+     "big_pct": 12.0,
+     "weeks_best": 1,
+     "by_position": {
+      "QB": 6.74,
+      "RB": 4.77,
+      "TE": 4.07,
+      "WR": 4.45
+     }
+    },
+    {
+     "key": "last3",
+     "label": "Last 3 games average",
+     "about": "The player's average over his last three games. The site's main benchmark.",
+     "mae": 4.759,
+     "r2": 0.311,
+     "pick_pct": 58.1,
+     "big_pct": 13.0,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 6.94,
+      "RB": 4.72,
+      "TE": 4.23,
+      "WR": 4.54
+     }
+    },
+    {
+     "key": "last_game",
+     "label": "Last game",
+     "about": "Whatever the player scored in his most recent game.",
+     "mae": 5.563,
+     "r2": 0.027,
+     "pick_pct": 54.7,
+     "big_pct": 18.7,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 7.49,
+      "RB": 5.67,
+      "TE": 4.61,
+      "WR": 5.55
+     }
+    },
+    {
+     "key": "pos_avg",
+     "label": "Position average",
+     "about": "Every player at a position gets the same number: the typical season average at that position.",
+     "mae": 5.979,
+     "r2": 0.092,
+     "pick_pct": 50.0,
+     "big_pct": 13.4,
+     "weeks_best": 0,
+     "by_position": {
+      "QB": 6.48,
+      "RB": 6.72,
+      "TE": 5.01,
+      "WR": 5.94
+     }
+    }
+   ]
+  },
+  "big_miss_points": 10,
+  "relevant_min": 8
  }
 }
