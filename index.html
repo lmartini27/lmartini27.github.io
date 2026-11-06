@@ -340,6 +340,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     <p class="sub">How the model compares with four simple ways to guess a player's score. Every method uses only what was known before kickoff, and every graded player counts, including injuries and blowouts.</p>
     <div class="chips" role="group" aria-label="Weeks included" id="lb-scope" style="margin-bottom:14px"></div>
     <p class="lb-verdict" id="lb-verdict"></p>
+    <div id="lb-ready">
     <div class="table-box">
       <table>
         <thead><tr><th class="rank">#</th><th>Method</th><th class="num">Average miss</th><th class="num">Big misses</th><th class="num hide-sm">Picks the higher scorer</th><th class="num hide-sm">R²</th><th class="num">Weeks best</th></tr></thead>
@@ -364,6 +365,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
         <li><strong>Matchups.</strong> The opponent feature adds almost nothing in testing. Treat the Defense column as context, not a reason to start someone.</li>
         <li><strong>Rookies and players returning from injury</strong> need a game or two before they're projected at all.</li>
       </ul>
+    </div>
     </div>
 
     <div class="lb-block">
@@ -658,6 +660,13 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   }
   function renderLeaderboard() {
     const L = scorecard.leaderboard || {};
+    const ready = !!(L.all && L.all.weeks);
+    $("#lb-ready").hidden = !ready;
+    if (!ready) {
+      $("#lb-scope").innerHTML = "";
+      $("#lb-verdict").textContent = "The leaderboard fills in on the next weekly update. This week's report card is below.";
+      return;
+    }
     const hasLive = L.live && L.live.weeks;
     if (!hasLive) scope = "all";
     $("#lb-scope").innerHTML = [["live", `Live weeks${hasLive ? ` (${L.live.weeks})` : ""}`], ["all", `All weeks, with backtest${L.all ? ` (${L.all.weeks})` : ""}`]]
