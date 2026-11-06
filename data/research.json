@@ -6,17 +6,30 @@
    "title": "Fantasy Football Predictor",
    "sport": "NFL",
    "question": "Can a player's recent form and next opponent predict his fantasy points next week?",
-   "finding": "Yes, modestly. The model beats the naive recent-average baseline in every test season, mainly by pulling hot and cold streaks back toward normal. The next-opponent matchup feature added almost nothing.",
+   "finding": "Yes, modestly. The model beats the naive recent-average baseline in every test season, mainly by pulling hot and cold streaks back toward normal: a player who averaged 25 points over three games scored about 19 the next week. The next-opponent matchup feature added almost nothing.",
    "folder": "fantasy-football-predictor w opp data/fantasy-football-predictor",
    "chart": "fantasy",
    "data": {
     "rows": [
-     {"label": "Naive baseline (3-game average)", "mae": 5.34, "r2": 0.182},
-     {"label": "Linear regression", "mae": 5.06, "r2": 0.309},
-     {"label": "Random forest", "mae": 5.10, "r2": 0.298}
+     {
+      "label": "Naive baseline (3-game average)",
+      "mae": 5.34,
+      "r2": 0.182
+     },
+     {
+      "label": "Linear regression",
+      "mae": 5.06,
+      "r2": 0.309
+     },
+     {
+      "label": "Random forest",
+      "mae": 5.1,
+      "r2": 0.298
+     }
     ],
     "note": "Walk-forward test: trained on earlier seasons, tested on 2022 and 2023. Matchup feature changed R² by +0.001."
-   }
+   },
+   "article": ""
   },
   {
    "id": "kicker",
@@ -28,33 +41,65 @@
    "chart": "kicker",
    "data": {
     "fg_variance": 19.96,
-    "pat_variance": 2.10,
-    "fg_pat_corr": -0.200,
+    "pat_variance": 2.1,
+    "fg_pat_corr": -0.2,
     "vegas_pat_corr": 0.369,
     "vegas_fg_corr": 0.013,
     "pat_r2": 0.12,
     "total_r2": -0.004,
     "note": "2021–2024 regular seasons, 1,971 kicker-weeks. Walk-forward R² by season."
-   }
+   },
+   "article": ""
   },
   {
    "id": "ucl",
    "title": "Champions League Clash of Styles",
    "sport": "Soccer",
    "question": "When Europe's top leagues meet, do some playing styles beat others?",
-   "finding": "It's a ladder, not rock-paper-scissors. The higher a team sits on the possession and control scale, the better it does, about 0.82 goals per step (R² 0.158, p < 0.0001). Style is tangled up with squad quality, so this is a signal, not proof of cause.",
+   "finding": "Mostly quality. Teams higher on a possession and control ladder win more, about 0.82 goals per step. But in 2024-25, adding each team's domestic goal difference cut the style effect from +0.84 to +0.32 goals, no longer distinguishable from zero. Style gives no extra edge in Europe beyond what already wins at home.",
    "folder": "champions-league-style-clash",
    "chart": "ucl",
    "data": {
     "gaps": [
-     {"gap": -2, "n": 8, "home": 12.5, "draw": 12.5, "away": 75.0},
-     {"gap": -1, "n": 30, "home": 43.3, "draw": 16.7, "away": 40.0},
-     {"gap": 0, "n": 54, "home": 53.7, "draw": 14.8, "away": 31.5},
-     {"gap": 1, "n": 29, "home": 69.0, "draw": 17.2, "away": 13.8},
-     {"gap": 2, "n": 6, "home": 83.3, "draw": 0.0, "away": 16.7}
+     {
+      "gap": -2,
+      "n": 8,
+      "home": 12.5,
+      "draw": 12.5,
+      "away": 75.0
+     },
+     {
+      "gap": -1,
+      "n": 30,
+      "home": 43.3,
+      "draw": 16.7,
+      "away": 40.0
+     },
+     {
+      "gap": 0,
+      "n": 54,
+      "home": 53.7,
+      "draw": 14.8,
+      "away": 31.5
+     },
+     {
+      "gap": 1,
+      "n": 29,
+      "home": 69.0,
+      "draw": 17.2,
+      "away": 13.8
+     },
+     {
+      "gap": 2,
+      "n": 6,
+      "home": 83.3,
+      "draw": 0.0,
+      "away": 16.7
+     }
     ],
     "note": "127 Big-5 vs Big-5 matches, 2022–23 and 2024–25. Style gap = home style rank minus away style rank."
-   }
+   },
+   "article": ""
   },
   {
    "id": "ncaa",
@@ -70,7 +115,34 @@
     "early_sd": 7.54,
     "portal_sd": 9.64,
     "note": "620 NCAA tournament games. Volatility = standard deviation of year-over-year change in adjusted net rating."
-   }
+   },
+   "article": ""
+  }
+ ],
+ "highlights": [
+  {
+   "stat": "25 → 19",
+   "title": "Hot streaks cool off",
+   "text": "Players who averaged 25 points over three games scored about 19 the next week. That's why the model discounts streaks.",
+   "article": ""
+  },
+  {
+   "stat": "+0.001",
+   "title": "Matchups barely matter",
+   "text": "Adding the opponent's recent defense changed the model's accuracy by 0.001 R². A player's own usage tells you far more.",
+   "article": ""
+  },
+  {
+   "stat": "0.01",
+   "title": "Kickers can't be predicted",
+   "text": "Betting lines predict extra points but not field goals (correlation 0.01). Good offenses turn field-goal chances into touchdowns.",
+   "article": ""
+  },
+  {
+   "stat": "+0.84 → +0.32",
+   "title": "In Europe, quality beats style",
+   "text": "Possession-heavy teams won more Champions League matches, but controlling for team strength erased most of that edge.",
+   "article": ""
   }
  ]
 }

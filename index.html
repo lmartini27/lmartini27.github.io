@@ -6,7 +6,7 @@
 <!--BODY-START-->
 <title>Luca's Sports Lab</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Weekly NFL fantasy projections graded in public, plus sports analytics research by Luca Martini.">
+<meta name="description" content="Weekly NFL fantasy projections for every QB, RB, WR and TE, graded in public against simple baselines. Plus sports analytics research by Luca Martini.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -168,44 +168,146 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
   .hide-sm { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) { .projbar i { transition: width .3s ease; } }
+
+/* ---- home ---- */
+.home-hero { padding-block: 32px 24px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); text-decoration: none; font-weight: 600; }
+.btn-primary:hover { background: var(--turf); border-color: var(--turf); }
+a.btn { text-decoration: none; display: inline-block; }
+.home-sec { padding-block: 28px 4px; }
+.home-sec .section-head h2 { font-size: 26px; }
+.top4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.mini { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.mini h3 { font: 500 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; }
+.mini ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.mini li { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; align-items: baseline; }
+.mini li .player { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini li .nums { font-family: var(--mono); white-space: nowrap; }
+.mini li .opp { font-size: 12px; margin-left: 6px; }
+.finds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.find { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+.find .big { font: 800 28px/1 var(--display); color: var(--turf); }
+.find h3 { font-size: 16px; }
+.find p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.find .links { margin-top: auto; padding-top: 6px; font-size: 14px; }
+.feedback { background: var(--turf-soft); border-radius: 10px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; margin-top: 28px; }
+.feedback p { margin: 0; font-weight: 600; }
+.feedback .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* ---- leaderboard ---- */
+tr.me td { background: var(--turf-soft); }
+tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
+.method-about { display: block; font-size: 12px; color: var(--ink-2); white-space: normal; max-width: 34ch; margin-top: 2px; }
+.lb-verdict { font-size: 16px; margin: 0 0 14px; max-width: 72ch; }
+.lb-block { margin-top: 28px; }
+.lb-block h3 { font: 800 22px/1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
+.fails { margin: 10px 0 0; padding-left: 20px; max-width: 75ch; }
+.fails li { margin-bottom: 6px; }
+@media (max-width: 860px) { .top4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .home-hero { grid-template-columns: 1fr; gap: 20px; padding-block: 20px 12px; }
+  .finds { grid-template-columns: 1fr; }
+  .board { grid-template-columns: 1fr 1fr; }
+  .board .v { font-size: 28px; }
+  .method-about { display: none; }
+  td.wrap-sm { white-space: normal; }
+}
+#board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 600px) {
+  nav { flex-wrap: nowrap; overflow-x: auto; width: 100%; margin-inline: -4px; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  nav a { padding: 8px 8px; white-space: nowrap; }
+  .topbar .wrap { gap: 8px; padding-block: 10px 6px; }
+  .mini { padding: 12px; }
+  .mini li { font-size: 13px; }
+  #view-leaderboard th { white-space: normal; }
+  #view-leaderboard th, #view-leaderboard td { padding-inline: 8px; }
+}
+@media (max-width: 340px) { .top4 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#projections">Luca's <span>Sports Lab</span></a>
+    <a class="brand" href="#home">Luca's <span>Sports Lab</span></a>
     <nav aria-label="Sections">
+      <a href="#home" data-view="home">Home</a>
       <a href="#projections" data-view="projections">Projections</a>
-      <a href="#scorecard" data-view="scorecard">Scorecard</a>
+      <a href="#leaderboard" data-view="leaderboard">Leaderboard</a>
       <a href="#research" data-view="research">Research</a>
       <a href="#about" data-view="about">About</a>
     </nav>
   </div>
 </header>
 
-<section class="wrap hero" id="hero">
-  <div>
-    <div class="eyebrow"><span class="live" id="live-label">Live</span><span id="week-label">NFL 2026</span></div>
-    <h1>NFL projections, graded in public</h1>
-    <p class="lede">Every week before kickoff this site posts fantasy point projections for every QB, RB, WR, and TE. After the games, it grades them against a simple benchmark, the player's recent average, and keeps the record here, good weeks and bad.</p>
-  </div>
-  <div class="board" id="board" aria-label="Season record">
-    <div><div class="k">Weeks beating benchmark</div><div class="v" id="b-wins">–</div><div class="s" id="b-wins-s">&nbsp;</div></div>
-    <div><div class="k">Avg miss, model</div><div class="v" id="b-mae">–</div><div class="s">fantasy points</div></div>
-    <div><div class="k">Avg miss, benchmark</div><div class="v" id="b-base">–</div><div class="s">fantasy points</div></div>
-    <div class="full" id="b-note">Loading the season record…</div>
-  </div>
-</section>
-<div class="wrap" id="hero-rule"><div class="yard" aria-hidden="true"></div></div>
-
 <main class="wrap">
 
-  <section class="view" id="view-projections" aria-labelledby="h-proj">
-    <div class="section-head">
+  <!-- ================= HOME ================= -->
+  <section class="view" id="view-home" aria-labelledby="h-home">
+    <div class="home-hero">
       <div>
-        <h2 id="h-proj">Week <span id="p-week">–</span> projections</h2>
-        <p class="sub" id="p-sub">PPR scoring. Loading…</p>
+        <div class="eyebrow"><span class="live" id="live-label">Live</span><span id="week-label">NFL 2026</span></div>
+        <h1 id="h-home">Fantasy football projections, graded in public</h1>
+        <p class="lede">Before every NFL week, this site posts fantasy projections for every QB, RB, WR and TE. After the games, they're graded against four simple rules anyone could use, and every result stays up, including the weeks the model loses.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projections" id="cta-proj">See this week's projections</a>
+          <a class="btn" href="#leaderboard">How accurate is it?</a>
+        </div>
+      </div>
+      <div class="board" id="board" aria-label="Accuracy record">
+        <div><div class="k">Rank among 5 methods</div><div class="v" id="b-rank">–</div><div class="s" id="b-rank-s">&nbsp;</div></div>
+        <div><div class="k">Model average miss</div><div class="v" id="b-mae">–</div><div class="s" id="b-mae-s">fantasy points</div></div>
+        <div><div class="k">Weeks graded</div><div class="v" id="b-weeks">–</div><div class="s" id="b-weeks-s">&nbsp;</div></div>
+        <div><div class="k">Players graded</div><div class="v" id="b-players">–</div><div class="s">player-games</div></div>
+        <div class="full" id="b-note">Loading the record…</div>
+      </div>
+    </div>
+    <div class="yard" aria-hidden="true"></div>
+
+    <section class="home-sec" aria-labelledby="h-top">
+      <div class="section-head">
+        <div><h2 id="h-top">Top projections, week <span class="js-week">–</span></h2>
+        <p class="sub" style="margin:0" id="top-sub">PPR points.</p></div>
+        <a href="#projections">All players →</a>
+      </div>
+      <div class="top4" id="top4"></div>
+    </section>
+
+    <section class="home-sec" aria-labelledby="h-last">
+      <div class="section-head">
+        <div><h2 id="h-last">Last week's report card</h2></div>
+        <a href="#leaderboard">Full leaderboard →</a>
+      </div>
+      <div id="home-report" class="empty">Loading…</div>
+    </section>
+
+    <section class="home-sec" aria-labelledby="h-finds">
+      <div class="section-head">
+        <div><h2 id="h-finds">What I've found</h2>
+        <p class="sub" style="margin:0">Longer investigations behind the site. Some of the best answers were "no."</p></div>
+        <a href="#research">All research →</a>
+      </div>
+      <div class="finds" id="finds"></div>
+    </section>
+
+    <div class="feedback" id="feedback" hidden>
+      <p id="fb-q">Was this site useful to you?</p>
+      <div class="row" id="fb-row">
+        <button class="btn" type="button" data-fb="yes">Yes</button>
+        <button class="btn" type="button" data-fb="no">Not really</button>
+        <a class="btn" id="fb-form" href="#" target="_blank" rel="noopener" hidden>Send feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTIONS ================= -->
+  <section class="view" id="view-projections" aria-labelledby="h-proj" hidden>
+    <div class="section-head" style="margin-top:24px">
+      <div>
+        <div class="eyebrow"><span class="live js-live">Live</span><span>PPR scoring</span></div>
+        <h2 id="h-proj" style="margin-top:10px">Week <span class="js-week">–</span> projections</h2>
+        <p class="sub" id="p-sub">Loading…</p>
       </div>
     </div>
     <div class="controls">
@@ -232,50 +334,80 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     <p class="foot-note">"Defense" rates how many fantasy points the opponent has allowed to that position over its last three games, compared with every defense playing this week. Players on injured reserve or the practice squad aren't projected. The official injury report is checked again Friday and Sunday morning: <span class="inj inj-Questionable">Q</span> questionable, <span class="inj inj-Doubtful">D</span> doubtful, and players ruled out are hidden. Game-day inactives come out 90 minutes before kickoff, so check the news before locking a lineup. <span id="inj-updated"></span></p>
   </section>
 
-  <section class="view" id="view-scorecard" aria-labelledby="h-score" hidden>
-    <h2 id="h-score">Scorecard</h2>
-    <p class="sub">Each week's projections are graded against what actually happened, alongside the benchmark: the player's own average over his last three games. A lower average miss is better. Only players who played are graded.</p>
-    <div id="s-report"></div>
-    <div id="s-chart"></div>
-    <div class="table-box" style="margin-top:16px">
+  <!-- ================= LEADERBOARD ================= -->
+  <section class="view" id="view-leaderboard" aria-labelledby="h-lb" hidden>
+    <h2 id="h-lb" style="margin-top:24px">Leaderboard</h2>
+    <p class="sub">How the model compares with four simple ways to guess a player's score. Every method uses only what was known before kickoff, and every graded player counts, including injuries and blowouts.</p>
+    <div class="chips" role="group" aria-label="Weeks included" id="lb-scope" style="margin-bottom:14px"></div>
+    <p class="lb-verdict" id="lb-verdict"></p>
+    <div class="table-box">
       <table>
-        <thead><tr><th>Week</th><th>Type</th><th class="num">Graded</th><th class="num">Model miss</th><th class="num">Benchmark miss</th><th class="num hide-sm">Model R²</th><th class="num hide-sm">Benchmark R²</th><th class="num">Result</th></tr></thead>
-        <tbody id="s-body"></tbody>
+        <thead><tr><th class="rank">#</th><th>Method</th><th class="num">Average miss</th><th class="num">Big misses</th><th class="num hide-sm">Picks the higher scorer</th><th class="num hide-sm">R²</th><th class="num">Weeks best</th></tr></thead>
+        <tbody id="lb-body"></tbody>
       </table>
     </div>
-    <p class="foot-note"><strong>Live</strong> weeks were posted before that week's first kickoff; the commit history on GitHub shows exactly when. <strong>Backtest</strong> weeks were run afterward, but using only data available before that week, to show how the model would have done before the site launched.</p>
+    <p class="foot-note" id="lb-defs"></p>
+
+    <div class="lb-block">
+      <h3>Week by week</h3>
+      <p class="sub">Average miss for each method, each week. Lower is better.</p>
+      <div id="lb-chart"></div>
+    </div>
+
+    <div class="lb-block">
+      <h3>Where the model fails</h3>
+      <p class="sub" id="fail-sub">Average miss by position, against the best simple method in the same weeks.</p>
+      <div class="table-box"><table><thead><tr><th>Position</th><th class="num">My model</th><th class="num" id="fail-best-h">Best simple method</th><th class="num">Better</th></tr></thead><tbody id="fail-body"></tbody></table></div>
+      <ul class="fails">
+        <li><strong>Players who get hurt or benched mid-game.</strong> A quarterback pulled in the first half scores near zero, and nothing before kickoff predicts it. These make up most of the "big misses."</li>
+        <li><strong>Breakout games.</strong> The model leans against streaks, so it is slow to believe a player whose role suddenly grows.</li>
+        <li><strong>Matchups.</strong> The opponent feature adds almost nothing in testing. Treat the Defense column as context, not a reason to start someone.</li>
+        <li><strong>Rookies and players returning from injury</strong> need a game or two before they're projected at all.</li>
+      </ul>
+    </div>
+
+    <div class="lb-block">
+      <h3>Weekly report cards</h3>
+      <div id="s-report" style="margin-top:12px"></div>
+      <div class="table-box">
+        <table>
+          <thead><tr><th>Week</th><th>Type</th><th class="num">Graded</th><th class="num">Model miss</th><th class="num hide-sm">Last-3 miss</th><th class="num">Best method</th></tr></thead>
+          <tbody id="s-body"></tbody>
+        </table>
+      </div>
+      <p class="foot-note"><strong>Live</strong> weeks were posted before that week's first kickoff; the commit history on GitHub shows exactly when. <strong>Backtest</strong> weeks were run afterward, using only data available before that week, to show how the model would have done before the site launched.</p>
+    </div>
   </section>
 
+  <!-- ================= RESEARCH ================= -->
   <section class="view" id="view-research" aria-labelledby="h-research" hidden>
-    <h2 id="h-research">Research</h2>
+    <h2 id="h-research" style="margin-top:24px">Research</h2>
     <p class="sub">Four longer investigations. Each started with a question, and several ended with a "no" that turned out to be the interesting part. Full code and reports are on GitHub.</p>
     <div class="grid2" id="r-grid"></div>
   </section>
 
+  <!-- ================= ABOUT ================= -->
   <section class="view prose" id="view-about" aria-labelledby="h-about" hidden>
-    <h2 id="h-about">About</h2>
-    <p>I'm Luca Martini, a high school student in Dallas who likes asking whether the things people say about sports actually hold up in the data. This site collects that work: a live weekly projection model and four research projects across the NFL, college basketball, and European soccer.</p>
+    <h2 id="h-about" style="margin-top:24px">About</h2>
+    <p>I'm Luca Martini, a high school student in Dallas who likes asking whether the things people say about sports actually hold up in the data. This site collects that work: a live weekly projection model, a public record of how it performs, and research projects across the NFL, college basketball and European soccer.</p>
 
     <h3>How the projections work</h3>
     <ul>
-      <li>For each player, the model looks at his last three games this season: fantasy points, targets, carries, receptions, and yards.</li>
+      <li>For each player, the model looks at his last three games this season: fantasy points, targets, carries, receptions and yards.</li>
       <li>It adds how many points his next opponent has allowed to his position over its last three games.</li>
       <li>A linear regression trained on every regular-season game since 2021 turns those numbers into a projection. Its main skill is regression to the mean: it trusts a three-game hot streak less than the raw average does.</li>
       <li>Every Wednesday the site grades last week and posts the new projections automatically. Projections are locked once posted; only the injury flags update later in the week.</li>
     </ul>
 
-    <h3>What it can't do</h3>
-    <ul>
-      <li>It skips players on injured reserve and flags the official injury report, but a projection doesn't change if a teammate is ruled out late in the week.</li>
-      <li>Rookies and players returning from injury need a game or two before they're projected.</li>
-      <li>Single games are noisy. Even a good model misses by four to five points on a typical player.</li>
-    </ul>
+    <h3>How it's graded</h3>
+    <p>Every player who played is graded, with no exceptions for injuries or blowouts. The model is compared with four simple methods: the player's last game, his last three games, his season average, and a flat average for his position. The <a href="#leaderboard">leaderboard</a> shows all of them, including the weeks and positions where a simple method wins.</p>
 
     <h3>How it's built</h3>
     <p>Python with pandas and scikit-learn, data from the open-source <a href="https://github.com/nflverse" target="_blank" rel="noopener">nflverse</a> project, and a scheduled GitHub Actions job that reruns everything weekly. I designed the questions, ran and checked the analysis, and wrote the conclusions; I used an AI coding assistant to help write and debug the code.</p>
 
-    <h3>Contact</h3>
-    <p>Code and reports: <a id="repo-link" href="https://github.com/lmartini27/sports-anaylsis-portfolio" target="_blank" rel="noopener">github.com/lmartini27</a></p>
+    <h3>Contact and feedback</h3>
+    <p>Code and reports: <a id="repo-link" href="https://github.com/lmartini27/sports-anaylsis-portfolio" target="_blank" rel="noopener">github.com/lmartini27</a><span id="about-links"></span></p>
+    <p id="about-traffic" hidden></p>
   </section>
 
 </main>
@@ -289,43 +421,90 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
 
 <script>
 (() => {
-  const VIEWS = ["projections", "scorecard", "research", "about"];
+  const VIEWS = ["home", "projections", "leaderboard", "research", "about"];
+  const ALIASES = { scorecard: "leaderboard" };
   const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
   const fmt = (x, d = 1) => (x == null || isNaN(x)) ? "–" : Number(x).toFixed(d);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const when = (iso) => new Date(iso).toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+  const lower1 = (s) => s.charAt(0).toLowerCase() + s.slice(1);
+  const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
+
+  // ---------- visitor counting (GoatCounter, optional; set it up in data/site.json) ----------
+  let site = {}, current = "home";
+  function countView() {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "/" + current, title: current });
+  }
+  function countEvent(name) {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true });
+  }
 
   // ---------- routing (bare #tokens) ----------
   function show(view) {
-    if (!VIEWS.includes(view)) view = "projections";
+    view = ALIASES[view] || view;
+    if (!VIEWS.includes(view)) view = "home";
+    current = view;
     VIEWS.forEach((v) => { $("#view-" + v).hidden = v !== view; });
-    const withHero = view === "projections" || view === "scorecard";
-    $("#hero").hidden = !withHero; $("#hero-rule").hidden = !withHero;
-    document.querySelectorAll("nav a").forEach((a) => {
+    $$("nav a").forEach((a) => {
       if (a.dataset.view === view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
+    countView();
   }
-  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
-    const v = a.getAttribute("href").slice(1);
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    let v = a.getAttribute("href").slice(1);
+    v = ALIASES[v] || v;
     if (VIEWS.includes(v)) { e.preventDefault(); show(v); history.replaceState(null, "", "#" + v); window.scrollTo({ top: 0 }); }
-  }));
+  });
   window.addEventListener("hashchange", () => show(location.hash.slice(1)));
   show(location.hash.slice(1));
 
-  const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(p); return r.json(); });
+  getJSON("data/site.json").then((cfg) => {
+    site = cfg || {};
+    if (site.goatcounter_code) {
+      window.goatcounter = { no_onload: true };
+      const s = document.createElement("script");
+      s.async = true; s.src = "https://gc.zgo.at/count.js";
+      s.dataset.goatcounter = `https://${site.goatcounter_code}.goatcounter.com/count`;
+      s.onload = countView;
+      document.head.appendChild(s);
+      if (site.traffic_public) {
+        $("#about-traffic").innerHTML = `Visitor counts for this site are public: <a href="https://${esc(site.goatcounter_code)}.goatcounter.com" target="_blank" rel="noopener">see the traffic dashboard</a>. No cookies or personal data are collected.`;
+        $("#about-traffic").hidden = false;
+      }
+    }
+    if (site.goatcounter_code || site.feedback_form_url) $("#feedback").hidden = false;
+    if (!site.goatcounter_code) $$("[data-fb]").forEach((b) => { b.hidden = true; });
+    if (site.feedback_form_url) {
+      $("#fb-form").href = site.feedback_form_url; $("#fb-form").hidden = false;
+      $("#about-links").innerHTML = ` · <a href="${esc(site.feedback_form_url)}" target="_blank" rel="noopener">Send feedback</a>`;
+    }
+    if (site.substack_url) $("#about-links").innerHTML += ` · <a href="${esc(site.substack_url)}" target="_blank" rel="noopener">Articles on Substack</a>`;
+    if (findsData) renderFinds(findsData);
+  }).catch(() => {});
+  $$("[data-fb]").forEach((b) => b.addEventListener("click", () => {
+    countEvent("feedback-" + b.dataset.fb);
+    $("#fb-q").textContent = b.dataset.fb === "yes" ? "Thanks! What would make it more useful?" : "Thanks for saying so. What would make it better?";
+    $$("[data-fb]").forEach((x) => { x.hidden = true; });
+    if (!site.feedback_form_url) $("#fb-q").textContent = "Thanks for the feedback!";
+  }));
 
   // ---------- projections ----------
   let players = [], pos = "ALL", showAll = false, injuries = {}, projWeek = null, injWeek = null;
   const OUT = new Set(["Out", "IR"]);
   const SHORT = { Questionable: "Q", Doubtful: "D", Out: "OUT", IR: "IR" };
   const injuryOf = (p) => (injWeek === projWeek ? injuries[p.player_id] : null);
+  const isOut = (p) => { const j = injuryOf(p); return j && OUT.has(j.status); };
+  const badgeOf = (p) => { const j = injuryOf(p); return j ? `<span class="inj inj-${j.status}" title="${esc(j.status)}${j.injury ? " (" + esc(j.injury) + ")" : ""}">${SHORT[j.status] || ""}</span>` : ""; };
   function renderProjections() {
     const q = $("#q").value.trim().toLowerCase();
     const showOut = $("#show-out").checked;
-    const nOut = players.filter((p) => { const j = injuryOf(p); return j && OUT.has(j.status); }).length;
+    const nOut = players.filter(isOut).length;
     $("#show-out-label").textContent = `Show players ruled out (${nOut})`;
-    let rows = players.filter((p) => (pos === "ALL" || p.position === pos) &&
-      (showOut || !(injuryOf(p) && OUT.has(injuryOf(p).status))) &&
+    let rows = players.filter((p) => (pos === "ALL" || p.position === pos) && (showOut || !isOut(p)) &&
       (!q || p.name.toLowerCase().includes(q) || p.team.toLowerCase() === q || p.team.toLowerCase().includes(q)));
     const total = rows.length;
     const limit = q ? 200 : (pos === "ALL" ? 50 : 30);
@@ -334,11 +513,9 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     $("#p-body").innerHTML = rows.map((p, i) => {
       const d = p.projection - p.recent_avg;
       const cls = p.matchup === "Very tough" ? "Very" : p.matchup;
-      const j = injuryOf(p);
-      const badge = j ? `<span class="inj inj-${j.status}" title="${esc(j.status)}${j.injury ? " (" + esc(j.injury) + ")" : ""}">${SHORT[j.status] || ""}</span>` : "";
-      return `<tr class="${j && OUT.has(j.status) ? "out" : ""}">
+      return `<tr class="${isOut(p) ? "out" : ""}">
         <td class="rank">${i + 1}</td>
-        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span>${badge}</td>
+        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span>${badgeOf(p)}</td>
         <td class="opp">${esc(p.team)} vs ${esc(p.opponent)}</td>
         <td class="hide-sm"><span class="pill m-${cls}">${esc(p.matchup)}</span></td>
         <td class="num"><div class="projcell"><span class="projbar"><i style="width:${(p.projection / max * 100).toFixed(1)}%"></i></span><span class="proj">${fmt(p.projection)}</span></div></td>
@@ -349,9 +526,16 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     $("#p-more").hidden = showAll || total <= limit;
     $("#p-more").textContent = `Show all ${total} players`;
   }
-  document.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+  function renderTop4() {
+    if (!players.length) return;
+    $("#top4").innerHTML = ["QB", "RB", "WR", "TE"].map((ps) => {
+      const top = players.filter((p) => p.position === ps && !isOut(p)).slice(0, 5);
+      return `<div class="mini"><h3>${ps}</h3><ol>${top.map((p) => `<li><span class="player">${esc(p.name)}${badgeOf(p)}</span><span class="nums">${fmt(p.projection)}</span></li>`).join("")}</ol></div>`;
+    }).join("");
+  }
+  $$(".chip[data-pos]").forEach((b) => b.addEventListener("click", () => {
     pos = b.dataset.pos; showAll = false;
-    document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b));
+    $$(".chip[data-pos]").forEach((c) => c.setAttribute("aria-pressed", c === b));
     renderProjections();
   }));
   $("#q").addEventListener("input", renderProjections);
@@ -361,44 +545,51 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
   getJSON("data/injuries.json").then((inj) => {
     injuries = inj.players || {}; injWeek = inj.week;
     $("#inj-updated").textContent = `Injury report last checked ${when(inj.updated_at)}.`;
-    if (players.length) renderProjections();
+    if (players.length) { renderProjections(); renderTop4(); }
   }).catch(() => {});
 
   getJSON("data/projections/latest.json").then((d) => {
     players = d.players; projWeek = d.week;
-    $("#p-week").textContent = d.week;
+    $$(".js-week").forEach((el) => { el.textContent = d.week; });
     const kicked = new Date() >= new Date(d.first_kickoff);
-    $("#week-label").textContent = `NFL ${d.season} · Week ${d.week}`;
-    $("#live-label").textContent = kicked ? "Week in progress" : "Live";
-    $("#p-sub").textContent = `PPR scoring. Posted ${when(d.generated_at)}, before the first kickoff (${when(d.first_kickoff)}). ${d.players.length} players projected.`;
-    renderProjections();
+    const liveTxt = kicked ? "Week in progress" : "Live";
+    $("#live-label").textContent = liveTxt;
+    $$(".js-live").forEach((el) => { el.textContent = liveTxt; });
+    $("#week-label").textContent = `NFL ${d.season} · Week ${d.week} projections are up`;
+    $("#cta-proj").textContent = `See week ${d.week} projections`;
+    $("#p-sub").textContent = `Posted ${when(d.generated_at)}, before the first kickoff (${when(d.first_kickoff)}). ${d.players.length} players projected.`;
+    $("#top-sub").textContent = `PPR points, posted before kickoff. Players ruled out are left off.`;
+    renderProjections(); renderTop4();
   }).catch(() => { $("#p-sub").textContent = "Projections couldn't load. Try refreshing the page."; });
-
 
   // ---------- weekly report card ----------
   const POS_ORDER = ["QB", "RB", "WR", "TE"];
-  function reportCard(w, note, weeksWithReport) {
-    const r = w.report, win = w.model_mae < w.baseline_mae, closer = w.model_closer_pct;
-    const verdict = win
+  function verdictOf(w) {
+    const win = w.model_mae < w.baseline_mae, closer = w.model_closer_pct;
+    const text = win
       ? (closer >= 50
-          ? `The model beat the benchmark: a smaller average miss (${fmt(w.model_mae, 2)} vs ${fmt(w.baseline_mae, 2)} points) and closer on ${fmt(closer, 0)}% of players.`
+          ? `The model beat the last-3 benchmark: a smaller average miss (${fmt(w.model_mae, 2)} vs ${fmt(w.baseline_mae, 2)} points) and closer on ${fmt(closer, 0)}% of players.`
           : `The model won on average miss (${fmt(w.model_mae, 2)} vs ${fmt(w.baseline_mae, 2)} points) but was closer on only ${fmt(closer, 0)}% of players. It avoided big misses better, while the benchmark got more close calls right.`)
-      : `The benchmark won this week: its average miss was ${fmt(w.baseline_mae, 2)} points to the model's ${fmt(w.model_mae, 2)}, and the model was closer on ${fmt(closer, 0)}% of players.`;
+      : `The last-3 benchmark won this week: its average miss was ${fmt(w.baseline_mae, 2)} points to the model's ${fmt(w.model_mae, 2)}, and the model was closer on ${fmt(closer, 0)}% of players.`;
+    return { win, text };
+  }
+  function reportCard(w, note, weeksWithReport) {
+    const r = w.report, v = verdictOf(w), closer = w.model_closer_pct;
     const li = (p) => `<li><span><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span></span><span class="nums">${fmt(p.projection)} → ${fmt(p.actual)}</span></li>`;
     const list = (title, arr) => `<div class="plist"><h4>${title}</h4><ol>${(arr || []).map(li).join("")}</ol></div>`;
     const posRows = POS_ORDER.filter((p) => r.by_position[p]).map((p) => {
       const b = r.by_position[p], pw = b.model_mae < b.baseline_mae;
-      return `<tr><td>${p}</td><td class="num hide-sm">${b.n}</td><td class="num">${fmt(b.model_mae, 2)}</td><td class="num">${fmt(b.baseline_mae, 2)}</td><td class="num ${pw ? "up" : "down"}">${pw ? "Model" : "Benchmark"}</td></tr>`;
+      return `<tr><td>${p}</td><td class="num hide-sm">${b.n}</td><td class="num">${fmt(b.model_mae, 2)}</td><td class="num">${fmt(b.baseline_mae, 2)}</td><td class="num ${pw ? "up" : "down"}">${pw ? "Model" : "Last 3"}</td></tr>`;
     }).join("");
     const picker = weeksWithReport.length > 1
       ? `<select id="rc-week" aria-label="Choose a week">${weeksWithReport.slice().reverse().map((x) => `<option value="${x.week}"${x.week === w.week ? " selected" : ""}>Week ${x.week}${x.type === "live" ? "" : " (backtest)"}</option>`).join("")}</select>` : "";
     return `<div class="report">
       <div class="report-head"><h3>Week ${w.week} report card ${w.type === "live" ? '<span class="pill m-Great" style="vertical-align:4px">Live</span>' : '<span class="pill" style="color:var(--ink-2);background:var(--paper);vertical-align:4px">Backtest</span>'}</h3>${picker}</div>
-      <p class="verdict"><strong>${win ? "Model wins." : "Benchmark wins."}</strong> ${verdict}</p>
+      <p class="verdict"><strong>${v.win ? "Model wins." : "Benchmark wins."}</strong> ${v.text}</p>
       ${note ? `<p class="take"><b>Luca's take</b>${esc(note)}</p>` : ""}
       <div class="stat-row rc">
         <div class="stat"><div class="v">${fmt(w.model_mae, 2)}</div><div class="k">Model average miss (points)</div></div>
-        <div class="stat"><div class="v">${fmt(w.baseline_mae, 2)}</div><div class="k">Benchmark average miss</div></div>
+        <div class="stat"><div class="v">${fmt(w.baseline_mae, 2)}</div><div class="k">Last-3 benchmark average miss</div></div>
         <div class="stat"><div class="v">${fmt(closer, 0)}%</div><div class="k">Players where the model was closer</div></div>
       </div>
       <div class="grid3">
@@ -406,7 +597,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
         ${list("Biggest surprises", r.outscored)}
         ${list("Biggest letdowns", r.letdowns)}
       </div>
-      <div class="table-box"><table><thead><tr><th>Position</th><th class="num hide-sm">Graded</th><th class="num">Model miss</th><th class="num">Benchmark miss</th><th class="num">Better</th></tr></thead><tbody>${posRows}</tbody></table></div>
+      <div class="table-box"><table><thead><tr><th>Position</th><th class="num hide-sm">Graded</th><th class="num">Model miss</th><th class="num">Last-3 miss</th><th class="num">Better</th></tr></thead><tbody>${posRows}</tbody></table></div>
       <p class="foot-note" style="margin:0">Each player shows projected → actual PPR points. Best calls and letdowns include only players projected for 12+ points; surprises include everyone.</p>
     </div>`;
   }
@@ -418,56 +609,139 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     const sel = $("#rc-week");
     if (sel) sel.addEventListener("change", () => renderReport(weeks, notes, Number(sel.value)));
   }
+  function homeReport(w, note) {
+    if (!w) { $("#home-report").innerHTML = "No graded weeks yet."; return; }
+    const v = verdictOf(w), r = w.report;
+    const best = r && r.best_calls && r.best_calls[0], miss = r && r.outscored && r.outscored[0];
+    $("#home-report").className = "report";
+    $("#home-report").innerHTML = `
+      <div class="report-head"><h3>Week ${w.week}</h3></div>
+      <p class="verdict"><strong>${v.win ? "Model wins." : "Benchmark wins."}</strong> ${v.text}</p>
+      ${note ? `<p class="take"><b>Luca's take</b>${esc(note)}</p>` : ""}
+      ${best && miss ? `<div class="grid2" style="gap:12px">
+        <div class="plist"><h4>Best call</h4><ol><li><span><span class="player">${esc(best.name)}</span><span class="pos">${best.position}</span></span><span class="nums">${fmt(best.projection)} → ${fmt(best.actual)}</span></li></ol></div>
+        <div class="plist"><h4>Biggest surprise</h4><ol><li><span><span class="player">${esc(miss.name)}</span><span class="pos">${miss.position}</span></span><span class="nums">${fmt(miss.projection)} → ${fmt(miss.actual)}</span></li></ol></div>
+      </div>` : ""}
+      <div><a href="#leaderboard">See the full report card →</a></div>`;
+  }
 
-  // ---------- scorecard ----------
-  function barChart(weeks) {
-    const W = 640, H = 220, padL = 36, padR = 8, padT = 12, padB = 34;
-    const maxV = Math.ceil(Math.max(...weeks.flatMap((w) => [w.model_mae, w.baseline_mae])) + 0.5);
-    const y = (v) => padT + (H - padT - padB) * (1 - v / maxV);
-    const slot = (W - padL - padR) / weeks.length, bw = Math.min(26, slot / 3);
+  // ---------- leaderboard ----------
+  let scorecard = null, scope = "live";
+  const STYLE = { model: { c: "var(--turf)", w: 3, d: "" }, last3: { c: "var(--ink-2)", w: 1.6, d: "" },
+    season: { c: "var(--ink-2)", w: 1.6, d: "6 4" }, last_game: { c: "var(--bar-base)", w: 1.6, d: "2 3" },
+    pos_avg: { c: "var(--bar-base)", w: 1.6, d: "8 3 2 3" } };
+  function lbRows(sc) { return (scorecard.weeks || []).filter((w) => w.leaderboard && (sc === "all" || w.type === "live")); }
+  function lineChart(rows, methods) {
+    if (rows.length < 2) return `<div class="empty">The week-by-week chart appears once two weeks are graded in this view.</div>`;
+    const W = 520, H = 230, padL = 30, padR = 12, padT = 12, padB = 40;
+    const vals = rows.flatMap((w) => methods.map((m) => w.leaderboard[m.key].mae));
+    const lo = Math.floor(Math.min(...vals) - 0.3), hi = Math.ceil(Math.max(...vals) + 0.3);
+    const x = (i) => padL + (W - padL - padR) * (rows.length === 1 ? 0.5 : i / (rows.length - 1));
+    const y = (v) => padT + (H - padT - padB) * (1 - (v - lo) / (hi - lo));
     let g = "";
-    for (let t = 0; t <= maxV; t += 1) {
-      g += `<line x1="${padL}" x2="${W - padR}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/>`;
-      g += `<text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+    for (let t = lo; t <= hi; t += 0.5) {
+      g += `<line x1="${padL}" x2="${W - padR}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/>`;
+      if (Number.isInteger(t)) g += `<text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
     }
-    weeks.forEach((w, i) => {
-      const cx = padL + slot * i + slot / 2;
-      g += `<rect x="${cx - bw - 2}" y="${y(w.model_mae)}" width="${bw}" height="${y(0) - y(w.model_mae)}" fill="var(--bar-model)" rx="2"><title>Model ${w.model_mae}</title></rect>`;
-      g += `<rect x="${cx + 2}" y="${y(w.baseline_mae)}" width="${bw}" height="${y(0) - y(w.baseline_mae)}" fill="var(--bar-base)" rx="2"><title>Benchmark ${w.baseline_mae}</title></rect>`;
-      g += `<text x="${cx}" y="${H - padB + 16}" text-anchor="middle" class="lbl-strong">Wk ${w.week}</text>`;
-      g += `<text x="${cx}" y="${H - padB + 29}" text-anchor="middle">${w.type}</text>`;
+    rows.forEach((w, i) => {
+      g += `<text x="${x(i)}" y="${H - padB + 16}" text-anchor="middle" class="lbl-strong">Wk ${w.week}</text>`;
+      g += `<text x="${x(i)}" y="${H - padB + 29}" text-anchor="middle">${w.type}</text>`;
     });
-    return `<div class="legend"><span><i style="background:var(--bar-model)"></i>Model average miss</span><span><i style="background:var(--bar-base)"></i>Benchmark average miss (last-3 average)</span></div>
-      <div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block" role="img" aria-label="Average miss per week, model versus benchmark">${g}</svg></div>`;
+    [...methods.filter((m) => m.key !== "model"), ...methods.filter((m) => m.key === "model")].forEach((m) => {
+      const st = STYLE[m.key];
+      const pts = rows.map((w, i) => `${x(i)},${y(w.leaderboard[m.key].mae)}`).join(" ");
+      g += `<polyline points="${pts}" fill="none" stroke="${st.c}" stroke-width="${st.w}" stroke-dasharray="${st.d}"/>`;
+      rows.forEach((w, i) => { g += `<circle cx="${x(i)}" cy="${y(w.leaderboard[m.key].mae)}" r="${m.key === "model" ? 4 : 2.5}" fill="${st.c}"><title>${esc(m.label)}, week ${w.week}: ${w.leaderboard[m.key].mae.toFixed(2)}</title></circle>`; });
+    });
+    const legend = methods.map((m) => { const st = STYLE[m.key]; return `<span><svg width="22" height="10" style="vertical-align:0;margin-right:6px"><line x1="0" x2="22" y1="5" y2="5" stroke="${st.c}" stroke-width="${st.w}" stroke-dasharray="${st.d}"/></svg>${esc(m.label)}</span>`; }).join("");
+    return `<div class="legend" style="margin-bottom:6px">${legend}</div><div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block" role="img" aria-label="Average miss per week for each method">${g}</svg></div>`;
+  }
+  function renderLeaderboard() {
+    const L = scorecard.leaderboard || {};
+    const hasLive = L.live && L.live.weeks;
+    if (!hasLive) scope = "all";
+    $("#lb-scope").innerHTML = [["live", `Live weeks${hasLive ? ` (${L.live.weeks})` : ""}`], ["all", `All weeks, with backtest${L.all ? ` (${L.all.weeks})` : ""}`]]
+      .filter(([k]) => k === "all" || hasLive)
+      .map(([k, label]) => `<button class="chip" data-scope="${k}" aria-pressed="${k === scope}">${label}</button>`).join("");
+    $$("[data-scope]").forEach((b) => b.addEventListener("click", () => { scope = b.dataset.scope; renderLeaderboard(); }));
+    const S = L[scope];
+    if (!S) { $("#lb-body").innerHTML = `<tr><td colspan="7">No graded weeks yet.</td></tr>`; return; }
+    const ms = S.methods, model = ms.find((m) => m.key === "model"), rank = ms.indexOf(model) + 1, best = ms[0];
+    const bestR2 = ms.reduce((a, b) => (b.r2 > a.r2 ? b : a));
+    let v;
+    if (rank === 1) v = `<strong>The model has the smallest average miss</strong> over ${S.weeks} ${S.weeks === 1 ? "week" : "weeks"}: ${fmt(model.mae, 2)} points, ahead of the ${lower1(ms[1].label)} (${fmt(ms[1].mae, 2)}).`;
+    else v = `<strong>The ${lower1(best.label)} has the smallest average miss</strong> over ${S.weeks} ${S.weeks === 1 ? "week" : "weeks"} (${fmt(best.mae, 2)} points). The model ranks ${ord(rank)} of ${ms.length} at ${fmt(model.mae, 2)}${bestR2.key === "model" ? ", though it explains more of the scoring than any other method" : ""}.`;
+    if (scope === "live" && S.weeks < 4) v += ` That's only ${S.weeks} live ${S.weeks === 1 ? "week" : "weeks"}, so treat it as early.`;
+    $("#lb-verdict").innerHTML = v;
+    $("#lb-body").innerHTML = ms.map((m, i) => `<tr class="${m.key === "model" ? "me" : ""}">
+      <td class="rank">${i + 1}</td>
+      <td class="wrap-sm"><span class="player">${esc(m.label)}</span><span class="method-about">${esc(m.about)}</span></td>
+      <td class="num">${fmt(m.mae, 2)}</td>
+      <td class="num">${fmt(m.big_pct, 0)}%</td>
+      <td class="num hide-sm">${m.pick_pct == null ? "–" : fmt(m.pick_pct, 0) + "%"}</td>
+      <td class="num hide-sm">${fmt(m.r2, 2)}</td>
+      <td class="num">${m.weeks_best}</td></tr>`).join("");
+    $("#lb-defs").innerHTML = `<strong>Average miss:</strong> how far off the guess was, in PPR points, across ${S.players_graded.toLocaleString()} graded player-games. <strong>Big misses:</strong> share of players missed by ${L.big_miss_points}+ points. <strong>Picks the higher scorer:</strong> for two players at the same position (both averaging ${L.relevant_min}+ points), how often the method ranked them in the right order, the start-or-sit question. <strong>R²:</strong> share of the week's scoring differences the method explains. <strong>Weeks best:</strong> weeks with the smallest average miss.`;
+    const rows = lbRows(scope);
+    $("#lb-chart").innerHTML = lineChart(rows, ms);
+    const simple = ms.filter((m) => m.key !== "model")[0];
+    $("#fail-best-h").textContent = simple.label;
+    $("#fail-sub").textContent = `Average miss by position, against the best simple method in these weeks (${lower1(simple.label)}).`;
+    $("#fail-body").innerHTML = POS_ORDER.filter((p) => model.by_position[p] != null).map((p) => {
+      const a = model.by_position[p], b = simple.by_position[p], win = a < b;
+      return `<tr><td>${p}</td><td class="num">${fmt(a, 2)}</td><td class="num">${fmt(b, 2)}</td><td class="num ${win ? "up" : "down"}">${win ? "Model" : simple.label}</td></tr>`;
+    }).join("");
+  }
+  function renderBoard() {
+    const L = scorecard.leaderboard || {};
+    const S = (L.live && L.live.weeks) ? L.live : L.all;
+    if (!S) { $("#b-note").textContent = "The leaderboard fills in on the next weekly update."; return; }
+    const isLive = S === L.live;
+    const ms = S.methods, model = ms.find((m) => m.key === "model"), rank = ms.indexOf(model) + 1, best = ms[0];
+    $("#b-rank").textContent = ord(rank);
+    $("#b-rank-s").textContent = isLive ? "by average miss, live weeks" : "by average miss, backtest";
+    $("#b-mae").textContent = fmt(model.mae, 2);
+    $("#b-mae-s").textContent = rank === 1 ? `next best: ${fmt(ms[1].mae, 2)}` : `best: ${fmt(best.mae, 2)} (${lower1(best.label)})`;
+    $("#b-weeks").textContent = S.weeks;
+    $("#b-weeks-s").textContent = isLive ? "live, since launch" : "backtest";
+    $("#b-players").textContent = S.players_graded.toLocaleString();
+    const all = L.all;
+    const allRank = all ? all.methods.findIndex((m) => m.key === "model") + 1 : null;
+    $("#b-note").textContent = isLive && all ? `Including the backtest weeks before launch, the model ranks ${ord(allRank)} of ${all.methods.length} over ${all.weeks} weeks. Updated every Wednesday.` : "Updated every Wednesday.";
   }
 
   getJSON("data/scorecard.json").then((s) => {
+    scorecard = s;
     const weeks = s.weeks || [];
-    const live = s.live_summary, bt = s.backtest_summary;
-    const use = live || bt;
-    if (use) {
-      $("#b-wins").textContent = `${use.model_wins} of ${use.weeks}`;
-      $("#b-wins-s").textContent = live ? "live weeks" : "backtest weeks";
-      $("#b-mae").textContent = fmt(use.model_mae, 2);
-      $("#b-base").textContent = fmt(use.baseline_mae, 2);
-    }
-    $("#b-note").textContent = live
-      ? `Live record since launch. Backtest before launch: ${bt ? `${bt.model_wins} of ${bt.weeks} weeks` : "none"}.`
-      : "Live grading starts with the first full week after launch. Numbers shown are a backtest of earlier 2026 weeks.";
-    $("#s-chart").innerHTML = weeks.length ? barChart(weeks)
-      : `<div class="empty">No graded weeks yet. The first grades appear the Wednesday after the first projected week.</div>`;
-    $("#s-body").innerHTML = weeks.map((w) => {
-      const win = w.model_mae < w.baseline_mae;
+    renderBoard(); renderLeaderboard();
+    $("#s-body").innerHTML = weeks.slice().reverse().map((w) => {
+      const lb = w.leaderboard, bestKey = lb ? Object.keys(lb).reduce((a, b) => (lb[b].mae < lb[a].mae ? b : a)) : null;
+      const bestLabel = bestKey ? ((s.leaderboard && s.leaderboard.all && s.leaderboard.all.methods.find((m) => m.key === bestKey)) || {}).label : "–";
       return `<tr><td>Week ${w.week}</td><td>${w.type === "live" ? '<span class="pill m-Great">Live</span>' : '<span class="pill" style="color:var(--ink-2);background:var(--paper)">Backtest</span>'}</td>
-        <td class="num">${w.n_graded}</td><td class="num">${fmt(w.model_mae, 2)}</td><td class="num">${fmt(w.baseline_mae, 2)}</td>
-        <td class="num hide-sm">${fmt(w.model_r2, 3)}</td><td class="num hide-sm">${fmt(w.baseline_r2, 3)}</td>
-        <td class="num ${win ? "up" : "down"}">${win ? "Model" : "Benchmark"}</td></tr>`;
+        <td class="num">${w.n_graded}</td><td class="num">${fmt(w.model_mae, 2)}</td><td class="num hide-sm">${fmt(w.baseline_mae, 2)}</td>
+        <td class="num ${bestKey === "model" ? "up" : ""}">${esc(bestLabel || "–")}</td></tr>`;
     }).join("");
-    getJSON("data/notes.json").catch(() => ({})).then((n) => renderReport(weeks, (n && n.weeks) || {}));
+    getJSON("data/notes.json").catch(() => ({})).then((n) => {
+      const notes = (n && n.weeks) || {};
+      renderReport(weeks, notes);
+      const lastW = weeks.filter((x) => x.report).slice(-1)[0];
+      homeReport(lastW, lastW ? notes[String(lastW.week)] : null);
+    });
     if (s.updated_at) $("#f-updated").textContent = "Updated " + when(s.updated_at);
-  }).catch(() => { $("#b-note").textContent = "The season record couldn't load. Try refreshing the page."; });
+  }).catch(() => { $("#b-note").textContent = "The record couldn't load. Try refreshing the page."; });
 
-  // ---------- research ----------
+  // ---------- research + findings ----------
+  let findsData = null;
+  function renderFinds(r) {
+    $("#finds").innerHTML = (r.highlights || []).map((h) => {
+      return `<article class="find">
+        <div class="big">${esc(h.stat)}</div>
+        <h3>${esc(h.title)}</h3>
+        <p>${esc(h.text)}</p>
+        <div class="links">${h.article ? `<a href="${esc(h.article)}" target="_blank" rel="noopener">Read the article →</a>` : `<a href="#research">See the research →</a>`}</div>
+      </article>`;
+    }).join("");
+  }
   function svgWrap(w, h, inner, label) {
     return `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block" role="img" aria-label="${esc(label)}">${inner}</svg>`;
   }
@@ -526,14 +800,16 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
     },
   };
   getJSON("data/research.json").then((r) => {
+    findsData = r;
     $("#repo-link").href = r.repo;
+    renderFinds(r);
     $("#r-grid").innerHTML = r.projects.map((p) => `<article class="card">
       <span class="tag">${esc(p.sport)}</span>
       <h3>${esc(p.title)}</h3>
       <p class="q">${esc(p.question)}</p>
       <p class="finding">${esc(p.finding)}</p>
       ${charts[p.chart] ? charts[p.chart](p.data) : ""}
-      <div class="links"><a href="${r.repo}/tree/main/${p.folder.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">Code and full report →</a></div>
+      <div class="links"><a href="${r.repo}/tree/main/${p.folder.split("/").map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">Code and full report →</a>${p.article ? ` · <a href="${esc(p.article)}" target="_blank" rel="noopener">Article →</a>` : ""}</div>
     </article>`).join("");
   }).catch(() => { $("#r-grid").innerHTML = `<div class="empty">Research summaries couldn't load. Try refreshing the page.</div>`; });
 })();

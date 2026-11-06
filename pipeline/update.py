@@ -4,7 +4,8 @@ update.py -- weekly pipeline for the live projections page.
 Every run it:
   1. Downloads the latest nflverse weekly player stats and schedule.
   2. GRADES any past projections whose games have now been played
-     (model vs. the naive "recent average" baseline).
+     (model vs. the naive "recent average" baseline), and scores the model
+     against several simple pre-game baselines for the public leaderboard.
   3. Fills in a retroactive BACKTEST for earlier weeks of the season
      that were never projected live (clearly labeled as such).
   4. Trains the model on everything available and PROJECTS the next
@@ -266,6 +267,110 @@ def week_report(m):
     }
 
 
+# ---------------------------------------------------------------- leaderboard
+
+# Every method uses only information available before the week's games.
+METHODS = [
+    {"key": "model", "label": "My model",
+     "about": "Linear regression on recent form, usage and the next opponent."},
+    {"key": "last3", "label": "Last 3 games average",
+     "about": "The player's average over his last three games. The site's main benchmark."},
+    {"key": "season", "label": "Season average",
+     "about": "The player's average over every game he has played this season."},
+    {"key": "last_game", "label": "Last game",
+     "about": "Whatever the player scored in his most recent game."},
+    {"key": "pos_avg", "label": "Position average",
+     "about": "Every player at a position gets the same number: the typical season average at that position."},
+]
+BIG_MISS = 10          # points
+RELEVANT_MIN = 8       # season average needed to count in the "pick the better player" test
+
+
+def method_predictions(proj_players, stats, season, week):
+    """Each method's pre-game prediction for every projected player."""
+    p = pd.DataFrame(proj_players)
+    hist = stats[(stats["season"] == season) & (stats["week"] < week)].sort_values("week")
+    g = hist.groupby("player_id")["fantasy_points_ppr"]
+    p = p.merge(g.mean().rename("season").reset_index(), on="player_id", how="left")
+    p = p.merge(g.last().rename("last_game").reset_index(), on="player_id", how="left")
+    p["model"] = p["projection"]
+    p["last3"] = p["recent_avg"]
+    p["season"] = p["season"].fillna(p["recent_avg"])
+    p["last_game"] = p["last_game"].fillna(p["recent_avg"])
+    p["pos_avg"] = p.groupby("position")["season"].transform("mean")
+    return p
+
+
+def pick_counts(df, col):
+    """Pairs of same-position relevant players, and how many the method ordered correctly."""
+    pairs = correct = 0.0
+    for _, g in df[df["season"] >= RELEVANT_MIN].groupby("position"):
+        a, pr = g["actual"].to_numpy(), g[col].to_numpy()
+        da, dp = np.sign(a[:, None] - a[None, :]), np.sign(pr[:, None] - pr[None, :])
+        upper = np.triu(np.ones_like(da, dtype=bool), 1) & (da != 0)
+        pairs += upper.sum()
+        correct += ((dp == da) & upper).sum() + 0.5 * ((dp == 0) & upper).sum()
+    return int(pairs), float(correct)
+
+
+def leaderboard_week(proj_players, actual_week, stats, season, week):
+    p = method_predictions(proj_players, stats, season, week)
+    a = actual_week[["player_id", "fantasy_points_ppr"]].rename(columns={"fantasy_points_ppr": "actual"})
+    m = p.merge(a, on="player_id", how="inner")
+    if len(m) < 20:
+        return None
+    out = {}
+    for meth in METHODS:
+        k = meth["key"]
+        err = (m["actual"] - m[k]).abs()
+        pairs, correct = pick_counts(m, k)
+        out[k] = {
+            "n": int(len(m)), "abs_sum": round(float(err.sum()), 2),
+            "mae": round(float(err.mean()), 3),
+            "r2": round(float(r2_score(m["actual"], m[k])), 3),
+            "big": int((err >= BIG_MISS).sum()),
+            "pairs": pairs, "correct": round(correct, 1),
+            "pos": {pos: [int(len(e)), round(float(e.sum()), 2)]
+                    for pos, e in err.groupby(m["position"])},
+        }
+    return out
+
+
+def summarize_leaderboard(rows):
+    """Combine weekly results: player-weighted misses, pooled pairs, weeks each method had the lowest miss."""
+    rows = [r for r in rows if r.get("leaderboard")]
+    if not rows:
+        return None
+    best = {}
+    for r in rows:
+        lb = r["leaderboard"]
+        k = min(lb, key=lambda key: lb[key]["mae"])
+        best[k] = best.get(k, 0) + 1
+    out = []
+    for meth in METHODS:
+        k = meth["key"]
+        ws = [r["leaderboard"][k] for r in rows]
+        n = sum(w["n"] for w in ws)
+        pairs = sum(w["pairs"] for w in ws)
+        pos = {}
+        for w in ws:
+            for ps, (pn, pa) in w["pos"].items():
+                pn0, pa0 = pos.get(ps, (0, 0.0))
+                pos[ps] = (pn0 + pn, pa0 + pa)
+        out.append({
+            "key": k, "label": meth["label"], "about": meth["about"],
+            "mae": round(sum(w["abs_sum"] for w in ws) / n, 3),
+            "r2": round(float(np.mean([w["r2"] for w in ws])), 3),
+            "pick_pct": round(100 * sum(w["correct"] for w in ws) / pairs, 1) if pairs else None,
+            "big_pct": round(100 * sum(w["big"] for w in ws) / n, 1),
+            "weeks_best": best.get(k, 0),
+            "by_position": {ps: round(a / c, 2) for ps, (c, a) in pos.items()},
+        })
+    out.sort(key=lambda x: x["mae"])
+    return {"weeks": len(rows), "players_graded": sum(r["leaderboard"]["model"]["n"] for r in rows),
+            "methods": out}
+
+
 def players_payload(cand):
     out = cand.sort_values("projection", ascending=False)
     return [{
@@ -377,9 +482,10 @@ def main():
             scorecard["weeks"].append(res)
             print(f"  backtest week {w}: model MAE {res['model_mae']} vs baseline {res['baseline_mae']}")
 
-    # 3) add report-card details to weeks graded before reports existed (grades stay as they were)
+    # 3) add report-card and leaderboard details to any graded week missing them
+    #    (the original grades are never changed)
     for row in scorecard["weeks"]:
-        if "report" in row:
+        if "report" in row and "leaderboard" in row:
             continue
         w = row["week"]
         actual = stats[(stats["season"] == season) & (stats["week"] == w)]
@@ -390,12 +496,23 @@ def main():
             proj = players_payload(project_week(feat, defense, schedule, season, w, rosters)[0])
         else:
             continue
-        res = grade(proj, actual)
-        if res:
-            row["report"] = res["report"]
-            print(f"  added report card for week {w}")
+        if "report" not in row:
+            res = grade(proj, actual)
+            if res:
+                row["report"] = res["report"]
+                print(f"  added report card for week {w}")
+        if "leaderboard" not in row:
+            lb = leaderboard_week(proj, actual, stats, season, w)
+            if lb:
+                row["leaderboard"] = lb
+                print(f"  added leaderboard for week {w}")
 
     scorecard["weeks"].sort(key=lambda r: r["week"])
+    scorecard["leaderboard"] = {
+        "live": summarize_leaderboard([r for r in scorecard["weeks"] if r["type"] == "live"]),
+        "all": summarize_leaderboard(scorecard["weeks"]),
+        "big_miss_points": BIG_MISS, "relevant_min": RELEVANT_MIN,
+    }
     for kind in ["live", "backtest"]:
         rows = [r for r in scorecard["weeks"] if r["type"] == kind]
         if rows:
