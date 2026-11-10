@@ -7,6 +7,13 @@
 <title>Luca's Sports Lab</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Weekly NFL fantasy projections for every QB, RB, WR and TE, graded in public against simple baselines. Plus sports analytics research by Luca Martini.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lmartini27.github.io/">
+<meta property="og:title" content="Luca's Sports Lab: fantasy projections, graded in public">
+<meta property="og:description" content="Weekly projections for every QB, RB, WR and TE with 80% ranges, a start/sit tool, and a public leaderboard against simple baselines.">
+<meta property="og:image" content="https://lmartini27.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -224,6 +231,76 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   #view-leaderboard th, #view-leaderboard td { padding-inline: 8px; }
 }
 @media (max-width: 340px) { .top4 { grid-template-columns: 1fr; } }
+/* ---- projections v2 ---- */
+.opp-note { display: block; font: 12px/1.3 var(--body); color: var(--ink-2); margin-top: 2px; }
+.rng { font-family: var(--mono); color: var(--ink-2); white-space: nowrap; }
+.show-sm { display: none; }
+tr.prow { cursor: pointer; }
+tr.prow:hover td { background: var(--turf-soft); }
+tr.prow.open td { background: var(--turf-soft); }
+.expand { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+.expand .caret { display: inline-block; width: 1em; color: var(--ink-2); transition: transform .15s; }
+tr.open .expand .caret { transform: rotate(90deg); }
+tr.why-row > td { background: var(--sheet); padding: 14px 16px 18px; white-space: normal; }
+tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 28px; width: 0; min-width: 100%; box-sizing: border-box; }
+.sm-inline { display: none; }
+.why p { margin: 0 0 8px; max-width: 60ch; }
+.why .ctx { color: var(--ink-2); font-size: 14px; }
+.contrib { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.contrib h4 { font: 500 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 4px; }
+.crow { display: grid; grid-template-columns: 11.5em minmax(0, 1fr) 3.4em; align-items: center; gap: 8px; }
+.cbar { position: relative; height: 10px; }
+.cbar::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--line); }
+.cbar i { position: absolute; top: 0; height: 10px; border-radius: 2px; }
+.cbar i.pos { left: 50%; background: var(--turf); }
+.cbar i.neg { right: 50%; background: var(--bar-base); }
+.cval { font-family: var(--mono); text-align: right; }
+.crow.total { border-top: 1px solid var(--line); padding-top: 6px; font-weight: 600; }
+/* ---- start/sit ---- */
+.cmp-pick { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; margin: 16px 0 20px; max-width: 760px; }
+.cmp-pick input { width: 100%; box-sizing: border-box; font: 15px var(--body); padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); color: var(--ink); }
+.cmp-vs { font: 800 18px/1 var(--display); color: var(--ink-2); }
+.verdict-box { background: var(--sheet); border: 1px solid var(--line); border-left: 4px solid var(--turf); border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; max-width: 760px; }
+.verdict-box .big { font: 800 30px/1.1 var(--display); text-transform: uppercase; }
+.verdict-box p { margin: 6px 0 0; }
+.cmp-cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; max-width: 760px; }
+.pcard { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.pcard.win { border-color: var(--turf); box-shadow: inset 0 3px 0 var(--turf); }
+.pcard h3 { font-size: 18px; margin: 0; }
+.pcard .pv { font: 800 40px/1 var(--display); }
+.pcard .pv small { font: 500 13px var(--body); color: var(--ink-2); margin-left: 6px; }
+.pcard dl { margin: 0; display: grid; grid-template-columns: auto auto; gap: 4px 12px; font-size: 14px; }
+.pcard dt { color: var(--ink-2); }
+.pcard dd { margin: 0; text-align: right; font-family: var(--mono); }
+.rbar { position: relative; height: 26px; }
+.rbar .track { position: absolute; left: 0; right: 0; top: 12px; height: 2px; background: var(--line); }
+.rbar .span { position: absolute; top: 7px; height: 12px; border-radius: 6px; background: var(--turf-soft); border: 1px solid var(--turf); box-sizing: border-box; }
+.rbar .mid { position: absolute; top: 3px; width: 3px; height: 20px; background: var(--turf); border-radius: 2px; transform: translateX(-1.5px); }
+.cmp-warn { color: var(--bad); font-weight: 600; font-size: 14px; }
+.cmp-help { color: var(--ink-2); font-size: 14px; max-width: 70ch; }
+.verify { font-size: 13px; }
+.news { display: block; font: 12px/1.35 var(--body); color: var(--warn); margin-top: 2px; white-space: normal; }
+.tag-back { display: inline-block; font: 600 10px/1 var(--mono); letter-spacing: .04em; padding: 3px 5px; border-radius: 4px; margin-left: 6px; background: var(--warn-bg); color: var(--warn); vertical-align: 2px; }
+.was { display: block; font: 12px var(--mono); color: var(--ink-2); }
+.upd-note { background: var(--warn-bg); color: var(--ink); border-radius: 8px; padding: 10px 14px; margin: 0 0 14px; font-size: 14px; max-width: 80ch; }
+@media (max-width: 600px) {
+  #view-projections .rank, #view-projections .projbar { display: none; }
+  #view-projections td.opp { white-space: normal; min-width: 6.5em; }
+  #view-projections tr.prow > td:nth-child(2) { white-space: normal; }
+  #view-projections .expand { display: inline; }
+  #view-projections th, #view-projections td { padding-left: 8px; padding-right: 8px; }
+  #view-projections .projcell { justify-content: flex-end; }
+  .sm-inline { display: inline; }
+}
+@media (max-width: 760px) {
+  .show-sm { display: block; }
+  .why { grid-template-columns: 1fr; }
+  .cmp-cards { grid-template-columns: 1fr; }
+  .cmp-pick { grid-template-columns: 1fr; }
+  .cmp-vs { text-align: center; }
+  .crow { grid-template-columns: 9.5em minmax(0, 1fr) 3.2em; }
+}
 </style>
 </head>
 <body>
@@ -234,6 +311,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     <nav aria-label="Sections">
       <a href="#home" data-view="home">Home</a>
       <a href="#projections" data-view="projections">Projections</a>
+      <a href="#compare" data-view="compare">Start/Sit</a>
       <a href="#leaderboard" data-view="leaderboard">Leaderboard</a>
       <a href="#research" data-view="research">Research</a>
       <a href="#about" data-view="about">About</a>
@@ -252,6 +330,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
         <p class="lede">Before every NFL week, this site posts fantasy projections for every QB, RB, WR and TE. After the games, they're graded against four simple rules anyone could use, and every result stays up, including the weeks the model loses.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#projections" id="cta-proj">See this week's projections</a>
+          <a class="btn" href="#compare">Start or sit?</a>
           <a class="btn" href="#leaderboard">How accurate is it?</a>
         </div>
       </div>
@@ -310,6 +389,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
         <p class="sub" id="p-sub">Loading…</p>
       </div>
     </div>
+    <p class="upd-note" id="upd-note" hidden></p>
     <div class="controls">
       <div class="chips" role="group" aria-label="Position">
         <button class="chip" data-pos="ALL" aria-pressed="true">All</button>
@@ -324,21 +404,38 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     <div class="table-box">
       <table>
         <thead><tr>
-          <th class="rank">#</th><th>Player</th><th>Matchup</th><th class="hide-sm">Defense</th>
-          <th class="num">Projection</th><th class="num hide-sm">Last 3 avg</th><th class="num">vs avg</th>
+          <th class="rank">#</th><th>Player</th><th>Matchup</th>
+          <th class="num"><span class="hide-sm">Projection</span><span class="sm-inline">Proj.</span></th><th class="num hide-sm" id="th-range">80% range</th><th class="num hide-sm">Last 3</th><th class="num hide-sm">Season</th>
         </tr></thead>
         <tbody id="p-body"></tbody>
       </table>
     </div>
     <div class="more"><button class="btn" id="p-more" type="button">Show all players</button></div>
-    <p class="foot-note">"Defense" rates how many fantasy points the opponent has allowed to that position over its last three games, compared with every defense playing this week. Players on injured reserve or the practice squad aren't projected. The official injury report is checked again Friday and Sunday morning: <span class="inj inj-Questionable">Q</span> questionable, <span class="inj inj-Doubtful">D</span> doubtful, and players ruled out are hidden. Game-day inactives come out 90 minutes before kickoff, so check the news before locking a lineup. <span id="inj-updated"></span></p>
+    <p class="foot-note"><strong>Tap any player</strong> to see what's behind his projection. The projection is the model's middle outcome: he should beat it about half the time. The 80% range covers the outcomes between his 10th and 90th percentile; in testing on 2022–2025, 80.5% of real scores landed inside it. The note under each matchup ranks how many fantasy points the opponent has allowed to that position over its last three games; matchups add almost nothing to accuracy, so treat it as context. Players on injured reserve or the practice squad aren't projected. The official injury report is checked again Friday and Sunday morning: <span class="inj inj-Questionable">Q</span> questionable, <span class="inj inj-Doubtful">D</span> doubtful, and players ruled out are hidden. Game-day inactives come out 90 minutes before kickoff, so check the news before locking a lineup. <span id="inj-updated"></span></p>
+  </section>
+
+  <!-- ================= START / SIT ================= -->
+  <section class="view" id="view-compare" aria-labelledby="h-cmp" hidden>
+    <h2 id="h-cmp" style="margin-top:24px">Start or sit?</h2>
+    <p class="sub">Pick two players to compare their week <span class="js-week">–</span> projections. Works across positions for flex decisions.</p>
+    <div class="cmp-pick">
+      <input id="cmp-a" list="cmp-list" placeholder="First player" autocomplete="off" aria-label="First player">
+      <span class="cmp-vs">vs</span>
+      <input id="cmp-b" list="cmp-list" placeholder="Second player" autocomplete="off" aria-label="Second player">
+      <datalist id="cmp-list"></datalist>
+    </div>
+    <div id="cmp-out"></div>
+    <p class="cmp-help" id="cmp-help">The percentage is how often the model expects each player to outscore the other, based on each player's range of outcomes. It's been honest in testing: across thousands of 2022–2025 matchups, when it said about 60%, the player won about 63% of the time. It uses the injury report through the latest Friday or Sunday update, but not game-day inactives, which come out 90 minutes before kickoff, so check the news before you lock your lineup.</p>
   </section>
 
   <!-- ================= LEADERBOARD ================= -->
   <section class="view" id="view-leaderboard" aria-labelledby="h-lb" hidden>
     <h2 id="h-lb" style="margin-top:24px">Leaderboard</h2>
     <p class="sub">How the model compares with four simple ways to guess a player's score. Every method uses only what was known before kickoff, and every graded player counts, including injuries and blowouts.</p>
-    <div class="chips" role="group" aria-label="Weeks included" id="lb-scope" style="margin-bottom:14px"></div>
+    <div class="controls" style="margin-bottom:6px">
+      <div class="chips" role="group" aria-label="Weeks included" id="lb-scope"></div>
+      <div class="chips" role="group" aria-label="Players included" id="lb-players"></div>
+    </div>
     <p class="lb-verdict" id="lb-verdict"></p>
     <div id="lb-ready">
     <div class="table-box">
@@ -348,6 +445,16 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       </table>
     </div>
     <p class="foot-note" id="lb-defs"></p>
+
+    <div class="lb-block" id="upd-block" hidden>
+      <h3>Injury updates</h3>
+      <div id="upd-body"></div>
+    </div>
+
+    <div class="lb-block" id="ver-block" hidden>
+      <h3>Model versions</h3>
+      <div id="ver-body"></div>
+    </div>
 
     <div class="lb-block">
       <h3>Week by week</h3>
@@ -362,8 +469,9 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       <ul class="fails">
         <li><strong>Players who get hurt or benched mid-game.</strong> A quarterback pulled in the first half scores near zero, and nothing before kickoff predicts it. These make up most of the "big misses."</li>
         <li><strong>Breakout games.</strong> The model leans against streaks, so it is slow to believe a player whose role suddenly grows.</li>
-        <li><strong>Matchups.</strong> The opponent feature adds almost nothing in testing. Treat the Defense column as context, not a reason to start someone.</li>
-        <li><strong>Rookies and players returning from injury</strong> need a game or two before they're projected at all.</li>
+        <li><strong>Matchups.</strong> The opponent feature adds almost nothing in testing. Treat the matchup note as context, not a reason to start someone.</li>
+        <li><strong>Players coming back from an absence</strong> are projected and flagged "BACK." The model lowers them for their first game back, since many play limited snaps, but one game of rust is hard to call. Rookies still need a game before they're projected.</li>
+        <li><strong>Late injury news.</strong> The Friday and Sunday updates use the official injury report, but game-day inactives come out 90 minutes before kickoff, after the last update.</li>
       </ul>
     </div>
     </div>
@@ -373,11 +481,11 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       <div id="s-report" style="margin-top:12px"></div>
       <div class="table-box">
         <table>
-          <thead><tr><th>Week</th><th>Type</th><th class="num">Graded</th><th class="num">Model miss</th><th class="num hide-sm">Last-3 miss</th><th class="num">Best method</th></tr></thead>
+          <thead><tr><th>Week</th><th>Type</th><th class="num">Graded</th><th class="num">Model miss</th><th class="num hide-sm">Last-3 miss</th><th class="num">Best method</th><th class="hide-sm"></th></tr></thead>
           <tbody id="s-body"></tbody>
         </table>
       </div>
-      <p class="foot-note"><strong>Live</strong> weeks were posted before that week's first kickoff; the commit history on GitHub shows exactly when. <strong>Backtest</strong> weeks were run afterward, using only data available before that week, to show how the model would have done before the site launched.</p>
+      <p class="foot-note"><strong>Live</strong> weeks were posted before that week's first kickoff; "Verify" opens that week's file history on GitHub, which shows exactly when it was posted. <strong>Backtest</strong> weeks were run afterward, using only data available before that week, to show how the model would have done before the site launched.</p>
     </div>
   </section>
 
@@ -395,11 +503,14 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
 
     <h3>How the projections work</h3>
     <ul>
-      <li>For each player, the model looks at his last three games this season: fantasy points, targets, carries, receptions and yards.</li>
-      <li>It adds how many points his next opponent has allowed to his position over its last three games.</li>
-      <li>A linear regression trained on every regular-season game since 2021 turns those numbers into a projection. Its main skill is regression to the mean: it trusts a three-game hot streak less than the raw average does.</li>
-      <li>Every Wednesday the site grades last week and posts the new projections automatically. Projections are locked once posted; only the injury flags update later in the week.</li>
+      <li>For each player, the model (version 2, live since week 10) looks at his last three games (fantasy points, targets, carries, receptions and yards), his averages so far this season, and his average last season. It also sees how many points his next opponent has allowed to his position recently.</li>
+      <li>It is trained on every regular-season game since 2021 to predict each player's <strong>middle outcome</strong>: the score he should beat about half the time. Two more models give his 10th and 90th percentile, which make up the 80% range.</li>
+      <li>Its main skill is not overreacting. A three-game hot streak counts, but so do the season-long numbers behind it.</li>
+      <li>It also reads the team's situation for that game from the official injury report and rosters: whether the quarterback who's been starting is ruled out or a regular starter is back, and how much of the team's targets and carries belong to teammates at the same position who are out or returning. Players coming back from an absence are projected too, flagged "BACK".</li>
+      <li>Every Wednesday the site grades last week and posts the new projections automatically. Those are locked and graded. On Friday and Sunday morning the model reruns with the latest injury report, for games that haven't started; those updates are timestamped and graded separately.</li>
     </ul>
+    <h3>Changelog</h3>
+    <div id="changelog"></div>
 
     <h3>How it's graded</h3>
     <p>Every player who played is graded, with no exceptions for injuries or blowouts. The model is compared with four simple methods: the player's last game, his last three games, his season average, and a flat average for his position. The <a href="#leaderboard">leaderboard</a> shows all of them, including the weeks and positions where a simple method wins.</p>
@@ -423,7 +534,8 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
 
 <script>
 (() => {
-  const VIEWS = ["home", "projections", "leaderboard", "research", "about"];
+  const VIEWS = ["home", "projections", "compare", "leaderboard", "research", "about"];
+  const REPO = "https://github.com/lmartini27/lmartini27.github.io";
   const ALIASES = { scorecard: "leaderboard" };
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
@@ -444,8 +556,11 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   }
 
   // ---------- routing (bare #tokens) ----------
-  function show(view) {
-    view = ALIASES[view] || view;
+  let routeQuery = "";
+  function show(token) {
+    const [base, query = ""] = String(token || "").split("?");
+    let view = ALIASES[base] || base;
+    routeQuery = query;
     if (!VIEWS.includes(view)) view = "home";
     current = view;
     VIEWS.forEach((v) => { $("#view-" + v).hidden = v !== view; });
@@ -453,13 +568,14 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       if (a.dataset.view === view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     countView();
+    if (view === "compare") setTimeout(loadCompareFromQuery, 0);   // after the page's state is set up
   }
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
-    let v = a.getAttribute("href").slice(1);
-    v = ALIASES[v] || v;
-    if (VIEWS.includes(v)) { e.preventDefault(); show(v); history.replaceState(null, "", "#" + v); window.scrollTo({ top: 0 }); }
+    const token = a.getAttribute("href").slice(1);
+    const v = ALIASES[token.split("?")[0]] || token.split("?")[0];
+    if (VIEWS.includes(v)) { e.preventDefault(); show(token); history.replaceState(null, "", "#" + token); window.scrollTo({ top: 0 }); }
   });
   window.addEventListener("hashchange", () => show(location.hash.slice(1)));
   show(location.hash.slice(1));
@@ -501,6 +617,46 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   const injuryOf = (p) => (injWeek === projWeek ? injuries[p.player_id] : null);
   const isOut = (p) => { const j = injuryOf(p); return j && OUT.has(j.status); };
   const badgeOf = (p) => { const j = injuryOf(p); return j ? `<span class="inj inj-${j.status}" title="${esc(j.status)}${j.injury ? " (" + esc(j.injury) + ")" : ""}">${SHORT[j.status] || ""}</span>` : ""; };
+  let projMeta = {}, openRows = new Set();
+  const POS_PLURAL = { QB: "QBs", RB: "RBs", WR: "WRs", TE: "TEs" };
+  function oppNote(p) {
+    if (p.opp_rank && p.opp_n) {
+      const r = p.opp_rank, n = p.opp_n, pl = POS_PLURAL[p.position] || p.position;
+      if (r === 1) return `Allows the most to ${pl}`;
+      if (r === n) return `Allows the fewest to ${pl}`;
+      return r <= n / 2 ? `${ord(r)}-most allowed to ${pl}` : `${ord(n - r + 1)}-fewest allowed to ${pl}`;
+    }
+    return p.matchup ? `${p.matchup} matchup` : "";
+  }
+  const hasRange = (p) => p.low != null && p.high != null;
+  const backTag = (p) => (p.returning_weeks ? `<span class="tag-back" title="First game in ${p.returning_weeks} weeks">BACK</span>` : "");
+  const wasLine = (p) => (p.locked != null && Math.abs(p.projection - p.locked) >= 0.5 ? `<span class="was">was ${fmt(p.locked)}</span>` : "");
+  function whyPanel(p) {
+    const ctx = [`Last 3 games: <strong>${fmt(p.recent_avg)}</strong>`];
+    if (p.season_avg != null) ctx.push(`this season: <strong>${fmt(p.season_avg)}</strong> over ${p.games} ${p.games === 1 ? "game" : "games"}`);
+    if (p.last_season_avg != null) ctx.push(`last season: <strong>${fmt(p.last_season_avg)}</strong>`);
+    const j = injuryOf(p);
+    const inj = (j ? `<p class="cmp-warn">On the injury report: ${esc(j.status)}${j.injury ? " (" + esc(j.injury) + ")" : ""}.</p>` : "")
+      + (p.context && p.context.length ? `<p><strong>Teammate news the model used:</strong> ${esc(p.context.join("; "))}.</p>` : "")
+      + (p.returning_weeks ? `<p><strong>First game in ${p.returning_weeks} weeks.</strong> Players coming back often play limited snaps, so the model lowers their projection for the first game back. Check the news on his workload before you start him.</p>` : "")
+      + (p.locked != null && Math.abs(p.projection - p.locked) >= 0.5 ? `<p class="ctx">Updated from ${fmt(p.locked)} (Wednesday) after the latest injury report.</p>` : "");
+    let lead = `<p><strong>${esc(p.name)}</strong> is projected for <strong>${fmt(p.projection)}</strong> PPR points, the model's middle outcome.` +
+      (hasRange(p) ? ` Eight times out of ten he should land between <strong>${fmt(p.low)}</strong> and <strong>${fmt(p.high)}</strong>.</p>` : `</p>`);
+    let contrib = "";
+    if (p.why && projMeta.why_base != null) {
+      const items = p.why.filter((w) => Math.abs(w[1]) >= 0.05);
+      const max = Math.max(1, ...items.map((w) => Math.abs(w[1])));
+      const rows = items.slice().sort((x, y) => Math.abs(y[1]) - Math.abs(x[1])).map(([label, v]) =>
+        `<div class="crow"><span>${esc(label)}</span><span class="cbar"><i class="${v >= 0 ? "pos" : "neg"}" style="width:${(Math.abs(v) / max * 50).toFixed(1)}%"></i></span><span class="cval">${v >= 0 ? "+" : "−"}${fmt(Math.abs(v))}</span></div>`).join("");
+      contrib = `<div class="contrib"><h4>What moved the projection</h4>
+        <div class="crow"><span>Average player</span><span></span><span class="cval">${fmt(projMeta.why_base)}</span></div>
+        ${rows}
+        <div class="crow total"><span>Projection</span><span></span><span class="cval">${fmt(p.projection)}</span></div></div>`;
+    }
+    const note = contrib ? `<p class="ctx">Each bar is how far that part of his record moves him from an average player in the data. "Recent" means his last three games; usage is targets, carries, catches and yards. The inputs overlap, so read them together rather than one at a time.</p>` : "";
+    return `<div class="why"><div>${lead}<p class="ctx">${ctx.join(" · ")}. Matchup: ${esc(p.team)} vs ${esc(p.opponent)}, ${esc(lower1(oppNote(p)))}.</p>${inj}${note}
+      <p><a class="btn" href="#compare?p=${encodeURIComponent(p.player_id)}">Compare with another player</a></p></div>${contrib}</div>`;
+  }
   function renderProjections() {
     const q = $("#q").value.trim().toLowerCase();
     const showOut = $("#show-out").checked;
@@ -513,21 +669,29 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     if (!showAll) rows = rows.slice(0, limit);
     const max = Math.max(1, ...players.map((p) => p.projection));
     $("#p-body").innerHTML = rows.map((p, i) => {
-      const d = p.projection - p.recent_avg;
-      const cls = p.matchup === "Very tough" ? "Very" : p.matchup;
-      return `<tr class="${isOut(p) ? "out" : ""}">
+      const open = openRows.has(p.player_id);
+      const rng = hasRange(p) ? `${fmt(p.low)}–${fmt(p.high)}` : "–";
+      return `<tr class="prow ${isOut(p) ? "out" : ""} ${open ? "open" : ""}" data-id="${esc(p.player_id)}">
         <td class="rank">${i + 1}</td>
-        <td><span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span>${badgeOf(p)}</td>
-        <td class="opp">${esc(p.team)} vs ${esc(p.opponent)}</td>
-        <td class="hide-sm"><span class="pill m-${cls}">${esc(p.matchup)}</span></td>
-        <td class="num"><div class="projcell"><span class="projbar"><i style="width:${(p.projection / max * 100).toFixed(1)}%"></i></span><span class="proj">${fmt(p.projection)}</span></div></td>
+        <td><button class="expand" type="button" aria-expanded="${open}"><span class="caret" aria-hidden="true">›</span><span class="player">${esc(p.name)}</span></button><span class="pos">${p.position}</span>${badgeOf(p)}${backTag(p)}${p.context && p.context.length ? `<span class="news">${esc(p.context.join(" · "))}</span>` : ""}</td>
+        <td class="opp">${esc(p.team)} vs ${esc(p.opponent)}<span class="opp-note">${esc(oppNote(p))}</span></td>
+        <td class="num"><div class="projcell"><span class="projbar"><i style="width:${(p.projection / max * 100).toFixed(1)}%"></i></span><span class="proj">${fmt(p.projection)}</span></div>${wasLine(p)}${hasRange(p) ? `<span class="rng show-sm">${rng}</span>` : ""}</td>
+        <td class="num hide-sm rng">${rng}</td>
         <td class="num hide-sm">${fmt(p.recent_avg)}</td>
-        <td class="num ${d >= 0 ? "up" : "down"}">${d >= 0 ? "+" : "−"}${fmt(Math.abs(d))}</td>
-      </tr>`;
+        <td class="num hide-sm">${fmt(p.season_avg)}</td>
+      </tr>${open ? `<tr class="why-row"><td colspan="7">${whyPanel(p)}</td></tr>` : ""}`;
     }).join("") || `<tr><td colspan="7" style="color:var(--ink-2)">No players match "${esc(q)}".</td></tr>`;
     $("#p-more").hidden = showAll || total <= limit;
     $("#p-more").textContent = `Show all ${total} players`;
   }
+  $("#p-body").addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    const tr = e.target.closest("tr.prow");
+    if (!tr) return;
+    const id = tr.dataset.id;
+    if (openRows.has(id)) openRows.delete(id); else openRows.add(id);
+    renderProjections();
+  });
   function renderTop4() {
     if (!players.length) return;
     $("#top4").innerHTML = ["QB", "RB", "WR", "TE"].map((ps) => {
@@ -551,7 +715,9 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   }).catch(() => {});
 
   getJSON("data/projections/latest.json").then((d) => {
-    players = d.players; projWeek = d.week;
+    players = d.players; projWeek = d.week; projMeta = d;
+    $("#cmp-list").innerHTML = players.map((p) => `<option value="${esc(labelOf(p))}"></option>`).join("");
+    if (current === "compare") loadCompareFromQuery();
     $$(".js-week").forEach((el) => { el.textContent = d.week; });
     const kicked = new Date() >= new Date(d.first_kickoff);
     const liveTxt = kicked ? "Week in progress" : "Live";
@@ -559,10 +725,112 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     $$(".js-live").forEach((el) => { el.textContent = liveTxt; });
     $("#week-label").textContent = `NFL ${d.season} · Week ${d.week} projections are up`;
     $("#cta-proj").textContent = `See week ${d.week} projections`;
-    $("#p-sub").textContent = `Posted ${when(d.generated_at)}, before the first kickoff (${when(d.first_kickoff)}). ${d.players.length} players projected.`;
+    $("#p-sub").innerHTML = `Posted ${esc(when(d.generated_at))}, before the first kickoff (${esc(when(d.first_kickoff))}). ${d.players.length} players projected${d.version ? ` with model ${esc(d.version)}` : ""}. <a class="verify" href="${REPO}/commits/main/data/projections/${d.season}_week${String(d.week).padStart(2, "0")}.json" target="_blank" rel="noopener">Verify the posting time</a>`;
+    if (!players.some(hasRange)) $("#th-range").textContent = "";
     $("#top-sub").textContent = `PPR points, posted before kickoff. Players ruled out are left off.`;
     renderProjections(); renderTop4();
+    // Friday/Sunday injury update for the same week, if there is one
+    getJSON("data/projections/latest_update.json").then((u) => {
+      if (u.week !== d.week || u.season !== d.season || !(new Date(u.generated_at) > new Date(d.generated_at))) return;
+      players = u.players; projMeta = { ...d, why_base: u.why_base != null ? u.why_base : d.why_base, update: u };
+      $("#cmp-list").innerHTML = players.map((p) => `<option value="${esc(labelOf(p))}"></option>`).join("");
+      $("#upd-note").innerHTML = `<strong>Updated ${esc(when(u.generated_at))}</strong> with the latest injury report: ${u.changed} ${u.changed === 1 ? "projection" : "projections"} moved by half a point or more, shown with what they were on ${esc(when(u.locked_at).split(",")[0])}. The locked projections from ${esc(when(u.locked_at))} are still the official grade; updates are graded separately on the leaderboard.`;
+      $("#upd-note").hidden = false;
+      renderProjections(); renderTop4();
+      if (current === "compare") loadCompareFromQuery();
+    }).catch(() => {});
   }).catch(() => { $("#p-sub").textContent = "Projections couldn't load. Try refreshing the page."; });
+
+  // ---------- start / sit ----------
+  const labelOf = (p) => `${p.name} (${p.position}, ${p.team})`;
+  const byLabel = (v) => players.find((p) => labelOf(p) === v) || players.find((p) => p.name.toLowerCase() === String(v).trim().toLowerCase());
+  const byId = (id) => players.find((p) => p.player_id === id);
+  let cmp = [null, null];
+  // each player's outcomes as a piecewise-linear quantile curve through 0, p10, median, p90 and a stretched tail
+  function quantiles(p) {
+    const lo = p.low, md = p.projection, hi = p.high, n = 240, out = new Array(n);
+    const xs = [0, 0.1, 0.5, 0.9, 1], ys = [0, lo, md, hi, hi + 1.6 * (hi - md)];
+    for (let i = 0; i < n; i++) {
+      const u = (i + 0.5) / n; let k = 0;
+      while (u > xs[k + 1]) k++;
+      out[i] = ys[k] + (ys[k + 1] - ys[k]) * (u - xs[k]) / (xs[k + 1] - xs[k]);
+    }
+    return out;
+  }
+  function winProb(a, b) {
+    const qa = quantiles(a), qb = quantiles(b); let w = 0;
+    for (const x of qa) for (const y of qb) w += x > y ? 1 : x === y ? 0.5 : 0;
+    return w / (qa.length * qb.length);
+  }
+  function card(p, isWin, maxHigh) {
+    const j = injuryOf(p), sc = (v) => (v / maxHigh * 100).toFixed(1);
+    return `<div class="pcard ${isWin ? "win" : ""}">
+      <div><h3>${esc(p.name)} <span class="pos">${p.position}</span>${badgeOf(p)}</h3>
+      <div style="color:var(--ink-2);font-size:14px">${esc(p.team)} vs ${esc(p.opponent)} · ${esc(lower1(oppNote(p)))}</div></div>
+      <div class="pv">${fmt(p.projection)}<small>projected</small></div>
+      ${hasRange(p) ? `<div><div class="rbar" title="80% range ${fmt(p.low)} to ${fmt(p.high)}"><span class="track"></span><span class="span" style="left:${sc(p.low)}%;width:${(sc(p.high) - sc(p.low))}%"></span><span class="mid" style="left:${sc(p.projection)}%"></span></div>
+        <div class="rng" style="font-size:13px">80% range: ${fmt(p.low)} to ${fmt(p.high)}</div></div>` : ""}
+      <dl><dt>Last 3 games</dt><dd>${fmt(p.recent_avg)}</dd>
+        ${p.season_avg != null ? `<dt>This season (${p.games} g)</dt><dd>${fmt(p.season_avg)}</dd>` : ""}
+        ${p.last_season_avg != null ? `<dt>Last season</dt><dd>${fmt(p.last_season_avg)}</dd>` : ""}</dl>
+      ${j ? `<div class="cmp-warn">${esc(j.status)}${j.injury ? " · " + esc(j.injury) : ""}</div>` : ""}
+      ${p.context && p.context.length ? `<div class="news">${esc(p.context.join(" · "))}</div>` : ""}
+      ${p.returning_weeks ? `<div class="news">First game in ${p.returning_weeks} weeks: check the news on his workload</div>` : ""}
+    </div>`;
+  }
+  function renderCompare() {
+    const [a, b] = cmp;
+    $("#cmp-a").value = a ? labelOf(a) : "";
+    $("#cmp-b").value = b ? labelOf(b) : "";
+    if (!a || !b) { $("#cmp-out").innerHTML = `<div class="empty">${players.length ? "Pick two players to compare. Start typing a name." : "Loading this week's projections…"}</div>`; return; }
+    if (a.player_id === b.player_id) { $("#cmp-out").innerHTML = `<div class="empty">Pick two different players.</div>`; return; }
+    const outA = isOut(a), outB = isOut(b);
+    let verdict;
+    if (outA || outB) {
+      const ok = outA ? b : a, out = outA ? a : b;
+      verdict = outA && outB ? `<div class="big">Neither</div><p>Both players are ruled out this week.</p>`
+        : `<div class="big">Start ${esc(ok.name)}</div><p>${esc(out.name)} is ruled out this week.</p>`;
+    } else if (hasRange(a) && hasRange(b)) {
+      const pa = winProb(a, b), fav = pa >= 0.5 ? a : b, pf = Math.max(pa, 1 - pa), other = fav === a ? b : a;
+      verdict = pf < 0.55
+        ? `<div class="big">Toss-up</div><p>The model gives ${esc(fav.name)} the slight edge: he outscores ${esc(other.name)} about ${Math.round(pf * 100)}% of the time. Go with your gut, or the news.</p>`
+        : `<div class="big">Start ${esc(fav.name)}</div><p>By the model's estimate he outscores ${esc(other.name)} about <strong>${Math.round(pf * 100)}%</strong> of the time.${pf < 0.62 ? " That's a lean, not a lock." : ""}</p>`;
+    } else {
+      const fav = a.projection >= b.projection ? a : b;
+      verdict = `<div class="big">Start ${esc(fav.name)}</div><p>He has the higher projection this week.</p>`;
+    }
+    const maxHigh = Math.max(1, ...[a, b].map((p) => (hasRange(p) ? p.high : p.projection) * 1.05));
+    const winId = (outA || outB) ? (outA ? b : a).player_id : (a.projection >= b.projection ? a : b).player_id;
+    $("#cmp-out").innerHTML = `<div class="verdict-box">${verdict}</div>
+      <div class="cmp-cards">${card(a, a.player_id === winId, maxHigh)}${card(b, b.player_id === winId, maxHigh)}</div>
+      <p style="margin-top:12px"><button class="btn" type="button" id="cmp-share">Copy link to this comparison</button> <span id="cmp-copied" class="cmp-help"></span></p>`;
+    $("#cmp-share").addEventListener("click", () => {
+      const url = location.href.split("#")[0] + `#compare?p=${encodeURIComponent(a.player_id)},${encodeURIComponent(b.player_id)}`;
+      const done = () => { $("#cmp-copied").textContent = "Copied."; countEvent("compare-share"); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, () => { $("#cmp-copied").textContent = url; });
+      else $("#cmp-copied").textContent = url;
+    });
+  }
+  function syncCompareHash() {
+    const ids = cmp.filter(Boolean).map((p) => encodeURIComponent(p.player_id)).join(",");
+    history.replaceState(null, "", "#compare" + (ids ? "?p=" + ids : ""));
+  }
+  function loadCompareFromQuery() {
+    if (!players.length) { renderCompare(); return; }
+    const m = /(?:^|&)p=([^&]*)/.exec(routeQuery);
+    if (m) {
+      const ids = decodeURIComponent(m[1]).split(",");
+      cmp = [byId(ids[0]) || cmp[0], byId(ids[1]) || (ids[1] ? null : cmp[1])];
+      if (ids.length === 1) cmp[1] = null;
+    }
+    renderCompare();
+  }
+  ["#cmp-a", "#cmp-b"].forEach((sel, i) => $(sel).addEventListener("change", () => {
+    const p = byLabel($(sel).value);
+    cmp[i] = p || null;
+    if (p && cmp[0] && cmp[1]) countEvent("compare");
+    syncCompareHash(); renderCompare();
+  }));
 
   // ---------- weekly report card ----------
   const POS_ORDER = ["QB", "RB", "WR", "TE"];
@@ -628,11 +896,12 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
   }
 
   // ---------- leaderboard ----------
-  let scorecard = null, scope = "live";
+  let scorecard = null, scope = "live", playersScope = "all", modelInfo = null;
   const STYLE = { model: { c: "var(--turf)", w: 3, d: "" }, last3: { c: "var(--ink-2)", w: 1.6, d: "" },
     season: { c: "var(--ink-2)", w: 1.6, d: "6 4" }, last_game: { c: "var(--bar-base)", w: 1.6, d: "2 3" },
     pos_avg: { c: "var(--bar-base)", w: 1.6, d: "8 3 2 3" } };
-  function lbRows(sc) { return (scorecard.weeks || []).filter((w) => w.leaderboard && (sc === "all" || w.type === "live")); }
+  const lbKey = () => (playersScope === "rel" ? "leaderboard_rel" : "leaderboard");
+  function lbRows(sc) { return (scorecard.weeks || []).filter((w) => w[lbKey()] && (sc === "all" || w.type === "live")).map((w) => ({ ...w, leaderboard: w[lbKey()] })); }
   function lineChart(rows, methods) {
     if (rows.length < 2) return `<div class="empty">The week-by-week chart appears once two weeks are graded in this view.</div>`;
     const W = 520, H = 230, padL = 30, padR = 12, padT = 12, padB = 40;
@@ -673,7 +942,12 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       .filter(([k]) => k === "all" || hasLive)
       .map(([k, label]) => `<button class="chip" data-scope="${k}" aria-pressed="${k === scope}">${label}</button>`).join("");
     $$("[data-scope]").forEach((b) => b.addEventListener("click", () => { scope = b.dataset.scope; renderLeaderboard(); }));
-    const S = L[scope];
+    const hasRel = !!(L.all_rel && L.all_rel.weeks);
+    if (!hasRel) playersScope = "all";
+    $("#lb-players").innerHTML = hasRel ? [["all", "All players"], ["rel", `Players averaging ${L.relevant_min}+`]]
+      .map(([k, label]) => `<button class="chip" data-players="${k}" aria-pressed="${k === playersScope}">${label}</button>`).join("") : "";
+    $$("[data-players]").forEach((b) => b.addEventListener("click", () => { playersScope = b.dataset.players; renderLeaderboard(); }));
+    const S = L[scope + (playersScope === "rel" ? "_rel" : "")];
     if (!S) { $("#lb-body").innerHTML = `<tr><td colspan="7">No graded weeks yet.</td></tr>`; return; }
     const ms = S.methods, model = ms.find((m) => m.key === "model"), rank = ms.indexOf(model) + 1, best = ms[0];
     const bestR2 = ms.reduce((a, b) => (b.r2 > a.r2 ? b : a));
@@ -681,6 +955,9 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     if (rank === 1) v = `<strong>The model has the smallest average miss</strong> over ${S.weeks} ${S.weeks === 1 ? "week" : "weeks"}: ${fmt(model.mae, 2)} points, ahead of the ${lower1(ms[1].label)} (${fmt(ms[1].mae, 2)}).`;
     else v = `<strong>The ${lower1(best.label)} has the smallest average miss</strong> over ${S.weeks} ${S.weeks === 1 ? "week" : "weeks"} (${fmt(best.mae, 2)} points). The model ranks ${ord(rank)} of ${ms.length} at ${fmt(model.mae, 2)}${bestR2.key === "model" ? ", though it explains more of the scoring than any other method" : ""}.`;
     if (scope === "live" && S.weeks < 4) v += ` That's only ${S.weeks} live ${S.weeks === 1 ? "week" : "weeks"}, so treat it as early.`;
+    v += playersScope === "rel"
+      ? ` <span class="cmp-help">Showing only players averaging ${L.relevant_min}+ points this season, the ones fantasy managers actually start.</span>`
+      : (hasRel ? ` <span class="cmp-help">Most graded players are backups. Switch to "Players averaging ${L.relevant_min}+" for the players people start.</span>` : "");
     $("#lb-verdict").innerHTML = v;
     $("#lb-body").innerHTML = ms.map((m, i) => `<tr class="${m.key === "model" ? "me" : ""}">
       <td class="rank">${i + 1}</td>
@@ -690,6 +967,7 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       <td class="num hide-sm">${m.pick_pct == null ? "–" : fmt(m.pick_pct, 0) + "%"}</td>
       <td class="num hide-sm">${fmt(m.r2, 2)}</td>
       <td class="num">${m.weeks_best}</td></tr>`).join("");
+    renderVersions();
     $("#lb-defs").innerHTML = `<strong>Average miss:</strong> how far off the guess was, in PPR points, across ${S.players_graded.toLocaleString()} graded player-games. <strong>Big misses:</strong> share of players missed by ${L.big_miss_points}+ points. <strong>Picks the higher scorer:</strong> for two players at the same position (both averaging ${L.relevant_min}+ points), how often the method ranked them in the right order, the start-or-sit question. <strong>R²:</strong> share of the week's scoring differences the method explains. <strong>Weeks best:</strong> weeks with the smallest average miss.`;
     const rows = lbRows(scope);
     $("#lb-chart").innerHTML = lineChart(rows, ms);
@@ -700,6 +978,43 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       const a = model.by_position[p], b = simple.by_position[p], win = a < b;
       return `<tr><td>${p}</td><td class="num">${fmt(a, 2)}</td><td class="num">${fmt(b, 2)}</td><td class="num ${win ? "up" : "down"}">${win ? "Model" : simple.label}</td></tr>`;
     }).join("");
+  }
+  function renderUpdates() {
+    const U2 = scorecard.updates;
+    if (!U2) { $("#upd-block").hidden = true; return; }
+    $("#upd-block").hidden = false;
+    const better = U2.changed_updated_mae != null && U2.changed_updated_mae < U2.changed_locked_mae;
+    $("#upd-body").innerHTML = `<p class="sub">Every Friday and Sunday the model reruns with the latest injury report: quarterbacks ruled out, teammates out or coming back. The Wednesday projections stay locked as the official grade; this checks whether the updates helped.</p>
+      <div class="table-box"><table><thead><tr><th></th><th class="num">All graded players</th><th class="num">Players whose projection changed</th></tr></thead><tbody>
+      <tr><td>Locked (Wednesday)</td><td class="num">${fmt(U2.locked_mae, 2)}</td><td class="num">${fmt(U2.changed_locked_mae, 2)}</td></tr>
+      <tr class="me"><td>With injury updates</td><td class="num">${fmt(U2.updated_mae, 2)}</td><td class="num">${fmt(U2.changed_updated_mae, 2)}</td></tr>
+      </tbody></table></div>
+      <p class="foot-note">Average miss in PPR points over ${U2.weeks} ${U2.weeks === 1 ? "week" : "weeks"}: ${U2.n.toLocaleString()} graded player-games, ${U2.changed_n.toLocaleString()} of them with a projection that moved by half a point or more. ${U2.changed_n ? (better ? "So far the updates have helped." : "So far the updates haven't helped.") : ""}</p>`;
+  }
+  function renderVersions() {
+    renderUpdates();
+    const V = scorecard.versions, info = modelInfo && modelInfo.changelog && modelInfo.changelog.find((c) => c.version === "v2");
+    if (!V && !info) { $("#ver-block").hidden = true; return; }
+    $("#ver-block").hidden = false;
+    let h = "";
+    if (info) {
+      const b = info.backtest;
+      h += `<p class="lb-verdict"><strong>From week ${info.week}, the site publishes model v2.</strong> ${esc(info.summary)}</p>
+        <p class="sub">Before switching, I tested both versions on the ${esc(b.seasons)} seasons (${b.weeks} weeks, ${b.player_games.toLocaleString()} player-games), predicting each week with only earlier games. v2 missed by <strong>${fmt(b.v2_mae, 2)}</strong> points on average, against ${fmt(b.v1_mae, 2)} for v1 and ${fmt(b.season_avg_mae, 2)} for the season average. It beat v1 in ${b.v2_beats_v1_weeks} of ${b.weeks} weeks and the season average in ${b.v2_beats_season_avg_weeks}. (v1 had beaten the season average in only ${b.v1_beats_season_avg_weeks}.) ${esc(b.note)}</p>`;
+      if (b.teammate_news) {
+        const t = b.teammate_news, r = b.returning;
+        h += `<p class="sub"><strong>Teammate news.</strong> For the ${t.player_games.toLocaleString()} player-games with real teammate news (a starting quarterback out or back, or a teammate with a big share of the team's targets and carries out or returning), the teammate inputs cut the average miss from ${fmt(t.without_mae, 2)} to ${fmt(t.with_mae, 2)}: from ${fmt(t.teammate_out_without, 2)} to ${fmt(t.teammate_out_with, 2)} when a teammate was out, and from ${fmt(t.teammate_back_without, 2)} to ${fmt(t.teammate_back_with, 2)} when one came back.${r ? ` <strong>Returning players</strong>, whom v1 never projected, missed by ${fmt(r.v2_mae, 2)} against ${fmt(r.season_avg_mae, 2)} for their season average (returning starters: ${fmt(r.starters_v2_mae, 2)} vs ${fmt(r.starters_season_avg_mae, 2)}).` : ""}</p>`;
+      }
+    }
+    if (V) {
+      const start = scorecard.v2_start_week;
+      h += `<div class="table-box"><table><thead><tr><th>This season</th><th class="num">Average miss</th><th class="num">Weeks better</th><th class="hide-sm">Status</th></tr></thead><tbody>
+        <tr><td>Model v1</td><td class="num">${fmt(V.v1_mae, 2)}</td><td class="num">${V.weeks - V.v2_better_weeks}</td><td class="hide-sm">Published through week ${start ? start - 1 : "–"}; still graded every week</td></tr>
+        <tr class="me"><td>Model v2</td><td class="num">${fmt(V.v2_mae, 2)}</td><td class="num">${V.v2_better_weeks}</td><td class="hide-sm">${V.v2_live_weeks ? `Live for ${V.v2_live_weeks} ${V.v2_live_weeks === 1 ? "week" : "weeks"}; earlier weeks are backtests` : `Backtest until it goes live in week ${start}`}</td></tr>
+      </tbody></table></div>
+      <p class="foot-note">Both versions are scored on the same ${V.n.toLocaleString()} graded player-games over ${V.weeks} weeks. v2's numbers before week ${start} were computed afterward, using only data from before each week, so they're a backtest, not a live record.</p>`;
+    }
+    $("#ver-body").innerHTML = h;
   }
   function renderBoard() {
     const L = scorecard.leaderboard || {};
@@ -716,7 +1031,11 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     $("#b-players").textContent = S.players_graded.toLocaleString();
     const all = L.all;
     const allRank = all ? all.methods.findIndex((m) => m.key === "model") + 1 : null;
-    $("#b-note").textContent = isLive && all ? `Including the backtest weeks before launch, the model ranks ${ord(allRank)} of ${all.methods.length} over ${all.weeks} weeks. Updated every Wednesday.` : "Updated every Wednesday.";
+    const rel = isLive ? L.live_rel : L.all_rel;
+    const relRank = rel ? rel.methods.findIndex((m) => m.key === "model") + 1 : null;
+    let note = isLive && all ? `Including the backtest weeks before launch, the model ranks ${ord(allRank)} of ${all.methods.length} over ${all.weeks} weeks.` : "";
+    if (rel && relRank) note += ` Among players averaging ${L.relevant_min}+ points, the ones people start, it ranks ${ord(relRank)}.`;
+    $("#b-note").textContent = (note + " Updated every Wednesday.").trim();
   }
 
   getJSON("data/scorecard.json").then((s) => {
@@ -728,7 +1047,8 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
       const bestLabel = bestKey ? ((s.leaderboard && s.leaderboard.all && s.leaderboard.all.methods.find((m) => m.key === bestKey)) || {}).label : "–";
       return `<tr><td>Week ${w.week}</td><td>${w.type === "live" ? '<span class="pill m-Great">Live</span>' : '<span class="pill" style="color:var(--ink-2);background:var(--paper)">Backtest</span>'}</td>
         <td class="num">${w.n_graded}</td><td class="num">${fmt(w.model_mae, 2)}</td><td class="num hide-sm">${fmt(w.baseline_mae, 2)}</td>
-        <td class="num ${bestKey === "model" ? "up" : ""}">${esc(bestLabel || "–")}</td></tr>`;
+        <td class="num ${bestKey === "model" ? "up" : ""}">${esc(bestLabel || "–")}</td>
+        <td class="hide-sm">${w.type === "live" ? `<a class="verify" href="${REPO}/commits/main/data/projections/${s.season}_week${String(w.week).padStart(2, "0")}.json" target="_blank" rel="noopener">Verify</a>` : ""}</td></tr>`;
     }).join("");
     getJSON("data/notes.json").catch(() => ({})).then((n) => {
       const notes = (n && n.weeks) || {};
@@ -738,6 +1058,13 @@ tr.me td:first-child { box-shadow: inset 3px 0 0 var(--turf); }
     });
     if (s.updated_at) $("#f-updated").textContent = "Updated " + when(s.updated_at);
   }).catch(() => { $("#b-note").textContent = "The record couldn't load. Try refreshing the page."; });
+
+  // ---------- model versions + changelog ----------
+  getJSON("data/model.json").then((m) => {
+    modelInfo = m;
+    $("#changelog").innerHTML = (m.changelog || []).map((c) => `<p><strong>Week ${c.week}, ${c.season}: ${esc(c.title)}.</strong> ${esc(c.summary)}</p>`).join("");
+    if (scorecard) renderLeaderboard();
+  }).catch(() => {});
 
   // ---------- research + findings ----------
   let findsData = null;

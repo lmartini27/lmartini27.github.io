@@ -1,0 +1,51 @@
+{
+ "current": "v2",
+ "changelog": [
+  {
+   "season": 2026,
+   "week": 10,
+   "version": "v2",
+   "title": "Model v2: season-long form, teammates and quarterbacks, and the middle outcome",
+   "summary": "v1 only saw a player's last three games, and it predicted his average outcome. v2 also uses his season-to-date averages and last season's average, and it reads his team's situation from the official injury report and rosters: whether the quarterback who's been starting is out or a regular starter is back, and how much of the team's targets and carries belong to teammates at his position who are out or returning. It also projects players coming back from an absence, lowered for the first game back. It predicts each player's middle outcome (the median: he should beat it about half the time), which suits lopsided fantasy scores better, and gives every player an 80% range. On Friday and Sunday it reruns with the latest injury report.",
+   "backtest": {
+    "seasons": "2022-2025",
+    "weeks": 60,
+    "player_games": 17280,
+    "v1_mae": 4.7,
+    "v2_mae": 4.4,
+    "season_avg_mae": 4.6,
+    "last3_mae": 4.84,
+    "v2_beats_v1_weeks": 59,
+    "v2_beats_season_avg_weeks": 55,
+    "v1_beats_season_avg_weeks": 11,
+    "range_coverage_pct": 80.4,
+    "teammate_news": {
+     "player_games": 4247,
+     "without_mae": 4.44,
+     "with_mae": 4.38,
+     "teammate_out_without": 4.79,
+     "teammate_out_with": 4.59,
+     "teammate_back_without": 4.14,
+     "teammate_back_with": 3.98
+    },
+    "returning": {
+     "player_games": 1381,
+     "v2_mae": 2.98,
+     "season_avg_mae": 3.34,
+     "starters": 244,
+     "starters_v2_mae": 5.54,
+     "starters_season_avg_mae": 6.63,
+     "starters_range_coverage_pct": 79.5
+    },
+    "note": "Each week was predicted using only games played before it, and only injury-report and roster information available before kickoff (the final Friday report, so this matches the Friday and Sunday updates more than the Wednesday projections). The median models were refit every four weeks rather than weekly."
+   }
+  },
+  {
+   "season": 2026,
+   "week": 7,
+   "version": "v1",
+   "title": "Launch: model v1",
+   "summary": "Linear regression on each player's last three games (fantasy points, targets, carries, receptions and yards), his position, and how many points his next opponent allowed to that position over its last three games."
+  }
+ ]
+}

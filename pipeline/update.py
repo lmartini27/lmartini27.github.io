@@ -11,6 +11,14 @@ Every run it:
   4. Trains the model on everything available and PROJECTS the next
      week's games, saving a timestamped file.
 
+Model versions:
+  v1  linear regression on the last three games, usage and the next opponent.
+  v2  (published from week 10 of 2026) adds season-to-date averages and last
+      season's average, and predicts each player's MIDDLE outcome (median)
+      rather than his average outcome. In a walk-forward test on 2022-2025 it
+      cut the average miss from 4.70 to 4.42 points. Two more median-style
+      models give an 80% range (10th to 90th percentile) for every player.
+
 Projections saved before the week's first kickoff are marked "live".
 Git commit times provide an independent record of when each file was
 published.
@@ -36,7 +44,7 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, QuantileRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -55,10 +63,31 @@ STAT_COLS = ["fantasy_points_ppr", "targets", "carries", "receiving_yards",
              "rushing_yards", "passing_yards", "receptions"]
 WINDOW = 3
 MAX_WEEK_GAP = 2           # allows one bye week between games
+RETURN_MAX_GAP = 10        # players back within this many weeks are projected, flagged as returning
 BACKTEST_FIRST_WEEK = 4    # earliest week with 3 games of in-season history
 ROLL_COLS = [f"{c}_avg_last{WINDOW}" for c in STAT_COLS]
 OPP_COL = "next_opp_def_allowed"
-FEATURES = ROLL_COLS + [f"pos_{p}" for p in POSITIONS] + [OPP_COL]
+FEATURES = ROLL_COLS + [f"pos_{p}" for p in POSITIONS] + [OPP_COL]          # model v1
+SEASON_COLS = ["fantasy_points_ppr", "targets", "carries"]
+SEAS_FEATURES = [f"{c}_season_avg" for c in SEASON_COLS] + ["games_played"]
+PRIOR_FEATURES = ["prev_season_avg", "has_prev"]
+AV_FEATURES = ["vac_same", "ret_same", "vac_same_pts", "ret_same_pts", "vac_tgt_rec_pts",
+               "qb_out_rec", "qb_out_rb", "qb_out_rec_pts", "qb_out_rb_pts", "qb_ret_pts"]
+RETURN_FEATURES = ["returning", "returning_pts"]
+FEATURES_V2 = FEATURES + SEAS_FEATURES + PRIOR_FEATURES + AV_FEATURES + RETURN_FEATURES   # model v2
+V2_START = {2026: 10}       # first week each season published with model v2
+RANGE_QUANTILES = (0.10, 0.90)
+# groups of v2 inputs used to explain each projection
+WHY_GROUPS = [
+    ("Recent points", ["fantasy_points_ppr_avg_last3"]),
+    ("Recent usage", [c for c in ROLL_COLS if c != "fantasy_points_ppr_avg_last3"]),
+    ("Season so far", SEAS_FEATURES),
+    ("Last season", PRIOR_FEATURES),
+    ("Teammates and QB", AV_FEATURES),
+    ("First game back", RETURN_FEATURES),
+    ("Opponent", [OPP_COL]),
+    ("Position", [f"pos_{p}" for p in POSITIONS]),
+]
 BASELINE_COL = f"fantasy_points_ppr_avg_last{WINDOW}"
 EASTERN = ZoneInfo("America/New_York")
 
@@ -84,9 +113,9 @@ def load_stats(season, cache_dir):
     df = pd.concat(frames, ignore_index=True)
     df = df[(df["season_type"] == "REG") & (df["position"].isin(POSITIONS))]
     keep = ["player_id", "player_display_name", "position", "team", "opponent_team",
-            "season", "week"] + STAT_COLS
+            "season", "week", "attempts"] + STAT_COLS
     df = df[keep].copy()
-    df[STAT_COLS] = df[STAT_COLS].fillna(0)
+    df[STAT_COLS + ["attempts"]] = df[STAT_COLS + ["attempts"]].fillna(0)
     return df.sort_values(["player_id", "season", "week"]).reset_index(drop=True)
 
 
@@ -100,7 +129,29 @@ def load_schedule(season, cache_dir):
 
 def load_rosters(season, cache_dir):
     r = read_csv(ROSTER_URL.format(year=season), cache_dir, f"roster_weekly_{season}.csv")
-    return r[["week", "gsis_id", "team", "status"]].dropna(subset=["gsis_id"])
+    r = r[["week", "gsis_id", "team", "status"]].dropna(subset=["gsis_id"]).copy()
+    r["season"] = season
+    return r
+
+
+def load_history(season, cache_dir, rosters_now, injuries_now):
+    """Injury reports and weekly rosters for every season the model trains on."""
+    inj, ros = [], [rosters_now]
+    for year in range(FIRST_SEASON, season):
+        try:
+            inj.append(read_csv(INJURY_URL.format(year=year), cache_dir, f"injuries_{year}.csv"))
+        except Exception as e:
+            print(f"  (injury report {year} unavailable: {e})")
+        r = read_csv(ROSTER_URL.format(year=year), cache_dir, f"roster_weekly_{year}.csv")
+        r = r[["week", "gsis_id", "team", "status"]].dropna(subset=["gsis_id"]).copy()
+        r["season"] = year
+        ros.append(r)
+    if injuries_now is not None:
+        inj.append(injuries_now)
+    inj = pd.concat(inj, ignore_index=True) if inj else None
+    if inj is not None and "game_type" in inj:
+        inj = inj[inj["game_type"] == "REG"]
+    return inj, pd.concat(ros, ignore_index=True)
 
 
 def roster_for_week(rosters, week):
@@ -147,10 +198,28 @@ def add_rolling_and_next_game(stats):
     df["next_week"] = g["week"].shift(-1)
     df["next_opponent"] = g["opponent_team"].shift(-1)
     df["target"] = g["fantasy_points_ppr"].shift(-1)
-    too_far = (df["next_week"] - df["week"]) > MAX_WEEK_GAP
+    too_far = (df["next_week"] - df["week"]) > RETURN_MAX_GAP
     df.loc[too_far, ["next_week", "next_opponent", "target"]] = np.nan
     for p in POSITIONS:
         df[f"pos_{p}"] = (df["position"] == p).astype(int)
+    # v2 inputs: season-to-date averages (through this game) and last season's average
+    for col in SEASON_COLS:
+        df[f"{col}_season_avg"] = g[col].transform(lambda s: s.expanding().mean())
+    df["games_played"] = g.cumcount() + 1
+    prev = (stats.groupby(["player_id", "season"])["fantasy_points_ppr"].mean()
+            .rename("prev_season_avg").reset_index())
+    prev["season"] += 1
+    df = df.merge(prev, on=["player_id", "season"], how="left")
+    df["has_prev"] = df["prev_season_avg"].notna().astype(int)
+    df["prev_season_avg"] = df["prev_season_avg"].fillna(0)
+    return add_return_terms(df, "next_week")
+
+
+def add_return_terms(df, week_col):
+    """Flag a player's first game back after missing time (more than one bye's worth of weeks)."""
+    gap = df[week_col] - df["week"]
+    df["returning"] = (gap > MAX_WEEK_GAP).astype(int)
+    df["returning_pts"] = df["returning"] * df["fantasy_points_ppr_avg_last3"]
     return df
 
 
@@ -167,14 +236,159 @@ def training_rows(feat, defense, season, before_week):
     rows = rows[(rows["season"] < season) |
                 ((rows["season"] == season) & (rows["next_week"] < before_week))]
     rows = attach_opponent(rows, defense, "next_week", "next_opponent")
-    return rows.dropna(subset=FEATURES + ["target"])
+    return rows.dropna(subset=FEATURES_V2 + ["target"])
 
 
 def latest_rows_before(feat, season, week):
     """Each player's most recent game in `season` before `week` (within the gap limit)."""
     cur = feat[(feat["season"] == season) & (feat["week"] < week)]
     last = cur.sort_values("week").groupby("player_id").tail(1)
-    return last[(week - last["week"]) <= MAX_WEEK_GAP]
+    return last[(week - last["week"]) <= RETURN_MAX_GAP]
+
+
+# ---------------------------------------------------------------- teammates and quarterbacks
+#
+# Uses only what is known before kickoff: the injury report (Out / Doubtful) and the
+# weekly roster (anyone not on the active roster). "Game-day inactive" is decided 90
+# minutes before kickoff, so it is NOT treated as known.
+
+ACTIVE_STATUSES = {"ACT", "INA"}
+OUT_STATUSES = {"Out", "Doubtful"}
+AV_RAW = ["vac_same", "ret_same", "vac_tgt", "qb_out", "qb_ret"]
+AV_CACHE = os.path.join(DATA_DIR, "cache", "availability.csv")
+
+
+def group_of(pos):
+    return "QB" if pos == "QB" else ("RB" if pos == "RB" else "REC")
+
+
+class Availability:
+    def __init__(self, stats, injuries, rosters):
+        d = stats[["player_id", "player_display_name", "position", "team", "season", "week",
+                   "targets", "carries", "attempts"]].copy()
+        d["use"] = d["targets"] + d["carries"]
+        tot = d.groupby(["season", "week", "team"])[["use", "targets"]].transform("sum")
+        d["use_share"] = (d["use"] / tot["use"].replace(0, np.nan)).fillna(0)
+        d["tgt_share"] = (d["targets"] / tot["targets"].replace(0, np.nan)).fillna(0)
+        d["grp"] = d["position"].map(group_of)
+        self.names = d.drop_duplicates("player_id", keep="last").set_index("player_id")[["player_display_name", "position"]]
+        self.by_tw = {k: g for k, g in d.groupby(["season", "team", "week"])}
+        self.team_weeks = d.groupby(["season", "team"])["week"].apply(lambda x: sorted(set(x))).to_dict()
+        self.pgames = d.groupby(["player_id", "season"])["week"].apply(lambda x: sorted(set(x))).to_dict()
+        self.on_team, self.out = {}, {}
+        for (s, w, t), g in rosters.groupby(["season", "week", "team"]):
+            self.on_team[(s, w, t)] = set(g.loc[g["status"].isin(ACTIVE_STATUSES), "gsis_id"])
+        if injuries is not None:
+            inj = injuries[injuries["report_status"].isin(OUT_STATUSES)]
+            for (s, w, t), g in inj.groupby(["season", "week", "team"]):
+                self.out[(s, w, t)] = set(g["gsis_id"])
+
+    def use_roster_snapshot(self, season, week, snapshot):
+        """For an upcoming week whose roster isn't published yet, use the latest snapshot."""
+        if snapshot is None:
+            return
+        for t, g in snapshot.groupby("team"):
+            self.on_team.setdefault((season, week, t), set(g.loc[g["status"].isin(ACTIVE_STATUSES), "gsis_id"]))
+
+    def available(self, pid, s, w, t):
+        act = self.on_team.get((s, w, t))
+        out = self.out.get((s, w, t), set())
+        return (pid not in out) if act is None else (pid in act and pid not in out)
+
+    def name(self, pid):
+        return self.names.loc[pid, "player_display_name"] if pid in self.names.index else pid
+
+    def features(self, rows, week_col, with_context=False):
+        """Teammate and QB situation for the game in `week_col`, based on the player's last 3 games."""
+        feats, contexts = [], []
+        for r in rows.itertuples():
+            s, t, w, pid = r.season, r.team, r.week, r.player_id
+            T = getattr(r, week_col)
+            grp = group_of(r.position)
+            f = dict(vac_same=0.0, ret_same=0.0, vac_tgt=0.0, qb_out=0, qb_ret=0)
+            ctx = []
+            mine = [x for x in self.pgames.get((pid, s), []) if x <= w][-WINDOW:]
+            win = [self.by_tw[(s, t, x)] for x in mine if (s, t, x) in self.by_tw]
+            if pd.isna(T) or not win:
+                feats.append(f); contexts.append(ctx); continue
+            T = int(T)
+            wdf = pd.concat(win)
+            played = set(wdf["player_id"])
+            agg = wdf.groupby(["player_id", "grp"])[["use_share", "tgt_share"]].sum() / len(win)
+            for (q, g), v in agg.iterrows():
+                if q == pid or g == "QB" or self.available(q, s, T, t):
+                    continue
+                if g == grp:
+                    f["vac_same"] += v["use_share"]
+                f["vac_tgt"] += v["tgt_share"]
+                # list only news the model uses for this player: same-position teammates,
+                # plus any big target-earner for wide receivers and tight ends
+                relevant = (g == grp and v["use_share"] >= 0.08) or (grp == "REC" and v["tgt_share"] >= 0.08)
+                if with_context and relevant:
+                    ctx.append(f"{self.name(q)} ({self.names.loc[q, 'position']}) out")
+            season_rows = [self.by_tw[(s, t, x)] for x in self.team_weeks.get((s, t), []) if x <= w and (s, t, x) in self.by_tw]
+            sdf = pd.concat(season_rows)
+            if grp != "QB":
+                sg = sdf[(sdf["grp"] == grp) & (sdf["player_id"] != pid) & (~sdf["player_id"].isin(played))]
+                for q, sh in sg.groupby("player_id")["use_share"].mean().items():
+                    if self.available(q, s, T, t):
+                        f["ret_same"] += sh
+                        if with_context and sh >= 0.08:
+                            ctx.append(f"{self.name(q)} ({self.names.loc[q, 'position']}) back")
+                qbw = wdf[wdf["grp"] == "QB"].groupby("player_id")["attempts"].sum()
+                qbs = sdf[sdf["grp"] == "QB"].groupby("player_id")["attempts"].sum()
+                if len(qbw) and qbw.max() > 0:
+                    prim = qbw.idxmax()
+                    if not self.available(prim, s, T, t):
+                        f["qb_out"] = 1
+                        if with_context:
+                            ctx.append(f"QB {self.name(prim)} out")
+                if len(qbs) and qbs.max() > 0:
+                    sprim = qbs.idxmax()
+                    if sprim not in played and self.available(sprim, s, T, t):
+                        f["qb_ret"] = 1
+                        if with_context:
+                            ctx.append(f"QB {self.name(sprim)} back")
+            feats.append(f); contexts.append(ctx)
+        out = pd.DataFrame(feats, index=rows.index)
+        if with_context:
+            out["context"] = contexts
+        return out
+
+
+def add_av_terms(df):
+    """The model's availability inputs: main effects plus interactions with recent scoring."""
+    pts = df["fantasy_points_ppr_avg_last3"]
+    rec = df["position"].isin(["WR", "TE"]).astype(int)
+    rb = (df["position"] == "RB").astype(int)
+    df["vac_same_pts"] = df["vac_same"] * pts
+    df["ret_same_pts"] = df["ret_same"] * pts
+    df["vac_tgt_rec_pts"] = df["vac_tgt"] * pts * rec
+    df["qb_out_rec"] = df["qb_out"] * rec
+    df["qb_out_rb"] = df["qb_out"] * rb
+    df["qb_out_rec_pts"] = df["qb_out"] * rec * pts
+    df["qb_out_rb_pts"] = df["qb_out"] * rb * pts
+    df["qb_ret_pts"] = df["qb_ret"] * pts
+    return df
+
+
+def attach_training_availability(feat, avail):
+    """Availability features for every training row (target game already played), cached on disk
+    because a past game's features never change."""
+    keys = ["player_id", "season", "week", "next_week"]
+    cache = pd.read_csv(AV_CACHE) if os.path.exists(AV_CACHE) else pd.DataFrame(columns=keys + AV_RAW)
+    need = feat.dropna(subset=["target"])
+    merged = need[keys].merge(cache, on=keys, how="left", indicator=True)
+    missing = need[(merged["_merge"] == "left_only").to_numpy()]
+    if len(missing):
+        new = pd.concat([missing[keys], avail.features(missing, "next_week")], axis=1)
+        cache = pd.concat([cache, new], ignore_index=True).drop_duplicates(keys, keep="last")
+        os.makedirs(os.path.dirname(AV_CACHE), exist_ok=True)
+        cache.to_csv(AV_CACHE, index=False, float_format="%.4f")
+        print(f"  availability features: {len(missing)} new rows cached")
+    feat = feat.merge(cache, on=keys, how="left")
+    feat[AV_RAW] = feat[AV_RAW].fillna(0)
+    return add_av_terms(feat)
 
 
 def matchup_label(value, pos_values):
@@ -188,10 +402,45 @@ def matchup_label(value, pos_values):
     return "Very tough"
 
 
-def project_week(feat, defense, schedule, season, week, rosters=None):
-    """Train on data available before `week`, project every eligible player."""
+def published_version(season, week):
+    return "v2" if week >= V2_START.get(season, 99) else "v1"
+
+
+def fit_models(train, need_v2=True, ranges=False):
+    y = train["target"]
+    regular = train["returning"] == 0          # v1 never saw players returning from absences
+    models = {"v1": LinearRegression().fit(train.loc[regular, FEATURES], y[regular])}
+    if need_v2:
+        models["v2"] = QuantileRegressor(quantile=0.5, alpha=0, solver="highs").fit(train[FEATURES_V2], y)
+    if ranges:
+        for q in RANGE_QUANTILES:
+            models[f"q{int(q * 100)}"] = QuantileRegressor(quantile=q, alpha=0, solver="highs").fit(train[FEATURES_V2], y)
+    return models
+
+
+def explain(model, train, rows):
+    """Split each v2 projection into a starting point plus grouped contributions.
+    contribution = coefficient x (player's value - reference value). The reference is the
+    training-data average, except for teammate news and returns, where it is "no news" (zero),
+    so those bars only appear when something actually changed."""
+    coef = pd.Series(model.coef_, index=FEATURES_V2)
+    means = train[FEATURES_V2].mean()
+    means[AV_FEATURES + RETURN_FEATURES] = 0.0
+    base = float(model.intercept_ + (coef * means).sum())
+    out = []
+    for _, r in rows[FEATURES_V2].iterrows():
+        c = coef * (r - means)
+        out.append([[label, round(float(c[cols].sum()), 2)] for label, cols in WHY_GROUPS])
+    return round(base, 2), out
+
+
+def project_week(feat, defense, schedule, season, week, rosters=None, version=None, ranges=False, avail=None):
+    """Train on data available before `week`, project every eligible player.
+    `version` picks the published projection (default: whichever was live that week).
+    v1 is always computed too, so the two versions can be compared."""
+    version = version or published_version(season, week)
     train = training_rows(feat, defense, season, week)
-    model = LinearRegression().fit(train[FEATURES], train["target"])
+    models = fit_models(train, need_v2=(version == "v2"), ranges=ranges)
 
     games = schedule[schedule["week"] == week]
     opp_of = {}
@@ -210,8 +459,32 @@ def project_week(feat, defense, schedule, season, week, rosters=None):
     cand = cand[cand["team"].isin(opp_of)]
     cand["proj_opponent"] = cand["team"].map(opp_of)
     cand["proj_week"] = week
-    cand = attach_opponent(cand, defense, "proj_week", "proj_opponent").dropna(subset=FEATURES)
-    cand["projection"] = model.predict(cand[FEATURES]).clip(min=0)
+    cand = add_return_terms(cand, "proj_week")
+    cand = attach_opponent(cand, defense, "proj_week", "proj_opponent")
+    # teammates and quarterback for the game being projected, as known right now
+    if avail is not None:
+        avail.use_roster_snapshot(season, week, roster)
+        av = avail.features(cand, "proj_week", with_context=True)
+        cand = pd.concat([cand.drop(columns=[c for c in AV_RAW if c in cand.columns]), av], axis=1)
+    else:
+        for c in AV_RAW:
+            cand[c] = 0.0
+        cand["context"] = [[] for _ in range(len(cand))]
+    cand = add_av_terms(cand).dropna(subset=FEATURES_V2)
+    cand["proj_v1"] = models["v1"].predict(cand[FEATURES]).clip(min=0)
+    if "v2" in models:
+        cand["proj_v2"] = models["v2"].predict(cand[FEATURES_V2]).clip(min=0)
+    cand["projection"] = cand["proj_v2"] if version == "v2" else cand["proj_v1"]
+    cand["version"] = version
+    if ranges:
+        lo = models["q10"].predict(cand[FEATURES_V2])
+        hi = models["q90"].predict(cand[FEATURES_V2])
+        cand["low"] = np.maximum(np.minimum(lo, cand["projection"].to_numpy()), 0)
+        cand["high"] = np.maximum(hi, cand["projection"].to_numpy())
+    if version == "v2":
+        base, why = explain(models["v2"], train, cand)
+        cand["why"] = why
+        cand["why_base"] = base
 
     # matchup label: compare this defense's recent allowance with all defenses at that position
     labels = []
@@ -220,7 +493,14 @@ def project_week(feat, defense, schedule, season, week, rosters=None):
         for idx, v in grp[OPP_COL].items():
             labels.append((idx, matchup_label(v, defs.to_numpy())))
     cand["matchup"] = pd.Series(dict(labels))
-    return cand, model, len(train)
+    # opponent rank at the player's position among defenses playing this week (1 = allows the most)
+    ranks = {}
+    for pos in cand["position"].unique():
+        defs = pd.Series({t: defense.before(t, pos, season, week) for t in opp_of}).dropna()
+        r = defs.rank(ascending=False, method="min")
+        ranks.update({(t, pos): (int(r[t]), int(len(defs))) for t in r.index})
+    cand["opp_rank"] = [ranks.get((o, p), (None, None)) for o, p in zip(cand["proj_opponent"], cand["position"])]
+    return cand, models, len(train)
 
 
 # ---------------------------------------------------------------- grading
@@ -272,7 +552,7 @@ def week_report(m):
 # Every method uses only information available before the week's games.
 METHODS = [
     {"key": "model", "label": "My model",
-     "about": "Linear regression on recent form, usage and the next opponent."},
+     "about": "The projection published before kickoff that week (model v1 through week 9, v2 from week 10)."},
     {"key": "last3", "label": "Last 3 games average",
      "about": "The player's average over his last three games. The site's main benchmark."},
     {"key": "season", "label": "Season average",
@@ -313,10 +593,12 @@ def pick_counts(df, col):
     return int(pairs), float(correct)
 
 
-def leaderboard_week(proj_players, actual_week, stats, season, week):
+def leaderboard_week(proj_players, actual_week, stats, season, week, relevant_only=False):
     p = method_predictions(proj_players, stats, season, week)
     a = actual_week[["player_id", "fantasy_points_ppr"]].rename(columns={"fantasy_points_ppr": "actual"})
     m = p.merge(a, on="player_id", how="inner")
+    if relevant_only:
+        m = m[m["season"] >= RELEVANT_MIN]
     if len(m) < 20:
         return None
     out = {}
@@ -336,9 +618,9 @@ def leaderboard_week(proj_players, actual_week, stats, season, week):
     return out
 
 
-def summarize_leaderboard(rows):
+def summarize_leaderboard(rows, key="leaderboard"):
     """Combine weekly results: player-weighted misses, pooled pairs, weeks each method had the lowest miss."""
-    rows = [r for r in rows if r.get("leaderboard")]
+    rows = [{"leaderboard": r[key]} for r in rows if r.get(key)]
     if not rows:
         return None
     best = {}
@@ -371,16 +653,88 @@ def summarize_leaderboard(rows):
             "methods": out}
 
 
+def versions_week(v1_players, v2_players, actual_week, v2_live):
+    """v1 vs v2 on the same graded players. v2 before its launch week is a backtest."""
+    a = actual_week[["player_id", "fantasy_points_ppr"]].rename(columns={"fantasy_points_ppr": "actual"})
+    m = (pd.DataFrame(v1_players)[["player_id", "projection"]].rename(columns={"projection": "v1"})
+         .merge(pd.DataFrame(v2_players)[["player_id", "projection"]].rename(columns={"projection": "v2"}), on="player_id")
+         .merge(a, on="player_id"))
+    if len(m) < 20:
+        return None
+    return {"n": int(len(m)), "v2_live": bool(v2_live),
+            "v1_abs": round(float((m["actual"] - m["v1"]).abs().sum()), 2),
+            "v2_abs": round(float((m["actual"] - m["v2"]).abs().sum()), 2)}
+
+
+def updates_week(locked_players, updated_players, actual_week):
+    """Wednesday's locked projections vs the injury-updated ones, on the same graded players."""
+    a = actual_week[["player_id", "fantasy_points_ppr"]].rename(columns={"fantasy_points_ppr": "actual"})
+    m = (pd.DataFrame(locked_players)[["player_id", "projection"]].rename(columns={"projection": "locked"})
+         .merge(pd.DataFrame(updated_players)[["player_id", "projection"]].rename(columns={"projection": "updated"}), on="player_id")
+         .merge(a, on="player_id"))
+    if len(m) < 20:
+        return None
+    ch = m[(m["updated"] - m["locked"]).abs() >= 0.5]
+    return {"n": int(len(m)), "locked_abs": round(float((m["actual"] - m["locked"]).abs().sum()), 2),
+            "updated_abs": round(float((m["actual"] - m["updated"]).abs().sum()), 2),
+            "changed_n": int(len(ch)),
+            "changed_locked_abs": round(float((ch["actual"] - ch["locked"]).abs().sum()), 2),
+            "changed_updated_abs": round(float((ch["actual"] - ch["updated"]).abs().sum()), 2)}
+
+
+def summarize_updates(rows):
+    rows = [r["updates"] for r in rows if r.get("updates")]
+    if not rows:
+        return None
+    n, cn = sum(r["n"] for r in rows), sum(r["changed_n"] for r in rows)
+    return {"weeks": len(rows), "n": n, "changed_n": cn,
+            "locked_mae": round(sum(r["locked_abs"] for r in rows) / n, 3),
+            "updated_mae": round(sum(r["updated_abs"] for r in rows) / n, 3),
+            "changed_locked_mae": round(sum(r["changed_locked_abs"] for r in rows) / cn, 3) if cn else None,
+            "changed_updated_mae": round(sum(r["changed_updated_abs"] for r in rows) / cn, 3) if cn else None}
+
+
+def summarize_versions(rows):
+    rows = [r["versions"] for r in rows if r.get("versions")]
+    if not rows:
+        return None
+    n = sum(r["n"] for r in rows)
+    return {"weeks": len(rows), "n": n,
+            "v1_mae": round(sum(r["v1_abs"] for r in rows) / n, 3),
+            "v2_mae": round(sum(r["v2_abs"] for r in rows) / n, 3),
+            "v2_better_weeks": sum(r["v2_abs"] < r["v1_abs"] for r in rows),
+            "v2_live_weeks": sum(r["v2_live"] for r in rows)}
+
+
 def players_payload(cand):
     out = cand.sort_values("projection", ascending=False)
-    return [{
-        "player_id": r.player_id, "name": r.player_display_name, "position": r.position,
-        "team": r.team, "opponent": r.proj_opponent,
-        "projection": round(float(r.projection), 2),
-        "recent_avg": round(float(getattr(r, BASELINE_COL)), 2),
-        "opp_allowed": round(float(getattr(r, OPP_COL)), 2),
-        "matchup": r.matchup,
-    } for r in out.itertuples()]
+    cols = set(out.columns)
+    rows = []
+    for r in out.itertuples():
+        d = {
+            "player_id": r.player_id, "name": r.player_display_name, "position": r.position,
+            "team": r.team, "opponent": r.proj_opponent,
+            "projection": round(float(r.projection), 2),
+            "recent_avg": round(float(getattr(r, BASELINE_COL)), 2),
+            "season_avg": round(float(r.fantasy_points_ppr_season_avg), 2),
+            "games": int(r.games_played),
+            "last_season_avg": round(float(r.prev_season_avg), 2) if r.has_prev else None,
+            "opp_allowed": round(float(getattr(r, OPP_COL)), 2),
+            "matchup": r.matchup,
+            "proj_v1": round(float(r.proj_v1), 2),
+        }
+        if "opp_rank" in cols and r.opp_rank and r.opp_rank[0] is not None:
+            d["opp_rank"], d["opp_n"] = r.opp_rank
+        if "low" in cols:
+            d["low"], d["high"] = round(float(r.low), 1), round(float(r.high), 1)
+        if "why" in cols:
+            d["why"] = r.why
+        if "context" in cols and r.context:
+            d["context"] = list(r.context)
+        if getattr(r, "returning", 0):
+            d["returning_weeks"] = int(r.proj_week - r.week)
+        rows.append(d)
+    return rows
 
 
 # ---------------------------------------------------------------- injuries
@@ -403,6 +757,51 @@ def write_injuries(season, week, injuries, rosters, now):
                 "players": out})
     counts = pd.Series([v["status"] for v in out.values()]).value_counts().to_dict() if out else {}
     print(f"  injury report for week {week}: {counts}")
+
+
+# ---------------------------------------------------------------- injury updates
+
+def update_path(season, week):
+    return os.path.join(PROJ_DIR, f"{season}_week{week:02d}_update.json")
+
+
+def injury_update(season, week, feat, defense, schedule, rosters, avail, now):
+    """Rerun this week's projections with the latest injury report, for games not yet started.
+    The Wednesday projections stay locked and are still the official grade; this update is
+    saved separately, with its own timestamp, and graded separately."""
+    locked = read_json(os.path.join(PROJ_DIR, f"{season}_week{week:02d}.json"))
+    if not locked or locked.get("version") != "v2":
+        print("  no v2 projections to update this week")
+        return
+    games = schedule[schedule["week"] == week]
+    kick = {}
+    for _, g in games.iterrows():
+        kick[g["home_team"]] = kick[g["away_team"]] = g["kickoff_utc"]
+    prev = read_json(update_path(season, week)) or locked
+    prev_by = {p["player_id"]: p for p in prev["players"]}
+    locked_by = {p["player_id"]: p for p in locked["players"]}
+    cand, _, _ = project_week(feat, defense, schedule, season, week, rosters, ranges=True, avail=avail)
+    fresh = players_payload(cand)
+    players, seen = [], set()
+    for p in fresh:
+        started = p["team"] in kick and now >= kick[p["team"]]
+        if started:   # game already kicked off: keep what was published before kickoff
+            if p["player_id"] in prev_by:
+                players.append(prev_by[p["player_id"]])
+        else:
+            lk = locked_by.get(p["player_id"])
+            p["locked"] = lk["projection"] if lk else None
+            players.append(p)
+        seen.add(p["player_id"])
+    players += [p for pid, p in prev_by.items() if pid not in seen and p["team"] in kick and now >= kick[p["team"]]]
+    players.sort(key=lambda p: -p["projection"])
+    changed = sum(1 for p in players if p.get("locked") is not None and abs(p["projection"] - p["locked"]) >= 0.5)
+    payload = {"season": season, "week": week, "generated_at": now.isoformat(timespec="seconds"),
+               "locked_at": locked["generated_at"], "version": "v2", "changed": changed,
+               "why_base": float(cand["why_base"].iloc[0]) if len(cand) else None, "players": players}
+    write_json(update_path(season, week), payload)
+    write_json(os.path.join(PROJ_DIR, "latest_update.json"), payload)
+    print(f"  injury update for week {week}: {changed} projections moved by 0.5+ points")
 
 
 # ---------------------------------------------------------------- main
@@ -447,11 +846,17 @@ def main():
     print(f"Season {season}: weeks completed = {completed[-1] if completed else 0}, current week {upcoming}")
 
     write_injuries(season, upcoming, injuries, rosters, now)
-    if args.injuries_only:
-        return
 
     feat = add_rolling_and_next_game(stats)
     defense = DefenseTable(stats)
+    hist_inj, hist_ros = load_history(season, args.cache, rosters, injuries)
+    avail = Availability(stats, hist_inj, hist_ros)
+    feat = attach_training_availability(feat, avail)
+
+    if args.injuries_only:
+        if upcoming in kickoff.index:
+            injury_update(season, upcoming, feat, defense, schedule, rosters, avail, now)
+        return
 
     scorecard = read_json(os.path.join(DATA_DIR, "scorecard.json"), {"season": season, "weeks": []})
     graded = {(w["week"]) for w in scorecard["weeks"]}
@@ -475,44 +880,84 @@ def main():
     for w in completed:
         if w in graded or w < BACKTEST_FIRST_WEEK:
             continue
-        cand, _, _ = project_week(feat, defense, schedule, season, w, rosters)
+        cand, _, _ = project_week(feat, defense, schedule, season, w, rosters, avail=avail)
         res = grade(players_payload(cand), stats[(stats["season"] == season) & (stats["week"] == w)])
         if res:
             res.update({"week": int(w), "type": "backtest"})
             scorecard["weeks"].append(res)
             print(f"  backtest week {w}: model MAE {res['model_mae']} vs baseline {res['baseline_mae']}")
 
-    # 3) add report-card and leaderboard details to any graded week missing them
+    # 3) add report-card, leaderboard and model-version details to any graded week missing them
     #    (the original grades are never changed)
+    needed = ["report", "leaderboard", "leaderboard_rel", "versions"]
     for row in scorecard["weeks"]:
-        if "report" in row and "leaderboard" in row:
+        if "updates" not in row:
+            upd = read_json(update_path(season, row["week"]))
+            locked = read_json(os.path.join(PROJ_DIR, f"{season}_week{row['week']:02d}.json"))
+            if upd and locked:
+                ur = updates_week(locked["players"], upd["players"], stats[(stats["season"] == season) & (stats["week"] == row["week"])])
+                if ur:
+                    row["updates"] = ur
+        if all(k in row for k in needed):
             continue
         w = row["week"]
         actual = stats[(stats["season"] == season) & (stats["week"] == w)]
         saved = read_json(os.path.join(PROJ_DIR, f"{season}_week{w:02d}.json"))
+        retro = None   # v1 and v2 recomputed for this week, using only data from before it
+
+        def get_retro():
+            nonlocal retro
+            if retro is None:
+                retro = project_week(feat, defense, schedule, season, w, rosters, version="v2", avail=avail)[0]
+            return retro
+
         if saved:
             proj = saved["players"]
         elif row["type"] == "backtest":
-            proj = players_payload(project_week(feat, defense, schedule, season, w, rosters)[0])
+            c = get_retro()
+            c = c.assign(projection=c["proj_v2"] if published_version(season, w) == "v2" else c["proj_v1"])
+            proj = players_payload(c)
         else:
             continue
         if "report" not in row:
             res = grade(proj, actual)
             if res:
                 row["report"] = res["report"]
-                print(f"  added report card for week {w}")
         if "leaderboard" not in row:
             lb = leaderboard_week(proj, actual, stats, season, w)
             if lb:
                 row["leaderboard"] = lb
-                print(f"  added leaderboard for week {w}")
+        if "leaderboard_rel" not in row:
+            lb = leaderboard_week(proj, actual, stats, season, w, relevant_only=True)
+            if lb:
+                row["leaderboard_rel"] = lb
+        if "versions" not in row:
+            pub_v2 = bool(saved) and saved.get("version") == "v2"
+            if pub_v2:
+                v1 = [{"player_id": p["player_id"], "projection": p["proj_v1"]} for p in proj]
+                v2, live = proj, row["type"] == "live"
+            else:
+                c = get_retro()
+                v1 = proj if saved else [{"player_id": i, "projection": x} for i, x in zip(c["player_id"], c["proj_v1"])]
+                v2 = [{"player_id": i, "projection": x} for i, x in zip(c["player_id"], c["proj_v2"])]
+                live = False
+            vr = versions_week(v1, v2, actual, live)
+            if vr:
+                row["versions"] = vr
+        print(f"  week {w}: details added")
 
     scorecard["weeks"].sort(key=lambda r: r["week"])
+    live_rows = [r for r in scorecard["weeks"] if r["type"] == "live"]
     scorecard["leaderboard"] = {
-        "live": summarize_leaderboard([r for r in scorecard["weeks"] if r["type"] == "live"]),
+        "live": summarize_leaderboard(live_rows),
         "all": summarize_leaderboard(scorecard["weeks"]),
+        "live_rel": summarize_leaderboard(live_rows, "leaderboard_rel"),
+        "all_rel": summarize_leaderboard(scorecard["weeks"], "leaderboard_rel"),
         "big_miss_points": BIG_MISS, "relevant_min": RELEVANT_MIN,
     }
+    scorecard["versions"] = summarize_versions(scorecard["weeks"])
+    scorecard["updates"] = summarize_updates(scorecard["weeks"])
+    scorecard["v2_start_week"] = V2_START.get(season)
     for kind in ["live", "backtest"]:
         rows = [r for r in scorecard["weeks"] if r["type"] == kind]
         if rows:
@@ -535,15 +980,20 @@ def main():
     if os.path.exists(out_path) and now >= first_kick:
         print(f"Week {upcoming} has already kicked off; keeping the saved projections.")
         return
-    cand, model, n_train = project_week(feat, defense, schedule, season, upcoming, rosters)
+    cand, _, n_train = project_week(feat, defense, schedule, season, upcoming, rosters, ranges=True, avail=avail)
+    version = published_version(season, upcoming)
     payload = {
         "season": season, "week": upcoming,
         "generated_at": now.isoformat(timespec="seconds"),
         "first_kickoff": first_kick.isoformat(),
         "type": "live" if now < first_kick else "late",
+        "version": version,
         "n_training_rows": n_train,
+        "range_pct": int(round((RANGE_QUANTILES[1] - RANGE_QUANTILES[0]) * 100)),
         "players": players_payload(cand),
     }
+    if version == "v2":
+        payload["why_base"] = float(cand["why_base"].iloc[0])
     write_json(out_path, payload)
     write_json(os.path.join(PROJ_DIR, "latest.json"), payload)
     print(f"  saved {len(payload['players'])} projections for week {upcoming} "

@@ -1,7 +1,9 @@
 name: Weekly update
 
 # Wednesday: grade last week, post next week's projections, check injuries.
-# Friday and Sunday: refresh the injury report only (projections stay locked).
+# Friday and Sunday: refresh the injury report and post injury-updated projections
+# for games that haven't started. The Wednesday projections stay locked and are the
+# official grade; the updates are saved and graded separately.
 on:
   schedule:
     - cron: "0 13 * * 3"    # Wed 13:00 UTC (8 AM Central): full update
@@ -30,7 +32,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 13 * * 3' || github.event.schedule == '0 13 * * 4'
         run: python pipeline/update.py --season 2026
 
-      - name: Injury report only
+      - name: Injury report and injury-updated projections
         if: github.event_name == 'schedule' && github.event.schedule != '0 13 * * 3' && github.event.schedule != '0 13 * * 4'
         run: python pipeline/update.py --season 2026 --injuries-only
 
