@@ -39,6 +39,8 @@ import argparse
 import json
 import os
 import sys
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -354,6 +356,57 @@ class Availability:
         if with_context:
             out["context"] = contexts
         return out
+
+
+def team_context(avail, season, week, team, members):
+    """What the What-if simulator needs about one team: each skill player's recent and season
+    share of the team's targets and carries (last 3 team games before `week`), the recent and
+    season-long starting quarterback, and who is expected to play right now."""
+    weeks = [x for x in avail.team_weeks.get((season, team), []) if x < week]
+    win_weeks = weeks[-WINDOW:]
+    win = [avail.by_tw[(season, team, x)] for x in win_weeks if (season, team, x) in avail.by_tw]
+    sea = [avail.by_tw[(season, team, x)] for x in weeks if (season, team, x) in avail.by_tw]
+    if not win:
+        return None
+    wdf, sdf = pd.concat(win), pd.concat(sea)
+    n = len(win)
+    wsum = wdf.groupby("player_id")[["use_share", "tgt_share", "attempts"]].sum()
+    sgrp = sdf.groupby("player_id")
+    smean, sgames, satt = sgrp["use_share"].mean(), sgrp["week"].nunique(), sgrp["attempts"].sum()
+    qbw = wdf[wdf["grp"] == "QB"].groupby("player_id")["attempts"].sum()
+    qbs = sdf[sdf["grp"] == "QB"].groupby("player_id")["attempts"].sum()
+    players = []
+    for pid in sorted(set(sdf["player_id"]) & set(members)):
+        pos = avail.names.loc[pid, "position"] if pid in avail.names.index else ""
+        players.append({
+            "id": pid, "name": avail.name(pid), "pos": pos, "grp": group_of(pos),
+            "win_use": round(float(wsum["use_share"].get(pid, 0)) / n, 4),
+            "win_tgt": round(float(wsum["tgt_share"].get(pid, 0)) / n, 4),
+            "in_window": bool(pid in wsum.index),
+            "season_use": round(float(smean.get(pid, 0)), 4), "season_games": int(sgames.get(pid, 0)),
+            "available": bool(avail.available(pid, season, week, team)),
+        })
+    return {"qb_window": qbw.idxmax() if len(qbw) and qbw.max() > 0 else None,
+            "qb_season": qbs.idxmax() if len(qbs) and qbs.max() > 0 else None,
+            "players": players}
+
+
+def simulator_payload(cand, models, avail, season, week, rosters):
+    """Model coefficients and team context so the site can recompute projections in the
+    browser when a visitor switches teammates in or out (the What-if page)."""
+    if avail is None or not {"v2", "q10", "q90"} <= set(models):
+        return None
+    roster = roster_for_week(rosters, week) if rosters is not None else None
+    teams = {}
+    for t in sorted(cand["team"].unique()):
+        members = set(roster.loc[roster["team"] == t, "gsis_id"]) if roster is not None else set(cand.loc[cand["team"] == t, "player_id"])
+        ctx = team_context(avail, season, week, t, members)
+        if ctx:
+            teams[t] = ctx
+    return {"features": FEATURES_V2, "av_raw": AV_RAW,
+            "intercept": {k: float(models[k].intercept_) for k in ["v2", "q10", "q90"]},
+            "coef": {k: [round(float(c), 6) for c in models[k].coef_] for k in ["v2", "q10", "q90"]},
+            "teams": teams}
 
 
 def add_av_terms(df):
@@ -706,7 +759,7 @@ def summarize_versions(rows):
             "v2_live_weeks": sum(r["v2_live"] for r in rows)}
 
 
-def players_payload(cand):
+def players_payload(cand, with_x=False):
     out = cand.sort_values("projection", ascending=False)
     cols = set(out.columns)
     rows = []
@@ -733,6 +786,9 @@ def players_payload(cand):
             d["context"] = list(r.context)
         if getattr(r, "returning", 0):
             d["returning_weeks"] = int(r.proj_week - r.week)
+        if with_x:
+            d["x"] = [round(float(getattr(r, f)), 4) for f in FEATURES_V2]
+            d["av"] = [round(float(getattr(r, f)), 4) for f in AV_RAW]
         rows.append(d)
     return rows
 
@@ -759,6 +815,190 @@ def write_injuries(season, week, injuries, rosters, now):
     print(f"  injury report for week {week}: {counts}")
 
 
+# ---------------------------------------------------------------- results and the weekly game
+
+RESULTS_DIR = os.path.join(DATA_DIR, "results")
+GAME_DIR = os.path.join(DATA_DIR, "game")
+H2H_QUOTA = {"QB": 2, "RB": 3, "WR": 3, "TE": 2}
+GAME_SIZE = 10
+
+
+def write_results(season, week, actual_week):
+    """Actual PPR points for every player who played, for the lineup grader."""
+    pts = {r.player_id: round(float(r.fantasy_points_ppr), 2) for r in actual_week.itertuples()}
+    write_json(os.path.join(RESULTS_DIR, f"{season}_week{week:02d}.json"), {"season": season, "week": int(week), "points": pts})
+
+
+def quantile_curve(p, n=240):
+    """A player's outcomes as a piecewise-linear quantile curve through 0, p10, median, p90 and a
+    stretched upper tail. The site's Start/Sit tool uses exactly the same curve."""
+    lo, md, hi = p["low"], p["projection"], p["high"]
+    u = (np.arange(n) + 0.5) / n
+    return np.interp(u, [0, 0.1, 0.5, 0.9, 1.0], [0, lo, md, hi, hi + 1.6 * (hi - md)])
+
+
+def win_prob(a, b):
+    qa, qb = quantile_curve(a), quantile_curve(b)
+    d = qa[:, None] - qb[None, :]
+    return float(((d > 0).sum() + 0.5 * (d == 0).sum()) / d.size)
+
+
+def make_game(season, week, players, stats, schedule, injuries):
+    """This week's two games, fixed once posted: 10 close head-to-heads and 10 over/unders
+    against each player's typical (median) score this season."""
+    path = os.path.join(GAME_DIR, f"{season}_week{week:02d}.json")
+    if os.path.exists(path):
+        return
+    kick = {}
+    for _, g in schedule[schedule["week"] == week].iterrows():
+        kick[g["home_team"]] = kick[g["away_team"]] = g["kickoff_utc"]
+    hurt = set()
+    if injuries is not None:
+        inj = injuries[(injuries["season"] == season) & (injuries["week"] == week)]
+        hurt = set(inj.loc[inj["report_status"].isin(["Out", "Doubtful"]), "gsis_id"])
+    pool = [p for p in players if p.get("low") is not None and p["season_avg"] >= RELEVANT_MIN
+            and not p.get("returning_weeks") and p["player_id"] not in hurt and p["team"] in kick]
+    slim = lambda p: {k: p[k] for k in ["player_id", "name", "position", "team", "opponent", "projection", "low", "high"]}
+    # head-to-heads: close calls (model favorite at 50-66%) between different teams, same position
+    rng = np.random.default_rng(season * 100 + week)
+    used, h2h = set(), []
+    for pos, quota in H2H_QUOTA.items():
+        ps = sorted([p for p in pool if p["position"] == pos], key=lambda p: -p["projection"])[:24]
+        pairs = []
+        for i in range(len(ps)):
+            for j in range(i + 1, len(ps)):
+                a, b = ps[i], ps[j]
+                if a["team"] == b["team"]:
+                    continue
+                pa = win_prob(a, b)
+                fav = max(pa, 1 - pa)
+                if 0.5 <= fav <= 0.66:
+                    pairs.append((abs(fav - 0.57) + rng.random() * 0.02, a, b, pa))
+        for _, a, b, pa in sorted(pairs, key=lambda x: x[0]):
+            if len([x for x in h2h if x["position"] == pos]) >= quota:
+                break
+            if a["player_id"] in used or b["player_id"] in used:
+                continue
+            used |= {a["player_id"], b["player_id"]}
+            if rng.random() < 0.5:          # shuffle sides so the favorite isn't always listed first
+                a, b, pa = b, a, 1 - pa
+            h2h.append({"position": pos, "a": slim(a), "b": slim(b), "model_pick": "a" if pa >= 0.5 else "b",
+                        "model_prob": round(max(pa, 1 - pa), 3),
+                        "kickoff": min(kick[a["team"]], kick[b["team"]]).isoformat()})
+    # over/unders: line = the player's median score this season, where the model disagrees by 1.5+
+    cur = stats[(stats["season"] == season) & (stats["week"] < week)]
+    med = cur.groupby("player_id")["fantasy_points_ppr"].median()
+    games_n = cur.groupby("player_id")["week"].nunique()
+    cands = []
+    for p in pool:
+        if p["player_id"] in used or games_n.get(p["player_id"], 0) < 4:
+            continue
+        line = float(np.floor(med[p["player_id"]]) + 0.5)
+        gap = p["projection"] - line
+        if abs(gap) >= 1.5:
+            cands.append((p, line, "over" if gap > 0 else "under"))
+    cands.sort(key=lambda x: -x[0]["projection"])
+    overs = [c for c in cands if c[2] == "over"][:GAME_SIZE // 2]
+    unders = [c for c in cands if c[2] == "under"][:GAME_SIZE - len(overs)]
+    def p_over(p, line):
+        return float((quantile_curve(p) > line).mean())
+    ou = [{"player": slim(p), "line": line, "model_pick": pick,
+           "model_prob": round(p_over(p, line) if pick == "over" else 1 - p_over(p, line), 3),
+           "kickoff": kick[p["team"]].isoformat()}
+          for p, line, pick in sorted(overs + unders, key=lambda x: -x[0]["projection"])]
+    for i, it in enumerate(h2h):
+        it["id"] = i
+    for i, it in enumerate(ou):
+        it["id"] = i
+    write_json(path, {"season": season, "week": int(week), "h2h": h2h, "ou": ou, "graded": False})
+    print(f"  game for week {week}: {len(h2h)} head-to-heads, {len(ou)} over/unders")
+
+
+def fetch_picks(cfg, season, week):
+    """All picks for a week from the game database (read-only public view)."""
+    url, key = cfg.get("supabase_url"), cfg.get("supabase_anon_key")
+    if not url or not key:
+        return None
+    out, start = [], 0
+    while True:
+        q = urllib.parse.urlencode({"season": f"eq.{season}", "week": f"eq.{week}",
+                                    "select": "player_id,nickname,game,item,choice,created_at", "order": "created_at.asc"})
+        req = urllib.request.Request(f"{url.rstrip('/')}/rest/v1/picks_public?{q}",
+                                     headers={"apikey": key, "Authorization": f"Bearer {key}",
+                                              "Range-Unit": "items", "Range": f"{start}-{start + 999}"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            rows = json.load(resp)
+        out += rows
+        if len(rows) < 1000:
+            return out
+        start += 1000
+
+
+def grade_game(season, week, actual_week):
+    """Score everyone's picks (only picks the database stamped before that game's kickoff count)."""
+    path = os.path.join(GAME_DIR, f"{season}_week{week:02d}.json")
+    game = read_json(path)
+    if not game or game.get("graded"):
+        return
+    pts = dict(zip(actual_week["player_id"], actual_week["fantasy_points_ppr"]))
+    for it in game["h2h"]:
+        a, b = pts.get(it["a"]["player_id"]), pts.get(it["b"]["player_id"])
+        it["actual"] = {"a": a, "b": b}
+        it["result"] = None if a is None or b is None or a == b else ("a" if a > b else "b")
+    for it in game["ou"]:
+        x = pts.get(it["player"]["player_id"])
+        it["actual"] = x
+        it["result"] = None if x is None else ("over" if x > it["line"] else "under")
+    try:
+        picks = fetch_picks(read_json(os.path.join(DATA_DIR, "site.json"), {}), season, week)
+    except Exception as e:
+        print(f"  game picks unavailable ({e}); will try again next run")
+        return
+    items = {("h2h", it["id"]): it for it in game["h2h"]} | {("ou", it["id"]): it for it in game["ou"]}
+    latest = {}
+    for pk in picks or []:
+        it = items.get((pk["game"], pk["item"]))
+        if it and pd.Timestamp(pk["created_at"]) < pd.Timestamp(it["kickoff"]):
+            latest[(pk["player_id"], pk["game"], pk["item"])] = (pk["nickname"], pk["choice"])
+    scores, crowd = {}, {}
+    for (pid, g, i), (nick, choice) in latest.items():
+        res = items[(g, i)]["result"]
+        sc = scores.setdefault(pid, {"player_id": pid, "nickname": nick, "h2h": 0, "ou": 0, "picks": 0})
+        sc["picks"] += 1
+        if res is not None and choice == res:
+            sc[g] += 1
+        crowd.setdefault((g, i), {}).setdefault(choice, 0)
+        crowd[(g, i)][choice] += 1
+    def score_of(choices):
+        return {g: sum(1 for it in game[g] if it["result"] is not None and choices(g, it) == it["result"]) for g in ["h2h", "ou"]}
+    model = score_of(lambda g, it: it["model_pick"])
+    crowd_pick = lambda g, it: max(crowd[(g, it["id"])], key=crowd[(g, it["id"])].get) if crowd.get((g, it["id"])) else None
+    crowd_sc = score_of(crowd_pick)
+    for g in ["h2h", "ou"]:
+        for it in game[g]:
+            it["crowd"] = crowd.get((g, it["id"]), {})
+    game["graded"] = True
+    game["model_score"], game["crowd_score"] = model, crowd_sc
+    results = sorted(scores.values(), key=lambda r: -(r["h2h"] + r["ou"]))
+    game["players"] = results
+    write_json(path, game)
+    lb = read_json(os.path.join(GAME_DIR, "leaderboard.json"), {"season": season, "weeks": {}, "standings": []})
+    lb["weeks"][str(week)] = {"players": len(results), "model": model, "crowd": crowd_sc,
+                              "beat_model": sum(1 for r in results if r["h2h"] + r["ou"] > model["h2h"] + model["ou"])}
+    table = {r["player_id"]: r for r in lb.get("standings", [])}
+    for r in results:
+        t = table.setdefault(r["player_id"], {"player_id": r["player_id"], "nickname": r["nickname"], "total": 0, "weeks": 0, "beat_model": 0})
+        t["nickname"] = r["nickname"]
+        t["total"] += r["h2h"] + r["ou"]
+        t["weeks"] += 1
+        t["beat_model"] += int(r["h2h"] + r["ou"] > model["h2h"] + model["ou"])
+    lb["model_total"] = sum(w["model"]["h2h"] + w["model"]["ou"] for w in lb["weeks"].values())
+    lb["standings"] = sorted(table.values(), key=lambda t: (-t["total"], -t["beat_model"]))
+    lb["updated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    write_json(os.path.join(GAME_DIR, "leaderboard.json"), lb)
+    print(f"  graded week {week} game: {len(results)} players; model scored {model['h2h']}+{model['ou']}")
+
+
 # ---------------------------------------------------------------- injury updates
 
 def update_path(season, week):
@@ -780,8 +1020,8 @@ def injury_update(season, week, feat, defense, schedule, rosters, avail, now):
     prev = read_json(update_path(season, week)) or locked
     prev_by = {p["player_id"]: p for p in prev["players"]}
     locked_by = {p["player_id"]: p for p in locked["players"]}
-    cand, _, _ = project_week(feat, defense, schedule, season, week, rosters, ranges=True, avail=avail)
-    fresh = players_payload(cand)
+    cand, models, _ = project_week(feat, defense, schedule, season, week, rosters, ranges=True, avail=avail)
+    fresh = players_payload(cand, with_x=True)
     players, seen = [], set()
     for p in fresh:
         started = p["team"] in kick and now >= kick[p["team"]]
@@ -798,7 +1038,8 @@ def injury_update(season, week, feat, defense, schedule, rosters, avail, now):
     changed = sum(1 for p in players if p.get("locked") is not None and abs(p["projection"] - p["locked"]) >= 0.5)
     payload = {"season": season, "week": week, "generated_at": now.isoformat(timespec="seconds"),
                "locked_at": locked["generated_at"], "version": "v2", "changed": changed,
-               "why_base": float(cand["why_base"].iloc[0]) if len(cand) else None, "players": players}
+               "why_base": float(cand["why_base"].iloc[0]) if len(cand) else None, "players": players,
+               "sim": simulator_payload(cand, models, avail, season, week, rosters)}
     write_json(update_path(season, week), payload)
     write_json(os.path.join(PROJ_DIR, "latest_update.json"), payload)
     print(f"  injury update for week {week}: {changed} projections moved by 0.5+ points")
@@ -860,6 +1101,13 @@ def main():
 
     scorecard = read_json(os.path.join(DATA_DIR, "scorecard.json"), {"season": season, "weeks": []})
     graded = {(w["week"]) for w in scorecard["weeks"]}
+
+    # 0) actual scores for the lineup grader, and the weekly game, for every completed week
+    for w in completed:
+        actual = stats[(stats["season"] == season) & (stats["week"] == w)]
+        if not os.path.exists(os.path.join(RESULTS_DIR, f"{season}_week{w:02d}.json")):
+            write_results(season, w, actual)
+        grade_game(season, w, actual)
 
     # 1) grade live projections whose games are now complete
     for w in completed:
@@ -980,7 +1228,7 @@ def main():
     if os.path.exists(out_path) and now >= first_kick:
         print(f"Week {upcoming} has already kicked off; keeping the saved projections.")
         return
-    cand, _, n_train = project_week(feat, defense, schedule, season, upcoming, rosters, ranges=True, avail=avail)
+    cand, models, n_train = project_week(feat, defense, schedule, season, upcoming, rosters, ranges=True, avail=avail)
     version = published_version(season, upcoming)
     payload = {
         "season": season, "week": upcoming,
@@ -990,12 +1238,15 @@ def main():
         "version": version,
         "n_training_rows": n_train,
         "range_pct": int(round((RANGE_QUANTILES[1] - RANGE_QUANTILES[0]) * 100)),
-        "players": players_payload(cand),
+        "players": players_payload(cand, with_x=(version == "v2")),
     }
     if version == "v2":
         payload["why_base"] = float(cand["why_base"].iloc[0])
+        payload["sim"] = simulator_payload(cand, models, avail, season, upcoming, rosters)
     write_json(out_path, payload)
     write_json(os.path.join(PROJ_DIR, "latest.json"), payload)
+    if version == "v2" and payload["type"] == "live":
+        make_game(season, upcoming, payload["players"], stats, schedule, injuries)
     print(f"  saved {len(payload['players'])} projections for week {upcoming} "
           f"({payload['type']}; first kickoff {first_kick:%a %b %d %H:%M} UTC)")
 

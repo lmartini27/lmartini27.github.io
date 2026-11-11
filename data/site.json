@@ -1,6 +1,10 @@
 {
+ "supabase_url": "https://lohvpywleccbxvdmytva.supabase.co"
+ "supabase_anon_key": "sb_publishable_rCchOZk6l_DXDcQjKVYPfg_sRKbfZTD"
  "goatcounter_code": "lmartini27",
  "traffic_public": true,
  "feedback_form_url": "",
- "substack_url": ""
+ "substack_url": "",
+ "supabase_url": "",
+ "supabase_anon_key": ""
 }

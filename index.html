@@ -283,6 +283,53 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
 .news { display: block; font: 12px/1.35 var(--body); color: var(--warn); margin-top: 2px; white-space: normal; }
 .tag-back { display: inline-block; font: 600 10px/1 var(--mono); letter-spacing: .04em; padding: 3px 5px; border-radius: 4px; margin-left: 6px; background: var(--warn-bg); color: var(--warn); vertical-align: 2px; }
 .was { display: block; font: 12px var(--mono); color: var(--ink-2); }
+.wi-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 20px; margin-top: 14px; }
+.wi-h { font: 800 18px/1 var(--display); text-transform: uppercase; margin: 0 0 8px; }
+.wi-grp { font: 500 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 12px 0 6px; }
+.wi-p { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); margin-bottom: 6px; font-size: 14px; }
+.wi-p.changed { border-color: var(--warn); }
+.wi-p small { color: var(--ink-2); display: block; font-size: 12px; }
+.sw { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: none; }
+.sw button { border: 0; background: none; padding: 5px 10px; font: 600 12px var(--body); color: var(--ink-2); cursor: pointer; }
+.sw button[aria-pressed="true"].in { background: var(--turf); color: #fff; }
+.sw button[aria-pressed="true"].out { background: var(--bad); color: #fff; }
+td.delta-up { color: var(--good); font-weight: 600; }
+td.delta-down { color: var(--bad); font-weight: 600; }
+.gr-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr) auto; gap: 8px; align-items: center; margin-bottom: 8px; max-width: 760px; }
+.gr-row input { font: 14px var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); color: var(--ink); min-width: 0; }
+.gr-row span { color: var(--ink-2); font-size: 14px; }
+.gr-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; max-width: 760px; }
+.gr-card .lbl { font: 800 18px/1.1 var(--display); text-transform: uppercase; }
+.gr-good { color: var(--good); } .gr-bad { color: var(--bad); } .gr-mid { color: var(--warn); }
+.game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.gitem { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.gitem.locked { opacity: .75; }
+.gitem .meta { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.gchoices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gchoices button { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 8px; padding: 10px 8px; font: 600 14px var(--body); cursor: pointer; text-align: center; line-height: 1.25; }
+.gchoices button small { display: block; font: 400 12px var(--body); color: var(--ink-2); margin-top: 2px; }
+.gchoices button[aria-pressed="true"] { border-color: var(--turf); background: var(--turf-soft); box-shadow: inset 0 0 0 1px var(--turf); }
+.gchoices button:disabled { cursor: default; }
+.gchoices button.right { border-color: var(--good); }
+.gchoices button.wrong { border-color: var(--bad); }
+.reveal { font-size: 13px; color: var(--ink-2); }
+.splitbar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--line); margin-top: 4px; }
+.splitbar i { background: var(--turf); }
+.play-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 6px 0 16px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; max-width: 760px; }
+.play-card input { font: 15px var(--body); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+.score-strip { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 14px; }
+.score-strip div { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; min-width: 120px; }
+.score-strip b { font: 800 26px/1 var(--display); display: block; }
+.score-strip span { font-size: 12px; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .wi-grid, .game-grid { grid-template-columns: minmax(0, 1fr); }
+  .gr-row { grid-template-columns: minmax(0, 1fr); }
+  .gr-row { gap: 4px; padding: 10px 0 12px; border-top: 1px solid var(--line); margin-bottom: 0; }
+  .gr-row span { font-size: 13px; }
+  .gr-row span:last-child { display: none; }
+}
+.tools3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .tools3 { grid-template-columns: minmax(0, 1fr); } }
 .upd-note { background: var(--warn-bg); color: var(--ink); border-radius: 8px; padding: 10px 14px; margin: 0 0 14px; font-size: 14px; max-width: 80ch; }
 @media (max-width: 600px) {
   #view-projections .rank, #view-projections .projbar { display: none; }
@@ -312,6 +359,8 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
       <a href="#home" data-view="home">Home</a>
       <a href="#projections" data-view="projections">Projections</a>
       <a href="#compare" data-view="compare">Start/Sit</a>
+      <a href="#whatif" data-view="whatif">What If</a>
+      <a href="#play" data-view="play">Play</a>
       <a href="#leaderboard" data-view="leaderboard">Leaderboard</a>
       <a href="#research" data-view="research">Research</a>
       <a href="#about" data-view="about">About</a>
@@ -351,6 +400,15 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
         <a href="#projections">All players →</a>
       </div>
       <div class="top4" id="top4"></div>
+    </section>
+
+    <section class="home-sec" aria-labelledby="h-tools">
+      <div class="section-head"><div><h2 id="h-tools">Try it yourself</h2></div></div>
+      <div class="finds tools3">
+        <div class="find"><h3>What if?</h3><p>Switch a quarterback or a star running back out, or bring one back, and watch every teammate's projection move.</p><div class="links"><a href="#whatif">Open the simulator →</a></div></div>
+        <div class="find"><h3>Beat the model</h3><p>Ten head-to-heads and ten over/unders every week. Picks lock at kickoff. See if you finish ahead of the model.</p><div class="links"><a href="#play">Play this week →</a></div></div>
+        <div class="find"><h3>Good call or bad luck?</h3><p>Enter last week's start/sit calls. Find out whether you lost because of the decision or the dice.</p><div class="links"><a href="#compare?tab=grade">Grade my calls →</a></div></div>
+      </div>
     </section>
 
     <section class="home-sec" aria-labelledby="h-last">
@@ -417,6 +475,11 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
   <!-- ================= START / SIT ================= -->
   <section class="view" id="view-compare" aria-labelledby="h-cmp" hidden>
     <h2 id="h-cmp" style="margin-top:24px">Start or sit?</h2>
+    <div class="chips" role="group" aria-label="Start/Sit tools" style="margin:6px 0 14px">
+      <button class="chip" data-cmptab="now" aria-pressed="true">This week</button>
+      <button class="chip" data-cmptab="grade" aria-pressed="false">Good call or bad luck?</button>
+    </div>
+    <div id="cmp-now">
     <p class="sub">Pick two players to compare their week <span class="js-week">–</span> projections. Works across positions for flex decisions.</p>
     <div class="cmp-pick">
       <input id="cmp-a" list="cmp-list" placeholder="First player" autocomplete="off" aria-label="First player">
@@ -425,7 +488,41 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
       <datalist id="cmp-list"></datalist>
     </div>
     <div id="cmp-out"></div>
-    <p class="cmp-help" id="cmp-help">The percentage is how often the model expects each player to outscore the other, based on each player's range of outcomes. It's been honest in testing: across thousands of 2022–2025 matchups, when it said about 60%, the player won about 63% of the time. It uses the injury report through the latest Friday or Sunday update, but not game-day inactives, which come out 90 minutes before kickoff, so check the news before you lock your lineup.</p>
+    <p class="cmp-help" id="cmp-help" data-now>The percentage is how often the model expects each player to outscore the other, based on each player's range of outcomes. It's been honest in testing: across thousands of 2022–2025 matchups, when it said about 60%, the player won about 63% of the time. It uses the injury report through the latest Friday or Sunday update, but not game-day inactives, which come out 90 minutes before kickoff, so check the news before you lock your lineup.</p>
+    </div>
+    <div id="cmp-grade" hidden>
+      <p class="sub">Grade the decision, not the result. Enter the start/sit calls you made in a past week. Using the projections that were posted before kickoff, the site works out how often your choice should have won, then shows what actually happened. A good decision can still lose.</p>
+      <div class="controls">
+        <label class="toggle">Week <select id="gr-week" aria-label="Week"></select></label>
+      </div>
+      <div id="gr-rows"></div>
+      <p><button class="btn" type="button" id="gr-add">Add another decision</button></p>
+      <div id="gr-out"></div>
+      <datalist id="gr-list"></datalist>
+    </div>
+  </section>
+
+  <!-- ================= WHAT IF ================= -->
+  <section class="view" id="view-whatif" aria-labelledby="h-wi" hidden>
+    <h2 id="h-wi" style="margin-top:24px">What if?</h2>
+    <p class="sub">Pick a team and switch players in or out. Every teammate's week <span class="js-week">–</span> projection and range updates using the same model and teammate rules as the official numbers. Try "What if the starting quarterback sits?" or "What if the injured running back comes back?"</p>
+    <div class="controls"><label class="toggle">Team <select id="wi-team" aria-label="Team"></select></label>
+      <button class="btn" type="button" id="wi-reset">Reset to the injury report</button>
+      <button class="btn" type="button" id="wi-share">Copy link</button> <span id="wi-copied" class="cmp-help"></span></div>
+    <div class="wi-grid">
+      <div><h3 class="wi-h">Who plays?</h3><div id="wi-roster"></div></div>
+      <div><h3 class="wi-h">Projections</h3><div id="wi-out"></div></div>
+    </div>
+    <p class="foot-note">The simulator changes only what the model knows about teammates: who is out or back, and their share of the team's targets and carries over its last three games. It can't know how a coach will actually split the work, so treat big moves as a direction, not a promise. Official projections don't change; this is a sandbox.</p>
+  </section>
+
+  <!-- ================= PLAY ================= -->
+  <section class="view" id="view-play" aria-labelledby="h-play" hidden>
+    <h2 id="h-play" style="margin-top:24px">Beat the model</h2>
+    <p class="sub">Two quick games every week. In <strong>Head-to-head</strong>, pick which player scores more PPR points. In <strong>Over/under</strong>, pick whether a player beats his typical score this season. The model plays too. Picks lock at each game's kickoff, and the database's clock decides.</p>
+    <div id="play-me"></div>
+    <div id="play-body"><div class="empty">Loading this week's game…</div></div>
+    <div class="lb-block"><h3>Season standings</h3><div id="play-standings"></div></div>
   </section>
 
   <!-- ================= LEADERBOARD ================= -->
@@ -534,7 +631,7 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
 
 <script>
 (() => {
-  const VIEWS = ["home", "projections", "compare", "leaderboard", "research", "about"];
+  const VIEWS = ["home", "projections", "compare", "whatif", "play", "leaderboard", "research", "about"];
   const REPO = "https://github.com/lmartini27/lmartini27.github.io";
   const ALIASES = { scorecard: "leaderboard" };
   const $ = (s) => document.querySelector(s);
@@ -569,6 +666,8 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
     });
     countView();
     if (view === "compare") setTimeout(loadCompareFromQuery, 0);   // after the page's state is set up
+    if (view === "whatif") setTimeout(loadWhatIfFromQuery, 0);
+    if (view === "play") setTimeout(() => { if (game) refreshPicks().then(renderPlay); }, 0);
   }
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="#"]');
@@ -602,6 +701,7 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
     }
     if (site.substack_url) $("#about-links").innerHTML += ` · <a href="${esc(site.substack_url)}" target="_blank" rel="noopener">Articles on Substack</a>`;
     if (findsData) renderFinds(findsData);
+    if (projMeta.season) loadGame();
   }).catch(() => {});
   $$("[data-fb]").forEach((b) => b.addEventListener("click", () => {
     countEvent("feedback-" + b.dataset.fb);
@@ -729,6 +829,7 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
     if (!players.some(hasRange)) $("#th-range").textContent = "";
     $("#top-sub").textContent = `PPR points, posted before kickoff. Players ruled out are left off.`;
     renderProjections(); renderTop4();
+    setSimSource(d); loadGame();
     // Friday/Sunday injury update for the same week, if there is one
     getJSON("data/projections/latest_update.json").then((u) => {
       if (u.week !== d.week || u.season !== d.season || !(new Date(u.generated_at) > new Date(d.generated_at))) return;
@@ -737,6 +838,7 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
       $("#upd-note").innerHTML = `<strong>Updated ${esc(when(u.generated_at))}</strong> with the latest injury report: ${u.changed} ${u.changed === 1 ? "projection" : "projections"} moved by half a point or more, shown with what they were on ${esc(when(u.locked_at).split(",")[0])}. The locked projections from ${esc(when(u.locked_at))} are still the official grade; updates are graded separately on the leaderboard.`;
       $("#upd-note").hidden = false;
       renderProjections(); renderTop4();
+      if (u.sim) setSimSource(u);
       if (current === "compare") loadCompareFromQuery();
     }).catch(() => {});
   }).catch(() => { $("#p-sub").textContent = "Projections couldn't load. Try refreshing the page."; });
@@ -816,6 +918,7 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
     history.replaceState(null, "", "#compare" + (ids ? "?p=" + ids : ""));
   }
   function loadCompareFromQuery() {
+    if (/(?:^|&)tab=grade/.test(routeQuery)) setCmpTab("grade");
     if (!players.length) { renderCompare(); return; }
     const m = /(?:^|&)p=([^&]*)/.exec(routeQuery);
     if (m) {
@@ -831,6 +934,395 @@ tr.why-row .crow > span:first-child { white-space: nowrap; overflow: hidden; tex
     if (p && cmp[0] && cmp[1]) countEvent("compare");
     syncCompareHash(); renderCompare();
   }));
+
+  // ---------- what if? (teammate simulator) ----------
+  let simSrc = null, wiTeam = null, wiState = {}, wiBase = {};
+  const GRP = (pos) => pos === "QB" ? "QB" : pos === "RB" ? "RB" : "REC";
+  function setSimSource(file) {
+    if (!file || !file.sim || !file.players.some((p) => p.x)) return;
+    simSrc = { sim: file.sim, players: file.players, byId: Object.fromEntries(file.players.map((p) => [p.player_id, p])) };
+    const opp = {};
+    file.players.forEach((p) => { opp[p.team] = p.opponent; });
+    const teams = Object.keys(simSrc.sim.teams).filter((t) => opp[t]).sort();
+    $("#wi-team").innerHTML = teams.map((t) => `<option value="${t}">${t} vs ${esc(opp[t])}</option>`).join("");
+    if (current === "whatif") loadWhatIfFromQuery();
+  }
+  function wiDefaults(team) {
+    const ctx = simSrc.sim.teams[team], st = {};
+    ctx.players.forEach((q) => { st[q.id] = q.available; });
+    return st;
+  }
+  // the teammate inputs the model would see for player p if `st` says who plays
+  function approxRaw(p, ctx, st) {
+    const grp = GRP(p.position), f = { vac_same: 0, ret_same: 0, vac_tgt: 0, qb_out: 0, qb_ret: 0 };
+    const inWin = (id) => { const q = ctx.players.find((x) => x.id === id); return q ? q.in_window : false; };
+    ctx.players.forEach((q) => {
+      if (q.id === p.player_id || q.grp === "QB") return;
+      if (q.in_window && !st[q.id]) {
+        if (q.grp === grp) f.vac_same += q.win_use;
+        f.vac_tgt += q.win_tgt;
+      }
+      if (grp !== "QB" && q.grp === grp && !q.in_window && q.season_games > 0 && st[q.id]) f.ret_same += q.season_use;
+    });
+    if (grp !== "QB") {
+      if (ctx.qb_window && st[ctx.qb_window] === false) f.qb_out = 1;
+      if (ctx.qb_season && ctx.qb_season !== ctx.qb_window && !inWin(ctx.qb_season) && st[ctx.qb_season]) f.qb_ret = 1;
+    }
+    return f;
+  }
+  function simPredict(p, raw) {
+    const S = simSrc.sim, F = S.features, x = p.x.slice(), ix = (n) => F.indexOf(n);
+    const pts = x[ix("fantasy_points_ppr_avg_last3")], rec = (p.position === "WR" || p.position === "TE") ? 1 : 0, rb = p.position === "RB" ? 1 : 0;
+    const set = (n, v) => { const i = ix(n); if (i >= 0) x[i] = v; };
+    set("vac_same", raw.vac_same); set("ret_same", raw.ret_same);
+    set("vac_same_pts", raw.vac_same * pts); set("ret_same_pts", raw.ret_same * pts);
+    set("vac_tgt_rec_pts", raw.vac_tgt * pts * rec);
+    set("qb_out_rec", raw.qb_out * rec); set("qb_out_rb", raw.qb_out * rb);
+    set("qb_out_rec_pts", raw.qb_out * rec * pts); set("qb_out_rb_pts", raw.qb_out * rb * pts);
+    set("qb_ret_pts", raw.qb_ret * pts);
+    const dot = (k) => S.intercept[k] + S.coef[k].reduce((s, c, i) => s + c * x[i], 0);
+    return { med: dot("v2"), lo: dot("q10"), hi: dot("q90") };
+  }
+  function whatIf(p, ctx, st) {
+    const base = approxRaw(p, ctx, wiBase), now = approxRaw(p, ctx, st), av = p.av || [0, 0, 0, 0, 0];
+    const keys = simSrc.sim.av_raw;
+    const changed = keys.some((k) => Math.abs(now[k] - base[k]) > 1e-9);
+    if (!changed) return { projection: p.projection, low: p.low, high: p.high, changed: false };
+    const cur = {}, nxt = {};
+    keys.forEach((k, i) => {
+      cur[k] = av[i];
+      nxt[k] = Math.max(0, av[i] + now[k] - base[k]);
+      if (k === "qb_out" || k === "qb_ret") nxt[k] = Math.min(1, nxt[k]);
+    });
+    const a = simPredict(p, cur), b = simPredict(p, nxt);
+    const proj = Math.max(0, p.projection + b.med - a.med);
+    const low = Math.max(0, Math.min(proj, (p.low != null ? p.low : proj) + b.lo - a.lo));
+    const high = Math.max(proj, (p.high != null ? p.high : proj) + b.hi - a.hi);
+    return { projection: proj, low, high, changed: true };
+  }
+  function renderWhatIf() {
+    if (!simSrc) {
+      $("#wi-roster").innerHTML = "";
+      $("#wi-out").innerHTML = `<div class="empty">${players.length ? "The simulator starts with the week 10 projections from model v2." : "Loading this week's projections…"}</div>`;
+      return;
+    }
+    const team = wiTeam, ctx = simSrc.sim.teams[team];
+    const pct = (v) => Math.round(v * 100) + "%";
+    const groups = [["QB", "Quarterbacks"], ["RB", "Running backs"], ["WR", "Wide receivers"], ["TE", "Tight ends"]];
+    const roster = ctx.players.filter((q) => q.season_use >= 0.02 || simSrc.byId[q.id] || q.id === ctx.qb_window || q.id === ctx.qb_season);
+    $("#wi-roster").innerHTML = groups.map(([pos, label]) => {
+      const qs = roster.filter((q) => q.pos === pos).sort((a, b) => (b.win_use + b.season_use / 2) - (a.win_use + a.season_use / 2)).slice(0, pos === "QB" ? 3 : 6);
+      if (!qs.length) return "";
+      return `<div class="wi-grp">${label}</div>` + qs.map((q) => {
+        const plays = !!wiState[q.id], note = q.in_window
+          ? (pos === "QB" ? (q.id === ctx.qb_window ? "Starter, last 3 games" : "Backup") : `${pct(q.win_use)} of the team's touches and targets, last 3 games`)
+          : (q.season_games ? `Missed recent games · ${pct(q.season_use)} share when he played` : "No games yet");
+        return `<div class="wi-p ${plays !== wiBase[q.id] ? "changed" : ""}"><div><strong>${esc(q.name)}</strong><small>${esc(note)}${!wiBase[q.id] ? " · out on the injury report" : ""}</small></div>
+          <span class="sw" role="group" aria-label="${esc(q.name)}"><button type="button" class="in" data-wi="${q.id}" data-v="1" aria-pressed="${plays}">Plays</button><button type="button" class="out" data-wi="${q.id}" data-v="0" aria-pressed="${!plays}">Out</button></span></div>`;
+      }).join("");
+    }).join("");
+    $$("[data-wi]").forEach((b) => b.addEventListener("click", () => {
+      wiState[b.dataset.wi] = b.dataset.v === "1"; countEvent("whatif-toggle"); syncWhatIfHash(); renderWhatIf();
+    }));
+    // projections for everyone on the team the model projects
+    const rows = simSrc.players.filter((p) => p.team === team && p.position !== "K").map((p) => {
+      const out = wiState[p.player_id] === false;
+      return { p, out, r: out ? null : whatIf(p, ctx, wiState) };
+    }).filter((x) => x.out || x.p.projection >= 1 || (x.r && x.r.projection >= 1));
+    rows.sort((a, b) => (a.out - b.out) || (b.r ? b.r.projection : 0) - (a.r ? a.r.projection : 0));
+    // someone out on the injury report and still out: leave him off unless he was switched
+    for (let i = rows.length - 1; i >= 0; i--) if (rows[i].out && wiBase[rows[i].p.player_id] === false) rows.splice(i, 1);
+    const anyChange = Object.keys(wiState).some((id) => wiState[id] !== wiBase[id]);
+    const qbOff = ctx.qb_window && wiState[ctx.qb_window] === false && wiBase[ctx.qb_window] !== false;
+    const body = rows.map(({ p, out, r }) => {
+      const wasOut = wiBase[p.player_id] === false;
+      const off = wasOut ? "OUT" : fmt(p.projection), now = out ? "OUT" : fmt(r.projection);
+      const d = (out ? 0 : r.projection) - (wasOut ? 0 : p.projection), cls = d > 0.05 ? "delta-up" : d < -0.05 ? "delta-down" : "";
+      const name = `<span class="player">${esc(p.name)}</span><span class="pos">${p.position}</span>`;
+      return `<tr><td>${name}</td><td class="num hide-sm">${off}</td><td class="num"><strong>${now}</strong></td><td class="num ${cls}">${Math.abs(d) < 0.05 ? "–" : (d > 0 ? "+" : "−") + fmt(Math.abs(d))}</td><td class="num hide-sm">${!out && r.low != null ? `${fmt(r.low)}–${fmt(r.high)}` : ""}</td></tr>`;
+    }).join("");
+    $("#wi-out").innerHTML = `${anyChange ? "" : `<p class="cmp-help" style="margin-top:0">These are the official numbers. Switch someone in or out to see what changes.</p>`}
+      <div class="table-box"><table><thead><tr><th>Player</th><th class="num hide-sm">Official</th><th class="num">What if</th><th class="num">Change</th><th class="num hide-sm">80% range</th></tr></thead><tbody>${body}</tbody></table></div>
+      ${qbOff ? `<p class="foot-note">The backup quarterback's own number barely moves: the model projects him from his own recent games, and it can't know he'd start. Pass-catchers' numbers do reflect losing the starter.</p>` : ""}`;
+  }
+  function syncWhatIfHash() {
+    const out = [], back = [];
+    Object.keys(wiState).forEach((id) => { if (wiState[id] !== wiBase[id]) (wiState[id] ? back : out).push(id); });
+    history.replaceState(null, "", `#whatif?team=${wiTeam}` + (out.length ? `&out=${out.join(",")}` : "") + (back.length ? `&in=${back.join(",")}` : ""));
+  }
+  function setWhatIfTeam(team) {
+    wiTeam = team; $("#wi-team").value = team;
+    wiBase = wiDefaults(team); wiState = { ...wiBase };
+  }
+  function loadWhatIfFromQuery() {
+    if (!simSrc) { renderWhatIf(); return; }
+    const q = Object.fromEntries(routeQuery.split("&").filter(Boolean).map((kv) => kv.split("=").map(decodeURIComponent)));
+    const teams = Object.keys(simSrc.sim.teams);
+    const team = teams.includes(q.team) ? q.team : (wiTeam || $("#wi-team").value || teams[0]);
+    if (team !== wiTeam || q.team) setWhatIfTeam(team);
+    (q.out || "").split(",").filter((id) => id in wiState).forEach((id) => { wiState[id] = false; });
+    (q.in || "").split(",").filter((id) => id in wiState).forEach((id) => { wiState[id] = true; });
+    renderWhatIf();
+  }
+  $("#wi-team").addEventListener("change", () => { setWhatIfTeam($("#wi-team").value); syncWhatIfHash(); renderWhatIf(); });
+  $("#wi-reset").addEventListener("click", () => { if (!simSrc) return; wiState = { ...wiBase }; syncWhatIfHash(); renderWhatIf(); });
+  $("#wi-share").addEventListener("click", () => {
+    const url = location.href;
+    const done = () => { $("#wi-copied").textContent = "Copied."; countEvent("whatif-share"); };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, () => { $("#wi-copied").textContent = url; });
+    else $("#wi-copied").textContent = url;
+  });
+
+  // ---------- good call or bad luck? (decision grader) ----------
+  let grWeeks = null, grData = {}, grRows = [["", ""], ["", ""], ["", ""]];
+  const ww = (w) => String(w).padStart(2, "0");
+  $$("[data-cmptab]").forEach((b) => b.addEventListener("click", () => setCmpTab(b.dataset.cmptab)));
+  function setCmpTab(tab) {
+    $$("[data-cmptab]").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.cmptab === tab)));
+    $("#cmp-now").hidden = tab !== "now"; $("#cmp-grade").hidden = tab !== "grade";
+    if (tab === "grade") { loadGraderWeeks(); countEvent("grader-open"); }
+  }
+  async function loadGraderWeeks() {
+    if (grWeeks || !projMeta.season) { if (grWeeks) renderGrader(); else $("#gr-out").innerHTML = `<div class="empty">Loading…</div>`; return; }
+    grWeeks = [];
+    const s = projMeta.season;
+    for (let w = projMeta.week - 1; w >= 1; w--) {
+      try {
+        const [pj, rs] = await Promise.all([getJSON(`data/projections/${s}_week${ww(w)}.json`), getJSON(`data/results/${s}_week${ww(w)}.json`)]);
+        if (!pj.players.some(hasRange)) break;       // weeks before ranges were posted can't be graded this way
+        grData[w] = { proj: pj, pts: rs.points, byId: Object.fromEntries(pj.players.map((p) => [p.player_id, p])) };
+        grWeeks.push(w);
+      } catch (e) { break; }
+    }
+    $("#gr-week").innerHTML = grWeeks.map((w) => `<option value="${w}">Week ${w}</option>`).join("");
+    renderGrader();
+  }
+  const grLabel = (p) => `${p.name} (${p.position}, ${p.team})`;
+  function grFind(d, v) {
+    v = String(v || "").trim(); if (!v) return null;
+    return d.proj.players.find((p) => grLabel(p) === v) || d.proj.players.find((p) => p.name.toLowerCase() === v.toLowerCase());
+  }
+  function renderGrader() {
+    if (!grWeeks.length) {
+      $("#gr-rows").innerHTML = ""; $("#gr-add").hidden = true;
+      $("#gr-out").innerHTML = `<div class="empty">This opens once week ${projMeta.week} is graded. It needs the 80% ranges, which the site started posting in week ${projMeta.week}.</div>`;
+      return;
+    }
+    $("#gr-add").hidden = false;
+    const w = +$("#gr-week").value || grWeeks[0], d = grData[w];
+    $("#gr-list").innerHTML = d.proj.players.filter((p) => hasRange(p)).map((p) => `<option value="${esc(grLabel(p))}"></option>`).join("");
+    if (!$("#gr-rows").children.length || $("#gr-rows").dataset.n != grRows.length) {
+      $("#gr-rows").dataset.n = grRows.length;
+      $("#gr-rows").innerHTML = grRows.map((r, i) => `<div class="gr-row"><span>I started</span><input list="gr-list" data-gr="${i}" data-side="0" placeholder="Player you started" aria-label="Player you started" value="${esc(r[0])}"><span>over</span><input list="gr-list" data-gr="${i}" data-side="1" placeholder="Player you benched" aria-label="Player you benched" value="${esc(r[1])}"><span></span></div>`).join("");
+      $$("[data-gr]").forEach((inp) => inp.addEventListener("change", () => { grRows[+inp.dataset.gr][+inp.dataset.side] = inp.value; renderGrader(); }));
+    }
+    const graded = [];
+    grRows.forEach(([va, vb]) => {
+      const a = grFind(d, va), b = grFind(d, vb);
+      if (!a || !b || a.player_id === b.player_id || !hasRange(a) || !hasRange(b)) return;
+      const pa = winProb(a, b), xa = d.pts[a.player_id], xb = d.pts[b.player_id];
+      const sa = xa != null ? xa : 0, sb = xb != null ? xb : 0;
+      graded.push({ a, b, pa, sa, sb, dnpA: xa == null, dnpB: xb == null, won: sa > sb, tie: sa === sb });
+    });
+    if (!graded.length) {
+      $("#gr-out").innerHTML = `<div class="empty">Type the player you started and the one you benched. Only players the site projected for week ${w} are listed.</div>`;
+      return;
+    }
+    const card = (g) => {
+      const P = Math.round(g.pa * 100), res = g.tie ? "tie" : g.won ? "won" : "lost";
+      let lbl, cls, why;
+      if (g.pa >= 0.55) {
+        [lbl, cls] = res === "won" ? ["Good call", "gr-good"] : res === "lost" ? ["Good call, bad luck", "gr-mid"] : ["Good call", "gr-good"];
+        why = `Before kickoff, ${esc(g.a.name)} was expected to outscore ${esc(g.b.name)} ${P}% of the time.`;
+      } else if (g.pa <= 0.45) {
+        [lbl, cls] = res === "won" ? ["Risky call that paid off", "gr-mid"] : ["Bad call", "gr-bad"];
+        why = `Before kickoff, ${esc(g.a.name)} was expected to outscore ${esc(g.b.name)} only ${P}% of the time.`;
+      } else {
+        [lbl, cls] = ["Coin flip", "gr-mid"];
+        why = `This was close to even: ${esc(g.a.name)} was expected to win ${P}% of the time. No wrong answer.`;
+      }
+      const dnp = (n, x) => x ? ` (${esc(n)} didn't play)` : "";
+      return `<div class="gr-card"><div class="lbl ${cls}">${lbl}</div>
+        <p style="margin:6px 0 0">${why} He scored <strong>${fmt(g.sa)}</strong>${dnp(g.a.name, g.dnpA)}; ${esc(g.b.name)} scored <strong>${fmt(g.sb)}</strong>${dnp(g.b.name, g.dnpB)}. ${res === "won" ? "Your start won." : res === "lost" ? "Your start lost." : "Dead even."}</p></div>`;
+    };
+    const exp = graded.reduce((s, g) => s + g.pa, 0), act = graded.reduce((s, g) => s + (g.tie ? 0.5 : g.won ? 1 : 0), 0), luck = act - exp;
+    const sum = `<div class="verdict-box"><div class="big">${luck >= 0.5 ? "Good luck" : luck <= -0.5 ? "Bad luck" : "About what you'd expect"}</div>
+      <p>Your ${graded.length === 1 ? "decision" : graded.length + " decisions"} should have won about <strong>${fmt(exp)}</strong> of ${graded.length} on average, and ${act === 1 ? "1 won" : fmt(act, act % 1 ? 1 : 0) + " won"}. ${Math.abs(luck) < 0.5 ? "Luck was close to neutral." : luck > 0 ? `Luck added about ${fmt(luck)} ${fmt(luck) === "1.0" ? "win" : "wins"} to your week.` : `Luck cost you about ${fmt(-luck)} ${fmt(-luck) === "1.0" ? "win" : "wins"}.`}</p></div>`;
+    $("#gr-out").innerHTML = sum + graded.map(card).join("") + `<p class="foot-note">Uses the projections and ranges posted before week ${w} kicked off (the locked Wednesday numbers), and the same math as the Start/Sit tool. It doesn't know about late news like game-day inactives.</p>`;
+  }
+  $("#gr-week").addEventListener("change", () => { $("#gr-rows").innerHTML = ""; renderGrader(); });
+  $("#gr-add").addEventListener("click", () => { grRows.push(["", ""]); renderGrader(); });
+
+  // ---------- beat the model (weekly game) ----------
+  let game = null, gameMine = {}, gameSplit = {}, me = null, gameErr = "";
+  const ME_KEY = "sportslab_player";
+  try { me = JSON.parse(localStorage.getItem(ME_KEY) || "null"); } catch (e) { me = null; }
+  const dbReady = () => !!(site.supabase_url && site.supabase_anon_key);
+  function db(path, opts = {}) {
+    const url = site.supabase_url.replace(/\/$/, "") + "/rest/v1/" + path;
+    return fetch(url, { ...opts, headers: { apikey: site.supabase_anon_key, Authorization: `Bearer ${site.supabase_anon_key}`, "Content-Type": "application/json", ...(opts.headers || {}) } })
+      .then(async (r) => {
+        const body = await r.json().catch(() => null);
+        if (!r.ok) throw new Error((body && (body.message || body.hint)) || `Error ${r.status}`);
+        return body;
+      });
+  }
+  const rpc = (fn, args) => db("rpc/" + fn, { method: "POST", body: JSON.stringify(args) });
+  const codeOf = (m) => btoa(unescape(encodeURIComponent(JSON.stringify({ i: m.id, s: m.secret, n: m.nickname })))).replace(/=+$/, "");
+  function fromCode(c) {
+    try { const o = JSON.parse(decodeURIComponent(escape(atob(String(c).trim())))); return o.i && o.s ? { id: o.i, secret: o.s, nickname: o.n || "You" } : null; } catch (e) { return null; }
+  }
+  function saveMe(m) { me = m; try { m ? localStorage.setItem(ME_KEY, JSON.stringify(m)) : localStorage.removeItem(ME_KEY); } catch (e) {} }
+  const locked = (it) => new Date() >= new Date(it.kickoff);
+
+  async function loadGame() {
+    if (!projMeta.season) return;
+    const s = projMeta.season, w = projMeta.week;
+    try { game = await getJSON(`data/game/${s}_week${ww(w)}.json`); } catch (e) { game = null; }
+    if (!game) {   // no new game yet: show the latest graded one
+      try { game = await getJSON(`data/game/${s}_week${ww(w - 1)}.json`); } catch (e) { game = null; }
+    }
+    await refreshPicks();
+    renderPlay();
+    getJSON("data/game/leaderboard.json").then(renderStandings).catch(() => renderStandings(null));
+  }
+  async function refreshPicks() {
+    gameMine = {}; gameSplit = {};
+    if (!game || !dbReady()) return;
+    const q = `season=eq.${game.season}&week=eq.${game.week}`;
+    try {
+      const split = await db(`pick_split?${q}&select=game,item,choice,n`);
+      split.forEach((r) => { (gameSplit[r.game + r.item] = gameSplit[r.game + r.item] || {})[r.choice] = r.n; });
+      if (me) {
+        const mine = await db(`picks_public?${q}&player_id=eq.${encodeURIComponent(me.id)}&select=game,item,choice,created_at&order=created_at.asc`);
+        mine.forEach((r) => { gameMine[r.game + r.item] = r.choice; });
+      }
+      gameErr = "";
+    } catch (e) { gameErr = "Couldn't reach the game database. Picks may not show; try refreshing."; }
+  }
+  function renderMe() {
+    const el = $("#play-me");
+    if (!dbReady()) { el.innerHTML = `<div class="play-card"><span>The game opens once the pick database is connected. Here's how this week's game looks.</span></div>`; return; }
+    if (me) {
+      el.innerHTML = `<div class="play-card"><span>Playing as <strong>${esc(me.nickname)}</strong></span>
+        <span><button class="btn" type="button" id="me-code">Play on another device</button> <button class="btn" type="button" id="me-out">Sign out</button></span>
+        <div id="me-code-box" class="cmp-help" hidden style="flex-basis:100%"></div></div>`;
+      $("#me-code").addEventListener("click", () => {
+        const box = $("#me-code-box"); box.hidden = false;
+        box.innerHTML = `Your player code (keep it private; anyone with it can pick as you):<br><code style="word-break:break-all">${esc(codeOf(me))}</code><br>On the other device, open Play, choose "I have a player code", and paste it.`;
+      });
+      $("#me-out").addEventListener("click", () => {
+        if (!confirmOut()) return;
+        saveMe(null); gameMine = {}; renderPlay();
+      });
+      return;
+    }
+    el.innerHTML = `<div class="play-card"><form id="join-f" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <label for="join-n">Pick a nickname to play</label><input id="join-n" maxlength="20" autocomplete="nickname" placeholder="e.g. FlexKing">
+        <button class="btn btn-primary" type="submit">Join</button></form>
+        <button class="btn" type="button" id="have-code">I have a player code</button>
+        <div id="join-msg" class="cmp-help" style="flex-basis:100%">No email or password. Your nickname shows on the public standings, so keep it clean and don't use your full name.</div></div>`;
+    $("#join-f").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const n = $("#join-n").value.trim();
+      if (!/^[A-Za-z0-9 _.'-]{2,20}$/.test(n)) { $("#join-msg").textContent = "Use 2–20 letters, numbers, spaces, or _ . ' -"; return; }
+      $("#join-msg").textContent = "Joining…";
+      try {
+        const r = await rpc("join_game", { p_nickname: n });
+        saveMe({ id: r.player_id, secret: r.secret, nickname: n }); countEvent("game-join");
+        await refreshPicks(); renderPlay();
+      } catch (err) { $("#join-msg").textContent = /taken/i.test(err.message) ? "That nickname is taken. Try another." : err.message; }
+    });
+    $("#have-code").addEventListener("click", () => {
+      $("#join-msg").innerHTML = `<input id="code-in" placeholder="Paste your player code" style="width:min(100%,420px)"> <button class="btn" type="button" id="code-go">Use code</button>`;
+      $("#code-go").addEventListener("click", async () => {
+        const m = fromCode($("#code-in").value);
+        if (!m) { $("#join-msg").insertAdjacentHTML("beforeend", `<div>That code doesn't look right.</div>`); return; }
+        saveMe(m); await refreshPicks(); renderPlay();
+      });
+    });
+  }
+  function confirmOut() {
+    // no browser dialogs: the first click arms it, the second signs out
+    const b = $("#me-out");
+    if (b.dataset.armed) return true;
+    b.dataset.armed = "1"; b.textContent = "Sure? Save your code first. Click again";
+    return false;
+  }
+  function itemHTML(kind, it) {
+    const key = kind + it.id, mine = gameMine[key], lockedNow = locked(it) || !!game.graded, graded = game.graded && it.result !== undefined;
+    const split = gameSplit[key] || it.crowd || {}, tot = Object.values(split).reduce((s, n) => s + n, 0);
+    const opts = kind === "h2h"
+      ? [["a", it.a.name, `${it.a.position} · ${it.a.team} vs ${it.a.opponent}`], ["b", it.b.name, `${it.b.position} · ${it.b.team} vs ${it.b.opponent}`]]
+      : [["over", `Over ${fmt(it.line)}`, "points"], ["under", `Under ${fmt(it.line)}`, "points"]];
+    const nameOf = (c) => kind === "h2h" ? it[c].name : (c === "over" ? "the over" : "the under");
+    const btns = opts.map(([c, t, sub]) => {
+      const res = graded && it.result ? (c === it.result ? "right" : (mine === c ? "wrong" : "")) : "";
+      return `<button type="button" class="${res}" data-pick="${kind}|${it.id}|${c}" aria-pressed="${mine === c}" ${lockedNow || !dbReady() || !me ? "disabled" : ""}>${esc(t)}<small>${esc(sub)}</small></button>`;
+    }).join("");
+    let reveal = "";
+    if (mine || lockedNow || graded) {
+      const mp = Math.round((it.model_prob || 0.5) * 100);
+      reveal = `<div class="reveal">Model: <strong>${esc(nameOf(it.model_pick))}</strong>${it.model_prob ? ` (${mp}%)` : ""}`;
+      if (tot) {
+        const first = opts[0][0], share = Math.round((split[first] || 0) / tot * 100);
+        reveal += ` · Players: ${share}% ${esc(kind === "h2h" ? it.a.name.split(" ").slice(-1)[0] : "over")}, ${100 - share}% ${esc(kind === "h2h" ? it.b.name.split(" ").slice(-1)[0] : "under")} (${tot})<div class="splitbar"><i style="width:${share}%"></i></div>`;
+      }
+      reveal += `</div>`;
+    }
+    let actual = "";
+    if (graded && it.actual != null) {
+      actual = kind === "h2h"
+        ? `<div class="reveal">Final: ${esc(it.a.name)} ${fmt(it.actual.a)}, ${esc(it.b.name)} ${fmt(it.actual.b)}</div>`
+        : `<div class="reveal">Final: ${fmt(it.actual)} points</div>`;
+    }
+    const head = kind === "h2h" ? `Who scores more? · ${it.position}` : `${esc(it.player.name)} · ${it.player.position} · ${esc(it.player.team)} vs ${esc(it.player.opponent)}`;
+    return `<div class="gitem ${lockedNow ? "locked" : ""}"><div class="meta"><span>${head}</span><span>${lockedNow ? (graded ? "Final" : "Locked") : "Locks " + esc(when(it.kickoff))}</span></div>
+      <div class="gchoices">${btns}</div>${reveal}${actual}</div>`;
+  }
+  function renderPlay() {
+    renderMe();
+    if (!game) { $("#play-body").innerHTML = `<div class="empty">This week's game posts with Wednesday's projections.</div>`; return; }
+    const all = [...game.h2h.map((it) => ["h2h", it]), ...game.ou.map((it) => ["ou", it])];
+    const picked = all.filter(([k, it]) => gameMine[k + it.id]).length;
+    let strip = `<div class="score-strip"><div><b>${me ? picked + "/" + all.length : "–"}</b><span>your picks</span></div>`;
+    if (game.graded) {
+      const right = all.filter(([k, it]) => it.result && gameMine[k + it.id] === it.result).length;
+      const mod = game.model_score.h2h + game.model_score.ou, cr = game.crowd_score ? game.crowd_score.h2h + game.crowd_score.ou : null;
+      strip += `<div><b>${me ? right : "–"}</b><span>you got right</span></div><div><b>${mod}</b><span>the model got right</span></div>${cr != null && game.players && game.players.length ? `<div><b>${cr}</b><span>the crowd got right</span></div>` : ""}`;
+    }
+    strip += `</div>`;
+    $("#play-body").innerHTML = `<h3 class="wi-h" style="margin-top:6px">Week ${game.week}${game.graded ? " results" : ""}</h3>${gameErr ? `<p class="cmp-help">${esc(gameErr)}</p>` : ""}${strip}
+      <div class="wi-grp">Head-to-head: who scores more PPR points?</div><div class="game-grid">${game.h2h.map((it) => itemHTML("h2h", it)).join("")}</div>
+      <div class="wi-grp" style="margin-top:18px">Over/under: the line is his typical (median) score this season</div><div class="game-grid">${game.ou.map((it) => itemHTML("ou", it)).join("")}</div>
+      <p class="foot-note">You can change a pick until that game kicks off; only your last pick before kickoff counts. The model's pick and everyone's split show after you pick. Results post with Wednesday's update.</p>`;
+    $$("[data-pick]").forEach((b) => b.addEventListener("click", async () => {
+      const [kind, id, choice] = b.dataset.pick.split("|"), it = game[kind][+id];
+      if (locked(it)) { renderPlay(); return; }
+      const prev = gameMine[kind + id];
+      if (prev === choice) return;
+      gameMine[kind + id] = choice;
+      const sp = gameSplit[kind + id] = gameSplit[kind + id] || {};
+      if (prev) sp[prev] = Math.max(0, (sp[prev] || 1) - 1);
+      sp[choice] = (sp[choice] || 0) + 1;
+      renderPlay();
+      try {
+        await rpc("submit_pick", { p_player: me.id, p_secret: me.secret, p_season: game.season, p_week: game.week, p_game: kind, p_item: +id, p_choice: choice });
+        countEvent("game-pick");
+      } catch (err) {
+        gameMine[kind + id] = prev; gameErr = /unknown player/i.test(err.message) ? "That player code isn't recognized. Sign out and join again." : "That pick didn't save: " + err.message;
+        renderPlay();
+      }
+    }));
+  }
+  function renderStandings(lb) {
+    const el = $("#play-standings");
+    if (!lb || !lb.standings || !lb.standings.length) { el.innerHTML = `<div class="empty">Standings start after the first week is graded. Can you finish ahead of the model?</div>`; return; }
+    const weeks = Object.keys(lb.weeks).length;
+    const rows = lb.standings.slice(0, 50).map((t, i) => `<tr class="${me && t.player_id === me.id ? "me" : ""}"><td class="rank">${i + 1}</td><td>${esc(t.nickname)}</td><td class="num">${t.total}</td><td class="num">${t.weeks}</td><td class="num">${t.beat_model}</td></tr>`).join("");
+    el.innerHTML = `<p class="cmp-help">Points for correct picks over ${weeks} graded ${weeks === 1 ? "week" : "weeks"}. The model has <strong>${lb.model_total}</strong>.</p>
+      <div class="table-box"><table><thead><tr><th class="rank">#</th><th>Player</th><th class="num">Points</th><th class="num">Weeks</th><th class="num">Weeks beating the model</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
 
   // ---------- weekly report card ----------
   const POS_ORDER = ["QB", "RB", "WR", "TE"];
