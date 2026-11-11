@@ -1,0 +1,449 @@
+{
+ "season": 2026,
+ "week": 10,
+ "h2h": [
+  {
+   "position": "QB",
+   "a": {
+    "player_id": "00-0039150",
+    "name": "Bryce Young",
+    "position": "QB",
+    "team": "CAR",
+    "opponent": "NO",
+    "projection": 14.56,
+    "low": 5.3,
+    "high": 25.0
+   },
+   "b": {
+    "player_id": "00-0040743",
+    "name": "Tyler Shough",
+    "position": "QB",
+    "team": "NO",
+    "opponent": "CAR",
+    "projection": 16.9,
+    "low": 6.4,
+    "high": 28.4
+   },
+   "model_pick": "b",
+   "model_prob": 0.57,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 0
+  },
+  {
+   "position": "QB",
+   "a": {
+    "player_id": "00-0039163",
+    "name": "C.J. Stroud",
+    "position": "QB",
+    "team": "HOU",
+    "opponent": "CLE",
+    "projection": 17.98,
+    "low": 7.3,
+    "high": 27.6
+   },
+   "b": {
+    "player_id": "00-0033537",
+    "name": "Deshaun Watson",
+    "position": "QB",
+    "team": "CLE",
+    "opponent": "HOU",
+    "projection": 15.34,
+    "low": 5.8,
+    "high": 25.6
+   },
+   "model_pick": "a",
+   "model_prob": 0.57,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 1
+  },
+  {
+   "position": "RB",
+   "a": {
+    "player_id": "00-0038542",
+    "name": "Bijan Robinson",
+    "position": "RB",
+    "team": "ATL",
+    "opponent": "KC",
+    "projection": 17.7,
+    "low": 6.4,
+    "high": 33.4
+   },
+   "b": {
+    "player_id": "00-0039139",
+    "name": "Jahmyr Gibbs",
+    "position": "RB",
+    "team": "DET",
+    "opponent": "NE",
+    "projection": 20.93,
+    "low": 7.7,
+    "high": 37.9
+   },
+   "model_pick": "b",
+   "model_prob": 0.568,
+   "kickoff": "2026-11-15T14:30:00+00:00",
+   "id": 2
+  },
+  {
+   "position": "RB",
+   "a": {
+    "player_id": "00-0037840",
+    "name": "Kyren Williams",
+    "position": "RB",
+    "team": "LA",
+    "opponent": "ARI",
+    "projection": 14.34,
+    "low": 4.9,
+    "high": 27.8
+   },
+   "b": {
+    "player_id": "00-0033906",
+    "name": "Alvin Kamara",
+    "position": "RB",
+    "team": "NO",
+    "opponent": "CAR",
+    "projection": 11.87,
+    "low": 3.7,
+    "high": 24.9
+   },
+   "model_pick": "a",
+   "model_prob": 0.567,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 3
+  },
+  {
+   "position": "RB",
+   "a": {
+    "player_id": "00-0037228",
+    "name": "Jaylen Warren",
+    "position": "RB",
+    "team": "PIT",
+    "opponent": "CIN",
+    "projection": 15.35,
+    "low": 5.4,
+    "high": 29.2
+   },
+   "b": {
+    "player_id": "00-0033280",
+    "name": "Christian McCaffrey",
+    "position": "RB",
+    "team": "SF",
+    "opponent": "DAL",
+    "projection": 17.94,
+    "low": 6.6,
+    "high": 34.0
+   },
+   "model_pick": "b",
+   "model_prob": 0.569,
+   "kickoff": "2026-11-15T21:25:00+00:00",
+   "id": 4
+  },
+  {
+   "position": "WR",
+   "a": {
+    "player_id": "00-0039337",
+    "name": "Malik Nabers",
+    "position": "WR",
+    "team": "NYG",
+    "opponent": "WAS",
+    "projection": 14.31,
+    "low": 4.2,
+    "high": 28.9
+   },
+   "b": {
+    "player_id": "00-0036358",
+    "name": "CeeDee Lamb",
+    "position": "WR",
+    "team": "DAL",
+    "opponent": "SF",
+    "projection": 17.44,
+    "low": 5.0,
+    "high": 34.2
+   },
+   "model_pick": "b",
+   "model_prob": 0.571,
+   "kickoff": "2026-11-13T01:15:00+00:00",
+   "id": 5
+  },
+  {
+   "position": "WR",
+   "a": {
+    "player_id": "00-0037247",
+    "name": "George Pickens",
+    "position": "WR",
+    "team": "DAL",
+    "opponent": "SF",
+    "projection": 11.27,
+    "low": 3.2,
+    "high": 24.2
+   },
+   "b": {
+    "player_id": "00-0040667",
+    "name": "Matthew Golden",
+    "position": "WR",
+    "team": "GB",
+    "opponent": "MIN",
+    "projection": 14.16,
+    "low": 3.9,
+    "high": 27.8
+   },
+   "model_pick": "b",
+   "model_prob": 0.571,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 6
+  },
+  {
+   "position": "WR",
+   "a": {
+    "player_id": "00-0038124",
+    "name": "Christian Watson",
+    "position": "WR",
+    "team": "GB",
+    "opponent": "MIN",
+    "projection": 14.1,
+    "low": 4.2,
+    "high": 27.5
+   },
+   "b": {
+    "player_id": "00-0037238",
+    "name": "Drake London",
+    "position": "WR",
+    "team": "ATL",
+    "opponent": "KC",
+    "projection": 11.18,
+    "low": 3.3,
+    "high": 23.8
+   },
+   "model_pick": "a",
+   "model_prob": 0.575,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 7
+  },
+  {
+   "position": "TE",
+   "a": {
+    "player_id": "00-0037838",
+    "name": "Isaiah Likely",
+    "position": "TE",
+    "team": "NYG",
+    "opponent": "WAS",
+    "projection": 10.84,
+    "low": 2.7,
+    "high": 21.8
+   },
+   "b": {
+    "player_id": "00-0034383",
+    "name": "Dalton Schultz",
+    "position": "TE",
+    "team": "HOU",
+    "opponent": "CLE",
+    "projection": 8.5,
+    "low": 2.2,
+    "high": 18.7
+   },
+   "model_pick": "a",
+   "model_prob": 0.573,
+   "kickoff": "2026-11-13T01:15:00+00:00",
+   "id": 8
+  },
+  {
+   "position": "TE",
+   "a": {
+    "player_id": "00-0035229",
+    "name": "T.J. Hockenson",
+    "position": "TE",
+    "team": "MIN",
+    "opponent": "GB",
+    "projection": 8.23,
+    "low": 2.2,
+    "high": 17.6
+   },
+   "b": {
+    "player_id": "00-0036040",
+    "name": "Juwan Johnson",
+    "position": "TE",
+    "team": "NO",
+    "opponent": "CAR",
+    "projection": 6.55,
+    "low": 1.5,
+    "high": 15.0
+   },
+   "model_pick": "a",
+   "model_prob": 0.574,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 9
+  }
+ ],
+ "ou": [
+  {
+   "player": {
+    "player_id": "00-0036442",
+    "name": "Joe Burrow",
+    "position": "QB",
+    "team": "CIN",
+    "opponent": "PIT",
+    "projection": 21.58,
+    "low": 9.1,
+    "high": 30.7
+   },
+   "line": 24.5,
+   "model_pick": "under",
+   "model_prob": 0.629,
+   "kickoff": "2026-11-16T01:20:00+00:00",
+   "id": 0
+  },
+  {
+   "player": {
+    "player_id": "00-0039075",
+    "name": "Puka Nacua",
+    "position": "WR",
+    "team": "LA",
+    "opponent": "ARI",
+    "projection": 20.95,
+    "low": 7.1,
+    "high": 39.5
+   },
+   "line": 25.5,
+   "model_pick": "under",
+   "model_prob": 0.6,
+   "kickoff": "2026-11-15T21:05:00+00:00",
+   "id": 1
+  },
+  {
+   "player": {
+    "player_id": "00-0034857",
+    "name": "Josh Allen",
+    "position": "QB",
+    "team": "BUF",
+    "opponent": "NYJ",
+    "projection": 20.46,
+    "low": 8.1,
+    "high": 33.0
+   },
+   "line": 22.5,
+   "model_pick": "under",
+   "model_prob": 0.567,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 2
+  },
+  {
+   "player": {
+    "player_id": "00-0039851",
+    "name": "Drake Maye",
+    "position": "QB",
+    "team": "NE",
+    "opponent": "DET",
+    "projection": 18.91,
+    "low": 7.6,
+    "high": 30.3
+   },
+   "line": 22.5,
+   "model_pick": "under",
+   "model_prob": 0.625,
+   "kickoff": "2026-11-15T14:30:00+00:00",
+   "id": 3
+  },
+  {
+   "player": {
+    "player_id": "00-0038543",
+    "name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "team": "SEA",
+    "opponent": "LV",
+    "projection": 18.74,
+    "low": 6.0,
+    "high": 35.6
+   },
+   "line": 25.5,
+   "model_pick": "under",
+   "model_prob": 0.658,
+   "kickoff": "2026-11-15T21:05:00+00:00",
+   "id": 4
+  },
+  {
+   "player": {
+    "player_id": "00-0035228",
+    "name": "Kyler Murray",
+    "position": "QB",
+    "team": "MIN",
+    "opponent": "GB",
+    "projection": 15.01,
+    "low": 5.5,
+    "high": 27.5
+   },
+   "line": 12.5,
+   "model_pick": "over",
+   "model_prob": 0.604,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 5
+  },
+  {
+   "player": {
+    "player_id": "00-0030565",
+    "name": "Geno Smith",
+    "position": "QB",
+    "team": "NYJ",
+    "opponent": "BUF",
+    "projection": 14.56,
+    "low": 5.5,
+    "high": 24.0
+   },
+   "line": 11.5,
+   "model_pick": "over",
+   "model_prob": 0.633,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 6
+  },
+  {
+   "player": {
+    "player_id": "00-0036355",
+    "name": "Justin Herbert",
+    "position": "QB",
+    "team": "LAC",
+    "opponent": "BAL",
+    "projection": 14.27,
+    "low": 5.3,
+    "high": 26.1
+   },
+   "line": 9.5,
+   "model_pick": "over",
+   "model_prob": 0.713,
+   "kickoff": "2026-11-17T01:15:00+00:00",
+   "id": 7
+  },
+  {
+   "player": {
+    "player_id": "00-0035261",
+    "name": "Tony Pollard",
+    "position": "RB",
+    "team": "TEN",
+    "opponent": "JAX",
+    "projection": 13.6,
+    "low": 4.6,
+    "high": 27.0
+   },
+   "line": 10.5,
+   "model_pick": "over",
+   "model_prob": 0.637,
+   "kickoff": "2026-11-15T18:00:00+00:00",
+   "id": 8
+  },
+  {
+   "player": {
+    "player_id": "00-0038597",
+    "name": "Chase Brown",
+    "position": "RB",
+    "team": "CIN",
+    "opponent": "PIT",
+    "projection": 13.45,
+    "low": 4.7,
+    "high": 26.9
+   },
+   "line": 10.5,
+   "model_pick": "over",
+   "model_prob": 0.633,
+   "kickoff": "2026-11-16T01:20:00+00:00",
+   "id": 9
+  }
+ ],
+ "graded": false
+}
