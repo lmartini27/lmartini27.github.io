@@ -1157,6 +1157,7 @@ td.delta-down { color: var(--bad); font-weight: 600; }
   let game = null, gameMine = {}, gameSplit = {}, me = null, gameErr = "";
   const ME_KEY = "sportslab_player";
   try { me = JSON.parse(localStorage.getItem(ME_KEY) || "null"); } catch (e) { me = null; }
+  const crowdMin = () => site.crowd_min != null ? site.crowd_min : 25;   // hide crowd numbers until this many players
   const dbReady = () => !!(site.supabase_url && site.supabase_anon_key);
   function db(path, opts = {}) {
     const url = site.supabase_url.replace(/\/$/, "") + "/rest/v1/" + path;
@@ -1264,7 +1265,7 @@ td.delta-down { color: var(--bad); font-weight: 600; }
     if (mine || lockedNow || graded) {
       const mp = Math.round((it.model_prob || 0.5) * 100);
       reveal = `<div class="reveal">Model: <strong>${esc(nameOf(it.model_pick))}</strong>${it.model_prob ? ` (${mp}%)` : ""}`;
-      if (tot) {
+      if (tot >= crowdMin()) {
         const first = opts[0][0], share = Math.round((split[first] || 0) / tot * 100);
         reveal += ` · Players: ${share}% ${esc(kind === "h2h" ? it.a.name.split(" ").slice(-1)[0] : "over")}, ${100 - share}% ${esc(kind === "h2h" ? it.b.name.split(" ").slice(-1)[0] : "under")} (${tot})<div class="splitbar"><i style="width:${share}%"></i></div>`;
       }
@@ -1289,7 +1290,7 @@ td.delta-down { color: var(--bad); font-weight: 600; }
     if (game.graded) {
       const right = all.filter(([k, it]) => it.result && gameMine[k + it.id] === it.result).length;
       const mod = game.model_score.h2h + game.model_score.ou, cr = game.crowd_score ? game.crowd_score.h2h + game.crowd_score.ou : null;
-      strip += `<div><b>${me ? right : "–"}</b><span>you got right</span></div><div><b>${mod}</b><span>the model got right</span></div>${cr != null && game.players && game.players.length ? `<div><b>${cr}</b><span>the crowd got right</span></div>` : ""}`;
+      strip += `<div><b>${me ? right : "–"}</b><span>you got right</span></div><div><b>${mod}</b><span>the model got right</span></div>${cr != null && game.players && game.players.length >= crowdMin() ? `<div><b>${cr}</b><span>the crowd got right</span></div>` : ""}`;
     }
     strip += `</div>`;
     $("#play-body").innerHTML = `<h3 class="wi-h" style="margin-top:6px">Week ${game.week}${game.graded ? " results" : ""}</h3>${gameErr ? `<p class="cmp-help">${esc(gameErr)}</p>` : ""}${strip}
@@ -1319,6 +1320,11 @@ td.delta-down { color: var(--bad); font-weight: 600; }
     const el = $("#play-standings");
     if (!lb || !lb.standings || !lb.standings.length) { el.innerHTML = `<div class="empty">Standings start after the first week is graded. Can you finish ahead of the model?</div>`; return; }
     const weeks = Object.keys(lb.weeks).length;
+    if (lb.standings.length < crowdMin()) {   // small field: show only you against the model
+      const mine = me && lb.standings.find((t) => t.player_id === me.id);
+      el.innerHTML = `<p class="cmp-help">After ${weeks} graded ${weeks === 1 ? "week" : "weeks"}, the model has <strong>${lb.model_total}</strong> points${mine ? ` and you have <strong>${mine.total}</strong>. You've beaten it in ${mine.beat_model} of your ${mine.weeks} ${mine.weeks === 1 ? "week" : "weeks"}` : ""}. The full standings table appears once more people are playing.</p>`;
+      return;
+    }
     const rows = lb.standings.slice(0, 50).map((t, i) => `<tr class="${me && t.player_id === me.id ? "me" : ""}"><td class="rank">${i + 1}</td><td>${esc(t.nickname)}</td><td class="num">${t.total}</td><td class="num">${t.weeks}</td><td class="num">${t.beat_model}</td></tr>`).join("");
     el.innerHTML = `<p class="cmp-help">Points for correct picks over ${weeks} graded ${weeks === 1 ? "week" : "weeks"}. The model has <strong>${lb.model_total}</strong>.</p>
       <div class="table-box"><table><thead><tr><th class="rank">#</th><th>Player</th><th class="num">Points</th><th class="num">Weeks</th><th class="num">Weeks beating the model</th></tr></thead><tbody>${rows}</tbody></table></div>`;
