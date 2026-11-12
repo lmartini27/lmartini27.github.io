@@ -1,8 +1,32 @@
 {
  "season": 2026,
  "week": 10,
- "updated_at": "2026-11-11T19:55:25+00:00",
+ "updated_at": "2026-11-12T20:44:23+00:00",
  "players": {
+  "00-0034778": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0037413": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0040734": {
+   "status": "Out",
+   "injury": "Illness"
+  },
+  "00-0036280": {
+   "status": "Questionable",
+   "injury": "Groin"
+  },
+  "00-0033082": {
+   "status": "Out",
+   "injury": "Concussion"
+  },
+  "00-0039686": {
+   "status": "Out",
+   "injury": "Knee"
+  },
   "00-0029685": {
    "status": "IR",
    "injury": ""
@@ -84,6 +108,10 @@
    "injury": ""
   },
   "00-0034234": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034285": {
    "status": "IR",
    "injury": ""
   },
@@ -172,6 +200,10 @@
    "injury": ""
   },
   "00-0035277": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0035289": {
    "status": "IR",
    "injury": ""
   },
@@ -487,6 +519,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038128": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038401": {
    "status": "IR",
    "injury": ""
@@ -496,6 +532,10 @@
    "injury": ""
   },
   "00-0038540": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038559": {
    "status": "IR",
    "injury": ""
   },
@@ -688,6 +728,10 @@
    "injury": ""
   },
   "00-0039739": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039751": {
    "status": "IR",
    "injury": ""
   },
@@ -1108,6 +1152,10 @@
    "injury": ""
   },
   "00-0041555": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041557": {
    "status": "IR",
    "injury": ""
   },
