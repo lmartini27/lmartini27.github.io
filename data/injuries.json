@@ -1,15 +1,63 @@
 {
  "season": 2026,
  "week": 10,
- "updated_at": "2026-11-12T20:44:23+00:00",
+ "updated_at": "2026-11-13T22:14:11+00:00",
  "players": {
+  "00-0034384": {
+   "status": "Out",
+   "injury": "Hip"
+  },
+  "00-0037297": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0037667": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0029685": {
+   "status": "Questionable",
+   "injury": "Hamstring"
+  },
+  "00-0033132": {
+   "status": "Questionable",
+   "injury": "Chest"
+  },
   "00-0034778": {
    "status": "Out",
    "injury": "Knee"
   },
+  "00-0035676": {
+   "status": "Questionable",
+   "injury": "Ankle"
+  },
+  "00-0036187": {
+   "status": "Questionable",
+   "injury": "Knee"
+  },
+  "00-0036875": {
+   "status": "Questionable",
+   "injury": "Knee"
+  },
+  "00-0037205": {
+   "status": "Questionable",
+   "injury": "Hamstring"
+  },
   "00-0037413": {
    "status": "Out",
    "injury": "Knee"
+  },
+  "00-0038564": {
+   "status": "Questionable",
+   "injury": "Back"
+  },
+  "00-0039770": {
+   "status": "Questionable",
+   "injury": "Hamstring"
+  },
+  "00-0039828": {
+   "status": "Questionable",
+   "injury": "Concussion"
   },
   "00-0040734": {
    "status": "Out",
@@ -26,10 +74,6 @@
   "00-0039686": {
    "status": "Out",
    "injury": "Knee"
-  },
-  "00-0029685": {
-   "status": "IR",
-   "injury": ""
   },
   "00-0031381": {
    "status": "IR",
@@ -243,10 +287,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0036187": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0036198": {
    "status": "IR",
    "injury": ""
@@ -451,10 +491,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0037667": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0037746": {
    "status": "IR",
    "injury": ""
@@ -623,6 +659,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039075": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039138": {
    "status": "IR",
    "injury": ""
@@ -636,10 +676,6 @@
    "injury": ""
   },
   "00-0039237": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0039244": {
    "status": "IR",
    "injury": ""
   },
@@ -932,10 +968,6 @@
    "injury": ""
   },
   "00-0040678": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040687": {
    "status": "IR",
    "injury": ""
   },
