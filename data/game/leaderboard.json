@@ -1,0 +1,49 @@
+{
+ "season": 2026,
+ "weeks": {
+  "10": {
+   "players": 4,
+   "model": {
+    "h2h": 5,
+    "ou": 5
+   },
+   "crowd": {
+    "h2h": 4,
+    "ou": 4
+   },
+   "beat_model": 0
+  }
+ },
+ "standings": [
+  {
+   "player_id": "7eb5aef4-d083-40af-aa07-c71604e5faf2",
+   "nickname": "pukaking",
+   "total": 10,
+   "weeks": 1,
+   "beat_model": 0
+  },
+  {
+   "player_id": "cf7663c7-53c5-471c-a32e-98913ac178ea",
+   "nickname": "pp",
+   "total": 9,
+   "weeks": 1,
+   "beat_model": 0
+  },
+  {
+   "player_id": "974ea0c7-61f2-4f15-a2af-5c21b2a0be11",
+   "nickname": "yoooo",
+   "total": 7,
+   "weeks": 1,
+   "beat_model": 0
+  },
+  {
+   "player_id": "46dff72b-4eaf-4d28-a7fe-e489178be803",
+   "nickname": "Luca1",
+   "total": 6,
+   "weeks": 1,
+   "beat_model": 0
+  }
+ ],
+ "model_total": 10,
+ "updated_at": "2026-11-17T15:15:44+00:00"
+}
