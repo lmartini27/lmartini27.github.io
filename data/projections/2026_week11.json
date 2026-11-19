@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 11,
- "generated_at": "2026-11-18T20:58:28+00:00",
+ "generated_at": "2026-11-19T21:20:53+00:00",
  "first_kickoff": "2026-11-20T01:15:00+00:00",
  "type": "live",
  "version": "v2",
@@ -1199,7 +1199,7 @@
    "av": [
     0.0,
     0.0,
-    0.0421,
+    0.1739,
     0.0,
     0.0
    ]
@@ -3512,6 +3512,98 @@
    ]
   },
   {
+   "player_id": "00-0036554",
+   "name": "Nico Collins",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 12.82,
+   "recent_avg": 14.17,
+   "season_avg": 16.57,
+   "games": 7,
+   "last_season_avg": 15.08,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 12.6,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 3.6,
+   "high": 26.4,
+   "why": [
+    [
+     "Recent points",
+     0.13
+    ],
+    [
+     "Recent usage",
+     0.6
+    ],
+    [
+     "Season so far",
+     3.96
+    ],
+    [
+     "Last season",
+     1.09
+    ],
+    [
+     "Teammates and QB",
+     0.47
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    14.1667,
+    8.3333,
+    0.0,
+    51.6667,
+    0.0,
+    0.0,
+    5.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    16.5714,
+    7.8571,
+    0.2857,
+    7.0,
+    15.08,
+    1.0,
+    0.0531,
+    0.0566,
+    0.7525,
+    0.8019,
+    2.4639,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0531,
+    0.0566,
+    0.1739,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0030565",
    "name": "Geno Smith",
    "position": "QB",
@@ -4251,98 +4343,6 @@
    ]
   },
   {
-   "player_id": "00-0036554",
-   "name": "Nico Collins",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 12.06,
-   "recent_avg": 14.17,
-   "season_avg": 16.57,
-   "games": 7,
-   "last_season_avg": 15.08,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 12.6,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 3.5,
-   "high": 25.3,
-   "why": [
-    [
-     "Recent points",
-     0.13
-    ],
-    [
-     "Recent usage",
-     0.6
-    ],
-    [
-     "Season so far",
-     3.96
-    ],
-    [
-     "Last season",
-     1.09
-    ],
-    [
-     "Teammates and QB",
-     -0.29
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    14.1667,
-    8.3333,
-    0.0,
-    51.6667,
-    0.0,
-    0.0,
-    5.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    16.5714,
-    7.8571,
-    0.2857,
-    7.0,
-    15.08,
-    1.0,
-    0.0126,
-    0.0566,
-    0.1782,
-    0.8019,
-    0.5961,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0126,
-    0.0566,
-    0.0421,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0040735",
    "name": "Luther Burden III",
    "position": "WR",
@@ -4614,7 +4614,7 @@
    "av": [
     0.0,
     0.0,
-    0.023,
+    0.0115,
     0.0,
     0.0
    ]
@@ -5921,6 +5921,102 @@
    ]
   },
   {
+   "player_id": "00-0040128",
+   "name": "Tyler Warren",
+   "position": "TE",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 10.53,
+   "recent_avg": 5.53,
+   "season_avg": 10.81,
+   "games": 8,
+   "last_season_avg": 11.09,
+   "opp_allowed": 11.1,
+   "matchup": "Tough",
+   "proj_v1": 9.05,
+   "opp_rank": 18,
+   "opp_n": 26,
+   "low": 2.7,
+   "high": 22.7,
+   "why": [
+    [
+     "Recent points",
+     -0.05
+    ],
+    [
+     "Recent usage",
+     -0.31
+    ],
+    [
+     "Season so far",
+     2.33
+    ],
+    [
+     "Last season",
+     0.56
+    ],
+    [
+     "Teammates and QB",
+     1.21
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.11
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "context": [
+    "Keenan Allen (WR) out",
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    5.5333,
+    6.6667,
+    0.3333,
+    21.0,
+    1.0,
+    0.0,
+    3.3333,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.1,
+    10.8125,
+    7.0,
+    0.5,
+    8.0,
+    11.0882,
+    1.0,
+    0.1563,
+    0.0147,
+    0.8647,
+    0.0814,
+    1.5447,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.1563,
+    0.0147,
+    0.2792,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0041029",
    "name": "Jordyn Tyson",
    "position": "WR",
@@ -6376,102 +6472,6 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0040128",
-   "name": "Tyler Warren",
-   "position": "TE",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 10.2,
-   "recent_avg": 5.53,
-   "season_avg": 10.81,
-   "games": 8,
-   "last_season_avg": 11.09,
-   "opp_allowed": 11.1,
-   "matchup": "Tough",
-   "proj_v1": 9.05,
-   "opp_rank": 18,
-   "opp_n": 26,
-   "low": 2.6,
-   "high": 22.2,
-   "why": [
-    [
-     "Recent points",
-     -0.05
-    ],
-    [
-     "Recent usage",
-     -0.31
-    ],
-    [
-     "Season so far",
-     2.33
-    ],
-    [
-     "Last season",
-     0.56
-    ],
-    [
-     "Teammates and QB",
-     0.88
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.11
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "context": [
-    "Keenan Allen (WR) out",
-    "Josh Downs (WR) out"
-   ],
-   "x": [
-    5.5333,
-    6.6667,
-    0.3333,
-    21.0,
-    1.0,
-    0.0,
-    3.3333,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.1,
-    10.8125,
-    7.0,
-    0.5,
-    8.0,
-    11.0882,
-    1.0,
-    0.1563,
-    0.0866,
-    0.8647,
-    0.4792,
-    1.5447,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.1563,
-    0.0866,
-    0.2792,
     0.0,
     0.0
    ]
@@ -8326,7 +8326,7 @@
    "av": [
     0.0162,
     0.2078,
-    0.0421,
+    0.1167,
     0.0,
     0.0
    ]
@@ -8511,6 +8511,98 @@
     0.0,
     0.0,
     0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038618",
+   "name": "Xavier Hutchinson",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 8.58,
+   "recent_avg": 13.2,
+   "season_avg": 9.12,
+   "games": 9,
+   "last_season_avg": 6.13,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 10.95,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 1.8,
+   "high": 19.7,
+   "why": [
+    [
+     "Recent points",
+     0.11
+    ],
+    [
+     "Recent usage",
+     0.04
+    ],
+    [
+     "Season so far",
+     1.51
+    ],
+    [
+     "Last season",
+     -0.1
+    ],
+    [
+     "Teammates and QB",
+     0.44
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    13.2,
+    6.6667,
+    0.6667,
+    34.6667,
+    4.0,
+    0.0,
+    3.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    9.1222,
+    6.0,
+    0.4444,
+    9.0,
+    6.125,
+    1.0,
+    0.0531,
+    0.0566,
+    0.7012,
+    0.7472,
+    2.2958,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0531,
+    0.0566,
+    0.1739,
     0.0,
     0.0
    ]
@@ -8799,7 +8891,7 @@
    "position": "TE",
    "team": "MIN",
    "opponent": "SF",
-   "projection": 8.29,
+   "projection": 8.22,
    "recent_avg": 12.2,
    "season_avg": 10.72,
    "games": 8,
@@ -8830,7 +8922,7 @@
     ],
     [
      "Teammates and QB",
-     0.0
+     -0.06
     ],
     [
      "First game back",
@@ -8865,9 +8957,9 @@
     7.52,
     1.0,
     0.0,
+    0.0077,
     0.0,
-    0.0,
-    0.0,
+    0.0938,
     0.0,
     0.0,
     0.0,
@@ -8879,7 +8971,7 @@
    ],
    "av": [
     0.0,
-    0.0,
+    0.0077,
     0.0,
     0.0,
     0.0
@@ -9537,98 +9629,6 @@
    ]
   },
   {
-   "player_id": "00-0038618",
-   "name": "Xavier Hutchinson",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 7.87,
-   "recent_avg": 13.2,
-   "season_avg": 9.12,
-   "games": 9,
-   "last_season_avg": 6.13,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 10.95,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 1.7,
-   "high": 18.5,
-   "why": [
-    [
-     "Recent points",
-     0.11
-    ],
-    [
-     "Recent usage",
-     0.04
-    ],
-    [
-     "Season so far",
-     1.51
-    ],
-    [
-     "Last season",
-     -0.1
-    ],
-    [
-     "Teammates and QB",
-     -0.28
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    13.2,
-    6.6667,
-    0.6667,
-    34.6667,
-    4.0,
-    0.0,
-    3.3333,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    9.1222,
-    6.0,
-    0.4444,
-    9.0,
-    6.125,
-    1.0,
-    0.0126,
-    0.0566,
-    0.166,
-    0.7472,
-    0.5554,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0126,
-    0.0566,
-    0.0421,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0037261",
    "name": "Khalil Shakir",
    "position": "WR",
@@ -9903,6 +9903,98 @@
     0.0929,
     0.0189,
     0.1736,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0034383",
+   "name": "Dalton Schultz",
+   "position": "TE",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 7.72,
+   "recent_avg": 7.93,
+   "season_avg": 8.83,
+   "games": 9,
+   "last_season_avg": 10.45,
+   "opp_allowed": 11.67,
+   "matchup": "Tough",
+   "proj_v1": 7.11,
+   "opp_rank": 16,
+   "opp_n": 26,
+   "low": 1.9,
+   "high": 17.6,
+   "why": [
+    [
+     "Recent points",
+     0.0
+    ],
+    [
+     "Recent usage",
+     -1.01
+    ],
+    [
+     "Season so far",
+     1.17
+    ],
+    [
+     "Last season",
+     0.48
+    ],
+    [
+     "Teammates and QB",
+     0.3
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.1
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "x": [
+    7.9333,
+    4.0,
+    0.0,
+    32.6667,
+    0.0,
+    0.0,
+    2.6667,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.6667,
+    8.8333,
+    5.4444,
+    0.0,
+    9.0,
+    10.4529,
+    1.0,
+    0.0531,
+    0.0566,
+    0.4214,
+    0.4491,
+    1.3798,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0531,
+    0.0566,
+    0.1739,
     0.0,
     0.0
    ]
@@ -10559,6 +10651,98 @@
    ]
   },
   {
+   "player_id": "00-0038977",
+   "name": "Tank Dell",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 7.43,
+   "recent_avg": 10.37,
+   "season_avg": 10.37,
+   "games": 3,
+   "last_season_avg": null,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 9.03,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 1.5,
+   "high": 18.2,
+   "why": [
+    [
+     "Recent points",
+     0.05
+    ],
+    [
+     "Recent usage",
+     -0.32
+    ],
+    [
+     "Season so far",
+     1.21
+    ],
+    [
+     "Last season",
+     -0.45
+    ],
+    [
+     "Teammates and QB",
+     0.36
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    10.3667,
+    4.6667,
+    0.6667,
+    56.3333,
+    0.6667,
+    0.0,
+    2.6667,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    10.3667,
+    4.6667,
+    0.6667,
+    3.0,
+    0.0,
+    0.0,
+    0.0531,
+    0.0566,
+    0.5507,
+    0.5868,
+    1.803,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0531,
+    0.0566,
+    0.1739,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0034351",
    "name": "Dallas Goedert",
    "position": "TE",
@@ -10842,98 +11026,6 @@
    ]
   },
   {
-   "player_id": "00-0034383",
-   "name": "Dalton Schultz",
-   "position": "TE",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 7.24,
-   "recent_avg": 7.93,
-   "season_avg": 8.83,
-   "games": 9,
-   "last_season_avg": 10.45,
-   "opp_allowed": 11.67,
-   "matchup": "Tough",
-   "proj_v1": 7.11,
-   "opp_rank": 16,
-   "opp_n": 26,
-   "low": 1.8,
-   "high": 16.7,
-   "why": [
-    [
-     "Recent points",
-     0.0
-    ],
-    [
-     "Recent usage",
-     -1.01
-    ],
-    [
-     "Season so far",
-     1.17
-    ],
-    [
-     "Last season",
-     0.48
-    ],
-    [
-     "Teammates and QB",
-     -0.18
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.1
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "x": [
-    7.9333,
-    4.0,
-    0.0,
-    32.6667,
-    0.0,
-    0.0,
-    2.6667,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.6667,
-    8.8333,
-    5.4444,
-    0.0,
-    9.0,
-    10.4529,
-    1.0,
-    0.0126,
-    0.0566,
-    0.0998,
-    0.4491,
-    0.3338,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0126,
-    0.0566,
-    0.0421,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0039424",
    "name": "Devaughn Vele",
    "position": "WR",
@@ -11026,98 +11118,6 @@
    ]
   },
   {
-   "player_id": "00-0038994",
-   "name": "Jordan Addison",
-   "position": "WR",
-   "team": "MIN",
-   "opponent": "SF",
-   "projection": 7.15,
-   "recent_avg": 6.9,
-   "season_avg": 7.7,
-   "games": 7,
-   "last_season_avg": 9.65,
-   "opp_allowed": 41.3,
-   "matchup": "Great",
-   "proj_v1": 8.18,
-   "opp_rank": 4,
-   "opp_n": 26,
-   "low": 1.6,
-   "high": 17.5,
-   "why": [
-    [
-     "Recent points",
-     -0.02
-    ],
-    [
-     "Recent usage",
-     -0.66
-    ],
-    [
-     "Season so far",
-     0.81
-    ],
-    [
-     "Last season",
-     0.37
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.14
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    6.9,
-    4.6667,
-    0.3333,
-    38.0,
-    1.0,
-    0.0,
-    2.3333,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    41.3,
-    7.7,
-    5.1429,
-    0.2857,
-    7.0,
-    9.65,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0031610",
    "name": "Darren Waller",
    "position": "TE",
@@ -11205,6 +11205,194 @@
     0.0,
     0.0549,
     0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038994",
+   "name": "Jordan Addison",
+   "position": "WR",
+   "team": "MIN",
+   "opponent": "SF",
+   "projection": 7.11,
+   "recent_avg": 6.9,
+   "season_avg": 7.7,
+   "games": 7,
+   "last_season_avg": 9.65,
+   "opp_allowed": 41.3,
+   "matchup": "Great",
+   "proj_v1": 8.18,
+   "opp_rank": 4,
+   "opp_n": 26,
+   "low": 1.6,
+   "high": 17.4,
+   "why": [
+    [
+     "Recent points",
+     -0.02
+    ],
+    [
+     "Recent usage",
+     -0.66
+    ],
+    [
+     "Season so far",
+     0.81
+    ],
+    [
+     "Last season",
+     0.37
+    ],
+    [
+     "Teammates and QB",
+     -0.04
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.14
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    6.9,
+    4.6667,
+    0.3333,
+    38.0,
+    1.0,
+    0.0,
+    2.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    41.3,
+    7.7,
+    5.1429,
+    0.2857,
+    7.0,
+    9.65,
+    1.0,
+    0.0,
+    0.0077,
+    0.0,
+    0.0531,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0077,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0035685",
+   "name": "David Montgomery",
+   "position": "RB",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 6.99,
+   "recent_avg": 4.07,
+   "season_avg": 9.1,
+   "games": 5,
+   "last_season_avg": 9.82,
+   "opp_allowed": 31.9,
+   "matchup": "Great",
+   "proj_v1": 6.39,
+   "opp_rank": 3,
+   "opp_n": 26,
+   "low": 1.8,
+   "high": 16.5,
+   "why": [
+    [
+     "Recent points",
+     -0.08
+    ],
+    [
+     "Recent usage",
+     -0.33
+    ],
+    [
+     "Season so far",
+     0.13
+    ],
+    [
+     "Last season",
+     0.39
+    ],
+    [
+     "Teammates and QB",
+     1.19
+    ],
+    [
+     "First game back",
+     -0.97
+    ],
+    [
+     "Opponent",
+     0.06
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "context": [
+    "Woody Marks (RB) out"
+   ],
+   "returning_weeks": 6,
+   "x": [
+    4.0667,
+    0.6667,
+    8.6667,
+    11.3333,
+    22.6667,
+    0.0,
+    0.6667,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    31.9,
+    9.1,
+    1.4,
+    10.4,
+    5.0,
+    9.8188,
+    1.0,
+    0.2009,
+    0.0,
+    0.8169,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    4.0667
+   ],
+   "av": [
+    0.2009,
+    0.0,
+    0.2617,
     0.0,
     0.0
    ]
@@ -11395,98 +11583,6 @@
     0.0929,
     0.0189,
     0.1736,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0038977",
-   "name": "Tank Dell",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 6.84,
-   "recent_avg": 10.37,
-   "season_avg": 10.37,
-   "games": 3,
-   "last_season_avg": null,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 9.03,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 1.4,
-   "high": 17.2,
-   "why": [
-    [
-     "Recent points",
-     0.05
-    ],
-    [
-     "Recent usage",
-     -0.32
-    ],
-    [
-     "Season so far",
-     1.21
-    ],
-    [
-     "Last season",
-     -0.45
-    ],
-    [
-     "Teammates and QB",
-     -0.23
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    10.3667,
-    4.6667,
-    0.6667,
-    56.3333,
-    0.6667,
-    0.0,
-    2.6667,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    10.3667,
-    4.6667,
-    0.6667,
-    3.0,
-    0.0,
-    0.0,
-    0.0126,
-    0.0566,
-    0.1304,
-    0.5868,
-    0.4362,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0126,
-    0.0566,
-    0.0421,
     0.0,
     0.0
    ]
@@ -13441,6 +13537,98 @@
    ]
   },
   {
+   "player_id": "00-0038608",
+   "name": "Kayshon Boutte",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 5.9,
+   "recent_avg": 10.67,
+   "season_avg": 6.99,
+   "games": 9,
+   "last_season_avg": 8.86,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 6.92,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 1.1,
+   "high": 15.2,
+   "why": [
+    [
+     "Recent points",
+     0.06
+    ],
+    [
+     "Recent usage",
+     -1.15
+    ],
+    [
+     "Season so far",
+     -0.22
+    ],
+    [
+     "Last season",
+     0.27
+    ],
+    [
+     "Teammates and QB",
+     0.37
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    10.6667,
+    2.6667,
+    0.0,
+    50.0,
+    0.0,
+    0.0,
+    1.6667,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    6.9889,
+    3.2222,
+    0.0,
+    9.0,
+    8.8643,
+    1.0,
+    0.0531,
+    0.0566,
+    0.5666,
+    0.6038,
+    1.8552,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0531,
+    0.0566,
+    0.1739,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0037742",
    "name": "Treylon Burks",
    "position": "WR",
@@ -13620,99 +13808,6 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0035685",
-   "name": "David Montgomery",
-   "position": "RB",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 5.8,
-   "recent_avg": 4.07,
-   "season_avg": 9.1,
-   "games": 5,
-   "last_season_avg": 9.82,
-   "opp_allowed": 31.9,
-   "matchup": "Great",
-   "proj_v1": 6.39,
-   "opp_rank": 3,
-   "opp_n": 26,
-   "low": 1.4,
-   "high": 13.3,
-   "why": [
-    [
-     "Recent points",
-     -0.08
-    ],
-    [
-     "Recent usage",
-     -0.33
-    ],
-    [
-     "Season so far",
-     0.13
-    ],
-    [
-     "Last season",
-     0.39
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     -0.97
-    ],
-    [
-     "Opponent",
-     0.06
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "returning_weeks": 6,
-   "x": [
-    4.0667,
-    0.6667,
-    8.6667,
-    11.3333,
-    22.6667,
-    0.0,
-    0.6667,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    31.9,
-    9.1,
-    1.4,
-    10.4,
-    5.0,
-    9.8188,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    4.0667
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.1823,
     0.0,
     0.0
    ]
@@ -13994,6 +14089,98 @@
    ]
   },
   {
+   "player_id": "00-0039849",
+   "name": "Marvin Harrison Jr.",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 5.61,
+   "recent_avg": 6.0,
+   "season_avg": 5.36,
+   "games": 7,
+   "last_season_avg": 10.65,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 6.45,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 1.2,
+   "high": 14.9,
+   "why": [
+    [
+     "Recent points",
+     -0.04
+    ],
+    [
+     "Recent usage",
+     -1.32
+    ],
+    [
+     "Season so far",
+     -0.48
+    ],
+    [
+     "Last season",
+     0.5
+    ],
+    [
+     "Teammates and QB",
+     0.37
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    6.0,
+    3.6667,
+    0.0,
+    20.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    5.3571,
+    3.4286,
+    0.0,
+    7.0,
+    10.65,
+    1.0,
+    0.0418,
+    0.0145,
+    0.2509,
+    0.087,
+    1.0471,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0418,
+    0.0145,
+    0.1745,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0040727",
    "name": "Tre Harris",
    "position": "WR",
@@ -14081,98 +14268,6 @@
     0.0,
     0.1297,
     0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0039849",
-   "name": "Marvin Harrison Jr.",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 5.49,
-   "recent_avg": 6.0,
-   "season_avg": 5.36,
-   "games": 7,
-   "last_season_avg": 10.65,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 6.45,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 1.2,
-   "high": 14.7,
-   "why": [
-    [
-     "Recent points",
-     -0.04
-    ],
-    [
-     "Recent usage",
-     -1.32
-    ],
-    [
-     "Season so far",
-     -0.48
-    ],
-    [
-     "Last season",
-     0.5
-    ],
-    [
-     "Teammates and QB",
-     0.26
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    6.0,
-    3.6667,
-    0.0,
-    20.0,
-    0.0,
-    0.0,
-    2.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    5.3571,
-    3.4286,
-    0.0,
-    7.0,
-    10.65,
-    1.0,
-    0.036,
-    0.0145,
-    0.2158,
-    0.087,
-    0.5094,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.036,
-    0.0145,
-    0.0849,
     0.0,
     0.0
    ]
@@ -14729,98 +14824,6 @@
     0.0,
     0.0263,
     1.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0038608",
-   "name": "Kayshon Boutte",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 5.3,
-   "recent_avg": 10.67,
-   "season_avg": 6.99,
-   "games": 9,
-   "last_season_avg": 8.86,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 6.92,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 1.0,
-   "high": 14.2,
-   "why": [
-    [
-     "Recent points",
-     0.06
-    ],
-    [
-     "Recent usage",
-     -1.15
-    ],
-    [
-     "Season so far",
-     -0.22
-    ],
-    [
-     "Last season",
-     0.27
-    ],
-    [
-     "Teammates and QB",
-     -0.23
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    10.6667,
-    2.6667,
-    0.0,
-    50.0,
-    0.0,
-    0.0,
-    1.6667,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    6.9889,
-    3.2222,
-    0.0,
-    9.0,
-    8.8643,
-    1.0,
-    0.0126,
-    0.0566,
-    0.1342,
-    0.6038,
-    0.4488,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0126,
-    0.0566,
-    0.0421,
-    0.0,
     0.0
    ]
   },
@@ -16142,7 +16145,7 @@
    "position": "TE",
    "team": "MIN",
    "opponent": "SF",
-   "projection": 4.83,
+   "projection": 4.77,
    "recent_avg": 7.87,
    "season_avg": 6.25,
    "games": 4,
@@ -16152,8 +16155,8 @@
    "proj_v1": 6.84,
    "opp_rank": 3,
    "opp_n": 26,
-   "low": 1.1,
-   "high": 13.3,
+   "low": 1.0,
+   "high": 13.1,
    "why": [
     [
      "Recent points",
@@ -16173,7 +16176,7 @@
     ],
     [
      "Teammates and QB",
-     0.07
+     0.01
     ],
     [
      "First game back",
@@ -16207,11 +16210,11 @@
     4.0,
     0.0,
     0.0,
-    0.0051,
     0.0,
-    0.0403,
     0.0,
-    0.1808,
+    0.0,
+    0.0,
+    0.0904,
     0.0,
     0.0,
     0.0,
@@ -16221,9 +16224,9 @@
     0.0
    ],
    "av": [
-    0.0051,
     0.0,
-    0.023,
+    0.0,
+    0.0115,
     0.0,
     0.0
    ]
@@ -16876,6 +16879,101 @@
     0.0,
     0.0,
     0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038705",
+   "name": "Emari Demercado",
+   "position": "RB",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 4.43,
+   "recent_avg": 2.23,
+   "season_avg": 1.85,
+   "games": 4,
+   "last_season_avg": 4.86,
+   "opp_allowed": 31.9,
+   "matchup": "Great",
+   "proj_v1": 5.24,
+   "opp_rank": 3,
+   "opp_n": 26,
+   "low": 0.7,
+   "high": 14.0,
+   "why": [
+    [
+     "Recent points",
+     -0.11
+    ],
+    [
+     "Recent usage",
+     -1.07
+    ],
+    [
+     "Season so far",
+     -2.03
+    ],
+    [
+     "Last season",
+     -0.27
+    ],
+    [
+     "Teammates and QB",
+     1.26
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.06
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "context": [
+    "Woody Marks (RB) out"
+   ],
+   "x": [
+    2.2333,
+    1.3333,
+    5.3333,
+    2.3333,
+    13.3333,
+    0.0,
+    0.6667,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    31.9,
+    1.85,
+    1.0,
+    4.5,
+    4.0,
+    4.8583,
+    1.0,
+    0.2699,
+    0.0,
+    0.6028,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.2699,
+    0.0,
+    0.2106,
     0.0,
     0.0
    ]
@@ -17813,6 +17911,102 @@
    ]
   },
   {
+   "player_id": "00-0032951",
+   "name": "Laquon Treadwell",
+   "position": "WR",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 4.1,
+   "recent_avg": 4.73,
+   "season_avg": 4.89,
+   "games": 10,
+   "last_season_avg": 0.0,
+   "opp_allowed": 32.27,
+   "matchup": "Good",
+   "proj_v1": 4.59,
+   "opp_rank": 10,
+   "opp_n": 26,
+   "low": 0.2,
+   "high": 12.5,
+   "why": [
+    [
+     "Recent points",
+     -0.06
+    ],
+    [
+     "Recent usage",
+     -1.92
+    ],
+    [
+     "Season so far",
+     -0.69
+    ],
+    [
+     "Last season",
+     -0.91
+    ],
+    [
+     "Teammates and QB",
+     1.1
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "context": [
+    "Keenan Allen (WR) out",
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    4.7333,
+    2.0,
+    0.0,
+    14.0,
+    0.0,
+    0.0,
+    1.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.2667,
+    4.89,
+    3.2,
+    0.0,
+    10.0,
+    0.0,
+    1.0,
+    0.1563,
+    0.0147,
+    0.7397,
+    0.0696,
+    1.3214,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.1563,
+    0.0147,
+    0.2792,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0041032",
    "name": "Kenyon Sadiq",
    "position": "TE",
@@ -18558,43 +18752,43 @@
    ]
   },
   {
-   "player_id": "00-0032951",
-   "name": "Laquon Treadwell",
+   "player_id": "00-0035021",
+   "name": "Ashton Dulin",
    "position": "WR",
    "team": "IND",
    "opponent": "HOU",
-   "projection": 3.8,
-   "recent_avg": 4.73,
-   "season_avg": 4.89,
-   "games": 10,
-   "last_season_avg": 0.0,
+   "projection": 3.84,
+   "recent_avg": 5.7,
+   "season_avg": 3.83,
+   "games": 6,
+   "last_season_avg": 1.67,
    "opp_allowed": 32.27,
    "matchup": "Good",
-   "proj_v1": 4.59,
+   "proj_v1": 4.73,
    "opp_rank": 10,
    "opp_n": 26,
-   "low": 0.1,
-   "high": 12.0,
+   "low": 0.2,
+   "high": 11.9,
    "why": [
     [
      "Recent points",
-     -0.06
+     -0.04
     ],
     [
      "Recent usage",
-     -1.92
+     -1.74
     ],
     [
      "Season so far",
-     -0.69
+     -1.5
     ],
     [
      "Last season",
-     -0.91
+     -0.69
     ],
     [
      "Teammates and QB",
-     0.81
+     1.23
     ],
     [
      "First game back",
@@ -18614,29 +18808,29 @@
     "Josh Downs (WR) out"
    ],
    "x": [
-    4.7333,
+    5.7,
+    1.3333,
+    0.6667,
+    28.3333,
     2.0,
     0.0,
-    14.0,
-    0.0,
-    0.0,
-    1.3333,
+    0.6667,
     0.0,
     0.0,
     1.0,
     0.0,
     32.2667,
-    4.89,
-    3.2,
-    0.0,
-    10.0,
-    0.0,
+    3.8333,
+    1.8333,
+    0.3333,
+    6.0,
+    1.6667,
     1.0,
     0.1563,
-    0.0866,
-    0.7397,
-    0.4099,
-    1.3214,
+    0.0147,
+    0.8908,
+    0.0838,
+    1.5913,
     0.0,
     0.0,
     0.0,
@@ -18647,7 +18841,7 @@
    ],
    "av": [
     0.1563,
-    0.0866,
+    0.0147,
     0.2792,
     0.0,
     0.0
@@ -19109,102 +19303,6 @@
     0.0045,
     0.0267,
     0.0101,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0035021",
-   "name": "Ashton Dulin",
-   "position": "WR",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 3.5,
-   "recent_avg": 5.7,
-   "season_avg": 3.83,
-   "games": 6,
-   "last_season_avg": 1.67,
-   "opp_allowed": 32.27,
-   "matchup": "Good",
-   "proj_v1": 4.73,
-   "opp_rank": 10,
-   "opp_n": 26,
-   "low": 0.1,
-   "high": 11.3,
-   "why": [
-    [
-     "Recent points",
-     -0.04
-    ],
-    [
-     "Recent usage",
-     -1.74
-    ],
-    [
-     "Season so far",
-     -1.5
-    ],
-    [
-     "Last season",
-     -0.69
-    ],
-    [
-     "Teammates and QB",
-     0.9
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "context": [
-    "Keenan Allen (WR) out",
-    "Josh Downs (WR) out"
-   ],
-   "x": [
-    5.7,
-    1.3333,
-    0.6667,
-    28.3333,
-    2.0,
-    0.0,
-    0.6667,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.2667,
-    3.8333,
-    1.8333,
-    0.3333,
-    6.0,
-    1.6667,
-    1.0,
-    0.1563,
-    0.0866,
-    0.8908,
-    0.4936,
-    1.5913,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.1563,
-    0.0866,
-    0.2792,
     0.0,
     0.0
    ]
@@ -19852,98 +19950,6 @@
     0.0,
     0.0549,
     0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0038705",
-   "name": "Emari Demercado",
-   "position": "RB",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 3.25,
-   "recent_avg": 2.23,
-   "season_avg": 1.85,
-   "games": 4,
-   "last_season_avg": 4.86,
-   "opp_allowed": 31.9,
-   "matchup": "Great",
-   "proj_v1": 5.24,
-   "opp_rank": 3,
-   "opp_n": 26,
-   "low": 0.4,
-   "high": 10.2,
-   "why": [
-    [
-     "Recent points",
-     -0.11
-    ],
-    [
-     "Recent usage",
-     -1.07
-    ],
-    [
-     "Season so far",
-     -2.03
-    ],
-    [
-     "Last season",
-     -0.27
-    ],
-    [
-     "Teammates and QB",
-     0.08
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.06
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "x": [
-    2.2333,
-    1.3333,
-    5.3333,
-    2.3333,
-    13.3333,
-    0.0,
-    0.6667,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    31.9,
-    1.85,
-    1.0,
-    4.5,
-    4.0,
-    4.8583,
-    1.0,
-    0.0162,
-    0.0,
-    0.0363,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0162,
-    0.0,
-    0.0983,
     0.0,
     0.0
    ]
@@ -20792,6 +20798,103 @@
    ]
   },
   {
+   "player_id": "00-0034981",
+   "name": "Foster Moreau",
+   "position": "TE",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 2.94,
+   "recent_avg": 6.2,
+   "season_avg": 6.03,
+   "games": 6,
+   "last_season_avg": 1.84,
+   "opp_allowed": 11.67,
+   "matchup": "Tough",
+   "proj_v1": 4.45,
+   "opp_rank": 16,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 8.8,
+   "why": [
+    [
+     "Recent points",
+     -0.03
+    ],
+    [
+     "Recent usage",
+     -2.05
+    ],
+    [
+     "Season so far",
+     -0.82
+    ],
+    [
+     "Last season",
+     -0.66
+    ],
+    [
+     "Teammates and QB",
+     1.07
+    ],
+    [
+     "First game back",
+     -1.34
+    ],
+    [
+     "Opponent",
+     -0.1
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "context": [
+    "Jaylin Noel (WR) out",
+    "Woody Marks (RB) out"
+   ],
+   "returning_weeks": 5,
+   "x": [
+    6.2,
+    2.0,
+    0.0,
+    5.3333,
+    0.0,
+    0.0,
+    1.6667,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.6667,
+    6.0333,
+    2.3333,
+    0.0,
+    6.0,
+    1.8429,
+    1.0,
+    0.123,
+    0.0145,
+    0.7626,
+    0.0899,
+    1.8007,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    6.2
+   ],
+   "av": [
+    0.123,
+    0.0145,
+    0.2904,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0040890",
    "name": "Cyrus Allen",
    "position": "WR",
@@ -21265,7 +21368,7 @@
    "position": "WR",
    "team": "MIN",
    "opponent": "SF",
-   "projection": 2.71,
+   "projection": 2.67,
    "recent_avg": 3.67,
    "season_avg": 2.68,
    "games": 5,
@@ -21276,7 +21379,7 @@
    "opp_rank": 4,
    "opp_n": 26,
    "low": 0.0,
-   "high": 9.5,
+   "high": 9.4,
    "why": [
     [
      "Recent points",
@@ -21296,7 +21399,7 @@
     ],
     [
      "Teammates and QB",
-     0.04
+     0.01
     ],
     [
      "First game back",
@@ -21330,11 +21433,11 @@
     5.0,
     0.4583,
     1.0,
-    0.0051,
     0.0,
-    0.0188,
     0.0,
-    0.0843,
+    0.0,
+    0.0,
+    0.0421,
     0.0,
     0.0,
     0.0,
@@ -21344,9 +21447,9 @@
     0.0
    ],
    "av": [
-    0.0051,
     0.0,
-    0.023,
+    0.0,
+    0.0115,
     0.0,
     0.0
    ]
@@ -21438,7 +21541,7 @@
    "av": [
     0.0,
     0.0,
-    0.027,
+    0.2162,
     0.0,
     0.0
    ]
@@ -21628,102 +21731,6 @@
    ]
   },
   {
-   "player_id": "00-0034981",
-   "name": "Foster Moreau",
-   "position": "TE",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 2.55,
-   "recent_avg": 6.2,
-   "season_avg": 6.03,
-   "games": 6,
-   "last_season_avg": 1.84,
-   "opp_allowed": 11.67,
-   "matchup": "Tough",
-   "proj_v1": 4.45,
-   "opp_rank": 16,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 8.0,
-   "why": [
-    [
-     "Recent points",
-     -0.03
-    ],
-    [
-     "Recent usage",
-     -2.05
-    ],
-    [
-     "Season so far",
-     -0.82
-    ],
-    [
-     "Last season",
-     -0.66
-    ],
-    [
-     "Teammates and QB",
-     0.68
-    ],
-    [
-     "First game back",
-     -1.34
-    ],
-    [
-     "Opponent",
-     -0.1
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "context": [
-    "Jaylin Noel (WR) out"
-   ],
-   "returning_weeks": 5,
-   "x": [
-    6.2,
-    2.0,
-    0.0,
-    5.3333,
-    0.0,
-    0.0,
-    1.6667,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.6667,
-    6.0333,
-    2.3333,
-    0.0,
-    6.0,
-    1.8429,
-    1.0,
-    0.0864,
-    0.0145,
-    0.5354,
-    0.0899,
-    0.8745,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    6.2
-   ],
-   "av": [
-    0.0864,
-    0.0145,
-    0.141,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0036422",
    "name": "Adam Trautman",
    "position": "TE",
@@ -21811,99 +21818,6 @@
     0.0,
     0.0,
     0.0267,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0036259",
-   "name": "Jauan Jennings",
-   "position": "WR",
-   "team": "MIN",
-   "opponent": "SF",
-   "projection": 2.52,
-   "recent_avg": 2.83,
-   "season_avg": 1.9,
-   "games": 6,
-   "last_season_avg": 11.55,
-   "opp_allowed": 41.3,
-   "matchup": "Great",
-   "proj_v1": 4.48,
-   "opp_rank": 4,
-   "opp_n": 26,
-   "low": 0.3,
-   "high": 9.1,
-   "why": [
-    [
-     "Recent points",
-     -0.1
-    ],
-    [
-     "Recent usage",
-     -1.9
-    ],
-    [
-     "Season so far",
-     -2.02
-    ],
-    [
-     "Last season",
-     0.62
-    ],
-    [
-     "Teammates and QB",
-     0.03
-    ],
-    [
-     "First game back",
-     -0.76
-    ],
-    [
-     "Opponent",
-     0.14
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "returning_weeks": 3,
-   "x": [
-    2.8333,
-    2.0,
-    0.0,
-    15.0,
-    0.0,
-    0.0,
-    1.3333,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    41.3,
-    1.9,
-    1.6667,
-    0.0,
-    6.0,
-    11.5533,
-    1.0,
-    0.0051,
-    0.0,
-    0.0145,
-    0.0,
-    0.0651,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    2.8333
-   ],
-   "av": [
-    0.0051,
-    0.0,
-    0.023,
     0.0,
     0.0
    ]
@@ -22185,6 +22099,99 @@
     0.0,
     0.0,
     0.4,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0036259",
+   "name": "Jauan Jennings",
+   "position": "WR",
+   "team": "MIN",
+   "opponent": "SF",
+   "projection": 2.49,
+   "recent_avg": 2.83,
+   "season_avg": 1.9,
+   "games": 6,
+   "last_season_avg": 11.55,
+   "opp_allowed": 41.3,
+   "matchup": "Great",
+   "proj_v1": 4.48,
+   "opp_rank": 4,
+   "opp_n": 26,
+   "low": 0.3,
+   "high": 9.0,
+   "why": [
+    [
+     "Recent points",
+     -0.1
+    ],
+    [
+     "Recent usage",
+     -1.9
+    ],
+    [
+     "Season so far",
+     -2.02
+    ],
+    [
+     "Last season",
+     0.62
+    ],
+    [
+     "Teammates and QB",
+     0.0
+    ],
+    [
+     "First game back",
+     -0.76
+    ],
+    [
+     "Opponent",
+     0.14
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "returning_weeks": 3,
+   "x": [
+    2.8333,
+    2.0,
+    0.0,
+    15.0,
+    0.0,
+    0.0,
+    1.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    41.3,
+    1.9,
+    1.6667,
+    0.0,
+    6.0,
+    11.5533,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0326,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    2.8333
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0115,
     0.0,
     0.0
    ]
@@ -23599,6 +23606,102 @@
    ]
   },
   {
+   "player_id": "00-0039816",
+   "name": "Anthony Gould",
+   "position": "WR",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 2.11,
+   "recent_avg": 2.47,
+   "season_avg": 1.06,
+   "games": 7,
+   "last_season_avg": 0.24,
+   "opp_allowed": 32.27,
+   "matchup": "Good",
+   "proj_v1": 3.96,
+   "opp_rank": 10,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 9.7,
+   "why": [
+    [
+     "Recent points",
+     -0.11
+    ],
+    [
+     "Recent usage",
+     -2.01
+    ],
+    [
+     "Season so far",
+     -2.63
+    ],
+    [
+     "Last season",
+     -0.88
+    ],
+    [
+     "Teammates and QB",
+     1.16
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "context": [
+    "Keenan Allen (WR) out",
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    2.4667,
+    1.6667,
+    0.0,
+    14.6667,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.2667,
+    1.0571,
+    0.7143,
+    0.0,
+    7.0,
+    0.2364,
+    1.0,
+    0.2172,
+    0.0,
+    0.5358,
+    0.0,
+    0.9223,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.2172,
+    0.0,
+    0.3739,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0036754",
    "name": "Brock Wright",
    "position": "TE",
@@ -24065,6 +24168,102 @@
    ]
   },
   {
+   "player_id": "00-0041132",
+   "name": "Deion Burks",
+   "position": "WR",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 2.05,
+   "recent_avg": 0.73,
+   "season_avg": 1.76,
+   "games": 8,
+   "last_season_avg": null,
+   "opp_allowed": 32.27,
+   "matchup": "Good",
+   "proj_v1": 3.09,
+   "opp_rank": 10,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 11.0,
+   "why": [
+    [
+     "Recent points",
+     -0.14
+    ],
+    [
+     "Recent usage",
+     -2.33
+    ],
+    [
+     "Season so far",
+     -2.16
+    ],
+    [
+     "Last season",
+     -0.45
+    ],
+    [
+     "Teammates and QB",
+     0.57
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "context": [
+    "Keenan Allen (WR) out",
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    0.7333,
+    1.3333,
+    0.0,
+    0.6667,
+    0.0,
+    0.0,
+    0.6667,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.2667,
+    1.7625,
+    1.375,
+    0.375,
+    8.0,
+    0.0,
+    0.0,
+    0.1563,
+    0.0147,
+    0.1146,
+    0.0108,
+    0.2047,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.1563,
+    0.0147,
+    0.2792,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0038728",
    "name": "Jared Wayne",
    "position": "WR",
@@ -24344,123 +24543,27 @@
    ]
   },
   {
-   "player_id": "00-0039816",
-   "name": "Anthony Gould",
-   "position": "WR",
+   "player_id": "00-0033439",
+   "name": "Pharaoh Brown",
+   "position": "TE",
    "team": "IND",
    "opponent": "HOU",
-   "projection": 1.95,
-   "recent_avg": 2.47,
-   "season_avg": 1.06,
-   "games": 7,
-   "last_season_avg": 0.24,
-   "opp_allowed": 32.27,
-   "matchup": "Good",
-   "proj_v1": 3.96,
-   "opp_rank": 10,
+   "projection": 1.91,
+   "recent_avg": 1.7,
+   "season_avg": 1.7,
+   "games": 1,
+   "last_season_avg": 0.42,
+   "opp_allowed": 11.1,
+   "matchup": "Tough",
+   "proj_v1": 2.86,
+   "opp_rank": 18,
    "opp_n": 26,
    "low": 0.0,
-   "high": 9.2,
+   "high": 7.8,
    "why": [
     [
      "Recent points",
-     -0.11
-    ],
-    [
-     "Recent usage",
-     -2.01
-    ],
-    [
-     "Season so far",
-     -2.63
-    ],
-    [
-     "Last season",
-     -0.88
-    ],
-    [
-     "Teammates and QB",
-     1.01
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "context": [
-    "Keenan Allen (WR) out",
-    "Josh Downs (WR) out"
-   ],
-   "x": [
-    2.4667,
-    1.6667,
-    0.0,
-    14.6667,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.2667,
-    1.0571,
-    0.7143,
-    0.0,
-    7.0,
-    0.2364,
-    1.0,
-    0.1878,
-    0.0,
-    0.4632,
-    0.0,
-    0.7925,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.1878,
-    0.0,
-    0.3213,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0041132",
-   "name": "Deion Burks",
-   "position": "WR",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 1.92,
-   "recent_avg": 0.73,
-   "season_avg": 1.76,
-   "games": 8,
-   "last_season_avg": null,
-   "opp_allowed": 32.27,
-   "matchup": "Good",
-   "proj_v1": 3.09,
-   "opp_rank": 10,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 10.5,
-   "why": [
-    [
-     "Recent points",
-     -0.14
+     -0.12
     ],
     [
      "Recent usage",
@@ -24468,69 +24571,72 @@
     ],
     [
      "Season so far",
-     -2.16
+     -2.36
     ],
     [
      "Last season",
-     -0.45
+     -0.85
     ],
     [
      "Teammates and QB",
-     0.43
+     1.35
     ],
     [
      "First game back",
-     0.0
+     -0.56
     ],
     [
      "Opponent",
-     0.07
+     -0.11
     ],
     [
      "Position",
-     -0.2
+     0.17
     ]
    ],
    "context": [
     "Keenan Allen (WR) out",
-    "Josh Downs (WR) out"
+    "Will Mallory (TE) out",
+    "Josh Downs (WR) out",
+    "Tyler Warren (TE) back"
    ],
+   "returning_weeks": 5,
    "x": [
-    0.7333,
-    1.3333,
+    1.7,
+    1.0,
     0.0,
-    0.6667,
-    0.0,
-    0.0,
-    0.6667,
+    7.0,
     0.0,
     0.0,
     1.0,
     0.0,
-    32.2667,
-    1.7625,
-    1.375,
-    0.375,
-    8.0,
     0.0,
     0.0,
-    0.1563,
-    0.0866,
-    0.1146,
-    0.0635,
-    0.2047,
+    1.0,
+    11.1,
+    1.7,
+    1.0,
+    0.0,
+    1.0,
+    0.42,
+    1.0,
+    0.3971,
+    0.2077,
+    0.675,
+    0.3531,
+    1.1632,
     0.0,
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0
+    1.0,
+    1.7
    ],
    "av": [
-    0.1563,
-    0.0866,
-    0.2792,
+    0.3971,
+    0.2077,
+    0.6842,
     0.0,
     0.0
    ]
@@ -25000,6 +25106,102 @@
    ]
   },
   {
+   "player_id": "00-0037292",
+   "name": "Andrew Ogletree",
+   "position": "TE",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 1.75,
+   "recent_avg": 1.57,
+   "season_avg": 0.87,
+   "games": 7,
+   "last_season_avg": 1.15,
+   "opp_allowed": 11.1,
+   "matchup": "Tough",
+   "proj_v1": 3.12,
+   "opp_rank": 18,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 7.9,
+   "why": [
+    [
+     "Recent points",
+     -0.13
+    ],
+    [
+     "Recent usage",
+     -2.25
+    ],
+    [
+     "Season so far",
+     -2.54
+    ],
+    [
+     "Last season",
+     -0.76
+    ],
+    [
+     "Teammates and QB",
+     0.64
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.11
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "context": [
+    "Keenan Allen (WR) out",
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    1.5667,
+    1.3333,
+    0.0,
+    5.6667,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.1,
+    0.8714,
+    1.0,
+    0.0,
+    7.0,
+    1.1545,
+    1.0,
+    0.1455,
+    0.0147,
+    0.228,
+    0.023,
+    0.5073,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.1455,
+    0.0147,
+    0.3238,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0038547",
    "name": "Luke Schoonmaker",
    "position": "TE",
@@ -25277,102 +25479,6 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0037292",
-   "name": "Andrew Ogletree",
-   "position": "TE",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 1.66,
-   "recent_avg": 1.57,
-   "season_avg": 0.87,
-   "games": 7,
-   "last_season_avg": 1.15,
-   "opp_allowed": 11.1,
-   "matchup": "Tough",
-   "proj_v1": 3.12,
-   "opp_rank": 18,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 7.6,
-   "why": [
-    [
-     "Recent points",
-     -0.13
-    ],
-    [
-     "Recent usage",
-     -2.25
-    ],
-    [
-     "Season so far",
-     -2.54
-    ],
-    [
-     "Last season",
-     -0.76
-    ],
-    [
-     "Teammates and QB",
-     0.55
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.11
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "context": [
-    "Keenan Allen (WR) out",
-    "Josh Downs (WR) out"
-   ],
-   "x": [
-    1.5667,
-    1.3333,
-    0.0,
-    5.6667,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.1,
-    0.8714,
-    1.0,
-    0.0,
-    7.0,
-    1.1545,
-    1.0,
-    0.127,
-    0.0147,
-    0.1989,
-    0.023,
-    0.4327,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.127,
-    0.0147,
-    0.2762,
     0.0,
     0.0
    ]
@@ -26030,104 +26136,6 @@
    ]
   },
   {
-   "player_id": "00-0033439",
-   "name": "Pharaoh Brown",
-   "position": "TE",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 1.5,
-   "recent_avg": 1.7,
-   "season_avg": 1.7,
-   "games": 1,
-   "last_season_avg": 0.42,
-   "opp_allowed": 11.1,
-   "matchup": "Tough",
-   "proj_v1": 2.86,
-   "opp_rank": 18,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 6.5,
-   "why": [
-    [
-     "Recent points",
-     -0.12
-    ],
-    [
-     "Recent usage",
-     -2.33
-    ],
-    [
-     "Season so far",
-     -2.36
-    ],
-    [
-     "Last season",
-     -0.85
-    ],
-    [
-     "Teammates and QB",
-     0.94
-    ],
-    [
-     "First game back",
-     -0.56
-    ],
-    [
-     "Opponent",
-     -0.11
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "context": [
-    "Keenan Allen (WR) out",
-    "Josh Downs (WR) out",
-    "Tyler Warren (TE) back"
-   ],
-   "returning_weeks": 5,
-   "x": [
-    1.7,
-    1.0,
-    0.0,
-    7.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.1,
-    1.7,
-    1.0,
-    0.0,
-    1.0,
-    0.42,
-    1.0,
-    0.3088,
-    0.2077,
-    0.525,
-    0.3531,
-    0.8947,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    1.7
-   ],
-   "av": [
-    0.3088,
-    0.2077,
-    0.5263,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0041524",
    "name": "Will Kacmarek",
    "position": "TE",
@@ -26223,12 +26231,107 @@
    ]
   },
   {
+   "player_id": "00-0039359",
+   "name": "Cade Stover",
+   "position": "TE",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 1.43,
+   "recent_avg": 1.13,
+   "season_avg": 1.2,
+   "games": 6,
+   "last_season_avg": 3.32,
+   "opp_allowed": 11.67,
+   "matchup": "Tough",
+   "proj_v1": 2.4,
+   "opp_rank": 16,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 7.1,
+   "why": [
+    [
+     "Recent points",
+     -0.14
+    ],
+    [
+     "Recent usage",
+     -2.44
+    ],
+    [
+     "Season so far",
+     -2.66
+    ],
+    [
+     "Last season",
+     -0.47
+    ],
+    [
+     "Teammates and QB",
+     0.36
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.1
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "context": [
+    "Marvin Harrison Jr. (WR) out"
+   ],
+   "x": [
+    1.1333,
+    0.3333,
+    1.0,
+    -0.3333,
+    1.6667,
+    0.0,
+    0.3333,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.6667,
+    1.2,
+    0.5,
+    0.5,
+    6.0,
+    3.3167,
+    1.0,
+    0.0904,
+    0.0145,
+    0.1024,
+    0.0164,
+    0.2689,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0904,
+    0.0145,
+    0.2373,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0041472",
    "name": "Marlin Klein",
    "position": "TE",
    "team": "HOU",
    "opponent": "IND",
-   "projection": 1.4,
+   "projection": 1.41,
    "recent_avg": 2.6,
    "season_avg": 2.6,
    "games": 1,
@@ -26259,7 +26362,7 @@
     ],
     [
      "Teammates and QB",
-     0.24
+     0.25
     ],
     [
      "First game back",
@@ -26298,7 +26401,7 @@
     0.0,
     0.113,
     0.0,
-    0.2108,
+    0.2811,
     0.0,
     0.0,
     0.0,
@@ -26310,7 +26413,7 @@
    "av": [
     0.0435,
     0.0,
-    0.0811,
+    0.1081,
     0.0,
     0.0
    ]
@@ -27436,98 +27539,6 @@
    ]
   },
   {
-   "player_id": "00-0039359",
-   "name": "Cade Stover",
-   "position": "TE",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 1.2,
-   "recent_avg": 1.13,
-   "season_avg": 1.2,
-   "games": 6,
-   "last_season_avg": 3.32,
-   "opp_allowed": 11.67,
-   "matchup": "Tough",
-   "proj_v1": 2.4,
-   "opp_rank": 16,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 6.3,
-   "why": [
-    [
-     "Recent points",
-     -0.14
-    ],
-    [
-     "Recent usage",
-     -2.44
-    ],
-    [
-     "Season so far",
-     -2.66
-    ],
-    [
-     "Last season",
-     -0.47
-    ],
-    [
-     "Teammates and QB",
-     0.12
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.1
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "x": [
-    1.1333,
-    0.3333,
-    1.0,
-    -0.3333,
-    1.6667,
-    0.0,
-    0.3333,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.6667,
-    1.2,
-    0.5,
-    0.5,
-    6.0,
-    3.3167,
-    1.0,
-    0.036,
-    0.0145,
-    0.0408,
-    0.0164,
-    0.0965,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.036,
-    0.0145,
-    0.0852,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0034270",
    "name": "Tyler Conklin",
    "position": "TE",
@@ -28457,6 +28468,101 @@
    ]
   },
   {
+   "player_id": "00-0036556",
+   "name": "Brevin Jordan",
+   "position": "TE",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 0.99,
+   "recent_avg": 0.3,
+   "season_avg": 0.64,
+   "games": 5,
+   "last_season_avg": null,
+   "opp_allowed": 11.67,
+   "matchup": "Tough",
+   "proj_v1": 1.91,
+   "opp_rank": 16,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 7.8,
+   "why": [
+    [
+     "Recent points",
+     -0.15
+    ],
+    [
+     "Recent usage",
+     -2.65
+    ],
+    [
+     "Season so far",
+     -2.86
+    ],
+    [
+     "Last season",
+     -0.45
+    ],
+    [
+     "Teammates and QB",
+     0.32
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.1
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "context": [
+    "Marvin Harrison Jr. (WR) out"
+   ],
+   "x": [
+    0.3,
+    0.3333,
+    0.0,
+    -0.3333,
+    0.0,
+    0.0,
+    0.3333,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    11.6667,
+    0.64,
+    0.4,
+    0.0,
+    5.0,
+    0.0,
+    0.0,
+    0.0999,
+    0.0145,
+    0.03,
+    0.0043,
+    0.0841,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0999,
+    0.0145,
+    0.2804,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0040177",
    "name": "Jordan James",
    "position": "RB",
@@ -29292,98 +29398,6 @@
    ]
   },
   {
-   "player_id": "00-0036556",
-   "name": "Brevin Jordan",
-   "position": "TE",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 0.77,
-   "recent_avg": 0.3,
-   "season_avg": 0.64,
-   "games": 5,
-   "last_season_avg": null,
-   "opp_allowed": 11.67,
-   "matchup": "Tough",
-   "proj_v1": 1.91,
-   "opp_rank": 16,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 7.0,
-   "why": [
-    [
-     "Recent points",
-     -0.15
-    ],
-    [
-     "Recent usage",
-     -2.65
-    ],
-    [
-     "Season so far",
-     -2.86
-    ],
-    [
-     "Last season",
-     -0.45
-    ],
-    [
-     "Teammates and QB",
-     0.1
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.1
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "x": [
-    0.3,
-    0.3333,
-    0.0,
-    -0.3333,
-    0.0,
-    0.0,
-    0.3333,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    11.6667,
-    0.64,
-    0.4,
-    0.0,
-    5.0,
-    0.0,
-    0.0,
-    0.036,
-    0.0145,
-    0.0108,
-    0.0043,
-    0.0255,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.036,
-    0.0145,
-    0.0849,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0041443",
    "name": "Skyler Bell",
    "position": "WR",
@@ -30136,6 +30150,101 @@
    ]
   },
   {
+   "player_id": "00-0036182",
+   "name": "Nick Westbrook-Ikhine",
+   "position": "WR",
+   "team": "IND",
+   "opponent": "HOU",
+   "projection": 0.59,
+   "recent_avg": 0.0,
+   "season_avg": 0.0,
+   "games": 3,
+   "last_season_avg": 1.53,
+   "opp_allowed": 32.27,
+   "matchup": "Good",
+   "proj_v1": 2.38,
+   "opp_rank": 10,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 6.7,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.55
+    ],
+    [
+     "Season so far",
+     -2.88
+    ],
+    [
+     "Last season",
+     -0.71
+    ],
+    [
+     "Teammates and QB",
+     0.31
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "context": [
+    "Josh Downs (WR) out"
+   ],
+   "x": [
+    0.0,
+    0.6667,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.2667,
+    0.0,
+    0.6667,
+    0.0,
+    3.0,
+    1.5308,
+    1.0,
+    0.1072,
+    0.0147,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.1072,
+    0.0147,
+    0.1778,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0040277",
    "name": "Jahdae Walker",
    "position": "WR",
@@ -30784,101 +30893,6 @@
    ]
   },
   {
-   "player_id": "00-0036182",
-   "name": "Nick Westbrook-Ikhine",
-   "position": "WR",
-   "team": "IND",
-   "opponent": "HOU",
-   "projection": 0.48,
-   "recent_avg": 0.0,
-   "season_avg": 0.0,
-   "games": 3,
-   "last_season_avg": 1.53,
-   "opp_allowed": 32.27,
-   "matchup": "Good",
-   "proj_v1": 2.38,
-   "opp_rank": 10,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 6.2,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.55
-    ],
-    [
-     "Season so far",
-     -2.88
-    ],
-    [
-     "Last season",
-     -0.71
-    ],
-    [
-     "Teammates and QB",
-     0.21
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "context": [
-    "Josh Downs (WR) out"
-   ],
-   "x": [
-    0.0,
-    0.6667,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.2667,
-    0.0,
-    0.6667,
-    0.0,
-    3.0,
-    1.5308,
-    1.0,
-    0.1072,
-    0.0866,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.1072,
-    0.0866,
-    0.1778,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0039050",
    "name": "Payne Durham",
    "position": "TE",
@@ -31063,6 +31077,98 @@
     0.0172,
     0.3619,
     0.1515,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0039710",
+   "name": "Jeshaun Jones",
+   "position": "WR",
+   "team": "MIN",
+   "opponent": "SF",
+   "projection": 0.41,
+   "recent_avg": 1.4,
+   "season_avg": 1.4,
+   "games": 3,
+   "last_season_avg": 0.0,
+   "opp_allowed": 41.3,
+   "matchup": "Great",
+   "proj_v1": 2.67,
+   "opp_rank": 4,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 5.4,
+   "why": [
+    [
+     "Recent points",
+     -0.13
+    ],
+    [
+     "Recent usage",
+     -2.48
+    ],
+    [
+     "Season so far",
+     -2.72
+    ],
+    [
+     "Last season",
+     -0.91
+    ],
+    [
+     "Teammates and QB",
+     0.0
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.14
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    1.4,
+    0.3333,
+    0.0,
+    10.6667,
+    0.0,
+    0.0,
+    0.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    41.3,
+    1.4,
+    0.3333,
+    0.0,
+    3.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0161,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0115,
     0.0,
     0.0
    ]
@@ -32548,99 +32654,6 @@
    ]
   },
   {
-   "player_id": "00-0038489",
-   "name": "Ben VanSumeren",
-   "position": "RB",
-   "team": "KC",
-   "opponent": "ARI",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.0,
-   "games": 2,
-   "last_season_avg": null,
-   "opp_allowed": 22.53,
-   "matchup": "Tough",
-   "proj_v1": 1.43,
-   "opp_rank": 16,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 4.0,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -3.18
-    ],
-    [
-     "Last season",
-     -0.45
-    ],
-    [
-     "Teammates and QB",
-     0.03
-    ],
-    [
-     "First game back",
-     -0.26
-    ],
-    [
-     "Opponent",
-     -0.01
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "returning_weeks": 8,
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    22.5333,
-    0.0,
-    0.0,
-    0.0,
-    2.0,
-    0.0,
-    0.0,
-    0.0104,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0
-   ],
-   "av": [
-    0.0104,
-    0.0,
-    0.0852,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0037132",
    "name": "Britain Covey",
    "position": "WR",
@@ -32829,285 +32842,6 @@
    ]
   },
   {
-   "player_id": "00-0038573",
-   "name": "Derius Davis",
-   "position": "WR",
-   "team": "LAC",
-   "opponent": "NYJ",
-   "projection": 0.0,
-   "recent_avg": 2.83,
-   "season_avg": 1.17,
-   "games": 9,
-   "last_season_avg": 0.32,
-   "opp_allowed": 22.43,
-   "matchup": "Very tough",
-   "proj_v1": 2.73,
-   "opp_rank": 23,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 4.4,
-   "why": [
-    [
-     "Recent points",
-     -0.1
-    ],
-    [
-     "Recent usage",
-     -2.47
-    ],
-    [
-     "Season so far",
-     -2.67
-    ],
-    [
-     "Last season",
-     -0.87
-    ],
-    [
-     "Teammates and QB",
-     -0.39
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.01
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    2.8333,
-    0.6667,
-    0.0,
-    5.0,
-    0.0,
-    0.0,
-    0.3333,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    22.4333,
-    1.1667,
-    0.5556,
-    0.1111,
-    9.0,
-    0.3182,
-    1.0,
-    0.0,
-    0.1297,
-    0.0,
-    0.3674,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.1297,
-    0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0037093",
-   "name": "Dareke Young",
-   "position": "WR",
-   "team": "LV",
-   "opponent": "DEN",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.7,
-   "games": 8,
-   "last_season_avg": 0.85,
-   "opp_allowed": 25.07,
-   "matchup": "Tough",
-   "proj_v1": 1.62,
-   "opp_rank": 19,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 3.2,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -2.86
-    ],
-    [
-     "Last season",
-     -0.8
-    ],
-    [
-     "Teammates and QB",
-     -0.01
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.01
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "context": [
-    "QB Kirk Cousins out"
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    25.0667,
-    0.7,
-    0.375,
-    0.0,
-    8.0,
-    0.85,
-    1.0,
-    0.0,
-    0.0246,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0246,
-    0.0,
-    1.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0038519",
-   "name": "Nikko Remigio",
-   "position": "WR",
-   "team": "HOU",
-   "opponent": "IND",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.0,
-   "games": 9,
-   "last_season_avg": 0.3,
-   "opp_allowed": 32.75,
-   "matchup": "Good",
-   "proj_v1": 1.76,
-   "opp_rank": 9,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 4.0,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -3.18
-    ],
-    [
-     "Last season",
-     -0.87
-    ],
-    [
-     "Teammates and QB",
-     -0.08
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     0.07
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    32.7533,
-    0.0,
-    0.0,
-    0.0,
-    9.0,
-    0.3,
-    1.0,
-    0.0,
-    0.0566,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0566,
-    0.0274,
-    0.0,
-    0.0
-   ]
-  },
-  {
    "player_id": "00-0031763",
    "name": "DeAndre Carter",
    "position": "WR",
@@ -33177,374 +32911,6 @@
     0.0,
     4.0,
     0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0036842",
-   "name": "Kene Nwangwu",
-   "position": "RB",
-   "team": "NYJ",
-   "opponent": "LAC",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.0,
-   "games": 5,
-   "last_season_avg": 1.09,
-   "opp_allowed": 22.37,
-   "matchup": "Tough",
-   "proj_v1": 1.43,
-   "opp_rank": 17,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 3.8,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -3.18
-    ],
-    [
-     "Last season",
-     -0.76
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.01
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    22.3667,
-    0.0,
-    0.0,
-    0.0,
-    5.0,
-    1.09,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0036825",
-   "name": "Feleipe Franks",
-   "position": "TE",
-   "team": "CAR",
-   "opponent": "BAL",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.0,
-   "games": 6,
-   "last_season_avg": 0.04,
-   "opp_allowed": 14.33,
-   "matchup": "Good",
-   "proj_v1": 1.63,
-   "opp_rank": 10,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 3.5,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -3.18
-    ],
-    [
-     "Last season",
-     -0.9
-    ],
-    [
-     "Teammates and QB",
-     -0.05
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.08
-    ],
-    [
-     "Position",
-     0.17
-    ]
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    14.3333,
-    0.0,
-    0.0,
-    0.0,
-    6.0,
-    0.04,
-    1.0,
-    0.0099,
-    0.0549,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0099,
-    0.0549,
-    0.0181,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0038896",
-   "name": "Jacob Saylors",
-   "position": "RB",
-   "team": "DET",
-   "opponent": "TB",
-   "projection": 0.0,
-   "recent_avg": 0.3,
-   "season_avg": 0.11,
-   "games": 8,
-   "last_season_avg": 0.1,
-   "opp_allowed": 12.83,
-   "matchup": "Very tough",
-   "proj_v1": 1.59,
-   "opp_rank": 25,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 3.7,
-   "why": [
-    [
-     "Recent points",
-     -0.15
-    ],
-    [
-     "Recent usage",
-     -2.56
-    ],
-    [
-     "Season so far",
-     -3.14
-    ],
-    [
-     "Last season",
-     -0.9
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.09
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "x": [
-    0.3,
-    0.0,
-    0.6667,
-    0.0,
-    3.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    12.8333,
-    0.1125,
-    0.0,
-    0.25,
-    8.0,
-    0.1,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0039589",
-   "name": "Kameron Johnson",
-   "position": "WR",
-   "team": "TB",
-   "opponent": "DET",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.16,
-   "games": 8,
-   "last_season_avg": 1.04,
-   "opp_allowed": 21.2,
-   "matchup": "Very tough",
-   "proj_v1": 1.55,
-   "opp_rank": 25,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 4.4,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.75
-    ],
-    [
-     "Season so far",
-     -3.03
-    ],
-    [
-     "Last season",
-     -0.77
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.02
-    ],
-    [
-     "Position",
-     -0.2
-    ]
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    21.2,
-    0.1625,
-    0.25,
-    0.0,
-    8.0,
-    1.0412,
     1.0,
     0.0,
     0.0,
@@ -33660,23 +33026,207 @@
    ]
   },
   {
-   "player_id": "00-0037282",
-   "name": "James Mitchell",
-   "position": "TE",
-   "team": "DAL",
-   "opponent": "TEN",
+   "player_id": "00-0038896",
+   "name": "Jacob Saylors",
+   "position": "RB",
+   "team": "DET",
+   "opponent": "TB",
+   "projection": 0.0,
+   "recent_avg": 0.3,
+   "season_avg": 0.11,
+   "games": 8,
+   "last_season_avg": 0.1,
+   "opp_allowed": 12.83,
+   "matchup": "Very tough",
+   "proj_v1": 1.59,
+   "opp_rank": 25,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 3.7,
+   "why": [
+    [
+     "Recent points",
+     -0.15
+    ],
+    [
+     "Recent usage",
+     -2.56
+    ],
+    [
+     "Season so far",
+     -3.14
+    ],
+    [
+     "Last season",
+     -0.9
+    ],
+    [
+     "Teammates and QB",
+     0.0
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.09
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "x": [
+    0.3,
+    0.0,
+    0.6667,
+    0.0,
+    3.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    12.8333,
+    0.1125,
+    0.0,
+    0.25,
+    8.0,
+    0.1,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038573",
+   "name": "Derius Davis",
+   "position": "WR",
+   "team": "LAC",
+   "opponent": "NYJ",
+   "projection": 0.0,
+   "recent_avg": 2.83,
+   "season_avg": 1.17,
+   "games": 9,
+   "last_season_avg": 0.32,
+   "opp_allowed": 22.43,
+   "matchup": "Very tough",
+   "proj_v1": 2.73,
+   "opp_rank": 23,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 4.4,
+   "why": [
+    [
+     "Recent points",
+     -0.1
+    ],
+    [
+     "Recent usage",
+     -2.47
+    ],
+    [
+     "Season so far",
+     -2.67
+    ],
+    [
+     "Last season",
+     -0.87
+    ],
+    [
+     "Teammates and QB",
+     -0.39
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.01
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    2.8333,
+    0.6667,
+    0.0,
+    5.0,
+    0.0,
+    0.0,
+    0.3333,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    22.4333,
+    1.1667,
+    0.5556,
+    0.1111,
+    9.0,
+    0.3182,
+    1.0,
+    0.0,
+    0.1297,
+    0.0,
+    0.3674,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.1297,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0036842",
+   "name": "Kene Nwangwu",
+   "position": "RB",
+   "team": "NYJ",
+   "opponent": "LAC",
    "projection": 0.0,
    "recent_avg": 0.0,
    "season_avg": 0.0,
-   "games": 1,
-   "last_season_avg": 2.9,
-   "opp_allowed": 16.9,
-   "matchup": "Great",
-   "proj_v1": 1.68,
-   "opp_rank": 5,
+   "games": 5,
+   "last_season_avg": 1.09,
+   "opp_allowed": 22.37,
+   "matchup": "Tough",
+   "proj_v1": 1.43,
+   "opp_rank": 17,
    "opp_n": 26,
    "low": 0.0,
-   "high": 1.9,
+   "high": 3.8,
    "why": [
     [
      "Recent points",
@@ -33692,26 +33242,209 @@
     ],
     [
      "Last season",
-     -0.52
+     -0.76
     ],
     [
      "Teammates and QB",
-     -0.15
+     0.0
     ],
     [
      "First game back",
-     -0.26
+     0.0
     ],
     [
      "Opponent",
-     -0.06
+     -0.01
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    22.3667,
+    0.0,
+    0.0,
+    0.0,
+    5.0,
+    1.09,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038519",
+   "name": "Nikko Remigio",
+   "position": "WR",
+   "team": "HOU",
+   "opponent": "IND",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.0,
+   "games": 9,
+   "last_season_avg": 0.3,
+   "opp_allowed": 32.75,
+   "matchup": "Good",
+   "proj_v1": 1.76,
+   "opp_rank": 9,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 4.3,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -3.18
+    ],
+    [
+     "Last season",
+     -0.87
+    ],
+    [
+     "Teammates and QB",
+     -0.01
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.07
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    32.7533,
+    0.0,
+    0.0,
+    0.0,
+    9.0,
+    0.3,
+    1.0,
+    0.0231,
+    0.0566,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0231,
+    0.0566,
+    0.1359,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0036825",
+   "name": "Feleipe Franks",
+   "position": "TE",
+   "team": "CAR",
+   "opponent": "BAL",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.0,
+   "games": 6,
+   "last_season_avg": 0.04,
+   "opp_allowed": 14.33,
+   "matchup": "Good",
+   "proj_v1": 1.63,
+   "opp_rank": 10,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 3.5,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -3.18
+    ],
+    [
+     "Last season",
+     -0.9
+    ],
+    [
+     "Teammates and QB",
+     -0.05
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.08
     ],
     [
      "Position",
      0.17
     ]
    ],
-   "returning_weeks": 3,
    "x": [
     0.0,
     0.0,
@@ -33724,15 +33457,203 @@
     0.0,
     0.0,
     1.0,
-    16.9,
+    14.3333,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    0.04,
+    1.0,
+    0.0099,
+    0.0549,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0099,
+    0.0549,
+    0.0181,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0037093",
+   "name": "Dareke Young",
+   "position": "WR",
+   "team": "LV",
+   "opponent": "DEN",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.7,
+   "games": 8,
+   "last_season_avg": 0.85,
+   "opp_allowed": 25.07,
+   "matchup": "Tough",
+   "proj_v1": 1.62,
+   "opp_rank": 19,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 3.2,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -2.86
+    ],
+    [
+     "Last season",
+     -0.8
+    ],
+    [
+     "Teammates and QB",
+     -0.01
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     0.01
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "context": [
+    "QB Kirk Cousins out"
+   ],
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.0,
     0.0,
     0.0,
     1.0,
-    2.9,
+    0.0,
+    25.0667,
+    0.7,
+    0.375,
+    0.0,
+    8.0,
+    0.85,
     1.0,
     0.0,
-    0.1033,
+    0.0246,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0246,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0037594",
+   "name": "Julius Chestnut",
+   "position": "RB",
+   "team": "TEN",
+   "opponent": "DAL",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.0,
+   "games": 6,
+   "last_season_avg": 0.25,
+   "opp_allowed": 40.23,
+   "matchup": "Great",
+   "proj_v1": 1.77,
+   "opp_rank": 1,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 2.2,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -3.18
+    ],
+    [
+     "Last season",
+     -0.88
+    ],
+    [
+     "Teammates and QB",
+     -0.03
+    ],
+    [
+     "First game back",
+     -0.26
+    ],
+    [
+     "Opponent",
+     0.13
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "returning_weeks": 3,
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    40.2333,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    0.25,
+    1.0,
+    0.0222,
+    0.0713,
     0.0,
     0.0,
     0.0,
@@ -33745,9 +33666,9 @@
     0.0
    ],
    "av": [
-    0.0,
-    0.1033,
-    0.0714,
+    0.0222,
+    0.0713,
+    0.2437,
     0.0,
     0.0
    ]
@@ -33850,6 +33771,99 @@
    ]
   },
   {
+   "player_id": "00-0037282",
+   "name": "James Mitchell",
+   "position": "TE",
+   "team": "DAL",
+   "opponent": "TEN",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.0,
+   "games": 1,
+   "last_season_avg": 2.9,
+   "opp_allowed": 16.9,
+   "matchup": "Great",
+   "proj_v1": 1.68,
+   "opp_rank": 5,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 1.9,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -3.18
+    ],
+    [
+     "Last season",
+     -0.52
+    ],
+    [
+     "Teammates and QB",
+     -0.15
+    ],
+    [
+     "First game back",
+     -0.26
+    ],
+    [
+     "Opponent",
+     -0.06
+    ],
+    [
+     "Position",
+     0.17
+    ]
+   ],
+   "returning_weeks": 3,
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    16.9,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    2.9,
+    1.0,
+    0.0,
+    0.1033,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.1033,
+    0.0714,
+    0.0,
+    0.0
+   ]
+  },
+  {
    "player_id": "00-0037311",
    "name": "Ko Kieft",
    "position": "TE",
@@ -33942,23 +33956,207 @@
    ]
   },
   {
-   "player_id": "00-0037594",
-   "name": "Julius Chestnut",
+   "player_id": "00-0039589",
+   "name": "Kameron Johnson",
+   "position": "WR",
+   "team": "TB",
+   "opponent": "DET",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.16,
+   "games": 8,
+   "last_season_avg": 1.04,
+   "opp_allowed": 21.2,
+   "matchup": "Very tough",
+   "proj_v1": 1.55,
+   "opp_rank": 25,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 4.4,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.75
+    ],
+    [
+     "Season so far",
+     -3.03
+    ],
+    [
+     "Last season",
+     -0.77
+    ],
+    [
+     "Teammates and QB",
+     0.0
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.02
+    ],
+    [
+     "Position",
+     -0.2
+    ]
+   ],
+   "x": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    21.2,
+    0.1625,
+    0.25,
+    0.0,
+    8.0,
+    1.0412,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0035594",
+   "name": "Travis Homer",
    "position": "RB",
-   "team": "TEN",
-   "opponent": "DAL",
+   "team": "PIT",
+   "opponent": "PHI",
+   "projection": 0.0,
+   "recent_avg": 0.0,
+   "season_avg": 0.25,
+   "games": 6,
+   "last_season_avg": -0.03,
+   "opp_allowed": 18.97,
+   "matchup": "Very tough",
+   "proj_v1": 1.47,
+   "opp_rank": 21,
+   "opp_n": 26,
+   "low": 0.0,
+   "high": 3.7,
+   "why": [
+    [
+     "Recent points",
+     -0.16
+    ],
+    [
+     "Recent usage",
+     -2.7
+    ],
+    [
+     "Season so far",
+     -3.06
+    ],
+    [
+     "Last season",
+     -0.91
+    ],
+    [
+     "Teammates and QB",
+     0.0
+    ],
+    [
+     "First game back",
+     0.0
+    ],
+    [
+     "Opponent",
+     -0.04
+    ],
+    [
+     "Position",
+     -0.12
+    ]
+   ],
+   "x": [
+    0.0,
+    0.0,
+    0.3333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    18.9667,
+    0.25,
+    0.0,
+    1.0,
+    6.0,
+    -0.025,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "av": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "player_id": "00-0038489",
+   "name": "Ben VanSumeren",
+   "position": "RB",
+   "team": "KC",
+   "opponent": "ARI",
    "projection": 0.0,
    "recent_avg": 0.0,
    "season_avg": 0.0,
-   "games": 6,
-   "last_season_avg": 0.25,
-   "opp_allowed": 40.23,
-   "matchup": "Great",
-   "proj_v1": 1.77,
-   "opp_rank": 1,
+   "games": 2,
+   "last_season_avg": null,
+   "opp_allowed": 22.53,
+   "matchup": "Tough",
+   "proj_v1": 1.43,
+   "opp_rank": 16,
    "opp_n": 26,
    "low": 0.0,
-   "high": 2.2,
+   "high": 4.0,
    "why": [
     [
      "Recent points",
@@ -33974,11 +34172,11 @@
     ],
     [
      "Last season",
-     -0.88
+     -0.45
     ],
     [
      "Teammates and QB",
-     -0.03
+     0.03
     ],
     [
      "First game back",
@@ -33986,14 +34184,14 @@
     ],
     [
      "Opponent",
-     0.13
+     -0.01
     ],
     [
      "Position",
      -0.12
     ]
    ],
-   "returning_weeks": 3,
+   "returning_weeks": 8,
    "x": [
     0.0,
     0.0,
@@ -34006,15 +34204,15 @@
     1.0,
     0.0,
     0.0,
-    40.2333,
+    22.5333,
     0.0,
     0.0,
     0.0,
-    6.0,
-    0.25,
-    1.0,
-    0.0222,
-    0.0713,
+    2.0,
+    0.0,
+    0.0,
+    0.0104,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -34027,9 +34225,9 @@
     0.0
    ],
    "av": [
-    0.0222,
-    0.0713,
-    0.2437,
+    0.0104,
+    0.0,
+    0.0852,
     0.0,
     0.0
    ]
@@ -34123,98 +34321,6 @@
     0.0,
     0.0,
     0.2027,
-    0.0,
-    0.0
-   ]
-  },
-  {
-   "player_id": "00-0035594",
-   "name": "Travis Homer",
-   "position": "RB",
-   "team": "PIT",
-   "opponent": "PHI",
-   "projection": 0.0,
-   "recent_avg": 0.0,
-   "season_avg": 0.25,
-   "games": 6,
-   "last_season_avg": -0.03,
-   "opp_allowed": 18.97,
-   "matchup": "Very tough",
-   "proj_v1": 1.47,
-   "opp_rank": 21,
-   "opp_n": 26,
-   "low": 0.0,
-   "high": 3.7,
-   "why": [
-    [
-     "Recent points",
-     -0.16
-    ],
-    [
-     "Recent usage",
-     -2.7
-    ],
-    [
-     "Season so far",
-     -3.06
-    ],
-    [
-     "Last season",
-     -0.91
-    ],
-    [
-     "Teammates and QB",
-     0.0
-    ],
-    [
-     "First game back",
-     0.0
-    ],
-    [
-     "Opponent",
-     -0.04
-    ],
-    [
-     "Position",
-     -0.12
-    ]
-   ],
-   "x": [
-    0.0,
-    0.0,
-    0.3333,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    18.9667,
-    0.25,
-    0.0,
-    1.0,
-    6.0,
-    -0.025,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-   ],
-   "av": [
-    0.0,
-    0.0,
-    0.0,
     0.0,
     0.0
    ]
@@ -36341,7 +36447,7 @@
       "in_window": true,
       "season_use": 0.008,
       "season_games": 5,
-      "available": true
+      "available": false
      },
      {
       "id": "00-0036898",
@@ -36473,7 +36579,7 @@
       "in_window": true,
       "season_use": 0.0639,
       "season_games": 3,
-      "available": true
+      "available": false
      },
      {
       "id": "00-0040138",
@@ -36497,7 +36603,7 @@
       "in_window": true,
       "season_use": 0.2446,
       "season_games": 9,
-      "available": true
+      "available": false
      },
      {
       "id": "00-0041467",
@@ -36647,7 +36753,7 @@
       "in_window": false,
       "season_use": 0.0719,
       "season_games": 2,
-      "available": true
+      "available": false
      },
      {
       "id": "00-0039164",
@@ -37907,7 +38013,7 @@
       "in_window": true,
       "season_use": 0.0051,
       "season_games": 3,
-      "available": false
+      "available": true
      },
      {
       "id": "00-0040154",
