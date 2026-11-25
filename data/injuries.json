@@ -1,579 +1,59 @@
 {
  "season": 2026,
- "week": 11,
- "updated_at": "2026-11-22T21:07:56+00:00",
+ "week": 12,
+ "updated_at": "2026-11-25T22:03:14+00:00",
  "players": {
-  "00-0037804": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0038571": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0041561": {
+  "00-0029592": {
    "status": "Questionable",
-   "injury": "Back"
+   "injury": "Triceps"
   },
-  "00-0033281": {
-   "status": "Out",
-   "injury": "Not injury related - personal matter"
-  },
-  "00-0036130": {
-   "status": "Out",
-   "injury": "Hamstring"
-  },
-  "00-0036302": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0036888": {
+  "00-0034431": {
    "status": "Questionable",
-   "injury": "Toe"
+   "injury": "Shin"
   },
-  "00-0037288": {
-   "status": "Out",
-   "injury": "Groin"
-  },
-  "00-0038557": {
-   "status": "Out",
-   "injury": "Calf"
-  },
-  "00-0038933": {
-   "status": "Doubtful",
-   "injury": "Thumb"
-  },
-  "00-0040194": {
+  "00-0035700": {
    "status": "Questionable",
-   "injury": "Shoulder"
+   "injury": "Finger"
   },
-  "00-0040724": {
-   "status": "Questionable",
-   "injury": "Shoulder"
-  },
-  "00-0031610": {
+  "00-0036932": {
    "status": "Questionable",
    "injury": "Knee"
   },
-  "00-0035277": {
-   "status": "Questionable",
-   "injury": "Groin"
-  },
-  "00-0035687": {
-   "status": "Out",
-   "injury": "Foot"
-  },
-  "00-0036356": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0036968": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0037005": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0039344": {
-   "status": "Questionable",
-   "injury": "Groin"
-  },
-  "00-0038111": {
-   "status": "Out",
-   "injury": "Shoulder"
-  },
-  "00-0041051": {
+  "00-0037076": {
    "status": "Questionable",
    "injury": "Ankle"
   },
-  "00-0034446": {
-   "status": "Doubtful",
-   "injury": "Hamstring"
-  },
-  "00-0034754": {
-   "status": "Out",
-   "injury": "Groin"
-  },
-  "00-0035702": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0036231": {
-   "status": "Questionable",
-   "injury": "Quadricep"
-  },
-  "00-0037743": {
-   "status": "Questionable",
-   "injury": "Illness"
-  },
-  "00-0038619": {
-   "status": "Doubtful",
-   "injury": "Thumb"
-  },
-  "00-0039313": {
-   "status": "Questionable",
-   "injury": "Forearm"
-  },
-  "00-0040140": {
-   "status": "Questionable",
-   "injury": "Oblique"
-  },
-  "00-0041098": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0035227": {
-   "status": "Out",
-   "injury": "Concussion"
-  },
-  "00-0035705": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0037275": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0038041": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0038547": {
-   "status": "Questionable",
-   "injury": "Illness"
-  },
-  "00-0039062": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0040007": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0040872": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0040875": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0036221": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0040240": {
-   "status": "Out",
-   "injury": "Foot"
-  },
-  "00-0034384": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0035895": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0036124": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0037297": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0038940": {
-   "status": "Questionable",
-   "injury": "Shoulder"
-  },
-  "00-0039364": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0039862": {
-   "status": "Questionable",
-   "injury": "Shoulder"
-  },
-  "00-0031565": {
-   "status": "Out",
-   "injury": "Hamstring"
-  },
-  "00-0034399": {
-   "status": "Questionable",
-   "injury": "Back"
-  },
-  "00-0036556": {
-   "status": "Out",
-   "injury": "Foot"
-  },
-  "00-0037633": {
-   "status": "Questionable",
-   "injury": "Groin"
-  },
-  "00-0039849": {
-   "status": "Out",
-   "injury": "Hamstring"
-  },
-  "00-0040149": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0040583": {
-   "status": "Out",
-   "injury": "Concussion"
-  },
-  "00-0032753": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0034573": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0035674": {
-   "status": "Out",
-   "injury": "Calf"
-  },
-  "00-0037190": {
-   "status": "Questionable",
-   "injury": "Calf"
-  },
-  "00-0037757": {
-   "status": "Out",
-   "injury": "Concussion"
-  },
-  "00-0038394": {
-   "status": "Out",
-   "injury": "Hamstring"
-  },
-  "00-0039816": {
-   "status": "Questionable",
-   "injury": "Toe"
-  },
-  "00-0040163": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0034657": {
-   "status": "Questionable",
-   "injury": "Neck"
-  },
-  "00-0036985": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0040329": {
-   "status": "Out",
-   "injury": "Forearm"
-  },
-  "00-0040342": {
-   "status": "Questionable",
-   "injury": "Concussion"
-  },
-  "00-0036557": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0036660": {
-   "status": "Out",
-   "injury": "Concussion"
-  },
-  "00-0038134": {
-   "status": "Out",
-   "injury": "Groin"
-  },
-  "00-0040748": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0041545": {
-   "status": "Questionable",
-   "injury": "Neck"
-  },
-  "00-0035688": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0038046": {
-   "status": "Questionable",
-   "injury": "Concussion"
-  },
-  "00-0038414": {
-   "status": "Out",
-   "injury": "Calf"
-  },
-  "00-0038553": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0039366": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0039915": {
-   "status": "Questionable",
-   "injury": "Back"
-  },
-  "00-0040065": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0041381": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0041550": {
-   "status": "Doubtful",
-   "injury": "Hamstring"
-  },
-  "00-0034275": {
-   "status": "Questionable",
-   "injury": "Toe"
-  },
-  "00-0035269": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0039338": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0040169": {
-   "status": "Out",
-   "injury": "Stinger"
-  },
-  "00-0032065": {
-   "status": "Out",
-   "injury": "Groin"
-  },
-  "00-0036171": {
-   "status": "Questionable",
-   "injury": "Concussion"
-  },
-  "00-0037549": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0038728": {
-   "status": "Out",
-   "injury": "Quadricep"
-  },
-  "00-0039383": {
-   "status": "Doubtful",
-   "injury": "Knee"
-  },
-  "00-0039390": {
-   "status": "Questionable",
-   "injury": "Toe"
-  },
-  "00-0040182": {
-   "status": "Doubtful",
-   "injury": "Shoulder"
-  },
-  "00-0035228": {
-   "status": "Out",
-   "injury": "Hamstring"
-  },
-  "00-0036222": {
-   "status": "Questionable",
-   "injury": "Quadricep"
-  },
-  "00-0038578": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0038994": {
-   "status": "Out",
-   "injury": "Thumb"
-  },
-  "00-0034361": {
-   "status": "Out",
-   "injury": "Not injury related - personal matter"
-  },
-  "00-0035242": {
-   "status": "Out",
-   "injury": "Biceps"
-  },
-  "00-0036927": {
-   "status": "Questionable",
-   "injury": "Hamstring"
-  },
-  "00-0037250": {
-   "status": "Out",
-   "injury": "Concussion"
-  },
-  "00-0038601": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0039339": {
-   "status": "Out",
-   "injury": "Knee"
-  },
-  "00-0039357": {
+  "00-0037091": {
    "status": "Questionable",
    "injury": "Thigh"
   },
-  "00-0033051": {
-   "status": "Out",
-   "injury": "Abdomen"
-  },
-  "00-0034782": {
+  "00-0038090": {
    "status": "Questionable",
    "injury": "Ankle"
   },
-  "00-0036902": {
-   "status": "Questionable",
-   "injury": "Foot"
-  },
-  "00-0037255": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0039347": {
-   "status": "Questionable",
-   "injury": "Groin"
-  },
-  "00-0039451": {
-   "status": "Out",
-   "injury": "Ribs"
-  },
-  "00-0041511": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0036418": {
-   "status": "Out",
-   "injury": "Back"
-  },
-  "00-0038393": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0039746": {
-   "status": "Questionable",
-   "injury": "Foot"
-  },
-  "00-0040013": {
-   "status": "Doubtful",
-   "injury": "Ankle"
-  },
-  "00-0034277": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0036252": {
-   "status": "Questionable",
-   "injury": "Foot"
-  },
-  "00-0036323": {
-   "status": "Questionable",
-   "injury": "Hand"
-  },
-  "00-0038577": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0039739": {
-   "status": "Questionable",
-   "injury": "Hand"
-  },
-  "00-0041396": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0031408": {
-   "status": "Questionable",
-   "injury": "Achilles"
-  },
-  "00-0034982": {
-   "status": "Questionable",
-   "injury": "Neck"
-  },
-  "00-0035413": {
-   "status": "Questionable",
-   "injury": "Chest"
-  },
-  "00-0036341": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0036871": {
-   "status": "Questionable",
-   "injury": "Groin"
-  },
-  "00-0036972": {
-   "status": "Questionable",
-   "injury": "Illness"
-  },
-  "00-0040152": {
+  "00-0039819": {
    "status": "Questionable",
    "injury": "Shoulder"
   },
-  "00-0040177": {
-   "status": "Questionable",
-   "injury": "Calf"
+  "00-0034114": {
+   "status": "Out",
+   "injury": "Hamstring"
   },
-  "00-0040711": {
-   "status": "Questionable",
-   "injury": "Knee"
+  "00-0039058": {
+   "status": "Out",
+   "injury": "Hamstring"
   },
-  "00-0034855": {
-   "status": "Questionable",
-   "injury": "Foot"
-  },
-  "00-0036411": {
+  "00-0040737": {
    "status": "Out",
    "injury": "Ankle"
   },
-  "00-0039051": {
-   "status": "Out",
-   "injury": "Knee"
+  "00-0031381": {
+   "status": "IR",
+   "injury": ""
   },
-  "00-0039068": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0037155": {
-   "status": "Questionable",
-   "injury": "Concussion"
-  },
-  "00-0039032": {
-   "status": "Questionable",
-   "injury": "Knee"
-  },
-  "00-0040020": {
-   "status": "Questionable",
-   "injury": "Hip"
-  },
-  "00-0040881": {
-   "status": "Out",
-   "injury": "Ankle"
-  },
-  "00-0041438": {
-   "status": "Questionable",
-   "injury": "Shoulder"
-  },
-  "00-0041479": {
-   "status": "Questionable",
-   "injury": "Neck"
-  },
-  "00-0033082": {
-   "status": "Questionable",
-   "injury": "Concussion"
-  },
-  "00-0036375": {
-   "status": "Questionable",
-   "injury": "Ankle"
-  },
-  "00-0037256": {
-   "status": "Questionable",
-   "injury": "Heel"
-  },
-  "00-0040242": {
-   "status": "Questionable",
-   "injury": "Groin"
+  "00-0031595": {
+   "status": "IR",
+   "injury": ""
   },
   "00-0032265": {
    "status": "IR",
@@ -588,6 +68,14 @@
    "injury": ""
   },
   "00-0033038": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0033051": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0033109": {
    "status": "IR",
    "injury": ""
   },
@@ -607,6 +95,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0033752": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0033872": {
    "status": "IR",
    "injury": ""
@@ -619,7 +111,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0033945": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0033955": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034234": {
    "status": "IR",
    "injury": ""
   },
@@ -635,6 +135,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0034371": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0034377": {
    "status": "IR",
    "injury": ""
@@ -643,11 +147,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0034446": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0034613": {
    "status": "IR",
    "injury": ""
   },
   "00-0034673": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034754": {
    "status": "IR",
    "injury": ""
   },
@@ -672,6 +184,10 @@
    "injury": ""
   },
   "00-0034810": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0034828": {
    "status": "IR",
    "injury": ""
   },
@@ -727,6 +243,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0035705": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0035707": {
    "status": "IR",
    "injury": ""
@@ -751,7 +271,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036198": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036215": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036252": {
    "status": "IR",
    "injury": ""
   },
@@ -779,6 +307,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036356": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036374": {
    "status": "IR",
    "injury": ""
@@ -795,11 +327,11 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0036480": {
+  "00-0036418": {
    "status": "IR",
    "injury": ""
   },
-  "00-0036511": {
+  "00-0036480": {
    "status": "IR",
    "injury": ""
   },
@@ -819,6 +351,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036871": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036915": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036922": {
    "status": "IR",
    "injury": ""
@@ -831,11 +371,31 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036953": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036968": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036979": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036982": {
    "status": "IR",
    "injury": ""
   },
+  "00-0036984": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036988": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036996": {
    "status": "IR",
    "injury": ""
   },
@@ -863,6 +423,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037094": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037112": {
    "status": "IR",
    "injury": ""
@@ -872,6 +436,10 @@
    "injury": ""
   },
   "00-0037141": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037195": {
    "status": "IR",
    "injury": ""
   },
@@ -891,7 +459,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037251": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037266": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037275": {
    "status": "IR",
    "injury": ""
   },
@@ -900,6 +476,10 @@
    "injury": ""
   },
   "00-0037281": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037297": {
    "status": "IR",
    "injury": ""
   },
@@ -947,7 +527,27 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0037746": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0037753": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037804": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037808": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037816": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037817": {
    "status": "IR",
    "injury": ""
   },
@@ -956,6 +556,10 @@
    "injury": ""
   },
   "00-0037831": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0037832": {
    "status": "IR",
    "injury": ""
   },
@@ -968,6 +572,10 @@
    "injury": ""
   },
   "00-0038104": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038105": {
    "status": "IR",
    "injury": ""
   },
@@ -995,11 +603,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038393": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038401": {
    "status": "IR",
    "injury": ""
   },
   "00-0038440": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038489": {
    "status": "IR",
    "injury": ""
   },
@@ -1027,6 +643,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038589": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038619": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038629": {
    "status": "IR",
    "injury": ""
@@ -1039,11 +663,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0038720": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0038724": {
    "status": "IR",
    "injury": ""
   },
   "00-0038735": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038752": {
    "status": "IR",
    "injury": ""
   },
@@ -1056,6 +688,10 @@
    "injury": ""
   },
   "00-0038865": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0038905": {
    "status": "IR",
    "injury": ""
   },
@@ -1075,11 +711,35 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039032": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039034": {
    "status": "IR",
    "injury": ""
   },
   "00-0039040": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039051": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039075": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039138": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039144": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039146": {
    "status": "IR",
    "injury": ""
   },
@@ -1099,6 +759,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039299": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039344": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039358": {
    "status": "IR",
    "injury": ""
@@ -1108,6 +776,10 @@
    "injury": ""
   },
   "00-0039363": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039370": {
    "status": "IR",
    "injury": ""
   },
@@ -1175,11 +847,23 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039692": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039718": {
    "status": "IR",
    "injury": ""
   },
   "00-0039737": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039751": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039784": {
    "status": "IR",
    "injury": ""
   },
@@ -1191,11 +875,27 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0039817": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039824": {
    "status": "IR",
    "injury": ""
   },
+  "00-0039830": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0039836": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039842": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039850": {
    "status": "IR",
    "injury": ""
   },
@@ -1204,6 +904,10 @@
    "injury": ""
   },
   "00-0039877": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039878": {
    "status": "IR",
    "injury": ""
   },
@@ -1220,6 +924,22 @@
    "injury": ""
   },
   "00-0039921": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0039936": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040012": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040016": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040033": {
    "status": "IR",
    "injury": ""
   },
@@ -1307,6 +1027,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040240": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040243": {
    "status": "IR",
    "injury": ""
@@ -1323,6 +1047,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040329": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040395": {
    "status": "IR",
    "injury": ""
@@ -1331,11 +1059,27 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040466": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040492": {
    "status": "IR",
    "injury": ""
   },
+  "00-0040577": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040582": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040649": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040652": {
    "status": "IR",
    "injury": ""
   },
@@ -1355,6 +1099,14 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0040734": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040739": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0040746": {
    "status": "IR",
    "injury": ""
@@ -1364,6 +1116,18 @@
    "injury": ""
   },
   "00-0040853": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040873": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040875": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0040881": {
    "status": "IR",
    "injury": ""
   },
@@ -1407,6 +1171,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041087": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041091": {
    "status": "IR",
    "injury": ""
@@ -1416,6 +1184,10 @@
    "injury": ""
   },
   "00-0041104": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041111": {
    "status": "IR",
    "injury": ""
   },
@@ -1455,7 +1227,19 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041321": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041323": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041360": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041381": {
    "status": "IR",
    "injury": ""
   },
@@ -1467,6 +1251,26 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041396": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041402": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041414": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041415": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041429": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041442": {
    "status": "IR",
    "injury": ""
@@ -1475,7 +1279,15 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0041463": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0041468": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041484": {
    "status": "IR",
    "injury": ""
   },
@@ -1500,6 +1312,10 @@
    "injury": ""
   },
   "00-0041557": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0041587": {
    "status": "IR",
    "injury": ""
   }

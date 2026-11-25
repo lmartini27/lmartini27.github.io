@@ -27,7 +27,13 @@
    "model_pick": "a",
    "model_prob": 0.571,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 0
+   "id": 0,
+   "actual": {
+    "a": 17.06,
+    "b": 20.36
+   },
+   "result": "b",
+   "crowd": {}
   },
   {
    "position": "QB",
@@ -54,7 +60,13 @@
    "model_pick": "b",
    "model_prob": 0.574,
    "kickoff": "2026-11-20T01:15:00+00:00",
-   "id": 1
+   "id": 1,
+   "actual": {
+    "a": 20.46,
+    "b": 12.16
+   },
+   "result": "a",
+   "crowd": {}
   },
   {
    "position": "RB",
@@ -81,7 +93,13 @@
    "model_pick": "a",
    "model_prob": 0.571,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 2
+   "id": 2,
+   "actual": {
+    "a": 19.1,
+    "b": 24.3
+   },
+   "result": "b",
+   "crowd": {}
   },
   {
    "position": "RB",
@@ -108,7 +126,13 @@
    "model_pick": "b",
    "model_prob": 0.571,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 3
+   "id": 3,
+   "actual": {
+    "a": 19.0,
+    "b": 5.8
+   },
+   "result": "a",
+   "crowd": {}
   },
   {
    "position": "RB",
@@ -135,7 +159,13 @@
    "model_pick": "a",
    "model_prob": 0.576,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 4
+   "id": 4,
+   "actual": {
+    "a": 14.2,
+    "b": 11.0
+   },
+   "result": "a",
+   "crowd": {}
   },
   {
    "position": "WR",
@@ -162,7 +192,13 @@
    "model_pick": "a",
    "model_prob": 0.572,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 5
+   "id": 5,
+   "actual": {
+    "a": null,
+    "b": null
+   },
+   "result": null,
+   "crowd": {}
   },
   {
    "position": "WR",
@@ -189,7 +225,13 @@
    "model_pick": "b",
    "model_prob": 0.571,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 6
+   "id": 6,
+   "actual": {
+    "a": 6.8,
+    "b": 19.1
+   },
+   "result": "b",
+   "crowd": {}
   },
   {
    "position": "WR",
@@ -216,7 +258,13 @@
    "model_pick": "b",
    "model_prob": 0.572,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 7
+   "id": 7,
+   "actual": {
+    "a": 2.0,
+    "b": 12.3
+   },
+   "result": "b",
+   "crowd": {}
   },
   {
    "position": "TE",
@@ -243,7 +291,13 @@
    "model_pick": "a",
    "model_prob": 0.566,
    "kickoff": "2026-11-20T01:15:00+00:00",
-   "id": 8
+   "id": 8,
+   "actual": {
+    "a": 2.1,
+    "b": 12.7
+   },
+   "result": "b",
+   "crowd": {}
   },
   {
    "position": "TE",
@@ -270,7 +324,13 @@
    "model_pick": "b",
    "model_prob": 0.568,
    "kickoff": "2026-11-20T01:15:00+00:00",
-   "id": 9
+   "id": 9,
+   "actual": {
+    "a": 9.2,
+    "b": 3.2
+   },
+   "result": "a",
+   "crowd": {}
   }
  ],
  "ou": [
@@ -289,7 +349,10 @@
    "model_pick": "under",
    "model_prob": 0.55,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 0
+   "id": 0,
+   "actual": 27.8,
+   "result": "over",
+   "crowd": {}
   },
   {
    "player": {
@@ -306,7 +369,10 @@
    "model_pick": "over",
    "model_prob": 0.571,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 1
+   "id": 1,
+   "actual": 24.96,
+   "result": "over",
+   "crowd": {}
   },
   {
    "player": {
@@ -323,7 +389,10 @@
    "model_pick": "under",
    "model_prob": 0.642,
    "kickoff": "2026-11-24T01:15:00+00:00",
-   "id": 2
+   "id": 2,
+   "actual": 8.1,
+   "result": "under",
+   "crowd": {}
   },
   {
    "player": {
@@ -340,7 +409,10 @@
    "model_pick": "under",
    "model_prob": 0.546,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 3
+   "id": 3,
+   "actual": 30.2,
+   "result": "over",
+   "crowd": {}
   },
   {
    "player": {
@@ -357,7 +429,10 @@
    "model_pick": "under",
    "model_prob": 0.583,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 4
+   "id": 4,
+   "actual": 14.28,
+   "result": "under",
+   "crowd": {}
   },
   {
    "player": {
@@ -374,7 +449,10 @@
    "model_pick": "under",
    "model_prob": 0.588,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 5
+   "id": 5,
+   "actual": 17.2,
+   "result": "under",
+   "crowd": {}
   },
   {
    "player": {
@@ -391,7 +469,10 @@
    "model_pick": "over",
    "model_prob": 0.667,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 6
+   "id": 6,
+   "actual": 13.74,
+   "result": "over",
+   "crowd": {}
   },
   {
    "player": {
@@ -408,7 +489,10 @@
    "model_pick": "over",
    "model_prob": 0.658,
    "kickoff": "2026-11-22T18:00:00+00:00",
-   "id": 7
+   "id": 7,
+   "actual": 22.22,
+   "result": "over",
+   "crowd": {}
   },
   {
    "player": {
@@ -425,7 +509,10 @@
    "model_pick": "over",
    "model_prob": 0.637,
    "kickoff": "2026-11-24T01:15:00+00:00",
-   "id": 8
+   "id": 8,
+   "actual": 8.6,
+   "result": "under",
+   "crowd": {}
   },
   {
    "player": {
@@ -442,8 +529,20 @@
    "model_pick": "over",
    "model_prob": 0.654,
    "kickoff": "2026-11-22T21:05:00+00:00",
-   "id": 9
+   "id": 9,
+   "actual": 22.44,
+   "result": "over",
+   "crowd": {}
   }
  ],
- "graded": false
+ "graded": true,
+ "model_score": {
+  "h2h": 3,
+  "ou": 7
+ },
+ "crowd_score": {
+  "h2h": 0,
+  "ou": 0
+ },
+ "players": []
 }

@@ -2696,6 +2696,398 @@
     "v1_abs": 1512.4,
     "v2_abs": 1408.82
    }
+  },
+  {
+   "report": {
+    "by_position": {
+     "QB": {
+      "n": 31,
+      "model_mae": 5.23,
+      "baseline_mae": 5.65
+     },
+     "RB": {
+      "n": 69,
+      "model_mae": 3.73,
+      "baseline_mae": 4.47
+     },
+     "TE": {
+      "n": 65,
+      "model_mae": 3.08,
+      "baseline_mae": 3.25
+     },
+     "WR": {
+      "n": 113,
+      "model_mae": 4.36,
+      "baseline_mae": 5.31
+     }
+    },
+    "best_calls": [
+     {
+      "name": "Trey McBride",
+      "position": "TE",
+      "team": "ARI",
+      "projection": 14.8,
+      "actual": 14.8
+     },
+     {
+      "name": "D'Andre Swift",
+      "position": "RB",
+      "team": "CHI",
+      "projection": 12.1,
+      "actual": 11.9
+     },
+     {
+      "name": "Amon-Ra St. Brown",
+      "position": "WR",
+      "team": "DET",
+      "projection": 15.1,
+      "actual": 14.7
+     }
+    ],
+    "outscored": [
+     {
+      "name": "Jonah Coleman",
+      "position": "RB",
+      "team": "DEN",
+      "projection": 10.6,
+      "actual": 34.9
+     },
+     {
+      "name": "Ted Hurst III",
+      "position": "WR",
+      "team": "TB",
+      "projection": 2.6,
+      "actual": 22.6
+     },
+     {
+      "name": "Jack Bech",
+      "position": "WR",
+      "team": "LV",
+      "projection": 3.9,
+      "actual": 22.8
+     }
+    ],
+    "letdowns": [
+     {
+      "name": "Ja'Marr Chase",
+      "position": "WR",
+      "team": "CIN",
+      "projection": 18.5,
+      "actual": 8.1
+     },
+     {
+      "name": "Jaylen Warren",
+      "position": "RB",
+      "team": "PIT",
+      "projection": 14.6,
+      "actual": 4.9
+     },
+     {
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "team": "NYG",
+      "projection": 14.5,
+      "actual": 5.8
+     }
+    ]
+   },
+   "n_graded": 278,
+   "n_projected": 369,
+   "model_mae": 4.001,
+   "baseline_mae": 4.66,
+   "model_r2": 0.42,
+   "baseline_r2": 0.266,
+   "model_closer_pct": 56.8,
+   "week": 11,
+   "type": "live",
+   "updates": {
+    "n": 278,
+    "locked_abs": 1112.36,
+    "updated_abs": 1109.57,
+    "changed_n": 2,
+    "changed_locked_abs": 3.48,
+    "changed_updated_abs": 1.58
+   },
+   "leaderboard": {
+    "model": {
+     "n": 278,
+     "abs_sum": 1112.36,
+     "mae": 4.001,
+     "r2": 0.42,
+     "big": 20,
+     "pairs": 2003,
+     "correct": 1234.0,
+     "pos": {
+      "QB": [
+       31,
+       162.23
+      ],
+      "RB": [
+       69,
+       257.19
+      ],
+      "TE": [
+       65,
+       200.17
+      ],
+      "WR": [
+       113,
+       492.77
+      ]
+     }
+    },
+    "last3": {
+     "n": 278,
+     "abs_sum": 1295.51,
+     "mae": 4.66,
+     "r2": 0.266,
+     "big": 37,
+     "pairs": 2003,
+     "correct": 1125.5,
+     "pos": {
+      "QB": [
+       31,
+       175.03
+      ],
+      "RB": [
+       69,
+       308.57
+      ],
+      "TE": [
+       65,
+       211.33
+      ],
+      "WR": [
+       113,
+       600.58
+      ]
+     }
+    },
+    "season": {
+     "n": 278,
+     "abs_sum": 1173.54,
+     "mae": 4.221,
+     "r2": 0.423,
+     "big": 24,
+     "pairs": 2003,
+     "correct": 1251.0,
+     "pos": {
+      "QB": [
+       31,
+       162.48
+      ],
+      "RB": [
+       69,
+       272.38
+      ],
+      "TE": [
+       65,
+       220.37
+      ],
+      "WR": [
+       113,
+       518.31
+      ]
+     }
+    },
+    "last_game": {
+     "n": 278,
+     "abs_sum": 1636.02,
+     "mae": 5.885,
+     "r2": -0.166,
+     "big": 59,
+     "pairs": 2003,
+     "correct": 1122.5,
+     "pos": {
+      "QB": [
+       31,
+       166.16
+      ],
+      "RB": [
+       69,
+       405.8
+      ],
+      "TE": [
+       65,
+       298.5
+      ],
+      "WR": [
+       113,
+       765.56
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 278,
+     "abs_sum": 1558.75,
+     "mae": 5.607,
+     "r2": 0.073,
+     "big": 39,
+     "pairs": 2003,
+     "correct": 1001.5,
+     "pos": {
+      "QB": [
+       31,
+       247.58
+      ],
+      "RB": [
+       69,
+       440.06
+      ],
+      "TE": [
+       65,
+       238.87
+      ],
+      "WR": [
+       113,
+       632.24
+      ]
+     }
+    }
+   },
+   "leaderboard_rel": {
+    "model": {
+     "n": 120,
+     "abs_sum": 659.83,
+     "mae": 5.499,
+     "r2": 0.178,
+     "big": 14,
+     "pairs": 2003,
+     "correct": 1234.0,
+     "pos": {
+      "QB": [
+       26,
+       147.35
+      ],
+      "RB": [
+       30,
+       185.06
+      ],
+      "TE": [
+       16,
+       74.57
+      ],
+      "WR": [
+       48,
+       252.85
+      ]
+     }
+    },
+    "last3": {
+     "n": 120,
+     "abs_sum": 794.94,
+     "mae": 6.625,
+     "r2": -0.101,
+     "big": 30,
+     "pairs": 2003,
+     "correct": 1125.5,
+     "pos": {
+      "QB": [
+       26,
+       166.78
+      ],
+      "RB": [
+       30,
+       222.46
+      ],
+      "TE": [
+       16,
+       71.53
+      ],
+      "WR": [
+       48,
+       334.17
+      ]
+     }
+    },
+    "season": {
+     "n": 120,
+     "abs_sum": 698.96,
+     "mae": 5.825,
+     "r2": 0.168,
+     "big": 19,
+     "pairs": 2003,
+     "correct": 1251.0,
+     "pos": {
+      "QB": [
+       26,
+       154.23
+      ],
+      "RB": [
+       30,
+       190.8
+      ],
+      "TE": [
+       16,
+       84.36
+      ],
+      "WR": [
+       48,
+       269.57
+      ]
+     }
+    },
+    "last_game": {
+     "n": 120,
+     "abs_sum": 1012.78,
+     "mae": 8.44,
+     "r2": -0.775,
+     "big": 41,
+     "pairs": 2003,
+     "correct": 1122.5,
+     "pos": {
+      "QB": [
+       26,
+       161.02
+      ],
+      "RB": [
+       30,
+       304.7
+      ],
+      "TE": [
+       16,
+       107.6
+      ],
+      "WR": [
+       48,
+       439.46
+      ]
+     }
+    },
+    "pos_avg": {
+     "n": 120,
+     "abs_sum": 832.28,
+     "mae": 6.936,
+     "r2": -0.362,
+     "big": 30,
+     "pairs": 2003,
+     "correct": 1001.5,
+     "pos": {
+      "QB": [
+       26,
+       196.11
+      ],
+      "RB": [
+       30,
+       237.0
+      ],
+      "TE": [
+       16,
+       90.99
+      ],
+      "WR": [
+       48,
+       308.18
+      ]
+     }
+    }
+   },
+   "versions": {
+    "n": 278,
+    "v2_live": true,
+    "v1_abs": 1267.01,
+    "v2_abs": 1112.36
+   }
   }
  ],
  "backtest_summary": {
@@ -2705,355 +3097,355 @@
   "baseline_mae": 4.793,
   "model_closer_pct": 50.7
  },
- "updated_at": "2026-11-19T21:20:53+00:00",
+ "updated_at": "2026-11-25T22:03:14+00:00",
  "live_summary": {
-  "weeks": 4,
-  "model_wins": 3,
-  "model_mae": 4.655,
-  "baseline_mae": 4.811,
-  "model_closer_pct": 50.3
+  "weeks": 5,
+  "model_wins": 4,
+  "model_mae": 4.524,
+  "baseline_mae": 4.781,
+  "model_closer_pct": 51.6
  },
  "leaderboard": {
   "live": {
-   "weeks": 4,
-   "players_graded": 1121,
+   "weeks": 5,
+   "players_graded": 1399,
    "methods": [
     {
      "key": "season",
      "label": "Season average",
      "about": "The player's average over every game he has played this season.",
-     "mae": 4.572,
-     "r2": 0.398,
-     "pick_pct": 63.0,
-     "big_pct": 11.0,
+     "mae": 4.503,
+     "r2": 0.403,
+     "pick_pct": 62.9,
+     "big_pct": 10.5,
      "weeks_best": 2,
      "by_position": {
-      "QB": 6.34,
-      "RB": 4.94,
-      "TE": 3.81,
-      "WR": 4.33
+      "QB": 6.11,
+      "RB": 4.74,
+      "TE": 3.72,
+      "WR": 4.38
      }
     },
     {
      "key": "model",
      "label": "My model",
      "about": "The projection published before kickoff that week (model v1 through week 9, v2 from week 10).",
-     "mae": 4.652,
-     "r2": 0.406,
+     "mae": 4.523,
+     "r2": 0.409,
      "pick_pct": 61.9,
-     "big_pct": 10.6,
-     "weeks_best": 2,
+     "big_pct": 9.9,
+     "weeks_best": 3,
      "by_position": {
-      "QB": 6.48,
-      "RB": 4.83,
-      "TE": 3.69,
-      "WR": 4.61
+      "QB": 6.22,
+      "RB": 4.61,
+      "TE": 3.57,
+      "WR": 4.56
      }
     },
     {
      "key": "last3",
      "label": "Last 3 games average",
      "about": "The player's average over his last three games. The site's main benchmark.",
-     "mae": 4.818,
-     "r2": 0.329,
-     "pick_pct": 59.6,
-     "big_pct": 12.8,
+     "mae": 4.787,
+     "r2": 0.317,
+     "pick_pct": 58.9,
+     "big_pct": 12.9,
      "weeks_best": 0,
      "by_position": {
-      "QB": 6.87,
-      "RB": 4.88,
-      "TE": 4.14,
-      "WR": 4.64
+      "QB": 6.62,
+      "RB": 4.8,
+      "TE": 3.96,
+      "WR": 4.77
      }
     },
     {
      "key": "last_game",
      "label": "Last game",
      "about": "Whatever the player scored in his most recent game.",
-     "mae": 5.682,
-     "r2": 0.068,
+     "mae": 5.722,
+     "r2": 0.021,
      "pick_pct": 56.2,
-     "big_pct": 19.2,
+     "big_pct": 19.6,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.8,
-      "RB": 5.83,
-      "TE": 4.67,
-      "WR": 5.62
+      "QB": 7.29,
+      "RB": 5.84,
+      "TE": 4.65,
+      "WR": 5.84
      }
     },
     {
      "key": "pos_avg",
      "label": "Position average",
      "about": "Every player at a position gets the same number: the typical season average at that position.",
-     "mae": 5.994,
-     "r2": 0.076,
+     "mae": 5.917,
+     "r2": 0.075,
      "pick_pct": 50.0,
-     "big_pct": 13.6,
+     "big_pct": 13.7,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.64,
-      "RB": 6.66,
-      "TE": 4.47,
-      "WR": 6.02
+      "QB": 7.71,
+      "RB": 6.6,
+      "TE": 4.31,
+      "WR": 5.94
      }
     }
    ]
   },
   "all": {
-   "weeks": 7,
-   "players_graded": 2040,
+   "weeks": 8,
+   "players_graded": 2318,
    "methods": [
     {
      "key": "model",
      "label": "My model",
      "about": "The projection published before kickoff that week (model v1 through week 9, v2 from week 10).",
-     "mae": 4.619,
-     "r2": 0.411,
+     "mae": 4.545,
+     "r2": 0.412,
      "pick_pct": 61.5,
-     "big_pct": 9.9,
-     "weeks_best": 5,
+     "big_pct": 9.5,
+     "weeks_best": 6,
      "by_position": {
-      "QB": 6.21,
-      "RB": 4.75,
-      "TE": 3.86,
-      "WR": 4.58
+      "QB": 6.08,
+      "RB": 4.63,
+      "TE": 3.76,
+      "WR": 4.55
      }
     },
     {
      "key": "season",
      "label": "Season average",
      "about": "The player's average over every game he has played this season.",
-     "mae": 4.637,
-     "r2": 0.363,
-     "pick_pct": 61.2,
-     "big_pct": 11.9,
+     "mae": 4.587,
+     "r2": 0.37,
+     "pick_pct": 61.4,
+     "big_pct": 11.5,
      "weeks_best": 2,
      "by_position": {
-      "QB": 6.55,
-      "RB": 4.81,
-      "TE": 3.91,
-      "WR": 4.47
+      "QB": 6.38,
+      "RB": 4.7,
+      "TE": 3.85,
+      "WR": 4.48
      }
     },
     {
      "key": "last3",
      "label": "Last 3 games average",
      "about": "The player's average over his last three games. The site's main benchmark.",
-     "mae": 4.808,
-     "r2": 0.312,
-     "pick_pct": 58.8,
-     "big_pct": 13.1,
+     "mae": 4.791,
+     "r2": 0.306,
+     "pick_pct": 58.4,
+     "big_pct": 13.2,
      "weeks_best": 0,
      "by_position": {
-      "QB": 6.9,
-      "RB": 4.83,
-      "TE": 4.15,
-      "WR": 4.65
+      "QB": 6.74,
+      "RB": 4.79,
+      "TE": 4.04,
+      "WR": 4.73
      }
     },
     {
      "key": "last_game",
      "label": "Last game",
      "about": "Whatever the player scored in his most recent game.",
-     "mae": 5.637,
-     "r2": 0.025,
-     "pick_pct": 54.9,
-     "big_pct": 19.2,
+     "mae": 5.666,
+     "r2": 0.001,
+     "pick_pct": 55.1,
+     "big_pct": 19.4,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.66,
-      "RB": 5.72,
+      "QB": 7.36,
+      "RB": 5.74,
       "TE": 4.56,
-      "WR": 5.69
+      "WR": 5.82
      }
     },
     {
      "key": "pos_avg",
      "label": "Position average",
      "about": "Every player at a position gets the same number: the typical season average at that position.",
-     "mae": 5.952,
-     "r2": 0.086,
+     "mae": 5.91,
+     "r2": 0.084,
      "pick_pct": 50.0,
-     "big_pct": 13.2,
+     "big_pct": 13.3,
      "weeks_best": 0,
      "by_position": {
-      "QB": 6.94,
-      "RB": 6.63,
-      "TE": 4.75,
-      "WR": 5.97
+      "QB": 7.08,
+      "RB": 6.6,
+      "TE": 4.62,
+      "WR": 5.93
      }
     }
    ]
   },
   "live_rel": {
-   "weeks": 4,
-   "players_graded": 474,
+   "weeks": 5,
+   "players_graded": 594,
    "methods": [
     {
      "key": "model",
      "label": "My model",
      "about": "The projection published before kickoff that week (model v1 through week 9, v2 from week 10).",
-     "mae": 6.302,
-     "r2": 0.16,
+     "mae": 6.14,
+     "r2": 0.163,
      "pick_pct": 61.9,
-     "big_pct": 18.6,
-     "weeks_best": 2,
+     "big_pct": 17.2,
+     "weeks_best": 3,
      "by_position": {
-      "QB": 6.52,
-      "RB": 6.9,
-      "TE": 5.04,
-      "WR": 6.34
+      "QB": 6.36,
+      "RB": 6.75,
+      "TE": 4.97,
+      "WR": 6.1
      }
     },
     {
      "key": "season",
      "label": "Season average",
      "about": "The player's average over every game he has played this season.",
-     "mae": 6.388,
-     "r2": 0.146,
-     "pick_pct": 63.0,
-     "big_pct": 18.8,
+     "mae": 6.274,
+     "r2": 0.151,
+     "pick_pct": 62.9,
+     "big_pct": 18.2,
      "weeks_best": 2,
      "by_position": {
-      "QB": 6.46,
-      "RB": 7.27,
-      "TE": 5.23,
-      "WR": 6.28
+      "QB": 6.36,
+      "RB": 7.08,
+      "TE": 5.24,
+      "WR": 6.13
      }
     },
     {
      "key": "last3",
      "label": "Last 3 games average",
      "about": "The player's average over his last three games. The site's main benchmark.",
-     "mae": 6.763,
-     "r2": 0.037,
-     "pick_pct": 59.6,
-     "big_pct": 23.2,
+     "mae": 6.735,
+     "r2": 0.009,
+     "pick_pct": 58.9,
+     "big_pct": 23.6,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.03,
-      "RB": 7.06,
-      "TE": 5.86,
-      "WR": 6.8
+      "QB": 6.92,
+      "RB": 7.13,
+      "TE": 5.63,
+      "WR": 6.84
      }
     },
     {
      "key": "pos_avg",
      "label": "Position average",
      "about": "Every player at a position gets the same number: the typical season average at that position.",
-     "mae": 7.527,
-     "r2": -0.365,
+     "mae": 7.408,
+     "r2": -0.364,
      "pick_pct": 50.0,
-     "big_pct": 27.0,
+     "big_pct": 26.6,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.5,
-      "RB": 8.62,
-      "TE": 5.42,
-      "WR": 7.78
+      "QB": 7.51,
+      "RB": 8.47,
+      "TE": 5.46,
+      "WR": 7.48
      }
     },
     {
      "key": "last_game",
      "label": "Last game",
      "about": "Whatever the player scored in his most recent game.",
-     "mae": 8.159,
-     "r2": -0.361,
+     "mae": 8.215,
+     "r2": -0.444,
      "pick_pct": 56.2,
-     "big_pct": 32.7,
+     "big_pct": 33.0,
      "weeks_best": 0,
      "by_position": {
-      "QB": 8.04,
-      "RB": 8.71,
-      "TE": 6.36,
-      "WR": 8.69
+      "QB": 7.68,
+      "RB": 9.01,
+      "TE": 6.42,
+      "WR": 8.8
      }
     }
    ]
   },
   "all_rel": {
-   "weeks": 7,
-   "players_graded": 833,
+   "weeks": 8,
+   "players_graded": 953,
    "methods": [
     {
      "key": "model",
      "label": "My model",
      "about": "The projection published before kickoff that week (model v1 through week 9, v2 from week 10).",
-     "mae": 6.295,
-     "r2": 0.155,
+     "mae": 6.195,
+     "r2": 0.158,
      "pick_pct": 61.7,
-     "big_pct": 17.2,
-     "weeks_best": 5,
+     "big_pct": 16.5,
+     "weeks_best": 6,
      "by_position": {
-      "QB": 6.21,
-      "RB": 6.88,
-      "TE": 5.35,
-      "WR": 6.41
+      "QB": 6.14,
+      "RB": 6.78,
+      "TE": 5.27,
+      "WR": 6.25
      }
     },
     {
      "key": "season",
      "label": "Season average",
      "about": "The player's average over every game he has played this season.",
-     "mae": 6.609,
-     "r2": 0.087,
-     "pick_pct": 61.4,
-     "big_pct": 19.8,
+     "mae": 6.51,
+     "r2": 0.097,
+     "pick_pct": 61.5,
+     "big_pct": 19.3,
      "weeks_best": 2,
      "by_position": {
-      "QB": 6.39,
-      "RB": 7.19,
-      "TE": 5.78,
-      "WR": 6.74
+      "QB": 6.34,
+      "RB": 7.08,
+      "TE": 5.73,
+      "WR": 6.59
      }
     },
     {
      "key": "last3",
      "label": "Last 3 games average",
      "about": "The player's average over his last three games. The site's main benchmark.",
-     "mae": 6.898,
-     "r2": -0.003,
-     "pick_pct": 59.0,
-     "big_pct": 23.3,
+     "mae": 6.864,
+     "r2": -0.016,
+     "pick_pct": 58.6,
+     "big_pct": 23.5,
      "weeks_best": 0,
      "by_position": {
-      "QB": 6.78,
-      "RB": 7.19,
-      "TE": 6.33,
-      "WR": 7.04
+      "QB": 6.74,
+      "RB": 7.22,
+      "TE": 6.14,
+      "WR": 7.03
      }
     },
     {
      "key": "pos_avg",
      "label": "Position average",
      "about": "Every player at a position gets the same number: the typical season average at that position.",
-     "mae": 7.554,
-     "r2": -0.383,
+     "mae": 7.476,
+     "r2": -0.381,
      "pick_pct": 50.0,
-     "big_pct": 27.3,
+     "big_pct": 27.0,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.0,
-      "RB": 8.91,
-      "TE": 6.01,
-      "WR": 7.72
+      "QB": 7.07,
+      "RB": 8.78,
+      "TE": 5.98,
+      "WR": 7.55
      }
     },
     {
      "key": "last_game",
      "label": "Last game",
      "about": "Whatever the player scored in his most recent game.",
-     "mae": 8.395,
-     "r2": -0.515,
-     "pick_pct": 54.9,
-     "big_pct": 34.9,
+     "mae": 8.401,
+     "r2": -0.547,
+     "pick_pct": 55.1,
+     "big_pct": 34.8,
      "weeks_best": 0,
      "by_position": {
-      "QB": 7.68,
-      "RB": 9.04,
-      "TE": 6.9,
-      "WR": 9.09
+      "QB": 7.5,
+      "RB": 9.19,
+      "TE": 6.88,
+      "WR": 9.1
      }
     }
    ]
@@ -3062,21 +3454,21 @@
   "relevant_min": 8
  },
  "versions": {
-  "weeks": 7,
-  "n": 2076,
-  "v1_mae": 4.657,
-  "v2_mae": 4.352,
-  "v2_better_weeks": 7,
-  "v2_live_weeks": 1
+  "weeks": 8,
+  "n": 2354,
+  "v1_mae": 4.645,
+  "v2_mae": 4.311,
+  "v2_better_weeks": 8,
+  "v2_live_weeks": 2
  },
  "updates": {
-  "weeks": 1,
-  "n": 295,
-  "changed_n": 15,
-  "locked_mae": 4.768,
-  "updated_mae": 4.762,
-  "changed_locked_mae": 5.432,
-  "changed_updated_mae": 5.394
+  "weeks": 2,
+  "n": 573,
+  "changed_n": 17,
+  "locked_mae": 4.396,
+  "updated_mae": 4.388,
+  "changed_locked_mae": 4.998,
+  "changed_updated_mae": 4.852
  },
  "v2_start_week": 10
 }

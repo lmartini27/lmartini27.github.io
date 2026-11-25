@@ -12,6 +12,18 @@
     "ou": 4
    },
    "beat_model": 0
+  },
+  "11": {
+   "players": 0,
+   "model": {
+    "h2h": 3,
+    "ou": 7
+   },
+   "crowd": {
+    "h2h": 0,
+    "ou": 0
+   },
+   "beat_model": 0
   }
  },
  "standings": [
@@ -44,6 +56,6 @@
    "beat_model": 0
   }
  ],
- "model_total": 10,
- "updated_at": "2026-11-17T15:15:44+00:00"
+ "model_total": 20,
+ "updated_at": "2026-11-25T22:03:37+00:00"
 }
