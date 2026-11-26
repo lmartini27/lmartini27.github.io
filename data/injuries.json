@@ -1,8 +1,96 @@
 {
  "season": 2026,
  "week": 12,
- "updated_at": "2026-11-25T22:03:14+00:00",
+ "updated_at": "2026-11-26T22:14:04+00:00",
  "players": {
+  "00-0037288": {
+   "status": "Questionable",
+   "injury": "Groin"
+  },
+  "00-0038548": {
+   "status": "Questionable",
+   "injury": "Ankle"
+  },
+  "00-0038557": {
+   "status": "Questionable",
+   "injury": "Calf"
+  },
+  "00-0038933": {
+   "status": "Questionable",
+   "injury": "Thumb"
+  },
+  "00-0040724": {
+   "status": "Questionable",
+   "injury": "Shoulder"
+  },
+  "00-0037096": {
+   "status": "Out",
+   "injury": "Concussion"
+  },
+  "00-0037271": {
+   "status": "Questionable",
+   "injury": "Elbow"
+  },
+  "00-0038111": {
+   "status": "Out",
+   "injury": "Shoulder"
+  },
+  "00-0039021": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0039071": {
+   "status": "Questionable",
+   "injury": "Groin"
+  },
+  "00-0035227": {
+   "status": "Out",
+   "injury": "Concussion"
+  },
+  "00-0035705": {
+   "status": "Questionable",
+   "injury": "Hamstring"
+  },
+  "00-0038041": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0039062": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0040007": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0040875": {
+   "status": "Questionable",
+   "injury": "Hip"
+  },
+  "00-0035663": {
+   "status": "Out",
+   "injury": "Quadricep"
+  },
+  "00-0040153": {
+   "status": "Out",
+   "injury": "Hamstring"
+  },
+  "00-0033294": {
+   "status": "Questionable",
+   "injury": "Hamstring"
+  },
+  "00-0036335": {
+   "status": "Questionable",
+   "injury": "Back"
+  },
+  "00-0039862": {
+   "status": "Out",
+   "injury": "Shoulder"
+  },
+  "00-0041447": {
+   "status": "Out",
+   "injury": "Knee"
+  },
   "00-0029592": {
    "status": "Questionable",
    "injury": "Triceps"
@@ -35,6 +123,26 @@
    "status": "Questionable",
    "injury": "Shoulder"
   },
+  "00-0036557": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0036637": {
+   "status": "Questionable",
+   "injury": "Rib"
+  },
+  "00-0038134": {
+   "status": "Out",
+   "injury": "Groin"
+  },
+  "00-0040748": {
+   "status": "Out",
+   "injury": "Knee"
+  },
+  "00-0041545": {
+   "status": "Questionable",
+   "injury": "Neck"
+  },
   "00-0034114": {
    "status": "Out",
    "injury": "Hamstring"
@@ -46,6 +154,14 @@
   "00-0040737": {
    "status": "Out",
    "injury": "Ankle"
+  },
+  "00-0032580": {
+   "status": "Out",
+   "injury": "Ankle"
+  },
+  "00-0038116": {
+   "status": "Out",
+   "injury": "Oblique"
   },
   "00-0031381": {
    "status": "IR",
@@ -104,10 +220,6 @@
    "injury": ""
   },
   "00-0033901": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0033902": {
    "status": "IR",
    "injury": ""
   },
@@ -243,10 +355,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0035705": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0035707": {
    "status": "IR",
    "injury": ""
@@ -271,6 +379,10 @@
    "status": "IR",
    "injury": ""
   },
+  "00-0036158": {
+   "status": "IR",
+   "injury": ""
+  },
   "00-0036198": {
    "status": "IR",
    "injury": ""
@@ -280,6 +392,10 @@
    "injury": ""
   },
   "00-0036252": {
+   "status": "IR",
+   "injury": ""
+  },
+  "00-0036256": {
    "status": "IR",
    "injury": ""
   },
@@ -348,10 +464,6 @@
    "injury": ""
   },
   "00-0036638": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0036871": {
    "status": "IR",
    "injury": ""
   },
@@ -731,10 +843,6 @@
    "status": "IR",
    "injury": ""
   },
-  "00-0039138": {
-   "status": "IR",
-   "injury": ""
-  },
   "00-0039144": {
    "status": "IR",
    "injury": ""
@@ -860,10 +968,6 @@
    "injury": ""
   },
   "00-0039751": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0039784": {
    "status": "IR",
    "injury": ""
   },
@@ -1120,10 +1224,6 @@
    "injury": ""
   },
   "00-0040873": {
-   "status": "IR",
-   "injury": ""
-  },
-  "00-0040875": {
    "status": "IR",
    "injury": ""
   },
